@@ -28,7 +28,7 @@ namespace Simulator
             this.progressBar1.Maximum = 100;
             this.progressBar1.Value = 0;
             this.timer2.Start();
-            var response = await restService.Post();
+            var response = await restService.PostEncoded();
             this.timer2.Stop();
             this.progressBar1.Value = 100;
 
