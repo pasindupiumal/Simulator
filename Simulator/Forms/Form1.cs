@@ -22,17 +22,25 @@ namespace Simulator
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            //Initialize RestService
-            restService = new RestService("https://192.168.1.109:8080");
+            if (button3.Enabled)
+            {
+                MessageBox.Show("Please submit the purchase request first", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                //Initialize RestService
+                restService = new RestService("https://192.168.1.109:8080");
+                double amount = Double.Parse(amountTextBox.Text);
+                amount = amount * 100;
+                this.progressBar1.Maximum = 100;
+                this.progressBar1.Value = 0;
+                this.timer2.Start();
+                var response = await restService.PostEncoded(amount.ToString(), currCodeTextBox.Text);
+                this.timer2.Stop();
+                this.progressBar1.Value = 100;
 
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.timer2.Start();
-            var response = await restService.PostEncoded("Hello", "Hello");
-            this.timer2.Stop();
-            this.progressBar1.Value = 100;
-
-            richTextBox1.Text = response;
+                richTextBox1.Text = response;
+            }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -42,7 +50,7 @@ namespace Simulator
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            if(richTextBox2.Text.Length == 0)
+            if(button3.Enabled)
             {
                 MessageBox.Show("Please submit the purchase request first", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -50,7 +58,6 @@ namespace Simulator
             {
                 //Initialize RestService
                 restService = new RestService("https://192.168.1.109:8080");
-
                 this.progressBar1.Maximum = 100;
                 this.progressBar1.Value = 0;
                 this.timer2.Start();
