@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -15,13 +16,12 @@ namespace Simulator.Shared
 {
     class RestService
     {
-
         private string baseURL = null;
         private HttpClient httpClient = null;
         private XmlSerializer xmlSerializer = null;
         private StringWriterWithEncoding stringWriterWithEncoding = null;
         private XmlWriter xmlWriter = null;
-        private XmlWriterSettings xmlWriterSettings = null;
+        XmlSerializerNamespaces customNameSpace = null;
 
         public RestService (string baseURL)
         {
@@ -61,7 +61,7 @@ namespace Simulator.Shared
             }
         }
 
-        public async Task<string> PostEncoded()
+        public string GetEncodedRequest(string amount, string currCode)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace Simulator.Shared
                 {
                     SequenceNo = "000279",
                     TransType = "01",
-                    TransAmount = "44400",
+                    TransAmount = amount,
                     TransCurrency = "752",
                     TransDateTime = "2020-05-29T08:12:37+01:00",
                     GuestNo = "62524",
@@ -89,31 +89,53 @@ namespace Simulator.Shared
 
                 xmlSerializer = new XmlSerializer(typeof(TransactionRequest));
                 stringWriterWithEncoding = new StringWriterWithEncoding(Encoding.UTF8);
-                XmlSerializerNamespaces customNameSpace = new XmlSerializerNamespaces();
+                customNameSpace = new XmlSerializerNamespaces();
                 customNameSpace.Add(string.Empty, string.Empty);
                 xmlWriter = XmlWriter.Create(stringWriterWithEncoding);
                 xmlWriter.WriteStartDocument(true);
                 xmlSerializer.Serialize(xmlWriter, transactionRequest, customNameSpace);
                 string xmlObject = stringWriterWithEncoding.ToString();
 
-                //var request = "<?xml version=\"1.0\" encoding=\"UTF - 8\" standalone=\"yes\"?><TransactionRequest><SequenceNo>000279</SequenceNo><TransType>01</TransType><TransAmount>44400</TransAmount><TransCurrency>752</TransCurrency><TransDateTime>2020-05-29T08:12:37+01:00</TransDateTime><GuestNo>62524</GuestNo><IndustryCode>1</IndustryCode><Operator>01</Operator><CardPresent>2</CardPresent><TaxAmount>0</TaxAmount><RoomRate>0</RoomRate><CheckInDate>20180815</CheckInDate><CheckOutDate>20202020</CheckOutDate><LodgingCode>3</LodgingCode><SiteId>SHELL|FSDH</SiteId><WSNo>MarkusESTLAB.596807909</WSNo><ProxyInfo>OPIV6.2</ProxyInfo><POSInfo>Opera</POSInfo></TransactionRequest>";
-                //var stringRequest = new StringContent(request, Encoding.UTF8, "application/xml");
-
-                //httpClient = new HttpClient();
-
-                //var response = await httpClient.PostAsync(this.baseURL, stringRequest);
-
-                //if (response.IsSuccessStatusCode)
-                //{
-                //    var stringResponse = await response.Content.ReadAsStringAsync();
-                //    return stringResponse;
-                //}
-                //else
-                //{
-                //    return "Operation failed. Unsuccessful status code.";
-                //}
-
                 return xmlObject;
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine($"Encoded Request Generation Exception : {ex.Message}");
+                return "Encoded Request Generation Exception : " + ex.ToString();
+            }
+        }
+
+        public async Task<string> PostEncoded(string amount, string currCode)
+        {
+            try
+            {
+                //var request = "<?xml version=\"1.0\" encoding=\"UTF - 8\" standalone=\"yes\"?><TransactionRequest><SequenceNo>000279</SequenceNo><TransType>01</TransType><TransAmount>44400</TransAmount><TransCurrency>752</TransCurrency><TransDateTime>2020-05-29T08:12:37+01:00</TransDateTime><GuestNo>62524</GuestNo><IndustryCode>1</IndustryCode><Operator>01</Operator><CardPresent>2</CardPresent><TaxAmount>0</TaxAmount><RoomRate>0</RoomRate><CheckInDate>20180815</CheckInDate><CheckOutDate>20202020</CheckOutDate><LodgingCode>3</LodgingCode><SiteId>SHELL|FSDH</SiteId><WSNo>MarkusESTLAB.596807909</WSNo><ProxyInfo>OPIV6.2</ProxyInfo><POSInfo>Opera</POSInfo></TransactionRequest>";
+
+                //Get the encoded request
+                string xmlObject = GetEncodedRequest(amount, currCode);
+
+                if(!(xmlObject.Contains("Encoded Request Generation Exception")))
+                {
+                    var stringRequest = new StringContent(xmlObject, Encoding.UTF8, "application/xml");
+
+                    httpClient = new HttpClient();
+
+                    var response = await httpClient.PostAsync(this.baseURL, stringRequest);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var stringResponse = await response.Content.ReadAsStringAsync();
+                        return stringResponse;
+                    }
+                    else
+                    {
+                        return "Operation failed. Unsuccessful status code.";
+                    }
+                }
+                else
+                {
+                    return "Operation failed. Unable to generate encoded request.";
+                }
             }
             catch (Exception ex)
             {
