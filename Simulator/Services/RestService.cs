@@ -21,7 +21,8 @@ namespace Simulator.Shared
         private XmlSerializer xmlSerializer = null;
         private StringWriterWithEncoding stringWriterWithEncoding = null;
         private XmlWriter xmlWriter = null;
-        XmlSerializerNamespaces customNameSpace = null;
+        private XmlSerializerNamespaces customNameSpace = null;
+        private TextReader textReader = null;
 
         public RestService (string baseURL)
         {
@@ -109,8 +110,6 @@ namespace Simulator.Shared
         {
             try
             {
-                //var request = "<?xml version=\"1.0\" encoding=\"UTF - 8\" standalone=\"yes\"?><TransactionRequest><SequenceNo>000279</SequenceNo><TransType>01</TransType><TransAmount>44400</TransAmount><TransCurrency>752</TransCurrency><TransDateTime>2020-05-29T08:12:37+01:00</TransDateTime><GuestNo>62524</GuestNo><IndustryCode>1</IndustryCode><Operator>01</Operator><CardPresent>2</CardPresent><TaxAmount>0</TaxAmount><RoomRate>0</RoomRate><CheckInDate>20180815</CheckInDate><CheckOutDate>20202020</CheckOutDate><LodgingCode>3</LodgingCode><SiteId>SHELL|FSDH</SiteId><WSNo>MarkusESTLAB.596807909</WSNo><ProxyInfo>OPIV6.2</ProxyInfo><POSInfo>Opera</POSInfo></TransactionRequest>";
-
                 //Get the encoded request
                 string xmlObject = GetEncodedRequest(amount, currCode);
 
@@ -144,24 +143,20 @@ namespace Simulator.Shared
             }
         }
 
-        public string DecodeResponse()
+        public TransactionResponse DecodeResponse(string xmlObject)
         {
             try
             {
-                var xmlObject = "<?xml version=\"1.0\" encoding=\"utf - 8\"?><TransactionResponse><SequenceNo>000279</SequenceNo><TransType>01</TransType><RespCode>00</RespCode><RespText>TransactionApproved</RespText><OfflineFlag>N</OfflineFlag><PrintData>New Elavon, abc, 10299#Org. nr111111-1121, , Termid: 00000001, Acq Ref: 0##16/06/2021 08:46:40, PURCHASE#SEK: 444.00#TOTAL: 444.00##************4111, MasterCard#APPROVED ONLINE, PIN Used#Ca1 5 001 AMX 001 47707200##Ref. nr: 000000100039, AID: A0000000041010, TVR: 0000008000, TSI: E800#</PrintData><RRN>000000100039</RRN><PAN>************4111</PAN><ExpiryDate>2212</ExpiryDate><TransToken>000000100039</TransToken><EntryMode>23</EntryMode><IssuerId>02</IssuerId><AuthCode>477072</AuthCode><DCCIndicator>0</DCCIndicator><TerminalId>00000001</TerminalId></TransactionResponse>";
+                xmlSerializer = new XmlSerializer(typeof(TransactionResponse));
+                textReader = new StringReader(xmlObject);
+                TransactionResponse transactionResponse = (TransactionResponse) xmlSerializer.Deserialize(textReader);
 
-                XmlSerializer xmlDS = new XmlSerializer(typeof(TransactionResponse));
-                TextReader textReader = new StringReader(xmlObject);
-                TransactionResponse trs = (TransactionResponse) xmlDS.Deserialize(textReader);
-
-                string returnValue = "Sequence Number: " + trs.SequenceNo + " || Terminal ID: " + trs.TerminalId + " || Auth Code: " + trs.AuthCode;
-
-                return returnValue;
+                return transactionResponse;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Encoded Request Generation Exception : {ex.Message}");
-                return "Encoded Request Generation Exception : " + ex.ToString();
+                Debug.WriteLine($"Transaction Response Decoding Exception : {ex.Message}");
+                return null;
             }
         }
     }
