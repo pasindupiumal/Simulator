@@ -1,4 +1,5 @@
-﻿using Simulator.Shared;
+﻿using Simulator.Models;
+using Simulator.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,10 +37,19 @@ namespace Simulator
                 this.progressBar1.Value = 0;
                 this.timer2.Start();
                 var response = await restService.PostEncoded(amount.ToString(), currCodeTextBox.Text);
+                TransactionResponse transactionResponse = restService.DecodeResponse(response);
                 this.timer2.Stop();
                 this.progressBar1.Value = 100;
 
                 richTextBox1.Text = response;
+
+                if(transactionResponse != null)
+                {
+                    richTextBox1.AppendText("\r\n\r\n\r\n");
+                    richTextBox1.AppendText("Sequence Number : " + transactionResponse.SequenceNo + "\r\n");
+                    richTextBox1.AppendText("Terminal ID : " + transactionResponse.TerminalId + "\r\n");
+
+                }
             }
         }
 
@@ -117,17 +127,9 @@ namespace Simulator
             button2.Enabled = false;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
-            restService = new RestService("https://192.168.1.109:8080");
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.timer2.Start();
-            var response = restService.DecodeResponse();
-            this.timer2.Stop();
-            this.progressBar1.Value = 100;
 
-            richTextBox1.Text = response;
         }
     }
 }
