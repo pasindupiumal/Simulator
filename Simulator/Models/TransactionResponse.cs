@@ -8,8 +8,6 @@ namespace Simulator.Models
 {
     public class TransactionResponse
     {
-        public TransactionResponse() { }
-
         public string SequenceNo;
         public string TransType;
         public string RespCode;
@@ -25,6 +23,5 @@ namespace Simulator.Models
         public string AuthCode;
         public string DCCIndicator;
         public string TerminalId;
-
     }
 }

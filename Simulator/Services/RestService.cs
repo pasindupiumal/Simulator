@@ -143,5 +143,26 @@ namespace Simulator.Shared
                 return "RestService Exception : " + ex.ToString();
             }
         }
+
+        public string DecodeResponse()
+        {
+            try
+            {
+                var xmlObject = "<?xml version=\"1.0\" encoding=\"utf - 8\"?><TransactionResponse><SequenceNo>000279</SequenceNo><TransType>01</TransType><RespCode>00</RespCode><RespText>TransactionApproved</RespText><OfflineFlag>N</OfflineFlag><PrintData>New Elavon, abc, 10299#Org. nr111111-1121, , Termid: 00000001, Acq Ref: 0##16/06/2021 08:46:40, PURCHASE#SEK: 444.00#TOTAL: 444.00##************4111, MasterCard#APPROVED ONLINE, PIN Used#Ca1 5 001 AMX 001 47707200##Ref. nr: 000000100039, AID: A0000000041010, TVR: 0000008000, TSI: E800#</PrintData><RRN>000000100039</RRN><PAN>************4111</PAN><ExpiryDate>2212</ExpiryDate><TransToken>000000100039</TransToken><EntryMode>23</EntryMode><IssuerId>02</IssuerId><AuthCode>477072</AuthCode><DCCIndicator>0</DCCIndicator><TerminalId>00000001</TerminalId></TransactionResponse>";
+
+                XmlSerializer xmlDS = new XmlSerializer(typeof(TransactionResponse));
+                TextReader textReader = new StringReader(xmlObject);
+                TransactionResponse trs = (TransactionResponse) xmlDS.Deserialize(textReader);
+
+                string returnValue = "Sequence Number: " + trs.SequenceNo + " || Terminal ID: " + trs.TerminalId + " || Auth Code: " + trs.AuthCode;
+
+                return returnValue;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Encoded Request Generation Exception : {ex.Message}");
+                return "Encoded Request Generation Exception : " + ex.ToString();
+            }
+        }
     }
 }

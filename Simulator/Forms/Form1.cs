@@ -116,5 +116,18 @@ namespace Simulator
             button1.Enabled = false;
             button2.Enabled = false;
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            restService = new RestService("https://192.168.1.109:8080");
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Value = 0;
+            this.timer2.Start();
+            var response = restService.DecodeResponse();
+            this.timer2.Stop();
+            this.progressBar1.Value = 100;
+
+            richTextBox1.Text = response;
+        }
     }
 }
