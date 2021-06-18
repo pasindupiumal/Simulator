@@ -96,9 +96,9 @@ namespace Simulator.Forms
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(122, 393);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 16);
+            this.label4.Size = new System.Drawing.Size(60, 16);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Post Info";
+            this.label4.Text = "POS Info";
             // 
             // label5
             // 
@@ -191,6 +191,7 @@ namespace Simulator.Forms
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(233, 175);
+            this.textBox3.MaxLength = 26;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(449, 22);
             this.textBox3.TabIndex = 12;
@@ -200,6 +201,7 @@ namespace Simulator.Forms
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(234, 215);
+            this.textBox4.MaxLength = 1;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(448, 22);
             this.textBox4.TabIndex = 13;
@@ -209,6 +211,7 @@ namespace Simulator.Forms
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(233, 257);
+            this.textBox5.MaxLength = 61;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(448, 22);
             this.textBox5.TabIndex = 14;
@@ -218,6 +221,7 @@ namespace Simulator.Forms
             this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.Location = new System.Drawing.Point(232, 344);
+            this.textBox6.MaxLength = 40;
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(449, 22);
             this.textBox6.TabIndex = 15;
@@ -228,6 +232,7 @@ namespace Simulator.Forms
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.Location = new System.Drawing.Point(233, 387);
+            this.textBox7.MaxLength = 40;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(449, 22);
             this.textBox7.TabIndex = 16;
@@ -237,6 +242,7 @@ namespace Simulator.Forms
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox8.Location = new System.Drawing.Point(232, 300);
+            this.textBox8.MaxLength = 50;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(449, 22);
             this.textBox8.TabIndex = 17;
@@ -247,6 +253,7 @@ namespace Simulator.Forms
             this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox9.Location = new System.Drawing.Point(233, 427);
+            this.textBox9.MaxLength = 1;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(449, 22);
             this.textBox9.TabIndex = 18;
@@ -256,6 +263,7 @@ namespace Simulator.Forms
             this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox10.Location = new System.Drawing.Point(233, 470);
+            this.textBox10.MaxLength = 20;
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(449, 22);
             this.textBox10.TabIndex = 19;
