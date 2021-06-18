@@ -42,8 +42,10 @@ namespace Simulator.Forms
             this.purchaseUserControl1 = new Simulator.Forms.PurchaseUserControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -181,11 +183,20 @@ namespace Simulator.Forms
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.progressBar1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(274, 634);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(880, 31);
             this.panel3.TabIndex = 2;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(628, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(247, 23);
+            this.progressBar1.TabIndex = 0;
             // 
             // Home
             // 
@@ -201,6 +212,7 @@ namespace Simulator.Forms
             this.Load += new System.EventHandler(this.Home_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -220,5 +232,6 @@ namespace Simulator.Forms
         private SettingsUserControl settingsUserControl1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

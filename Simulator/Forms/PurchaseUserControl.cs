@@ -16,5 +16,25 @@ namespace Simulator.Forms
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PurchaseUserControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
