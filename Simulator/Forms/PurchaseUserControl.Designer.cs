@@ -67,7 +67,7 @@ namespace Simulator.Forms
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(170, 33);
             this.button2.TabIndex = 17;
-            this.button2.Text = "POST (XML) REQUEST";
+            this.button2.Text = "Post (XML) Request";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // timer2
@@ -80,7 +80,7 @@ namespace Simulator.Forms
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(135, 32);
             this.button3.TabIndex = 24;
-            this.button3.Text = "GENERATE";
+            this.button3.Text = "Generate";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // currCodeTextBox
@@ -139,7 +139,7 @@ namespace Simulator.Forms
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(170, 33);
             this.button1.TabIndex = 18;
-            this.button1.Text = "POST (STRING) REQUEST";
+            this.button1.Text = "Post (String) Request";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -170,7 +170,7 @@ namespace Simulator.Forms
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(90, 32);
             this.button4.TabIndex = 25;
-            this.button4.Text = "CLEAR";
+            this.button4.Text = "Clear";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // richTextBox3

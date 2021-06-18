@@ -65,6 +65,7 @@ namespace Simulator.Forms
             // 
             // settingsUserControlButton
             // 
+            this.settingsUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingsUserControlButton.Location = new System.Drawing.Point(43, 471);
             this.settingsUserControlButton.Name = "settingsUserControlButton";
             this.settingsUserControlButton.Size = new System.Drawing.Size(185, 44);
@@ -75,6 +76,7 @@ namespace Simulator.Forms
             // 
             // purchaseUserControlButton
             // 
+            this.purchaseUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.purchaseUserControlButton.Location = new System.Drawing.Point(43, 121);
             this.purchaseUserControlButton.Name = "purchaseUserControlButton";
             this.purchaseUserControlButton.Size = new System.Drawing.Size(185, 44);
@@ -85,6 +87,7 @@ namespace Simulator.Forms
             // 
             // reversalUserControlButton
             // 
+            this.reversalUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reversalUserControlButton.Location = new System.Drawing.Point(43, 386);
             this.reversalUserControlButton.Name = "reversalUserControlButton";
             this.reversalUserControlButton.Size = new System.Drawing.Size(185, 44);
@@ -95,6 +98,7 @@ namespace Simulator.Forms
             // 
             // preAuthUserControlButton
             // 
+            this.preAuthUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.preAuthUserControlButton.Location = new System.Drawing.Point(43, 211);
             this.preAuthUserControlButton.Name = "preAuthUserControlButton";
             this.preAuthUserControlButton.Size = new System.Drawing.Size(185, 44);
@@ -105,6 +109,7 @@ namespace Simulator.Forms
             // 
             // refundUserControlButton
             // 
+            this.refundUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refundUserControlButton.Location = new System.Drawing.Point(43, 300);
             this.refundUserControlButton.Name = "refundUserControlButton";
             this.refundUserControlButton.Size = new System.Drawing.Size(185, 44);
