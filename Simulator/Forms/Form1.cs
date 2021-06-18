@@ -48,7 +48,6 @@ namespace Simulator
                     richTextBox1.AppendText("\r\n\r\n\r\n");
                     richTextBox1.AppendText("Sequence Number : " + transactionResponse.SequenceNo + "\r\n");
                     richTextBox1.AppendText("Terminal ID : " + transactionResponse.TerminalId + "\r\n");
-
                 }
             }
         }
