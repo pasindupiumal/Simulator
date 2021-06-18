@@ -317,6 +317,7 @@ namespace Simulator.Forms
             this.button2.TabIndex = 21;
             this.button2.Text = "Save Changes";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // SettingsUserControl
             // 
