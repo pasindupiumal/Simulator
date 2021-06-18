@@ -35,18 +35,19 @@ namespace Simulator.Forms
             this.reversalUserControlButton = new System.Windows.Forms.Button();
             this.preAuthUserControlButton = new System.Windows.Forms.Button();
             this.refundUserControlButton = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.settingsUserControl1 = new Simulator.Forms.SettingsUserControl();
             this.reversalUserControl1 = new Simulator.Forms.ReversalUserControl();
             this.refundUserControl1 = new Simulator.Forms.RefundUserControl();
-            this.preAuthUserControl1 = new Simulator.Forms.PreAuthUserControl();
             this.purchaseUserControl1 = new Simulator.Forms.PurchaseUserControl();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.preAuthUserControl1 = new Simulator.Forms.PreAuthUserControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.settingsUserControlButton);
             this.panel1.Controls.Add(this.purchaseUserControlButton);
@@ -115,55 +116,6 @@ namespace Simulator.Forms
             this.refundUserControlButton.UseVisualStyleBackColor = true;
             this.refundUserControlButton.Click += new System.EventHandler(this.refundUserControlButton_Click);
             // 
-            // settingsUserControl1
-            // 
-            this.settingsUserControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.settingsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.settingsUserControl1.Name = "settingsUserControl1";
-            this.settingsUserControl1.Size = new System.Drawing.Size(878, 663);
-            this.settingsUserControl1.TabIndex = 5;
-            this.settingsUserControl1.Load += new System.EventHandler(this.settingsUserControl1_Load);
-            // 
-            // reversalUserControl1
-            // 
-            this.reversalUserControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.reversalUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reversalUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.reversalUserControl1.Name = "reversalUserControl1";
-            this.reversalUserControl1.Size = new System.Drawing.Size(878, 663);
-            this.reversalUserControl1.TabIndex = 4;
-            this.reversalUserControl1.Load += new System.EventHandler(this.reversalUserControl1_Load);
-            // 
-            // refundUserControl1
-            // 
-            this.refundUserControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.refundUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.refundUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.refundUserControl1.Name = "refundUserControl1";
-            this.refundUserControl1.Size = new System.Drawing.Size(878, 663);
-            this.refundUserControl1.TabIndex = 3;
-            // 
-            // preAuthUserControl1
-            // 
-            this.preAuthUserControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.preAuthUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.preAuthUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.preAuthUserControl1.Name = "preAuthUserControl1";
-            this.preAuthUserControl1.Size = new System.Drawing.Size(878, 663);
-            this.preAuthUserControl1.TabIndex = 2;
-            this.preAuthUserControl1.Load += new System.EventHandler(this.preAuthUserControl1_Load);
-            // 
-            // purchaseUserControl1
-            // 
-            this.purchaseUserControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.purchaseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.purchaseUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.purchaseUserControl1.Name = "purchaseUserControl1";
-            this.purchaseUserControl1.Size = new System.Drawing.Size(878, 663);
-            this.purchaseUserControl1.TabIndex = 1;
-            this.purchaseUserControl1.Load += new System.EventHandler(this.purchaseUserControl1_Load);
-            // 
             // panel2
             // 
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -179,6 +131,60 @@ namespace Simulator.Forms
             this.panel2.Size = new System.Drawing.Size(880, 665);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // settingsUserControl1
+            // 
+            this.settingsUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.settingsUserControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.settingsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.settingsUserControl1.Name = "settingsUserControl1";
+            this.settingsUserControl1.Size = new System.Drawing.Size(878, 663);
+            this.settingsUserControl1.TabIndex = 5;
+            this.settingsUserControl1.Load += new System.EventHandler(this.settingsUserControl1_Load);
+            // 
+            // reversalUserControl1
+            // 
+            this.reversalUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.reversalUserControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.reversalUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reversalUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.reversalUserControl1.Name = "reversalUserControl1";
+            this.reversalUserControl1.Size = new System.Drawing.Size(878, 663);
+            this.reversalUserControl1.TabIndex = 4;
+            this.reversalUserControl1.Load += new System.EventHandler(this.reversalUserControl1_Load);
+            // 
+            // refundUserControl1
+            // 
+            this.refundUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.refundUserControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.refundUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.refundUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.refundUserControl1.Name = "refundUserControl1";
+            this.refundUserControl1.Size = new System.Drawing.Size(878, 663);
+            this.refundUserControl1.TabIndex = 3;
+            // 
+            // purchaseUserControl1
+            // 
+            this.purchaseUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.purchaseUserControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.purchaseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.purchaseUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.purchaseUserControl1.Name = "purchaseUserControl1";
+            this.purchaseUserControl1.Size = new System.Drawing.Size(878, 663);
+            this.purchaseUserControl1.TabIndex = 1;
+            this.purchaseUserControl1.Load += new System.EventHandler(this.purchaseUserControl1_Load);
+            // 
+            // preAuthUserControl1
+            // 
+            this.preAuthUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.preAuthUserControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.preAuthUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.preAuthUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.preAuthUserControl1.Name = "preAuthUserControl1";
+            this.preAuthUserControl1.Size = new System.Drawing.Size(878, 663);
+            this.preAuthUserControl1.TabIndex = 2;
+            this.preAuthUserControl1.Load += new System.EventHandler(this.preAuthUserControl1_Load);
             // 
             // Home
             // 
