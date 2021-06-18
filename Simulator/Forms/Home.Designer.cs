@@ -41,11 +41,8 @@ namespace Simulator.Forms
             this.preAuthUserControl1 = new Simulator.Forms.PreAuthUserControl();
             this.purchaseUserControl1 = new Simulator.Forms.PurchaseUserControl();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -124,7 +121,7 @@ namespace Simulator.Forms
             this.settingsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingsUserControl1.Location = new System.Drawing.Point(0, 0);
             this.settingsUserControl1.Name = "settingsUserControl1";
-            this.settingsUserControl1.Size = new System.Drawing.Size(878, 631);
+            this.settingsUserControl1.Size = new System.Drawing.Size(878, 663);
             this.settingsUserControl1.TabIndex = 5;
             this.settingsUserControl1.Load += new System.EventHandler(this.settingsUserControl1_Load);
             // 
@@ -134,7 +131,7 @@ namespace Simulator.Forms
             this.reversalUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reversalUserControl1.Location = new System.Drawing.Point(0, 0);
             this.reversalUserControl1.Name = "reversalUserControl1";
-            this.reversalUserControl1.Size = new System.Drawing.Size(878, 631);
+            this.reversalUserControl1.Size = new System.Drawing.Size(878, 663);
             this.reversalUserControl1.TabIndex = 4;
             this.reversalUserControl1.Load += new System.EventHandler(this.reversalUserControl1_Load);
             // 
@@ -144,7 +141,7 @@ namespace Simulator.Forms
             this.refundUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.refundUserControl1.Location = new System.Drawing.Point(0, 0);
             this.refundUserControl1.Name = "refundUserControl1";
-            this.refundUserControl1.Size = new System.Drawing.Size(878, 631);
+            this.refundUserControl1.Size = new System.Drawing.Size(878, 663);
             this.refundUserControl1.TabIndex = 3;
             // 
             // preAuthUserControl1
@@ -153,7 +150,7 @@ namespace Simulator.Forms
             this.preAuthUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.preAuthUserControl1.Location = new System.Drawing.Point(0, 0);
             this.preAuthUserControl1.Name = "preAuthUserControl1";
-            this.preAuthUserControl1.Size = new System.Drawing.Size(878, 631);
+            this.preAuthUserControl1.Size = new System.Drawing.Size(878, 663);
             this.preAuthUserControl1.TabIndex = 2;
             this.preAuthUserControl1.Load += new System.EventHandler(this.preAuthUserControl1_Load);
             // 
@@ -163,15 +160,12 @@ namespace Simulator.Forms
             this.purchaseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.purchaseUserControl1.Location = new System.Drawing.Point(0, 0);
             this.purchaseUserControl1.Name = "purchaseUserControl1";
-            this.purchaseUserControl1.Size = new System.Drawing.Size(878, 631);
+            this.purchaseUserControl1.Size = new System.Drawing.Size(878, 663);
             this.purchaseUserControl1.TabIndex = 1;
             this.purchaseUserControl1.Load += new System.EventHandler(this.purchaseUserControl1_Load);
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.settingsUserControl1);
@@ -179,36 +173,18 @@ namespace Simulator.Forms
             this.panel2.Controls.Add(this.refundUserControl1);
             this.panel2.Controls.Add(this.purchaseUserControl1);
             this.panel2.Controls.Add(this.preAuthUserControl1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(274, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(880, 633);
+            this.panel2.Size = new System.Drawing.Size(880, 665);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.progressBar1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(274, 634);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(880, 31);
-            this.panel3.TabIndex = 2;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(628, 3);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(247, 23);
-            this.progressBar1.TabIndex = 0;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1154, 665);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Home";
@@ -217,7 +193,6 @@ namespace Simulator.Forms
             this.Load += new System.EventHandler(this.Home_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -236,7 +211,5 @@ namespace Simulator.Forms
         private ReversalUserControl reversalUserControl1;
         private SettingsUserControl settingsUserControl1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
