@@ -57,7 +57,7 @@ namespace Simulator.Forms
             this.richTextBox1.Location = new System.Drawing.Point(455, 301);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(408, 413);
+            this.richTextBox1.Size = new System.Drawing.Size(410, 415);
             this.richTextBox1.TabIndex = 15;
             this.richTextBox1.Text = "";
             // 
@@ -131,7 +131,7 @@ namespace Simulator.Forms
             this.richTextBox2.Location = new System.Drawing.Point(27, 301);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(408, 413);
+            this.richTextBox2.Size = new System.Drawing.Size(408, 415);
             this.richTextBox2.TabIndex = 19;
             this.richTextBox2.Text = "";
             // 
@@ -186,14 +186,14 @@ namespace Simulator.Forms
             this.richTextBox3.Location = new System.Drawing.Point(27, 131);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.ReadOnly = true;
-            this.richTextBox3.Size = new System.Drawing.Size(836, 130);
+            this.richTextBox3.Size = new System.Drawing.Size(838, 130);
             this.richTextBox3.TabIndex = 28;
             this.richTextBox3.Text = "";
             // 
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(613, 740);
+            this.progressBar1.Location = new System.Drawing.Point(615, 742);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(250, 23);
             this.progressBar1.TabIndex = 29;
@@ -202,7 +202,6 @@ namespace Simulator.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox1);
@@ -218,7 +217,7 @@ namespace Simulator.Forms
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button4);
             this.Name = "PurchaseUserControl";
-            this.Size = new System.Drawing.Size(895, 775);
+            this.Size = new System.Drawing.Size(897, 777);
             this.Load += new System.EventHandler(this.PurchaseUserControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

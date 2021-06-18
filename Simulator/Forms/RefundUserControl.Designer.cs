@@ -45,10 +45,9 @@ namespace Simulator.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.label1);
             this.Name = "RefundUserControl";
-            this.Size = new System.Drawing.Size(721, 478);
+            this.Size = new System.Drawing.Size(723, 480);
             this.ResumeLayout(false);
             this.PerformLayout();
 

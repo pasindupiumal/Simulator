@@ -47,10 +47,9 @@ namespace Simulator.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.label1);
             this.Name = "PreAuthUserControl";
-            this.Size = new System.Drawing.Size(798, 508);
+            this.Size = new System.Drawing.Size(773, 513);
             this.ResumeLayout(false);
             this.PerformLayout();
 
