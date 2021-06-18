@@ -15,6 +15,7 @@ namespace Simulator.Forms
         public Home()
         {
             InitializeComponent();
+            //Test
         }
 
         private void purchaseUserControl1_Load(object sender, EventArgs e)
