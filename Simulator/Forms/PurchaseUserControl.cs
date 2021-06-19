@@ -96,14 +96,21 @@ namespace Simulator.Forms
                 string requestString = restService.GetEncodedPurchaseRequest(inputAmount.ToString(), currCode, true);
 
                 //Display request details
-                richTextBox2.AppendText("IP Address : " + this.baseURL);
-                richTextBox2.AppendText("\r\n\r\nPurchase Request\r\n\r\n");
-                richTextBox2.AppendText(requestString + "\r\n\r\n");
+                richTextBox2.Select(0, 0);
+                richTextBox2.SelectedText = "\r\n\r\n" + requestString + "\r\n";
+
+                richTextBox2.Select(0, 0);
+                richTextBox2.SelectedText = "Purchase Request";
 
                 //Perform transaction
                 var response = await restService.PostPurchaseRequest(inputAmount.ToString(), currCodeTextBox.Text);
-                richTextBox1.AppendText("Purchase Response\r\n\r\n");
-                richTextBox1.AppendText(response + "\r\n\r\n\r\n");
+
+                richTextBox1.Select(0, 0);
+                richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n";
+
+                richTextBox1.Select(0, 0);
+                richTextBox1.SelectedText = "Purchase Response";
+
                 this.progressBar1.Value = 100;
                 this.timer2.Stop();
                 button2.Enabled = false;
@@ -115,35 +122,11 @@ namespace Simulator.Forms
 
                 if (transactionResponse != null)
                 {
-
-                    //Label label = new Label();
-
-                    //StringBuilder builder = new StringBuilder();
-
-                    //richTextBox3.ForeColor = Color.Blue;
-
-                    //label.Text = transactionResponse.RespText;
-
-                    //if (transactionResponse.RespText.Equals("TransactionApproved"))
-                    //{
-                    //    label.BackColor = System.Drawing.Color.Lime;
-                    //}
-                    //else
-                    //{
-                    //    label.BackColor = System.Drawing.Color.Red;
-                    //}
-
-                    //richTextBox3.AppendText(label.ToString());
-
                     richTextBox3.Select(0, 0);
                     richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n";
 
                     richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "Purchase Request - " + transactionResponse.RespText;
-
-                    
-                    //richTextBox3.AppendText(transactionResponse.RespText);
-                    //richTextBox3.AppendText("\r\n\r\n" + transactionResponse.PrintData + "\r\n\r\n\r\n");
+                    richTextBox3.SelectedText = "Purchase Response - " + transactionResponse.RespText;
                 }
             }
             else
@@ -177,13 +160,21 @@ namespace Simulator.Forms
             string requestString = restService.GetEncodedReversalRequest(inputAmount.ToString(), currCode, true);
 
             //Display request details
-            richTextBox2.AppendText("Reversal Request\r\n\r\n");
-            richTextBox2.AppendText(requestString + "\r\n\r\n");
+            richTextBox2.Select(0, 0);
+            richTextBox2.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
+
+            richTextBox2.Select(0, 0);
+            richTextBox2.SelectedText = "Reversal Request";
 
             //Perform transaction
             var response = await restService.PostReversalRequest(inputAmount.ToString(), currCodeTextBox.Text);
-            richTextBox1.AppendText("Reversal Response\r\n\r\n");
-            richTextBox1.AppendText(response + "\r\n\r\n\r\n");
+
+            richTextBox1.Select(0, 0);
+            richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
+
+            richTextBox1.Select(0, 0);
+            richTextBox1.SelectedText = "Reversal Response";
+
             this.progressBar1.Value = 100;
             this.timer2.Stop();
 
@@ -192,34 +183,11 @@ namespace Simulator.Forms
 
             if (transactionResponse != null)
             {
-
-                //Label label = new Label();
-
-                //StringBuilder builder = new StringBuilder();
-
-                //richTextBox3.ForeColor = Color.Blue;
-
-                //label.Text = transactionResponse.RespText;
-
-                //if (transactionResponse.RespText.Equals("TransactionApproved"))
-                //{
-                //    label.BackColor = System.Drawing.Color.Lime;
-                //}
-                //else
-                //{
-                //    label.BackColor = System.Drawing.Color.Red;
-                //}
-
-                //richTextBox3.AppendText(label.ToString());
-
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "Reversal Request - " + transactionResponse.RespText;
-
-                //richTextBox3.AppendText(transactionResponse.RespText);
-                //richTextBox3.AppendText("\r\n\r\n" + transactionResponse.PrintData);
+                richTextBox3.SelectedText = "Reversal Response - " + transactionResponse.RespText;
             }
         }
 
