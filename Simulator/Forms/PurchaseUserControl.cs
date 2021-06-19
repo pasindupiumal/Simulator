@@ -132,7 +132,7 @@ namespace Simulator.Forms
                     label5.BackColor = System.Drawing.Color.Lime;
                     label5.Visible = true;
 
-                    richTextBox3.AppendText("\r\n\r\n\r\n" + transactionResponse.PrintData);
+                    richTextBox3.AppendText("\r\n\r\n\r\n\n\t" + transactionResponse.PrintData);
                 }
             }
         }
