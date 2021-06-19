@@ -44,6 +44,7 @@ namespace Simulator.Forms
             reversalUserControl1.Hide();
             settingsUserControl1.Hide();
 
+            purchaseUserControl1.clearFields();
             purchaseUserControl1.Show();
             purchaseUserControl1.BringToFront();
         }

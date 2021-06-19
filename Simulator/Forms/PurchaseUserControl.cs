@@ -48,7 +48,22 @@ namespace Simulator.Forms
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        public void clearFields()
+        {
+            amountTextBox.Text = "100";
+            amountTextBox.ReadOnly = false;
+            currCodeTextBox.Text = string.Empty;
+            currCodeTextBox.ReadOnly = false;
+            button1.Enabled = true;
+            button2.Enabled = true;
+            textBox1.ReadOnly = false;
+            richTextBox1.Text = string.Empty;
+            richTextBox2.Text = string.Empty;
+            richTextBox3.Text = string.Empty;
+            button1.Enabled = false;
+        }
+
+        private async void button2_Click_1(object sender, EventArgs e)
         {
             //Read amount and currency code
             string amount = amountTextBox.Text;
@@ -59,11 +74,21 @@ namespace Simulator.Forms
 
             if (isDouble)
             {
+                //Disable the input fields
+                amountTextBox.ReadOnly = true;
+                currCodeTextBox.ReadOnly = true;
+                textBox1.ReadOnly = true;
+
+                //Setup progress bar settings
+                this.progressBar1.Maximum = 100;
+                this.progressBar1.Value = 0;
+                this.timer2.Start();
+
                 double inputAmount = amountDouble * 100;
 
                 //Initialize RestService
                 this.baseURL = utils.getBaseURL();
-                restService = new RestService(this.baseURL);
+                restService = new RestService(textBox1.Text.ToString());
 
                 //Get the transaction request tailored for the available settings
                 string requestString = restService.GetEncodedRequest(inputAmount.ToString(), currCode);
@@ -72,60 +97,14 @@ namespace Simulator.Forms
                 richTextBox2.AppendText("IP Address : " + this.baseURL);
                 richTextBox2.AppendText("\r\n\r\n" + requestString);
 
-                amountTextBox.ReadOnly = true;
-                currCodeTextBox.ReadOnly = true;
-                button1.Enabled = true;
-                button2.Enabled = true;
-                button3.Enabled = false;
-                button4.Enabled = true;
-                textBox1.ReadOnly = true;
-            }
-            else
-            {
-                MessageBox.Show("Enter a valid amount", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                amountTextBox.Text = string.Empty;
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            amountTextBox.ReadOnly = false;
-            amountTextBox.Text = string.Empty;
-            currCodeTextBox.ReadOnly = false;
-            currCodeTextBox.Text = string.Empty;
-            button3.Enabled = true;
-            richTextBox2.Text = string.Empty;
-            button1.Enabled = false;
-            button2.Enabled = false;
-            textBox1.ReadOnly = false;
-        }
-
-        private async void button2_Click_1(object sender, EventArgs e)
-        {
-            if (button3.Enabled)
-            {
-                MessageBox.Show("Please submit the purchase request first", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                //Setup progress bar settings
-                this.progressBar1.Maximum = 100;
-                this.progressBar1.Value = 0;
-                this.timer2.Start();
-
-                //Initialize RestService
-                this.baseURL = utils.getBaseURL();
-                restService = new RestService(textBox1.Text.ToString());
-
-                //Conversions on the amount
-                double amount = Double.Parse(amountTextBox.Text);
-                amount = amount * 100;
-
                 //Perform transaction
-                var response = await restService.PostEncoded(amount.ToString(), currCodeTextBox.Text);
+                var response = await restService.PostEncoded(inputAmount.ToString(), currCodeTextBox.Text);
                 richTextBox1.Text = response;
                 this.progressBar1.Value = 100;
                 this.timer2.Stop();
+                button2.Enabled = false;
+                button1.Enabled = true;
+                
 
                 //Parse transaction response
                 TransactionResponse transactionResponse = restService.DecodeResponse(response);
@@ -142,35 +121,33 @@ namespace Simulator.Forms
                     {
                         label5.BackColor = System.Drawing.Color.Red;
                     }
-                    
+
                     label5.Visible = true;
 
                     richTextBox3.AppendText("\r\n\r\n\r\n\n\t" + transactionResponse.PrintData);
                 }
             }
+            else
+            {
+                MessageBox.Show("Enter a valid amount", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                amountTextBox.Text = string.Empty;
+            }
         }
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            if (button3.Enabled)
-            {
-                MessageBox.Show("Please submit the purchase request first", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                //Initialize RestService
-                this.baseURL = utils.getBaseURL();
-                restService = new RestService(textBox1.Text.ToString());
-                this.progressBar1.Maximum = 100;
-                this.progressBar1.Value = 0;
-                this.timer2.Start();
+            //Initialize RestService
+            this.baseURL = utils.getBaseURL();
+            restService = new RestService(textBox1.Text.ToString());
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Value = 0;
+            this.timer2.Start();
 
-                var response = await restService.Post();
+            var response = await restService.Post();
 
-                richTextBox1.Text = response;
-                this.timer2.Stop();
-                this.progressBar1.Value = 100;
-            }
+            richTextBox1.Text = response;
+            this.timer2.Stop();
+            this.progressBar1.Value = 100;
         }
 
         private void timer2_Tick(object sender, EventArgs e)
