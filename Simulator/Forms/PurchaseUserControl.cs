@@ -61,6 +61,7 @@ namespace Simulator.Forms
             richTextBox2.Text = string.Empty;
             richTextBox3.Text = string.Empty;
             button1.Enabled = false;
+            progressBar1.Value = 0;
         }
 
         private async void button2_Click_1(object sender, EventArgs e)
