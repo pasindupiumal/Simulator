@@ -63,16 +63,22 @@ namespace Simulator.Shared
             }
         }
 
-        public string GetEncodedPurchaseRequest(string amount, string currCode)
+        public string GetEncodedPurchaseRequest(string amount, string currCode, bool seqIncrement)
         {
             try
             {
                 //Reload the settings
                 Settings.Default.Reload();
+                int seqNumber = (int)Settings.Default["sequenceNumber"];
+
+                if (seqIncrement)
+                {
+                    seqNumber = seqNumber + 1;
+                }
 
                 var purchaseRequest = new PurchaseRequest
                 {
-                    SequenceNo = "000279",
+                    SequenceNo = seqNumber.ToString(),
                     TransType = "01",
                     TransAmount = amount,
                     TransCurrency = currCode,
@@ -101,6 +107,9 @@ namespace Simulator.Shared
                 xmlSerializer.Serialize(xmlWriter, purchaseRequest, customNameSpace);
                 string xmlObject = stringWriterWithEncoding.ToString();
 
+                Settings.Default["sequenceNumber"] = seqNumber;
+                Settings.Default.Save();
+
                 return xmlObject;
             }
             catch(Exception ex)
@@ -110,16 +119,22 @@ namespace Simulator.Shared
             }
         }
 
-        public string GetEncodedReversalRequest(string amount, string currCode)
+        public string GetEncodedReversalRequest(string amount, string currCode, bool seqIncrement)
         {
             try
             {
                 //Reload the settings
                 Settings.Default.Reload();
+                int seqNumber = (int)Settings.Default["sequenceNumber"];
+
+                if (seqIncrement)
+                {
+                    seqNumber = seqNumber + 1;
+                }
 
                 var reversalRequest = new ReversalRequest
                 {
-                    SequenceNo = "000279",
+                    SequenceNo = seqNumber.ToString(),
                     TransType = "01",
                     TransAmount = amount,
                     TransCurrency = currCode,
@@ -142,6 +157,9 @@ namespace Simulator.Shared
                 xmlSerializer.Serialize(xmlWriter, reversalRequest, customNameSpace);
                 string xmlObject = stringWriterWithEncoding.ToString();
 
+                Settings.Default["sequenceNumber"] = seqNumber;
+                Settings.Default.Save();
+
                 return xmlObject;
             }
             catch (Exception ex)
@@ -156,7 +174,7 @@ namespace Simulator.Shared
             try
             {
                 //Get the encoded request
-                string xmlObject = GetEncodedPurchaseRequest(amount, currCode);
+                string xmlObject = GetEncodedPurchaseRequest(amount, currCode, false);
 
                 if(!(xmlObject.Contains("Encoded Purchase Request Generation Exception")))
                 {
@@ -193,7 +211,7 @@ namespace Simulator.Shared
             try
             {
                 //Get the encoded request
-                string xmlObject = GetEncodedReversalRequest(amount, currCode);
+                string xmlObject = GetEncodedReversalRequest(amount, currCode, false);
 
                 if (!(xmlObject.Contains("Encoded Reversal Request Generation Exception")))
                 {

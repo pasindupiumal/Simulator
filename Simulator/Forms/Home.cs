@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Simulator.Properties;
 
 namespace Simulator.Forms
 {
@@ -15,7 +16,21 @@ namespace Simulator.Forms
         public Home()
         {
             InitializeComponent();
-            //Test
+            validateSequenceNumber();
+        }
+
+        private void validateSequenceNumber()
+        {
+            Settings.Default.Reload();
+
+            int seqNumber = (int) Settings.Default["sequenceNumber"];
+
+            if(seqNumber >= 1000000)
+            {
+                seqNumber = 0;
+                Settings.Default["sequenceNumber"] = seqNumber;
+                Settings.Default.Save();
+            }
         }
 
         private void purchaseUserControl1_Load(object sender, EventArgs e)

@@ -92,7 +92,7 @@ namespace Simulator.Forms
                 restService = new RestService(textBox1.Text.ToString());
 
                 //Get the transaction request tailored for the available settings
-                string requestString = restService.GetEncodedPurchaseRequest(inputAmount.ToString(), currCode);
+                string requestString = restService.GetEncodedPurchaseRequest(inputAmount.ToString(), currCode, true);
 
                 //Display request details
                 richTextBox2.AppendText("IP Address : " + this.baseURL);
@@ -166,7 +166,7 @@ namespace Simulator.Forms
             restService = new RestService(textBox1.Text.ToString());
 
             //Get the transaction request tailored for the available settings
-            string requestString = restService.GetEncodedReversalRequest(inputAmount.ToString(), currCode);
+            string requestString = restService.GetEncodedReversalRequest(inputAmount.ToString(), currCode, true);
 
             //Display request details
             richTextBox2.AppendText("Reversal Request\r\n\r\n");

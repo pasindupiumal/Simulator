@@ -142,5 +142,17 @@ namespace Simulator.Properties {
                 this["guestNo"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int sequenceNumber {
+            get {
+                return ((int)(this["sequenceNumber"]));
+            }
+            set {
+                this["sequenceNumber"] = value;
+            }
+        }
     }
 }

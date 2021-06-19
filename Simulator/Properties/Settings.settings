@@ -32,5 +32,8 @@
     <Setting Name="guestNo" Type="System.String" Scope="User">
       <Value Profile="(Default)">62524</Value>
     </Setting>
+    <Setting Name="sequenceNumber" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
