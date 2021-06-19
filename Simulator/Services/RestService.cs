@@ -70,6 +70,7 @@ namespace Simulator.Shared
                 //Reload the settings
                 Settings.Default.Reload();
                 int seqNumber = (int)Settings.Default["sequenceNumber"];
+                string dateTime = DateTime.UtcNow.ToString("s") + DateTime.UtcNow.ToString("zzz");
 
                 if (seqIncrement)
                 {
@@ -82,7 +83,7 @@ namespace Simulator.Shared
                     TransType = "01",
                     TransAmount = amount,
                     TransCurrency = currCode,
-                    TransDateTime = "2020-05-29T08:12:37+01:00",
+                    TransDateTime = dateTime,
                     GuestNo = Settings.Default["guestNo"].ToString(),
                     IndustryCode = Settings.Default["industryCode"].ToString(),
                     Operator = Settings.Default["operatorValue"].ToString(),
@@ -126,6 +127,7 @@ namespace Simulator.Shared
                 //Reload the settings
                 Settings.Default.Reload();
                 int seqNumber = (int)Settings.Default["sequenceNumber"];
+                string dateTime = DateTime.UtcNow.ToString("s") + DateTime.UtcNow.ToString("zzz");
 
                 if (seqIncrement)
                 {
@@ -141,7 +143,7 @@ namespace Simulator.Shared
                     OriginalType = "01",
                     OriginalTime = "2020-04-28T12:07:12+02:00",
                     IndustryCode = Settings.Default["industryCode"].ToString(),
-                    TransDateTime = "2020-04-28T12:23:27+02:00",
+                    TransDateTime = dateTime,
                     SiteId = Settings.Default["siteID"].ToString(),
                     WSNo = Settings.Default["wsNo"].ToString(),
                     ProxyInfo = Settings.Default["proxyInfo"].ToString(),
