@@ -123,6 +123,7 @@
       <DependentUpon>SettingsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\PurchaseRequest.cs" />
+    <Compile Include="Models\ReversalRequest.cs" />
     <Compile Include="Models\TransactionRequest.cs" />
     <Compile Include="Models\TransactionResponse.cs" />
     <Compile Include="Program.cs" />

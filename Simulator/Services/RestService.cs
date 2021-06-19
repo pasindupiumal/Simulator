@@ -70,7 +70,7 @@ namespace Simulator.Shared
                 //Reload the settings
                 Settings.Default.Reload();
 
-                var transactionRequest = new TransactionRequest
+                var purchaseRequest = new PurchaseRequest
                 {
                     SequenceNo = "000279",
                     TransType = "01",
@@ -92,13 +92,13 @@ namespace Simulator.Shared
                     POSInfo = Settings.Default["posInfo"].ToString()
                 };
 
-                xmlSerializer = new XmlSerializer(typeof(TransactionRequest));
+                xmlSerializer = new XmlSerializer(typeof(PurchaseRequest));
                 stringWriterWithEncoding = new StringWriterWithEncoding(Encoding.UTF8);
                 customNameSpace = new XmlSerializerNamespaces();
                 customNameSpace.Add(string.Empty, string.Empty);
                 xmlWriter = XmlWriter.Create(stringWriterWithEncoding);
                 xmlWriter.WriteStartDocument(true);
-                xmlSerializer.Serialize(xmlWriter, transactionRequest, customNameSpace);
+                xmlSerializer.Serialize(xmlWriter, purchaseRequest, customNameSpace);
                 string xmlObject = stringWriterWithEncoding.ToString();
 
                 return xmlObject;
