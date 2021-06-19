@@ -43,7 +43,6 @@ namespace Simulator.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -183,18 +182,6 @@ namespace Simulator.Forms
             this.progressBar1.Size = new System.Drawing.Size(250, 23);
             this.progressBar1.TabIndex = 29;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.Control;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(33, 154);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 20);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "label5";
-            this.label5.Visible = false;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -218,7 +205,6 @@ namespace Simulator.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox1);
@@ -254,7 +240,6 @@ namespace Simulator.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox1;
     }

@@ -111,20 +111,28 @@ namespace Simulator.Forms
 
                 if (transactionResponse != null)
                 {
-                    label5.Text = transactionResponse.RespText;
 
-                    if (transactionResponse.RespText.Equals("TransactionApproved"))
-                    {
-                        label5.BackColor = System.Drawing.Color.Lime;
-                    }
-                    else
-                    {
-                        label5.BackColor = System.Drawing.Color.Red;
-                    }
+                    //Label label = new Label();
 
-                    label5.Visible = true;
+                    //StringBuilder builder = new StringBuilder();
 
-                    richTextBox3.AppendText("\r\n\r\n\r\n\n\t" + transactionResponse.PrintData);
+                    //richTextBox3.ForeColor = Color.Blue;
+
+                    //label.Text = transactionResponse.RespText;
+
+                    //if (transactionResponse.RespText.Equals("TransactionApproved"))
+                    //{
+                    //    label.BackColor = System.Drawing.Color.Lime;
+                    //}
+                    //else
+                    //{
+                    //    label.BackColor = System.Drawing.Color.Red;
+                    //}
+
+                    //richTextBox3.AppendText(label.ToString());
+
+                    richTextBox3.AppendText(transactionResponse.RespText);
+                    richTextBox3.AppendText("\r\n\r\n" + transactionResponse.PrintData);
                 }
             }
             else
