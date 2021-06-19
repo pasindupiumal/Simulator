@@ -72,7 +72,25 @@ namespace Simulator.Forms
             Settings.Default["lodgingCode"] = textBox9.Text;
             Settings.Default["guestNo"] = textBox10.Text;
             Settings.Default.Save();
+            loadSettings();
             MessageBox.Show("Settings Updated Successfully!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Settings.Default["ip"] = "https://192.168.1.2";
+            Settings.Default["port"] = "8080";
+            Settings.Default["operatorValue"] = "01";
+            Settings.Default["industryCode"] = "1";
+            Settings.Default["siteID"] = "SHELL|FSDH";
+            Settings.Default["wsNo"] = "MarkusESTLAB.596807909";
+            Settings.Default["proxyInfo"] = "OPIV6.2";
+            Settings.Default["posInfo"] = "Opera";
+            Settings.Default["lodgingCode"] = "3";
+            Settings.Default["guestNo"] = "62524";
+            Settings.Default.Save();
+            loadSettings();
+            MessageBox.Show("Settings Restored To Factory Defaults Successfully!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

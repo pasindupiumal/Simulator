@@ -45,6 +45,7 @@ namespace Simulator.Forms
             this.button4 = new System.Windows.Forms.Button();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -52,6 +53,7 @@ namespace Simulator.Forms
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
             this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(455, 301);
@@ -127,6 +129,7 @@ namespace Simulator.Forms
             // 
             this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.richTextBox2.BackColor = System.Drawing.SystemColors.Control;
             this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox2.Location = new System.Drawing.Point(27, 301);
             this.richTextBox2.Name = "richTextBox2";
@@ -164,16 +167,16 @@ namespace Simulator.Forms
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(24, 282);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 16);
+            this.label3.Size = new System.Drawing.Size(104, 16);
             this.label3.TabIndex = 26;
-            this.label3.Text = "Transaction Request";
+            this.label3.Text = "Request Details";
             // 
             // button4
             // 
             this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(396, 76);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(90, 32);
+            this.button4.Size = new System.Drawing.Size(135, 32);
             this.button4.TabIndex = 25;
             this.button4.Text = "Clear";
             this.button4.UseVisualStyleBackColor = true;
@@ -183,6 +186,8 @@ namespace Simulator.Forms
             // 
             this.richTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox3.Location = new System.Drawing.Point(27, 131);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.ReadOnly = true;
@@ -198,10 +203,23 @@ namespace Simulator.Forms
             this.progressBar1.Size = new System.Drawing.Size(250, 23);
             this.progressBar1.TabIndex = 29;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(33, 148);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 20);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "label5";
+            this.label5.Visible = false;
+            // 
             // PurchaseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox1);
@@ -241,5 +259,6 @@ namespace Simulator.Forms
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label5;
     }
 }

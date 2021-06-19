@@ -128,6 +128,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RestService.cs" />
+    <Compile Include="Shared\RtfBuilder.cs" />
     <Compile Include="Shared\StringWriterWithEncoding.cs" />
     <Compile Include="Shared\Utils.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">

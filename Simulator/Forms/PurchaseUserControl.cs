@@ -18,11 +18,12 @@ namespace Simulator.Forms
         private RestService restService = null;
         private string baseURL = null;
         private Simulator.Shared.Utils utils = null;
+
         public PurchaseUserControl()
         {
             InitializeComponent();
             utils = new Simulator.Shared.Utils();
-            this.baseURL = utils.getBaseURL();
+            this.baseURL = utils.getBaseURL(); // Obtain the base URL
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -47,9 +48,11 @@ namespace Simulator.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //Read amount and currency code
             string amount = amountTextBox.Text;
             string currCode = currCodeTextBox.Text;
 
+            //Determine whether the provided amount is a numbers
             bool isDouble = Double.TryParse(amount, out double amountDouble);
 
             if (isDouble)
@@ -57,10 +60,15 @@ namespace Simulator.Forms
                 double inputAmount = amountDouble * 100;
 
                 //Initialize RestService
-                restService = new RestService("https://192.168.2.1:8080");
+                this.baseURL = utils.getBaseURL();
+                restService = new RestService(this.baseURL);
 
+                //Get the transaction request tailored for the available settings
                 string requestString = restService.GetEncodedRequest(inputAmount.ToString(), currCode);
-                richTextBox2.Text = requestString;
+
+                //Display request details
+                richTextBox2.AppendText("IP Address : " + this.baseURL);
+                richTextBox2.AppendText("\r\n\r\n" + requestString);
 
                 amountTextBox.ReadOnly = true;
                 currCodeTextBox.ReadOnly = true;
@@ -86,10 +94,6 @@ namespace Simulator.Forms
             richTextBox2.Text = string.Empty;
             button1.Enabled = false;
             button2.Enabled = false;
-
-            Settings.Default.Reload();
-            string settings = "" + Settings.Default["ip"].ToString() + "\r\n" + Settings.Default["port"] + "\r\n" + Settings.Default["wsNo"].ToString();
-            richTextBox2.Text = settings;
         }
 
         private async void button2_Click_1(object sender, EventArgs e)
@@ -100,36 +104,35 @@ namespace Simulator.Forms
             }
             else
             {
-                //Initialize RestService
+                //Setup progress bar settings
                 this.progressBar1.Maximum = 100;
                 this.progressBar1.Value = 0;
                 this.timer2.Start();
+
+                //Initialize RestService
                 this.baseURL = utils.getBaseURL();
-                richTextBox2.AppendText("\r\n\r\n" + this.baseURL);
                 restService = new RestService(this.baseURL);
+
+                //Conversions on the amount
                 double amount = Double.Parse(amountTextBox.Text);
                 amount = amount * 100;
+
+                //Perform transaction
                 var response = await restService.PostEncoded(amount.ToString(), currCodeTextBox.Text);
                 richTextBox1.Text = response;
                 this.progressBar1.Value = 100;
                 this.timer2.Stop();
 
+                //Parse transaction response
                 TransactionResponse transactionResponse = restService.DecodeResponse(response);
 
                 if (transactionResponse != null)
                 {
-                    richTextBox1.AppendText("\r\n\r\n\r\n");
-                    richTextBox1.AppendText("Sequence Number : " + transactionResponse.SequenceNo + "\r\n");
-                    richTextBox1.AppendText("Terminal ID : " + transactionResponse.TerminalId + "\r\n");
+                    label5.Text = transactionResponse.RespText;
+                    label5.BackColor = System.Drawing.Color.Lime;
+                    label5.Visible = true;
 
-                    StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.Append("{\rtf1\ansi");
-                    stringBuilder.Append("\b" + transactionResponse.RespText + "\b0");
-                    stringBuilder.Append("\r\n\r\n");
-                    stringBuilder.Append(transactionResponse.PrintData);
-                    stringBuilder.Append("}");
-
-                    richTextBox3.Text = stringBuilder.ToString();
+                    richTextBox3.AppendText("\r\n\r\n\r\n" + transactionResponse.PrintData);
                 }
             }
         }
@@ -144,12 +147,13 @@ namespace Simulator.Forms
             {
                 //Initialize RestService
                 this.baseURL = utils.getBaseURL();
-                richTextBox2.AppendText("\r\n\r\n" + this.baseURL);
                 restService = new RestService(this.baseURL);
                 this.progressBar1.Maximum = 100;
                 this.progressBar1.Value = 0;
                 this.timer2.Start();
+
                 var response = await restService.Post();
+
                 richTextBox1.Text = response;
                 this.timer2.Stop();
                 this.progressBar1.Value = 100;
