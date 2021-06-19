@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace Simulator.Models
 {
     [XmlRoot("TransactionRequest")]
-    class ReversalRequest
+    public class ReversalRequest
     {
         public string SequenceNo;
         public string TransType;

@@ -85,6 +85,7 @@ namespace Simulator.Forms
             this.currCodeTextBox.Name = "currCodeTextBox";
             this.currCodeTextBox.Size = new System.Drawing.Size(220, 20);
             this.currCodeTextBox.TabIndex = 23;
+            this.currCodeTextBox.Text = "752";
             // 
             // label2
             // 

@@ -215,7 +215,7 @@ namespace Simulator.Shared
                 }
                 else
                 {
-                    return "Operation failed. Unable to generate encoded request.";
+                    return "Operation failed. Unable to generate encoded request." + xmlObject;
                 }
             }
             catch (Exception ex)

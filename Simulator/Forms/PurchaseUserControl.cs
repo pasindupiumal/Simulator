@@ -52,7 +52,7 @@ namespace Simulator.Forms
         {
             amountTextBox.Text = "100";
             amountTextBox.ReadOnly = false;
-            currCodeTextBox.Text = string.Empty;
+            currCodeTextBox.Text = "752";
             currCodeTextBox.ReadOnly = false;
             button1.Enabled = true;
             button2.Enabled = true;
@@ -146,6 +146,8 @@ namespace Simulator.Forms
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            button1.Enabled = false;
+
             //Read amount and currency code
             string amount = amountTextBox.Text;
             string currCode = currCodeTextBox.Text;
@@ -175,9 +177,6 @@ namespace Simulator.Forms
             richTextBox1.AppendText(response + "\r\n\r\n\r\n");
             this.progressBar1.Value = 100;
             this.timer2.Stop();
-            button2.Enabled = false;
-            button1.Enabled = true;
-
 
             //Parse transaction response
             TransactionResponse transactionResponse = restService.DecodeResponse(response);
