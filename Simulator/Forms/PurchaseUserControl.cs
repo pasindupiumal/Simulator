@@ -135,7 +135,7 @@ namespace Simulator.Forms
                     //richTextBox3.AppendText(label.ToString());
 
                     richTextBox3.AppendText(transactionResponse.RespText);
-                    richTextBox3.AppendText("\r\n\r\n" + transactionResponse.PrintData);
+                    richTextBox3.AppendText("\r\n\r\n" + transactionResponse.PrintData + "\r\n\r\n\r\n");
                 }
             }
             else
