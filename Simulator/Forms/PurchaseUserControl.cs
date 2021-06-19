@@ -129,7 +129,16 @@ namespace Simulator.Forms
                 if (transactionResponse != null)
                 {
                     label5.Text = transactionResponse.RespText;
-                    label5.BackColor = System.Drawing.Color.Lime;
+
+                    if (transactionResponse.RespText.Equals("TransactionApproved"))
+                    {
+                        label5.BackColor = System.Drawing.Color.Lime;
+                    }
+                    else
+                    {
+                        label5.BackColor = System.Drawing.Color.Red;
+                    }
+                    
                     label5.Visible = true;
 
                     richTextBox3.AppendText("\r\n\r\n\r\n\n\t" + transactionResponse.PrintData);
