@@ -25,7 +25,7 @@ namespace Simulator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.109")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://192.168.1.2")]
         public string ip {
             get {
                 return ((string)(this["ip"]));
@@ -133,13 +133,25 @@ namespace Simulator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("65434")]
+        [global::System.Configuration.DefaultSettingValueAttribute("62524")]
         public string guestNo {
             get {
                 return ((string)(this["guestNo"]));
             }
             set {
                 this["guestNo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Setting {
+            get {
+                return ((string)(this["Setting"]));
+            }
+            set {
+                this["Setting"] = value;
             }
         }
     }

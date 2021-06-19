@@ -9,15 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Simulator.Properties;
 
 namespace Simulator.Forms
 {
     public partial class PurchaseUserControl : UserControl
     {
         private RestService restService = null;
+        private string baseURL = null;
+        private Simulator.Shared.Utils utils = null;
         public PurchaseUserControl()
         {
             InitializeComponent();
+            utils = new Simulator.Shared.Utils();
+            this.baseURL = utils.getBaseURL();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -52,7 +57,7 @@ namespace Simulator.Forms
                 double inputAmount = amountDouble * 100;
 
                 //Initialize RestService
-                restService = new RestService("https://192.168.1.109:8080");
+                restService = new RestService("https://192.168.2.1:8080");
 
                 string requestString = restService.GetEncodedRequest(inputAmount.ToString(), currCode);
                 richTextBox2.Text = requestString;
@@ -81,6 +86,10 @@ namespace Simulator.Forms
             richTextBox2.Text = string.Empty;
             button1.Enabled = false;
             button2.Enabled = false;
+
+            Settings.Default.Reload();
+            string settings = "" + Settings.Default["ip"].ToString() + "\r\n" + Settings.Default["port"] + "\r\n" + Settings.Default["wsNo"].ToString();
+            richTextBox2.Text = settings;
         }
 
         private async void button2_Click_1(object sender, EventArgs e)
@@ -95,7 +104,9 @@ namespace Simulator.Forms
                 this.progressBar1.Maximum = 100;
                 this.progressBar1.Value = 0;
                 this.timer2.Start();
-                restService = new RestService("https://192.168.1.109:8080");
+                this.baseURL = utils.getBaseURL();
+                richTextBox2.AppendText("\r\n\r\n" + this.baseURL);
+                restService = new RestService(this.baseURL);
                 double amount = Double.Parse(amountTextBox.Text);
                 amount = amount * 100;
                 var response = await restService.PostEncoded(amount.ToString(), currCodeTextBox.Text);
@@ -132,7 +143,9 @@ namespace Simulator.Forms
             else
             {
                 //Initialize RestService
-                restService = new RestService("https://192.168.1.109:8080");
+                this.baseURL = utils.getBaseURL();
+                richTextBox2.AppendText("\r\n\r\n" + this.baseURL);
+                restService = new RestService(this.baseURL);
                 this.progressBar1.Maximum = 100;
                 this.progressBar1.Value = 0;
                 this.timer2.Start();

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using Simulator.Properties;
 
 namespace Simulator.Shared
 {
@@ -66,6 +67,9 @@ namespace Simulator.Shared
         {
             try
             {
+                //Reload the settings
+                Settings.Default.Reload();
+
                 var transactionRequest = new TransactionRequest
                 {
                     SequenceNo = "000279",
@@ -73,19 +77,19 @@ namespace Simulator.Shared
                     TransAmount = amount,
                     TransCurrency = "752",
                     TransDateTime = "2020-05-29T08:12:37+01:00",
-                    GuestNo = "62524",
-                    IndustryCode = "1",
-                    Operator = "01",
+                    GuestNo = Settings.Default["guestNo"].ToString(),
+                    IndustryCode = Settings.Default["industryCode"].ToString(),
+                    Operator = Settings.Default["operatorValue"].ToString(),
                     CardPresent = "2",
                     TaxAmount = "0",
                     RoomRate = "0",
                     CheckInDate = "20180815",
                     CheckOutDate = "20202020",
-                    LodgingCode = "3",
-                    SiteId = "SHELL|FSDH",
-                    WSNo = "MarkusESTLAB.596807909",
-                    ProxyInfo = "OPIV6.2",
-                    POSInfo = "Opera"
+                    LodgingCode = Settings.Default["lodgingCode"].ToString(),
+                    SiteId = Settings.Default["siteID"].ToString(),
+                    WSNo = Settings.Default["wsNo"].ToString(),
+                    ProxyInfo = Settings.Default["proxyInfo"].ToString(),
+                    POSInfo = Settings.Default["posInfo"].ToString()
                 };
 
                 xmlSerializer = new XmlSerializer(typeof(TransactionRequest));

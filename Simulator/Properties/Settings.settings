@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ip" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.1.109</Value>
+      <Value Profile="(Default)">https://192.168.1.2</Value>
     </Setting>
     <Setting Name="port" Type="System.String" Scope="User">
       <Value Profile="(Default)">8080</Value>
@@ -30,7 +30,10 @@
       <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="guestNo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">65434</Value>
+      <Value Profile="(Default)">62524</Value>
+    </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
