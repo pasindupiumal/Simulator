@@ -24,6 +24,8 @@ namespace Simulator.Forms
             InitializeComponent();
             utils = new Simulator.Shared.Utils();
             this.baseURL = utils.getBaseURL(); // Obtain the base URL
+            textBox1.Text = this.baseURL;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -76,6 +78,7 @@ namespace Simulator.Forms
                 button2.Enabled = true;
                 button3.Enabled = false;
                 button4.Enabled = true;
+                textBox1.ReadOnly = true;
             }
             else
             {
@@ -94,6 +97,7 @@ namespace Simulator.Forms
             richTextBox2.Text = string.Empty;
             button1.Enabled = false;
             button2.Enabled = false;
+            textBox1.ReadOnly = false;
         }
 
         private async void button2_Click_1(object sender, EventArgs e)
@@ -111,7 +115,7 @@ namespace Simulator.Forms
 
                 //Initialize RestService
                 this.baseURL = utils.getBaseURL();
-                restService = new RestService(this.baseURL);
+                restService = new RestService(textBox1.Text.ToString());
 
                 //Conversions on the amount
                 double amount = Double.Parse(amountTextBox.Text);
@@ -156,7 +160,7 @@ namespace Simulator.Forms
             {
                 //Initialize RestService
                 this.baseURL = utils.getBaseURL();
-                restService = new RestService(this.baseURL);
+                restService = new RestService(textBox1.Text.ToString());
                 this.progressBar1.Maximum = 100;
                 this.progressBar1.Value = 0;
                 this.timer2.Start();
