@@ -63,7 +63,7 @@ namespace Simulator.Shared
             }
         }
 
-        public string GetEncodedRequest(string amount, string currCode)
+        public string GetEncodedPurchaseRequest(string amount, string currCode)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace Simulator.Shared
                     SequenceNo = "000279",
                     TransType = "01",
                     TransAmount = amount,
-                    TransCurrency = "752",
+                    TransCurrency = currCode,
                     TransDateTime = "2020-05-29T08:12:37+01:00",
                     GuestNo = Settings.Default["guestNo"].ToString(),
                     IndustryCode = Settings.Default["industryCode"].ToString(),
@@ -105,19 +105,97 @@ namespace Simulator.Shared
             }
             catch(Exception ex)
             {
-                Debug.WriteLine($"Encoded Request Generation Exception : {ex.Message}");
-                return "Encoded Request Generation Exception : " + ex.ToString();
+                Debug.WriteLine($"Encoded Purchase Request Generation Exception : {ex.Message}");
+                return "Encoded Purchase Request Generation Exception : " + ex.ToString();
             }
         }
 
-        public async Task<string> PostEncoded(string amount, string currCode)
+        public string GetEncodedReversalRequest(string amount, string currCode)
+        {
+            try
+            {
+                //Reload the settings
+                Settings.Default.Reload();
+
+                var reversalRequest = new ReversalRequest
+                {
+                    SequenceNo = "000279",
+                    TransType = "01",
+                    TransAmount = amount,
+                    TransCurrency = currCode,
+                    OriginalType = "01",
+                    OriginalTime = "2020-04-28T12:07:12+02:00",
+                    IndustryCode = Settings.Default["industryCode"].ToString(),
+                    TransDateTime = "2020-04-28T12:23:27+02:00",
+                    SiteId = Settings.Default["siteID"].ToString(),
+                    WSNo = Settings.Default["wsNo"].ToString(),
+                    ProxyInfo = Settings.Default["proxyInfo"].ToString(),
+                    POSInfo = Settings.Default["posInfo"].ToString()
+                };
+
+                xmlSerializer = new XmlSerializer(typeof(ReversalRequest));
+                stringWriterWithEncoding = new StringWriterWithEncoding(Encoding.UTF8);
+                customNameSpace = new XmlSerializerNamespaces();
+                customNameSpace.Add(string.Empty, string.Empty);
+                xmlWriter = XmlWriter.Create(stringWriterWithEncoding);
+                xmlWriter.WriteStartDocument(true);
+                xmlSerializer.Serialize(xmlWriter, reversalRequest, customNameSpace);
+                string xmlObject = stringWriterWithEncoding.ToString();
+
+                return xmlObject;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Encoded Reversal Request Generation Exception : {ex.Message}");
+                return "Encoded Reversal Request Generation Exception : " + ex.ToString();
+            }
+        }
+
+        public async Task<string> PostPurchaseRequest(string amount, string currCode)
         {
             try
             {
                 //Get the encoded request
-                string xmlObject = GetEncodedRequest(amount, currCode);
+                string xmlObject = GetEncodedPurchaseRequest(amount, currCode);
 
-                if(!(xmlObject.Contains("Encoded Request Generation Exception")))
+                if(!(xmlObject.Contains("Encoded Purchase Request Generation Exception")))
+                {
+                    var stringRequest = new StringContent(xmlObject, Encoding.UTF8, "application/xml");
+
+                    httpClient = new HttpClient();
+
+                    var response = await httpClient.PostAsync(this.baseURL, stringRequest);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var stringResponse = await response.Content.ReadAsStringAsync();
+                        return stringResponse;
+                    }
+                    else
+                    {
+                        return "Operation failed. Unsuccessful status code.";
+                    }
+                }
+                else
+                {
+                    return "Operation failed. Unable to generate encoded request.";
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"RestService Exception : {ex.Message}");
+                return "RestService Exception : " + ex.ToString();
+            }
+        }
+
+        public async Task<string> PostReversalRequest(string amount, string currCode)
+        {
+            try
+            {
+                //Get the encoded request
+                string xmlObject = GetEncodedReversalRequest(amount, currCode);
+
+                if (!(xmlObject.Contains("Encoded Reversal Request Generation Exception")))
                 {
                     var stringRequest = new StringContent(xmlObject, Encoding.UTF8, "application/xml");
 

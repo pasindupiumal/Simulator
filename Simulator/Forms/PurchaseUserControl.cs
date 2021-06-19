@@ -91,15 +91,17 @@ namespace Simulator.Forms
                 restService = new RestService(textBox1.Text.ToString());
 
                 //Get the transaction request tailored for the available settings
-                string requestString = restService.GetEncodedRequest(inputAmount.ToString(), currCode);
+                string requestString = restService.GetEncodedPurchaseRequest(inputAmount.ToString(), currCode);
 
                 //Display request details
                 richTextBox2.AppendText("IP Address : " + this.baseURL);
-                richTextBox2.AppendText("\r\n\r\n" + requestString);
+                richTextBox2.AppendText("\r\n\r\nPurchase Request\r\n\r\n");
+                richTextBox2.AppendText(requestString + "\r\n\r\n");
 
                 //Perform transaction
-                var response = await restService.PostEncoded(inputAmount.ToString(), currCodeTextBox.Text);
-                richTextBox1.Text = response;
+                var response = await restService.PostPurchaseRequest(inputAmount.ToString(), currCodeTextBox.Text);
+                richTextBox1.AppendText("Purchase Response\r\n\r\n");
+                richTextBox1.AppendText(response + "\r\n\r\n\r\n");
                 this.progressBar1.Value = 100;
                 this.timer2.Stop();
                 button2.Enabled = false;
@@ -144,18 +146,67 @@ namespace Simulator.Forms
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            //Initialize RestService
-            this.baseURL = utils.getBaseURL();
-            restService = new RestService(textBox1.Text.ToString());
+            //Read amount and currency code
+            string amount = amountTextBox.Text;
+            string currCode = currCodeTextBox.Text;
+
+            //Setup progress bar settings
             this.progressBar1.Maximum = 100;
             this.progressBar1.Value = 0;
             this.timer2.Start();
 
-            var response = await restService.Post();
+            double inputAmount = Double.Parse(amount);
+            inputAmount = inputAmount * 100;
 
-            richTextBox1.Text = response;
-            this.timer2.Stop();
+            //Initialize RestService
+            this.baseURL = utils.getBaseURL();
+            restService = new RestService(textBox1.Text.ToString());
+
+            //Get the transaction request tailored for the available settings
+            string requestString = restService.GetEncodedReversalRequest(inputAmount.ToString(), currCode);
+
+            //Display request details
+            richTextBox2.AppendText("Reversal Request\r\n\r\n");
+            richTextBox2.AppendText(requestString + "\r\n\r\n");
+
+            //Perform transaction
+            var response = await restService.PostReversalRequest(inputAmount.ToString(), currCodeTextBox.Text);
+            richTextBox1.AppendText("Reversal Response\r\n\r\n");
+            richTextBox1.AppendText(response + "\r\n\r\n\r\n");
             this.progressBar1.Value = 100;
+            this.timer2.Stop();
+            button2.Enabled = false;
+            button1.Enabled = true;
+
+
+            //Parse transaction response
+            TransactionResponse transactionResponse = restService.DecodeResponse(response);
+
+            if (transactionResponse != null)
+            {
+
+                //Label label = new Label();
+
+                //StringBuilder builder = new StringBuilder();
+
+                //richTextBox3.ForeColor = Color.Blue;
+
+                //label.Text = transactionResponse.RespText;
+
+                //if (transactionResponse.RespText.Equals("TransactionApproved"))
+                //{
+                //    label.BackColor = System.Drawing.Color.Lime;
+                //}
+                //else
+                //{
+                //    label.BackColor = System.Drawing.Color.Red;
+                //}
+
+                //richTextBox3.AppendText(label.ToString());
+
+                richTextBox3.AppendText(transactionResponse.RespText);
+                richTextBox3.AppendText("\r\n\r\n" + transactionResponse.PrintData);
+            }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
