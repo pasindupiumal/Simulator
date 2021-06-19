@@ -79,6 +79,7 @@ namespace Simulator.Forms
                 amountTextBox.ReadOnly = true;
                 currCodeTextBox.ReadOnly = true;
                 textBox1.ReadOnly = true;
+                button2.Enabled = false;
 
                 //Setup progress bar settings
                 this.progressBar1.Maximum = 100;
@@ -134,8 +135,15 @@ namespace Simulator.Forms
 
                     //richTextBox3.AppendText(label.ToString());
 
-                    richTextBox3.AppendText(transactionResponse.RespText);
-                    richTextBox3.AppendText("\r\n\r\n" + transactionResponse.PrintData + "\r\n\r\n\r\n");
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n";
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "Purchase Request - " + transactionResponse.RespText;
+
+                    
+                    //richTextBox3.AppendText(transactionResponse.RespText);
+                    //richTextBox3.AppendText("\r\n\r\n" + transactionResponse.PrintData + "\r\n\r\n\r\n");
                 }
             }
             else
@@ -204,8 +212,14 @@ namespace Simulator.Forms
 
                 //richTextBox3.AppendText(label.ToString());
 
-                richTextBox3.AppendText(transactionResponse.RespText);
-                richTextBox3.AppendText("\r\n\r\n" + transactionResponse.PrintData);
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n\r\n\r\n\r\n";
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "Reversal Request - " + transactionResponse.RespText;
+
+                //richTextBox3.AppendText(transactionResponse.RespText);
+                //richTextBox3.AppendText("\r\n\r\n" + transactionResponse.PrintData);
             }
         }
 
