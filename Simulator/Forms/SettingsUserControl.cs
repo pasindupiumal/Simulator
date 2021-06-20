@@ -59,7 +59,7 @@ namespace Simulator.Forms
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
             Settings.Default["ip"] = textBox1.Text;
             Settings.Default["port"] = textBox2.Text;
@@ -73,7 +73,15 @@ namespace Simulator.Forms
             Settings.Default["guestNo"] = textBox10.Text;
             Settings.Default.Save();
             loadSettings();
-            MessageBox.Show("Settings Updated Successfully!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Dispaly success message
+            label11.ForeColor = Color.Lime;
+            label11.Text = "Settings Updated Successfully!";
+            label11.Visible = true;
+            await Task.Delay(2000);
+            label11.Visible = false;
+         
+            //MessageBox.Show("Settings Updated Successfully!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -52,6 +52,7 @@ namespace Simulator.Forms
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -270,6 +271,7 @@ namespace Simulator.Forms
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
@@ -301,7 +303,7 @@ namespace Simulator.Forms
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button2.Location = new System.Drawing.Point(446, 522);
+            this.button2.Location = new System.Drawing.Point(417, 551);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(114, 35);
             this.button2.TabIndex = 21;
@@ -312,13 +314,24 @@ namespace Simulator.Forms
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.Location = new System.Drawing.Point(326, 522);
+            this.button1.Location = new System.Drawing.Point(297, 551);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 35);
             this.button1.TabIndex = 20;
             this.button1.Text = "Factory Default";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(294, 513);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(55, 15);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "label11";
+            this.label11.Visible = false;
             // 
             // SettingsUserControl
             // 
@@ -359,5 +372,6 @@ namespace Simulator.Forms
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label11;
     }
 }
