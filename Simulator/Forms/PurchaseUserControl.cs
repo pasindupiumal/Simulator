@@ -130,6 +130,18 @@ namespace Simulator.Forms
                     richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n";
 
                     richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\r\n\tRRN             :  " + transactionResponse.RRN;
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\r\n\tPAN              :  " + transactionResponse.PAN;
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\r\n\tAuth Code  :  " + transactionResponse.AuthCode;
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + transactionResponse.TerminalId;
+
+                    richTextBox3.Select(0, 0);
                     richTextBox3.SelectedText = "Purchase Response - " + transactionResponse.RespText;
                 }
             }
@@ -189,6 +201,18 @@ namespace Simulator.Forms
             {
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n\r\n\r\n\r\n";
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\r\n\tRRN             :  " + transactionResponse.RRN;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\r\n\tPAN              :  " + transactionResponse.PAN;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\r\n\tAuth Code  :  " + transactionResponse.AuthCode;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + transactionResponse.TerminalId;
 
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "Reversal Response - " + transactionResponse.RespText;
