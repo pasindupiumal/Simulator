@@ -114,15 +114,18 @@ namespace Simulator.Forms
 
                 this.progressBar1.Value = 100;
                 this.timer2.Stop();
-                button2.Enabled = false;
-                button1.Enabled = true;
-                
 
                 //Parse transaction response
                 TransactionResponse transactionResponse = restService.DecodeResponse(response);
 
                 if (transactionResponse != null)
                 {
+                    //Enable reversal button is the purchase is successful.
+                    if (transactionResponse.RespCode.Equals("00"))
+                    {
+                        button1.Enabled = true;
+                    }
+
                     richTextBox3.Select(0, 0);
                     richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n";
 
