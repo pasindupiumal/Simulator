@@ -29,32 +29,18 @@ namespace Simulator.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.currCodeTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // currCodeTextBox
-            // 
-            this.currCodeTextBox.Location = new System.Drawing.Point(251, 230);
-            this.currCodeTextBox.Multiline = true;
-            this.currCodeTextBox.Name = "currCodeTextBox";
-            this.currCodeTextBox.Size = new System.Drawing.Size(220, 20);
-            this.currCodeTextBox.TabIndex = 24;
-            this.currCodeTextBox.Text = "752";
             // 
             // RefundUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.currCodeTextBox);
             this.Name = "RefundUserControl";
             this.Size = new System.Drawing.Size(723, 480);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox currCodeTextBox;
     }
 }

@@ -63,57 +63,62 @@ namespace Simulator.Forms
             // 
             // settingsUserControlButton
             // 
+            this.settingsUserControlButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.settingsUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingsUserControlButton.Location = new System.Drawing.Point(43, 471);
             this.settingsUserControlButton.Name = "settingsUserControlButton";
             this.settingsUserControlButton.Size = new System.Drawing.Size(185, 44);
             this.settingsUserControlButton.TabIndex = 5;
             this.settingsUserControlButton.Text = "Settings";
-            this.settingsUserControlButton.UseVisualStyleBackColor = true;
+            this.settingsUserControlButton.UseVisualStyleBackColor = false;
             this.settingsUserControlButton.Click += new System.EventHandler(this.settingsUserControlButton_Click);
             // 
             // purchaseUserControlButton
             // 
+            this.purchaseUserControlButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.purchaseUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.purchaseUserControlButton.Location = new System.Drawing.Point(43, 121);
             this.purchaseUserControlButton.Name = "purchaseUserControlButton";
             this.purchaseUserControlButton.Size = new System.Drawing.Size(185, 44);
             this.purchaseUserControlButton.TabIndex = 1;
             this.purchaseUserControlButton.Text = "Purchase";
-            this.purchaseUserControlButton.UseVisualStyleBackColor = true;
+            this.purchaseUserControlButton.UseVisualStyleBackColor = false;
             this.purchaseUserControlButton.Click += new System.EventHandler(this.purchaseUserControlButton_Click);
             // 
             // reversalUserControlButton
             // 
+            this.reversalUserControlButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.reversalUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reversalUserControlButton.Location = new System.Drawing.Point(43, 386);
             this.reversalUserControlButton.Name = "reversalUserControlButton";
             this.reversalUserControlButton.Size = new System.Drawing.Size(185, 44);
             this.reversalUserControlButton.TabIndex = 4;
             this.reversalUserControlButton.Text = "Reversal";
-            this.reversalUserControlButton.UseVisualStyleBackColor = true;
+            this.reversalUserControlButton.UseVisualStyleBackColor = false;
             this.reversalUserControlButton.Click += new System.EventHandler(this.reversalUserControlButton_Click);
             // 
             // preAuthUserControlButton
             // 
+            this.preAuthUserControlButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.preAuthUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.preAuthUserControlButton.Location = new System.Drawing.Point(43, 211);
             this.preAuthUserControlButton.Name = "preAuthUserControlButton";
             this.preAuthUserControlButton.Size = new System.Drawing.Size(185, 44);
             this.preAuthUserControlButton.TabIndex = 2;
             this.preAuthUserControlButton.Text = "Pre-Auth";
-            this.preAuthUserControlButton.UseVisualStyleBackColor = true;
+            this.preAuthUserControlButton.UseVisualStyleBackColor = false;
             this.preAuthUserControlButton.Click += new System.EventHandler(this.preAuthUserControlButton_Click);
             // 
             // refundUserControlButton
             // 
+            this.refundUserControlButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.refundUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refundUserControlButton.Location = new System.Drawing.Point(43, 300);
             this.refundUserControlButton.Name = "refundUserControlButton";
             this.refundUserControlButton.Size = new System.Drawing.Size(185, 44);
             this.refundUserControlButton.TabIndex = 3;
             this.refundUserControlButton.Text = "Refund";
-            this.refundUserControlButton.UseVisualStyleBackColor = true;
+            this.refundUserControlButton.UseVisualStyleBackColor = false;
             this.refundUserControlButton.Click += new System.EventHandler(this.refundUserControlButton_Click);
             // 
             // panel2
