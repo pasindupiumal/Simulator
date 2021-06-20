@@ -73,8 +73,14 @@ namespace Simulator.Forms
 
             //Determine whether the provided amount is a numbers
             bool isDouble = Double.TryParse(amount, out double amountDouble);
+            int decimalCount = 0;
 
             if (isDouble)
+            {
+                decimalCount = utils.getDecimalCount(Double.Parse(amount), amount, "en-US");
+            }
+
+            if (isDouble && decimalCount <= 2)
             {
                 //Disable the input fields
                 amountTextBox.ReadOnly = true;
