@@ -60,6 +60,7 @@ namespace Simulator.Forms
             settingsUserControl1.Hide();
 
             purchaseUserControl1.clearFields();
+            purchaseUserControl1.populateCurrecyCodes();
             purchaseUserControl1.Show();
             purchaseUserControl1.BringToFront();
         }

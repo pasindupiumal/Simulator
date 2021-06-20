@@ -48,12 +48,27 @@ namespace Simulator.Forms
 
         }
 
+        public void populateCurrecyCodes()
+        {
+            Settings.Default.Reload();
+            string currCodesString = Settings.Default["currCodes"].ToString();
+            string[] currCodes = currCodesString.Split(',');
+            comboBox1.Items.Clear();
+
+            for(int i=0; i < currCodes.Length; i=i+2)
+            {
+                comboBox1.Items.Add(currCodes[i] + " - " + currCodes[i + 1]);
+            }
+
+            comboBox1.SelectedItem = comboBox1.Items[0];
+        }
+
         public void clearFields()
         {
             amountTextBox.Text = "100";
             amountTextBox.ReadOnly = false;
-            currCodeTextBox.Text = "752";
-            currCodeTextBox.ReadOnly = false;
+            comboBox1.Text = "752";
+            comboBox1.Enabled = true;
             button1.Enabled = true;
             button2.Enabled = true;
             textBox1.ReadOnly = false;
@@ -69,7 +84,11 @@ namespace Simulator.Forms
         {
             //Read amount and currency code
             string amount = amountTextBox.Text;
-            string currCode = currCodeTextBox.Text;
+            string currCodeString = comboBox1.Text;
+
+            string[] currCodeSeperated = currCodeString.Split('-');
+            string currCode = currCodeSeperated[0].Trim();
+
 
             //Determine whether the provided amount is a numbers
             bool isDouble = Double.TryParse(amount, out double amountDouble);
@@ -84,7 +103,7 @@ namespace Simulator.Forms
             {
                 //Disable the input fields
                 amountTextBox.ReadOnly = true;
-                currCodeTextBox.ReadOnly = true;
+                comboBox1.Enabled = false;
                 textBox1.ReadOnly = true;
                 button2.Enabled = false;
 
@@ -110,7 +129,7 @@ namespace Simulator.Forms
                 richTextBox2.SelectedText = "Purchase Request";
 
                 //Perform transaction
-                var response = await restService.PostPurchaseRequest(inputAmount.ToString(), currCodeTextBox.Text);
+                var response = await restService.PostPurchaseRequest(inputAmount.ToString(), currCode);
 
                 richTextBox1.Select(0, 0);
                 richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n";
@@ -164,7 +183,10 @@ namespace Simulator.Forms
 
             //Read amount and currency code
             string amount = amountTextBox.Text;
-            string currCode = currCodeTextBox.Text;
+            string currCodeString = comboBox1.Text;
+
+            string[] currCodeSeperated = currCodeString.Split('-');
+            string currCode = currCodeSeperated[0].Trim();
 
             //Setup progress bar settings
             this.progressBar1.Maximum = 100;
@@ -189,7 +211,7 @@ namespace Simulator.Forms
             richTextBox2.SelectedText = "Reversal Request";
 
             //Perform transaction
-            var response = await restService.PostReversalRequest(inputAmount.ToString(), currCodeTextBox.Text);
+            var response = await restService.PostReversalRequest(inputAmount.ToString(), currCode);
 
             richTextBox1.Select(0, 0);
             richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";

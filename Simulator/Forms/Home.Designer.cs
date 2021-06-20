@@ -29,6 +29,7 @@ namespace Simulator.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.panel1 = new System.Windows.Forms.Panel();
             this.settingsUserControlButton = new System.Windows.Forms.Button();
             this.purchaseUserControlButton = new System.Windows.Forms.Button();
@@ -36,11 +37,11 @@ namespace Simulator.Forms
             this.preAuthUserControlButton = new System.Windows.Forms.Button();
             this.refundUserControlButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.settingsUserControl1 = new Simulator.Forms.SettingsUserControl();
             this.reversalUserControl1 = new Simulator.Forms.ReversalUserControl();
             this.refundUserControl1 = new Simulator.Forms.RefundUserControl();
             this.purchaseUserControl1 = new Simulator.Forms.PurchaseUserControl();
             this.preAuthUserControl1 = new Simulator.Forms.PreAuthUserControl();
+            this.settingsUserControl1 = new Simulator.Forms.SettingsUserControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -131,16 +132,6 @@ namespace Simulator.Forms
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // settingsUserControl1
-            // 
-            this.settingsUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.settingsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.settingsUserControl1.Name = "settingsUserControl1";
-            this.settingsUserControl1.Size = new System.Drawing.Size(880, 665);
-            this.settingsUserControl1.TabIndex = 5;
-            this.settingsUserControl1.Load += new System.EventHandler(this.settingsUserControl1_Load);
-            // 
             // reversalUserControl1
             // 
             this.reversalUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -181,6 +172,16 @@ namespace Simulator.Forms
             this.preAuthUserControl1.TabIndex = 2;
             this.preAuthUserControl1.Load += new System.EventHandler(this.preAuthUserControl1_Load);
             // 
+            // settingsUserControl1
+            // 
+            this.settingsUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.settingsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.settingsUserControl1.Name = "settingsUserControl1";
+            this.settingsUserControl1.Size = new System.Drawing.Size(880, 665);
+            this.settingsUserControl1.TabIndex = 5;
+            this.settingsUserControl1.Load += new System.EventHandler(this.settingsUserControl1_Load);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,6 +190,7 @@ namespace Simulator.Forms
             this.ClientSize = new System.Drawing.Size(1154, 665);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";

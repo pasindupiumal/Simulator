@@ -154,5 +154,17 @@ namespace Simulator.Properties {
                 this["sequenceNumber"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string currCodes {
+            get {
+                return ((string)(this["currCodes"]));
+            }
+            set {
+                this["currCodes"] = value;
+            }
+        }
     }
 }

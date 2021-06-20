@@ -353,7 +353,7 @@ namespace Simulator.Forms
             this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox11.Location = new System.Drawing.Point(232, 479);
-            this.textBox11.MaxLength = 20;
+            this.textBox11.MaxLength = 40;
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(449, 22);
             this.textBox11.TabIndex = 24;

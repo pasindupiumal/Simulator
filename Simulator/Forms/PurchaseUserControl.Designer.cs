@@ -33,7 +33,6 @@ namespace Simulator.Forms
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.currCodeTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.amountTextBox = new System.Windows.Forms.TextBox();
@@ -45,6 +44,7 @@ namespace Simulator.Forms
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -78,15 +78,6 @@ namespace Simulator.Forms
             // 
             this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // currCodeTextBox
-            // 
-            this.currCodeTextBox.Location = new System.Drawing.Point(135, 92);
-            this.currCodeTextBox.Multiline = true;
-            this.currCodeTextBox.Name = "currCodeTextBox";
-            this.currCodeTextBox.Size = new System.Drawing.Size(220, 20);
-            this.currCodeTextBox.TabIndex = 23;
-            this.currCodeTextBox.Text = "752";
             // 
             // label2
             // 
@@ -203,17 +194,25 @@ namespace Simulator.Forms
             this.textBox1.Size = new System.Drawing.Size(220, 20);
             this.textBox1.TabIndex = 32;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(135, 91);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(220, 21);
+            this.comboBox1.TabIndex = 33;
+            // 
             // PurchaseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.currCodeTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.amountTextBox);
@@ -234,7 +233,6 @@ namespace Simulator.Forms
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.TextBox currCodeTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox amountTextBox;
@@ -246,5 +244,6 @@ namespace Simulator.Forms
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

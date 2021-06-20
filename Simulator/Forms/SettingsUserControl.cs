@@ -32,6 +32,7 @@ namespace Simulator.Forms
             textBox7.Text = Settings.Default["posInfo"].ToString();
             textBox9.Text = Settings.Default["lodgingCode"].ToString();
             textBox10.Text = Settings.Default["guestNo"].ToString();
+            textBox11.Text = Settings.Default["currCodes"].ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -71,6 +72,7 @@ namespace Simulator.Forms
             Settings.Default["posInfo"] = textBox7.Text;
             Settings.Default["lodgingCode"] = textBox9.Text;
             Settings.Default["guestNo"] = textBox10.Text;
+            Settings.Default["currCodes"] = textBox11.Text;
             Settings.Default.Save();
             loadSettings();
 
@@ -96,6 +98,7 @@ namespace Simulator.Forms
             Settings.Default["posInfo"] = "Opera";
             Settings.Default["lodgingCode"] = "3";
             Settings.Default["guestNo"] = "62524";
+            Settings.Default["currCodes"] = "752,SEK,144,LKR,826,GBP";
             Settings.Default.Save();
             loadSettings();
             MessageBox.Show("Settings Restored To Factory Defaults Successfully!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
