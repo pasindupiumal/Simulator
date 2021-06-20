@@ -125,11 +125,11 @@ namespace Simulator.Forms
             // 
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel2.Controls.Add(this.preAuthUserControl1);
+            this.panel2.Controls.Add(this.settingsUserControl1);
             this.panel2.Controls.Add(this.reversalUserControl1);
             this.panel2.Controls.Add(this.refundUserControl1);
             this.panel2.Controls.Add(this.purchaseUserControl1);
-            this.panel2.Controls.Add(this.preAuthUserControl1);
-            this.panel2.Controls.Add(this.settingsUserControl1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(274, 0);
             this.panel2.Name = "panel2";

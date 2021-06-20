@@ -72,6 +72,8 @@ namespace Simulator.Forms
             reversalUserControl1.Hide();
             settingsUserControl1.Hide();
 
+            preAuthUserControl1.clearFields();
+            preAuthUserControl1.populateCurrecyCodes();
             preAuthUserControl1.Show();
             preAuthUserControl1.BringToFront();
         }
