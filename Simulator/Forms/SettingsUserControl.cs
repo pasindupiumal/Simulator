@@ -77,7 +77,7 @@ namespace Simulator.Forms
             loadSettings();
 
             //Dispaly success message
-            label11.ForeColor = Color.Lime;
+            label11.ForeColor = Color.Green;
             label11.Text = "Settings Updated Successfully!";
             label11.Visible = true;
             await Task.Delay(2000);

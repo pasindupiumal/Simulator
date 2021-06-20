@@ -52,15 +52,23 @@ namespace Simulator.Forms
         {
             Settings.Default.Reload();
             string currCodesString = Settings.Default["currCodes"].ToString();
-            string[] currCodes = currCodesString.Split(',');
-            comboBox1.Items.Clear();
 
-            for(int i=0; i < currCodes.Length; i=i+2)
+            if (currCodesString.Length == 0)
             {
-                comboBox1.Items.Add(currCodes[i] + " - " + currCodes[i + 1]);
+                MessageBox.Show("Please add a currency code into settings!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                string[] currCodes = currCodesString.Split(',');
+                comboBox1.Items.Clear();
 
-            comboBox1.SelectedItem = comboBox1.Items[0];
+                for (int i = 0; i < currCodes.Length; i++)
+                {
+                    comboBox1.Items.Add(currCodes[i]);
+                }
+
+                comboBox1.SelectedItem = comboBox1.Items[0];
+            }
         }
 
         public void clearFields()
@@ -155,13 +163,13 @@ namespace Simulator.Forms
                     richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n";
 
                     richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\r\n\tRRN             :  " + transactionResponse.RRN;
+                    richTextBox3.SelectedText = "\r\n\tRRN             :  " + transactionResponse.RRN;
 
                     richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\r\n\tPAN              :  " + transactionResponse.PAN;
+                    richTextBox3.SelectedText = "\r\n\tPAN              :  " + transactionResponse.PAN;
 
                     richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\r\n\tAuth Code  :  " + transactionResponse.AuthCode;
+                    richTextBox3.SelectedText = "\r\n\tAuth Code  :  " + transactionResponse.AuthCode;
 
                     richTextBox3.Select(0, 0);
                     richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + transactionResponse.TerminalId;
@@ -231,13 +239,13 @@ namespace Simulator.Forms
                 richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\r\n\tRRN             :  " + transactionResponse.RRN;
+                richTextBox3.SelectedText = "\r\n\tRRN             :  " + transactionResponse.RRN;
 
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\r\n\tPAN              :  " + transactionResponse.PAN;
+                richTextBox3.SelectedText = "\r\n\tPAN              :  " + transactionResponse.PAN;
 
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\r\n\tAuth Code  :  " + transactionResponse.AuthCode;
+                richTextBox3.SelectedText = "\r\n\tAuth Code  :  " + transactionResponse.AuthCode;
 
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + transactionResponse.TerminalId;
