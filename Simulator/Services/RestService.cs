@@ -137,7 +137,7 @@ namespace Simulator.Shared
                 var reversalRequest = new ReversalRequest
                 {
                     SequenceNo = seqNumber.ToString(),
-                    TransType = "01",
+                    TransType = "04",
                     TransAmount = amount,
                     TransCurrency = currCode,
                     OriginalType = "01",
