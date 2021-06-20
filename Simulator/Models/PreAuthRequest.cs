@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace Simulator.Models
 {
     [XmlRoot("TransactionRequest")]
-    class PreAuthRequest
+    public class PreAuthRequest
     {
         public string SequenceNo;
         public string TransType;
