@@ -209,7 +209,7 @@ namespace Simulator.Forms
             restService = new RestService(textBox1.Text.ToString());
 
             //Get the transaction request tailored for the available settings
-            string requestString = restService.GetEncodedReversalRequest(inputAmount.ToString(), currCode, true);
+            string requestString = restService.GetEncodedPurchaseReversalRequest(inputAmount.ToString(), currCode, true);
 
             //Display request details
             richTextBox2.Select(0, 0);
@@ -219,7 +219,7 @@ namespace Simulator.Forms
             richTextBox2.SelectedText = "Reversal Request";
 
             //Perform transaction
-            var response = await restService.PostReversalRequest(inputAmount.ToString(), currCode);
+            var response = await restService.PostPurchaseReversalRequest(inputAmount.ToString(), currCode);
 
             richTextBox1.Select(0, 0);
             richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";

@@ -1,4 +1,6 @@
-﻿using Simulator.Properties;
+﻿using Simulator.Models;
+using Simulator.Properties;
+using Simulator.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +17,9 @@ namespace Simulator.Forms
     {
         private Simulator.Shared.Utils utils = null;
         private string baseURL = null;
+        private RestService restService = null;
+
+        private TransactionResponse preAuthResponse = null;
 
         public PreAuthUserControl()
         {
@@ -65,9 +70,104 @@ namespace Simulator.Forms
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
+            //Read amount and currency code
+            string amount = amountTextBox.Text;
+            string currCodeString = comboBox1.Text;
 
+            string[] currCodeSeperated = currCodeString.Split('-');
+            string currCode = currCodeSeperated[0].Trim();
+
+
+            //Determine whether the provided amount is a numbers
+            bool isDouble = Double.TryParse(amount, out double amountDouble);
+            int decimalCount = 0;
+
+            if (isDouble)
+            {
+                decimalCount = utils.getDecimalCount(Double.Parse(amount), amount, "en-US");
+            }
+
+            if (isDouble && decimalCount <= 2)
+            {
+                //Disable the input fields
+                amountTextBox.ReadOnly = true;
+                comboBox1.Enabled = false;
+                textBox1.ReadOnly = true;
+                button2.Enabled = false;
+
+                //Setup progress bar settings
+                this.progressBar1.Maximum = 100;
+                this.progressBar1.Value = 0;
+                this.timer2.Start();
+
+                double inputAmount = amountDouble * 100;
+
+                //Initialize RestService
+                this.baseURL = utils.getBaseURL();
+                restService = new RestService(textBox1.Text.ToString());
+
+                //Get the transaction request tailored for the available settings
+                string requestString = restService.GetEncodedPreAuthRequest(inputAmount.ToString(), currCode, true);
+
+                //Display request details
+                richTextBox2.Select(0, 0);
+                richTextBox2.SelectedText = "\r\n\r\n" + requestString + "\r\n";
+
+                richTextBox2.Select(0, 0);
+                richTextBox2.SelectedText = "Pre-Auth Request";
+
+                //Perform transaction
+                var response = await restService.PostPreAuthRequest(inputAmount.ToString(), currCode);
+
+                richTextBox1.Select(0, 0);
+                richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n";
+
+                richTextBox1.Select(0, 0);
+                richTextBox1.SelectedText = "Pre-Auth Response";
+
+                this.progressBar1.Value = 100;
+                this.timer2.Stop();
+
+                //Parse transaction response
+                preAuthResponse = restService.DecodeResponse(response);
+
+                if (preAuthResponse != null)
+                {
+                    //Enable reversal button is the purchase is successful.
+                    if (preAuthResponse.RespCode.Equals("00"))
+                    {
+                        button1.Enabled = true;
+                        button3.Enabled = true;
+                        button4.Enabled = true;
+                        button5.Enabled = true;
+                    }
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\r\n" + preAuthResponse.PrintData + "\r\n";
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tRRN             :  " + preAuthResponse.RRN;
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tPAN              :  " + preAuthResponse.PAN;
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tAuth Code  :  " + preAuthResponse.AuthCode;
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + preAuthResponse.TerminalId;
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "Pre-Auth Response - " + preAuthResponse.RespText;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter a valid amount", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                amountTextBox.Text = string.Empty;
+            }
         }
     }
 }
