@@ -19,11 +19,13 @@ namespace Simulator.Forms
         private string baseURL = null;
         private RestService restService = null;
         private bool incPreAuthAtLeastOnce = false;
+        private int incrementalPreAuthCount = 0;
 
         private TransactionResponse preAuthResponse = null;
         private TransactionResponse preAuthReversalResponse = null;
         private TransactionResponse preAuthCompletionResponse = null;
         private TransactionResponse preAuthCancelationResponse = null;
+        private TransactionResponse incPreAuthResponse = null;
 
         public PreAuthUserControl()
         {
@@ -457,6 +459,109 @@ namespace Simulator.Forms
 
                 if (preAuthCancelationResponse.RespCode.Equals("00"))
                 {
+                    //Diable all buttons
+                    button1.Enabled = false;
+                    button2.Enabled = false;
+                    button3.Enabled = false;
+                    button4.Enabled = false;
+                    button5.Enabled = false;
+                }
+                else
+                {
+                    //Restore buttons to original status, since the completion is unsuccessful.
+                    button1.Enabled = button1Status;
+                    button2.Enabled = false;
+                    button3.Enabled = button3Status;
+                    button4.Enabled = button4Status;
+                    button5.Enabled = button5Status;
+                }
+            }
+
+            this.progressBar1.Value = 100;
+            this.timer2.Stop();
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            //Setup progress bar settings
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Value = 0;
+            this.timer2.Start();
+
+            //Record initial state of buttons
+            bool button1Status = button1.Enabled;
+            bool button3Status = button3.Enabled;
+            bool button4Status = button4.Enabled;
+            bool button5Status = button5.Enabled;
+
+            //Disable buttons accordingly
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+
+            //Read amount and currency code
+            string amount = amountTextBox.Text;
+            string currCodeString = comboBox1.Text;
+
+            string[] currCodeSeperated = currCodeString.Split('-');
+            string currCode = currCodeSeperated[0].Trim();
+
+            double inputAmount = Double.Parse(amount);
+            inputAmount = inputAmount * 100;
+
+            //Initialize RestService
+            this.baseURL = utils.getBaseURL();
+            restService = new RestService(textBox1.Text.ToString());
+
+            //Get the transaction request tailored for the available settings
+            string requestString = restService.GetEncodedIncPreAuthRequest(inputAmount.ToString(), currCode, true, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
+
+            //Display request details
+            richTextBox2.Select(0, 0);
+            richTextBox2.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
+
+            richTextBox2.Select(0, 0);
+            richTextBox2.SelectedText = "Incremental Pre-Auth Request";
+
+            //Perform transaction
+            var response = await restService.PostIncPreAuthRequest(inputAmount.ToString(), currCode, true, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
+
+            richTextBox1.Select(0, 0);
+            richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
+
+            richTextBox1.Select(0, 0);
+            richTextBox1.SelectedText = "Incremental Pre-Auth Response";
+
+            //Parse transaction response
+            incPreAuthResponse = restService.DecodeResponse(response);
+
+            if (incPreAuthResponse != null)
+            {
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\r\n" + incPreAuthResponse.PrintData + "\r\n\r\n\r\n\r\n";
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\tRRN             :  " + incPreAuthResponse.RRN;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\tPAN              :  " + incPreAuthResponse.PAN;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\tAuth Code  :  " + incPreAuthResponse.AuthCode;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + incPreAuthResponse.TerminalId;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "Incremental Pre-Auth Response - " + incPreAuthResponse.RespText;
+
+                if (incPreAuthResponse.RespCode.Equals("00"))
+                {
+                    //Increase the Incremental Pre-Auth Transactin count
+                    incrementalPreAuthCount++;
+
                     //Diable all buttons
                     button1.Enabled = false;
                     button2.Enabled = false;
