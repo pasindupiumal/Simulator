@@ -145,6 +145,7 @@ namespace Simulator.Forms
                         button3.Enabled = true;
                         button4.Enabled = true;
                         button5.Enabled = true;
+                        amountTextBox.ReadOnly = false;
                     }
 
                     richTextBox3.Select(0, 0);
@@ -184,6 +185,7 @@ namespace Simulator.Forms
             button3.Enabled = false;
             button4.Enabled = false;
             button5.Enabled = false;
+            amountTextBox.ReadOnly = true;
 
             //Read amount and currency code
             string amount = amountTextBox.Text;
@@ -256,6 +258,7 @@ namespace Simulator.Forms
                         button3.Enabled = true;
                         button4.Enabled = true;
                         button5.Enabled = true;
+                        amountTextBox.ReadOnly = false;
                     }
                     else
                     {
@@ -264,6 +267,7 @@ namespace Simulator.Forms
                         button3.Enabled = false;
                         button4.Enabled = false;
                         button5.Enabled = false;
+                        amountTextBox.ReadOnly = false;
                     }
                 }
                 else
@@ -294,6 +298,7 @@ namespace Simulator.Forms
             button3.Enabled = false;
             button4.Enabled = false;
             button5.Enabled = false;
+            amountTextBox.ReadOnly = true;
 
             //Read amount and currency code
             string amount = amountTextBox.Text;
@@ -365,6 +370,7 @@ namespace Simulator.Forms
                     button3.Enabled = false;
                     button4.Enabled = false;
                     button5.Enabled = false;
+                    amountTextBox.ReadOnly = false;
                 }
                 else
                 {
@@ -374,6 +380,7 @@ namespace Simulator.Forms
                     button3.Enabled = button3Status;
                     button4.Enabled = button4Status;
                     button5.Enabled = button5Status;
+                    amountTextBox.ReadOnly = false;
                 }
             }
 
@@ -395,6 +402,7 @@ namespace Simulator.Forms
             button3.Enabled = false;
             button4.Enabled = false;
             button5.Enabled = false;
+            amountTextBox.ReadOnly = true;
 
             //Read amount and currency code
             string amount = amountTextBox.Text;
@@ -465,6 +473,7 @@ namespace Simulator.Forms
                     button3.Enabled = false;
                     button4.Enabled = false;
                     button5.Enabled = false;
+                    amountTextBox.ReadOnly = false;
                 }
                 else
                 {
@@ -474,6 +483,7 @@ namespace Simulator.Forms
                     button3.Enabled = button3Status;
                     button4.Enabled = button4Status;
                     button5.Enabled = button5Status;
+                    amountTextBox.ReadOnly = false;
                 }
             }
 
@@ -500,6 +510,7 @@ namespace Simulator.Forms
             button3.Enabled = false;
             button4.Enabled = false;
             button5.Enabled = false;
+            amountTextBox.ReadOnly = true;
 
             //Read amount and currency code
             string amount = amountTextBox.Text;
@@ -569,6 +580,7 @@ namespace Simulator.Forms
                     button3.Enabled = true;
                     button4.Enabled = true;
                     button5.Enabled = true;
+                    amountTextBox.ReadOnly = false; ;
                 }
                 else
                 {
@@ -578,6 +590,7 @@ namespace Simulator.Forms
                     button3.Enabled = button3Status;
                     button4.Enabled = button4Status;
                     button5.Enabled = button5Status;
+                    amountTextBox.ReadOnly = false;
                 }
             }
 
