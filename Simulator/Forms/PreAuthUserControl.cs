@@ -561,13 +561,14 @@ namespace Simulator.Forms
                 {
                     //Increase the Incremental Pre-Auth Transactin count
                     incrementalPreAuthCount++;
+                    incPreAuthAtLeastOnce = true;
 
                     //Diable all buttons
-                    button1.Enabled = false;
+                    button1.Enabled = true;
                     button2.Enabled = false;
-                    button3.Enabled = false;
-                    button4.Enabled = false;
-                    button5.Enabled = false;
+                    button3.Enabled = true;
+                    button4.Enabled = true;
+                    button5.Enabled = true;
                 }
                 else
                 {
