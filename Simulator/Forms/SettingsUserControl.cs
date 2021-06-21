@@ -23,7 +23,6 @@ namespace Simulator.Forms
         {
             Settings.Default.Reload();
             textBox1.Text = Settings.Default["ip"].ToString();
-            textBox2.Text = Settings.Default["port"].ToString();
             textBox3.Text = Settings.Default["operatorValue"].ToString();
             textBox4.Text = Settings.Default["industryCode"].ToString();
             textBox5.Text = Settings.Default["siteID"].ToString();
@@ -63,7 +62,6 @@ namespace Simulator.Forms
         private async void button2_Click(object sender, EventArgs e)
         {
             Settings.Default["ip"] = textBox1.Text;
-            Settings.Default["port"] = textBox2.Text;
             Settings.Default["operatorValue"] = textBox3.Text;
             Settings.Default["industryCode"] = textBox4.Text;
             Settings.Default["siteID"] = textBox5.Text;
@@ -89,7 +87,6 @@ namespace Simulator.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             Settings.Default["ip"] = "https://192.168.1.2";
-            Settings.Default["port"] = "8080";
             Settings.Default["operatorValue"] = "01";
             Settings.Default["industryCode"] = "1";
             Settings.Default["siteID"] = "SHELL|FSDH";

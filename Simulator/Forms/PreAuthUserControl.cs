@@ -584,5 +584,10 @@ namespace Simulator.Forms
             this.progressBar1.Value = 100;
             this.timer2.Stop();
         }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            this.progressBar1.Increment(1);
+        }
     }
 }

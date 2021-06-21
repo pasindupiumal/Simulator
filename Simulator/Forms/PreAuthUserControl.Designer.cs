@@ -80,6 +80,7 @@ namespace Simulator.Forms
             // timer2
             // 
             this.timer2.Interval = 500;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // comboBox1
             // 
@@ -175,7 +176,7 @@ namespace Simulator.Forms
             // 
             this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(408, 86);
+            this.button1.Location = new System.Drawing.Point(629, 66);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(170, 33);
             this.button1.TabIndex = 36;
@@ -215,11 +216,11 @@ namespace Simulator.Forms
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(629, 69);
+            this.button4.Location = new System.Drawing.Point(408, 87);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(170, 33);
             this.button4.TabIndex = 49;
-            this.button4.Text = "Completion";
+            this.button4.Text = "Pre-Auth Completion";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 

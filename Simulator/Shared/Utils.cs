@@ -16,14 +16,17 @@ namespace Simulator.Shared
             string baseURL = null;
             Settings.Default.Reload();
 
-            if(Settings.Default["port"].ToString().Length == 0)
-            {
-                baseURL = Settings.Default["ip"].ToString();
-            }
-            else
-            {
-                baseURL = Settings.Default["ip"].ToString() + ":" + Settings.Default["port"].ToString();
-            }
+            //if(Settings.Default["port"].ToString().Length == 0)
+            //{
+            //    baseURL = Settings.Default["ip"].ToString();
+            //}
+            //else
+            //{
+            //    baseURL = Settings.Default["ip"].ToString() + ":" + Settings.Default["port"].ToString();
+            //}
+
+            baseURL = Settings.Default["ip"].ToString();
+
             return baseURL;
         }
 

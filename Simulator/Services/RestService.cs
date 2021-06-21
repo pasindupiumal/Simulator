@@ -59,7 +59,7 @@ namespace Simulator.Shared
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : " + ex.ToString();
+                return "RestService Exception : Unable to Establish Connection";
             }
         }
 
@@ -337,7 +337,7 @@ namespace Simulator.Shared
             catch (Exception ex)
             {
                 Debug.WriteLine($"Encoded PreAuth Cancel Request Generation Exception : {ex.Message}");
-                return "Encoded PreAuth Cancels Request Generation Exception : " + ex.ToString();
+                return "Encoded PreAuth Cancel Request Generation Exception : " + ex.ToString();
             }
         }
 
@@ -430,7 +430,7 @@ namespace Simulator.Shared
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : " + ex.ToString();
+                return "RestService Exception : Unable to Establish Connection";
             }
         }
 
@@ -467,7 +467,7 @@ namespace Simulator.Shared
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : " + ex.ToString();
+                return "RestService Exception : Unable to Establish Connection";
             }
         }
 
@@ -504,7 +504,7 @@ namespace Simulator.Shared
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : " + ex.ToString();
+                return "RestService Exception : Unable to Establish Connection";
             }
         }
 
@@ -541,7 +541,7 @@ namespace Simulator.Shared
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : " + ex.ToString();
+                return "RestService Exception : Unable to Establish Connection";
             }
         }
 
@@ -552,7 +552,7 @@ namespace Simulator.Shared
                 //Get the encoded request
                 string xmlObject = GetEncodedPreAuthCancelRequest(amount, currCode, false, originalRRN, transToken, expiryDate, pan);
 
-                if (!(xmlObject.Contains("Encoded PreAuth Cancels Request Generation Exception")))
+                if (!(xmlObject.Contains("Encoded PreAuth Cancel Request Generation Exception")))
                 {
                     var stringRequest = new StringContent(xmlObject, Encoding.UTF8, "application/xml");
 
@@ -578,7 +578,7 @@ namespace Simulator.Shared
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : " + ex.ToString();
+                return "RestService Exception : Unable to Establish Connection";
             }
         }
 
@@ -615,7 +615,7 @@ namespace Simulator.Shared
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : " + ex.ToString();
+                return "RestService Exception : Unable to Establish Connection";
             }
         }
 
