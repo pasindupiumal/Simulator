@@ -90,6 +90,12 @@ namespace Simulator.Forms
 
         private async void button2_Click_1(object sender, EventArgs e)
         {
+            //Setup progress bar settings
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Value = 0;
+            this.progressBar1.Style = ProgressBarStyle.Marquee;
+            this.progressBar1.MarqueeAnimationSpeed = 25;
+
             //Read amount and currency code
             string amount = amountTextBox.Text;
             string currCodeString = comboBox1.Text;
@@ -115,11 +121,6 @@ namespace Simulator.Forms
                 textBox1.ReadOnly = true;
                 button2.Enabled = false;
 
-                //Setup progress bar settings
-                this.progressBar1.Maximum = 100;
-                this.progressBar1.Value = 0;
-                this.timer2.Start();
-
                 double inputAmount = amountDouble * 100;
 
                 //Initialize RestService
@@ -144,9 +145,6 @@ namespace Simulator.Forms
 
                 richTextBox1.Select(0, 0);
                 richTextBox1.SelectedText = "Purchase Response";
-
-                this.progressBar1.Value = 100;
-                this.timer2.Stop();
 
                 //Parse transaction response
                 TransactionResponse transactionResponse = restService.DecodeResponse(response);
@@ -177,6 +175,11 @@ namespace Simulator.Forms
                     richTextBox3.Select(0, 0);
                     richTextBox3.SelectedText = "Purchase Response - " + transactionResponse.RespText;
                 }
+
+                //Stop the progress bar
+                this.progressBar1.Style = ProgressBarStyle.Continuous;
+                this.progressBar1.MarqueeAnimationSpeed = 0;
+                this.progressBar1.Value = 100;
             }
             else
             {
@@ -187,6 +190,12 @@ namespace Simulator.Forms
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            //Setup progress bar settings
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Value = 0;
+            this.progressBar1.Style = ProgressBarStyle.Marquee;
+            this.progressBar1.MarqueeAnimationSpeed = 25;
+
             button1.Enabled = false;
 
             //Read amount and currency code
@@ -195,11 +204,6 @@ namespace Simulator.Forms
 
             string[] currCodeSeperated = currCodeString.Split('-');
             string currCode = currCodeSeperated[0].Trim();
-
-            //Setup progress bar settings
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.timer2.Start();
 
             double inputAmount = Double.Parse(amount);
             inputAmount = inputAmount * 100;
@@ -227,9 +231,6 @@ namespace Simulator.Forms
             richTextBox1.Select(0, 0);
             richTextBox1.SelectedText = "Reversal Response";
 
-            this.progressBar1.Value = 100;
-            this.timer2.Stop();
-
             //Parse transaction response
             TransactionResponse transactionResponse = restService.DecodeResponse(response);
 
@@ -253,6 +254,11 @@ namespace Simulator.Forms
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "Reversal Response - " + transactionResponse.RespText;
             }
+
+            //Stop the progress bar
+            this.progressBar1.Style = ProgressBarStyle.Continuous;
+            this.progressBar1.MarqueeAnimationSpeed = 0;
+            this.progressBar1.Value = 100;
         }
 
         private void timer2_Tick(object sender, EventArgs e)

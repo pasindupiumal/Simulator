@@ -78,6 +78,12 @@ namespace Simulator.Forms
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            //Setup progress bar settings
+            this.progressBar1.Maximum = 10;
+            this.progressBar1.Value = 10;
+            this.progressBar1.Style = ProgressBarStyle.Marquee;
+            this.progressBar1.MarqueeAnimationSpeed = 25;
+
             //Read amount and currency code
             string amount = amountTextBox.Text;
             string currCodeString = comboBox1.Text;
@@ -102,11 +108,6 @@ namespace Simulator.Forms
                 comboBox1.Enabled = false;
                 textBox1.ReadOnly = true;
                 button2.Enabled = false;
-
-                //Setup progress bar settings
-                this.progressBar1.Maximum = 100;
-                this.progressBar1.Value = 0;
-                this.timer2.Start();
 
                 double inputAmount = amountDouble * 100;
 
@@ -167,8 +168,10 @@ namespace Simulator.Forms
                     richTextBox3.SelectedText = "Pre-Auth Response - " + preAuthResponse.RespText;
                 }
 
-                this.progressBar1.Value = 100;
-                this.timer2.Stop();
+                //Stop the progress bar
+                this.progressBar1.Value = 10;
+                this.progressBar1.Style = ProgressBarStyle.Continuous;
+                this.progressBar1.MarqueeAnimationSpeed = 0;
             }
             else
             {
@@ -179,6 +182,12 @@ namespace Simulator.Forms
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            //Setup progress bar settings
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Value = 0;
+            this.progressBar1.Style = ProgressBarStyle.Marquee;
+            this.progressBar1.MarqueeAnimationSpeed = 25;
+
             //Disable buttons
             button1.Enabled = false;
             button2.Enabled = false;
@@ -193,11 +202,6 @@ namespace Simulator.Forms
 
             string[] currCodeSeperated = currCodeString.Split('-');
             string currCode = currCodeSeperated[0].Trim();
-
-            //Setup progress bar settings
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.timer2.Start();
 
             double inputAmount = Double.Parse(amount);
             inputAmount = inputAmount * 100;
@@ -280,12 +284,20 @@ namespace Simulator.Forms
                 }
             }
 
+            //Stop the progress bar
+            this.progressBar1.Style = ProgressBarStyle.Continuous;
+            this.progressBar1.MarqueeAnimationSpeed = 0;
             this.progressBar1.Value = 100;
-            this.timer2.Stop();
         }
 
         private async void button4_Click(object sender, EventArgs e)
         {
+            //Setup progress bar settings
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Value = 0;
+            this.progressBar1.Style = ProgressBarStyle.Marquee;
+            this.progressBar1.MarqueeAnimationSpeed = 25;
+
             //Record initial state of buttons
             bool button1Status = button1.Enabled;
             bool button3Status = button3.Enabled;
@@ -306,11 +318,6 @@ namespace Simulator.Forms
 
             string[] currCodeSeperated = currCodeString.Split('-');
             string currCode = currCodeSeperated[0].Trim();
-
-            //Setup progress bar settings
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.timer2.Start();
 
             double inputAmount = Double.Parse(amount);
             inputAmount = inputAmount * 100;
@@ -384,12 +391,20 @@ namespace Simulator.Forms
                 }
             }
 
+            //Stop the progress bar
+            this.progressBar1.Style = ProgressBarStyle.Continuous;
+            this.progressBar1.MarqueeAnimationSpeed = 0;
             this.progressBar1.Value = 100;
-            this.timer2.Stop();
         }
 
         private async void button5_Click(object sender, EventArgs e)
         {
+            //Setup progress bar settings
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Value = 0;
+            this.progressBar1.Style = ProgressBarStyle.Marquee;
+            this.progressBar1.MarqueeAnimationSpeed = 25;
+
             //Record initial state of buttons
             bool button1Status = button1.Enabled;
             bool button3Status = button3.Enabled;
@@ -410,11 +425,6 @@ namespace Simulator.Forms
 
             string[] currCodeSeperated = currCodeString.Split('-');
             string currCode = currCodeSeperated[0].Trim();
-
-            //Setup progress bar settings
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.timer2.Start();
 
             double inputAmount = Double.Parse(amount);
             inputAmount = inputAmount * 100;
@@ -487,8 +497,10 @@ namespace Simulator.Forms
                 }
             }
 
+            //Stop the progress bar
+            this.progressBar1.Style = ProgressBarStyle.Continuous;
+            this.progressBar1.MarqueeAnimationSpeed = 0;
             this.progressBar1.Value = 100;
-            this.timer2.Stop();
         }
 
         private async void button3_Click(object sender, EventArgs e)
@@ -496,7 +508,8 @@ namespace Simulator.Forms
             //Setup progress bar settings
             this.progressBar1.Maximum = 100;
             this.progressBar1.Value = 0;
-            this.timer2.Start();
+            this.progressBar1.Style = ProgressBarStyle.Marquee;
+            this.progressBar1.MarqueeAnimationSpeed = 25;
 
             //Record initial state of buttons
             bool button1Status = button1.Enabled;
@@ -594,13 +607,10 @@ namespace Simulator.Forms
                 }
             }
 
+            //Stop the progress bar
+            this.progressBar1.Style = ProgressBarStyle.Continuous;
+            this.progressBar1.MarqueeAnimationSpeed = 0;
             this.progressBar1.Value = 100;
-            this.timer2.Stop();
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            this.progressBar1.Increment(1);
         }
     }
 }
