@@ -285,6 +285,62 @@ namespace Simulator.Shared
             }
         }
 
+        public string GetEncodedPreAuthCancelRequest(string amount, string currCode, bool seqIncrement, string originalRRN, string transToken, string expiryDate, string pan)
+        {
+            try
+            {
+                //Reload the settings
+                Settings.Default.Reload();
+                int seqNumber = (int)Settings.Default["sequenceNumber"];
+                string dateTime = DateTime.UtcNow.ToString("s") + DateTime.UtcNow.ToString("zzz");
+
+                if (seqIncrement)
+                {
+                    seqNumber = seqNumber + 1;
+                }
+
+                var preAuthCancelRequest = new PreAuthCancelRequest
+                {
+                    SequenceNo = seqNumber.ToString(),
+                    TransType = "08",
+                    TransAmount = amount,
+                    TransCurrency = currCode,
+                    TransDateTime = dateTime,
+                    GuestNo = Settings.Default["guestNo"].ToString(),
+                    Operator = Settings.Default["operatorValue"].ToString(),
+                    CardPresent = "2",
+                    OriginalRRN = originalRRN,
+                    PAN = pan,
+                    IssuerId = "02",
+                    ExpiryDate = expiryDate,
+                    TransToken = transToken,
+                    SiteId = Settings.Default["siteID"].ToString(),
+                    WSNo = Settings.Default["wsNo"].ToString(),
+                    ProxyInfo = Settings.Default["proxyInfo"].ToString(),
+                    POSInfo = Settings.Default["posInfo"].ToString()
+                };
+
+                xmlSerializer = new XmlSerializer(typeof(PreAuthCancelRequest));
+                stringWriterWithEncoding = new StringWriterWithEncoding(Encoding.UTF8);
+                customNameSpace = new XmlSerializerNamespaces();
+                customNameSpace.Add(string.Empty, string.Empty);
+                xmlWriter = XmlWriter.Create(stringWriterWithEncoding);
+                xmlWriter.WriteStartDocument(true);
+                xmlSerializer.Serialize(xmlWriter, preAuthCancelRequest, customNameSpace);
+                string xmlObject = stringWriterWithEncoding.ToString();
+
+                Settings.Default["sequenceNumber"] = seqNumber;
+                Settings.Default.Save();
+
+                return xmlObject;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Encoded PreAuth Cancel Request Generation Exception : {ex.Message}");
+                return "Encoded PreAuth Cancels Request Generation Exception : " + ex.ToString();
+            }
+        }
+
         public async Task<string> PostPurchaseRequest(string amount, string currCode)
         {
             try
@@ -404,6 +460,43 @@ namespace Simulator.Shared
                 string xmlObject = GetEncodedPreAuthCompleteRequest(amount, currCode, false, authCode, originalRRN, transToken, expiryDate, pan);
 
                 if (!(xmlObject.Contains("Encoded PreAuth Complete Request Generation Exception")))
+                {
+                    var stringRequest = new StringContent(xmlObject, Encoding.UTF8, "application/xml");
+
+                    httpClient = new HttpClient();
+
+                    var response = await httpClient.PostAsync(this.baseURL, stringRequest);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var stringResponse = await response.Content.ReadAsStringAsync();
+                        return stringResponse;
+                    }
+                    else
+                    {
+                        return "Operation failed. Unsuccessful status code.";
+                    }
+                }
+                else
+                {
+                    return "Operation failed. Unable to generate encoded request.";
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"RestService Exception : {ex.Message}");
+                return "RestService Exception : " + ex.ToString();
+            }
+        }
+
+        public async Task<string> PostPreAuthCancelRequest(string amount, string currCode, bool seqIncrement, string originalRRN, string transToken, string expiryDate, string pan)
+        {
+            try
+            {
+                //Get the encoded request
+                string xmlObject = GetEncodedPreAuthCancelRequest(amount, currCode, false, originalRRN, transToken, expiryDate, pan);
+
+                if (!(xmlObject.Contains("Encoded PreAuth Cancels Request Generation Exception")))
                 {
                     var stringRequest = new StringContent(xmlObject, Encoding.UTF8, "application/xml");
 
