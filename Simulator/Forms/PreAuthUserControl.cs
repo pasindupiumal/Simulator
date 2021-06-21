@@ -355,7 +355,7 @@ namespace Simulator.Forms
                 richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + preAuthCompletionResponse.TerminalId;
 
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "Pre-Auth Cancelation Response - " + preAuthCompletionResponse.RespText;
+                richTextBox3.SelectedText = "Pre-Auth Completion Response - " + preAuthCompletionResponse.RespText;
 
                 if (preAuthCompletionResponse.RespCode.Equals("00"))
                 {
@@ -455,7 +455,7 @@ namespace Simulator.Forms
                 richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + preAuthCancelationResponse.TerminalId;
 
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "Pre-Auth Completion Response - " + preAuthCancelationResponse.RespText;
+                richTextBox3.SelectedText = "Pre-Auth Cancelation Response - " + preAuthCancelationResponse.RespText;
 
                 if (preAuthCancelationResponse.RespCode.Equals("00"))
                 {
