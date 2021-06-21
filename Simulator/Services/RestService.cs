@@ -120,7 +120,7 @@ namespace Simulator.Shared
             }
         }
 
-        public string GetEncodedPurchaseReversalRequest(string amount, string currCode, bool seqIncrement)
+        public string GetEncodedReversalRequest(string amount, string currCode, bool seqIncrement)
         {
             try
             {
@@ -265,12 +265,12 @@ namespace Simulator.Shared
             }
         }
 
-        public async Task<string> PostPurchaseReversalRequest(string amount, string currCode)
+        public async Task<string> PostReversalRequest(string amount, string currCode)
         {
             try
             {
                 //Get the encoded request
-                string xmlObject = GetEncodedPurchaseReversalRequest(amount, currCode, false);
+                string xmlObject = GetEncodedReversalRequest(amount, currCode, false);
 
                 if (!(xmlObject.Contains("Encoded Reversal Request Generation Exception")))
                 {

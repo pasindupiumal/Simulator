@@ -181,6 +181,7 @@ namespace Simulator.Forms
             this.button1.TabIndex = 36;
             this.button1.Text = "Reversal";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 

@@ -18,8 +18,10 @@ namespace Simulator.Forms
         private Simulator.Shared.Utils utils = null;
         private string baseURL = null;
         private RestService restService = null;
+        private bool incPreAuthAtLeastOnce = false;
 
         private TransactionResponse preAuthResponse = null;
+        private TransactionResponse reversalResponse = null;
 
         public PreAuthUserControl()
         {
@@ -168,6 +170,99 @@ namespace Simulator.Forms
                 MessageBox.Show("Enter a valid amount", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 amountTextBox.Text = string.Empty;
             }
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            //Disable buttons
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+
+            //Read amount and currency code
+            string amount = amountTextBox.Text;
+            string currCodeString = comboBox1.Text;
+
+            string[] currCodeSeperated = currCodeString.Split('-');
+            string currCode = currCodeSeperated[0].Trim();
+
+            //Setup progress bar settings
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Value = 0;
+            this.timer2.Start();
+
+            double inputAmount = Double.Parse(amount);
+            inputAmount = inputAmount * 100;
+
+            //Initialize RestService
+            this.baseURL = utils.getBaseURL();
+            restService = new RestService(textBox1.Text.ToString());
+
+            //Get the transaction request tailored for the available settings
+            string requestString = restService.GetEncodedReversalRequest(inputAmount.ToString(), currCode, true);
+
+            //Display request details
+            richTextBox2.Select(0, 0);
+            richTextBox2.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
+
+            richTextBox2.Select(0, 0);
+            richTextBox2.SelectedText = "Reversal Request";
+
+            //Perform transaction
+            var response = await restService.PostReversalRequest(inputAmount.ToString(), currCode);
+
+            richTextBox1.Select(0, 0);
+            richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
+
+            richTextBox1.Select(0, 0);
+            richTextBox1.SelectedText = "Reversal Response";
+
+            //Enable buttons under condition
+            if (incPreAuthAtLeastOnce)
+            {
+                button1.Enabled = false;
+                button2.Enabled = false;
+                button3.Enabled = true;
+                button4.Enabled = true;
+                button5.Enabled = true;
+            }
+            else
+            {
+                button1.Enabled = false;
+                button2.Enabled = false;
+                button3.Enabled = false;
+                button4.Enabled = false;
+                button5.Enabled = false;
+            }
+
+            //Parse transaction response
+            reversalResponse = restService.DecodeResponse(response);
+
+            if (reversalResponse != null)
+            {
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\r\n" + reversalResponse.PrintData + "\r\n\r\n\r\n\r\n";
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\tRRN             :  " + reversalResponse.RRN;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\tPAN              :  " + reversalResponse.PAN;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\tAuth Code  :  " + reversalResponse.AuthCode;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + reversalResponse.TerminalId;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "Reversal Response - " + reversalResponse.RespText;
+            }
+
+            this.progressBar1.Value = 100;
+            this.timer2.Stop();
         }
     }
 }
