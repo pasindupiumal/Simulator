@@ -220,6 +220,7 @@ namespace Simulator.Forms
             this.button4.TabIndex = 49;
             this.button4.Text = "Completion";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 

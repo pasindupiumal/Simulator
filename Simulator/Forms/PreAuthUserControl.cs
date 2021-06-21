@@ -21,7 +21,8 @@ namespace Simulator.Forms
         private bool incPreAuthAtLeastOnce = false;
 
         private TransactionResponse preAuthResponse = null;
-        private TransactionResponse reversalResponse = null;
+        private TransactionResponse preAuthReversalResponse = null;
+        private TransactionResponse preAuthCompletionResponse = null;
 
         public PreAuthUserControl()
         {
@@ -129,9 +130,6 @@ namespace Simulator.Forms
                 richTextBox1.Select(0, 0);
                 richTextBox1.SelectedText = "Pre-Auth Response";
 
-                this.progressBar1.Value = 100;
-                this.timer2.Stop();
-
                 //Parse transaction response
                 preAuthResponse = restService.DecodeResponse(response);
 
@@ -164,6 +162,9 @@ namespace Simulator.Forms
                     richTextBox3.Select(0, 0);
                     richTextBox3.SelectedText = "Pre-Auth Response - " + preAuthResponse.RespText;
                 }
+
+                this.progressBar1.Value = 100;
+                this.timer2.Stop();
             }
             else
             {
@@ -219,46 +220,158 @@ namespace Simulator.Forms
             richTextBox1.Select(0, 0);
             richTextBox1.SelectedText = "Reversal Response";
 
-            //Enable buttons under condition
-            if (incPreAuthAtLeastOnce)
+            //Parse transaction response
+            preAuthReversalResponse = restService.DecodeResponse(response);
+
+            if (preAuthReversalResponse != null)
             {
-                button1.Enabled = false;
-                button2.Enabled = false;
-                button3.Enabled = true;
-                button4.Enabled = true;
-                button5.Enabled = true;
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\r\n" + preAuthReversalResponse.PrintData + "\r\n\r\n\r\n\r\n";
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\tRRN             :  " + preAuthReversalResponse.RRN;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\tPAN              :  " + preAuthReversalResponse.PAN;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\tAuth Code  :  " + preAuthReversalResponse.AuthCode;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + preAuthReversalResponse.TerminalId;
+
+                richTextBox3.Select(0, 0);
+                richTextBox3.SelectedText = "Reversal Response - " + preAuthReversalResponse.RespText;
+
+                if (preAuthReversalResponse.RespCode.Equals("00"))
+                {
+                    //Enable buttons under condition
+                    if (incPreAuthAtLeastOnce)
+                    {
+                        button1.Enabled = false;
+                        button2.Enabled = false;
+                        button3.Enabled = true;
+                        button4.Enabled = true;
+                        button5.Enabled = true;
+                    }
+                    else
+                    {
+                        button1.Enabled = false;
+                        button2.Enabled = false;
+                        button3.Enabled = false;
+                        button4.Enabled = false;
+                        button5.Enabled = false;
+                    }
+                }
+                else
+                {
+                    button1.Enabled = true;
+                    button2.Enabled = false;
+                    button3.Enabled = true;
+                    button4.Enabled = true;
+                    button5.Enabled = true;
+                }
             }
-            else
-            {
-                button1.Enabled = false;
-                button2.Enabled = false;
-                button3.Enabled = false;
-                button4.Enabled = false;
-                button5.Enabled = false;
-            }
+
+            this.progressBar1.Value = 100;
+            this.timer2.Stop();
+        }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            //Record initial state of buttons
+            bool button1Status = button1.Enabled;
+            bool button3Status = button3.Enabled;
+            bool button4Status = button4.Enabled;
+            bool button5Status = button5.Enabled;
+
+            //Disable buttons accordingly
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+
+            //Read amount and currency code
+            string amount = amountTextBox.Text;
+            string currCodeString = comboBox1.Text;
+
+            string[] currCodeSeperated = currCodeString.Split('-');
+            string currCode = currCodeSeperated[0].Trim();
+
+            //Setup progress bar settings
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Value = 0;
+            this.timer2.Start();
+
+            double inputAmount = Double.Parse(amount);
+            inputAmount = inputAmount * 100;
+
+            //Initialize RestService
+            this.baseURL = utils.getBaseURL();
+            restService = new RestService(textBox1.Text.ToString());
+
+            //Get the transaction request tailored for the available settings
+            //string authCode, string originalRRN, string transToken, string expiryDate, string pan
+            string requestString = restService.GetEncodedPreAuthCompleteRequest(inputAmount.ToString(), currCode, true, preAuthResponse.AuthCode, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
+
+            //Display request details
+            richTextBox2.Select(0, 0);
+            richTextBox2.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
+
+            richTextBox2.Select(0, 0);
+            richTextBox2.SelectedText = "Pre-Auth Completion Request";
+
+            //Perform transaction
+            var response = await restService.PostPreAuthCompletionRequest(inputAmount.ToString(), currCode, true, preAuthResponse.AuthCode, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
+
+            richTextBox1.Select(0, 0);
+            richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
+
+            richTextBox1.Select(0, 0);
+            richTextBox1.SelectedText = "Pre-Auth Completion Response";
 
             //Parse transaction response
-            reversalResponse = restService.DecodeResponse(response);
+            preAuthCompletionResponse = restService.DecodeResponse(response);
 
-            if (reversalResponse != null)
+            if (preAuthCompletionResponse != null)
             {
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\r\n" + reversalResponse.PrintData + "\r\n\r\n\r\n\r\n";
+                richTextBox3.SelectedText = "\r\n\r\n" + preAuthCompletionResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\tRRN             :  " + reversalResponse.RRN;
+                richTextBox3.SelectedText = "\r\n\tRRN             :  " + preAuthCompletionResponse.RRN;
 
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\tPAN              :  " + reversalResponse.PAN;
+                richTextBox3.SelectedText = "\r\n\tPAN              :  " + preAuthCompletionResponse.PAN;
 
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\tAuth Code  :  " + reversalResponse.AuthCode;
+                richTextBox3.SelectedText = "\r\n\tAuth Code  :  " + preAuthCompletionResponse.AuthCode;
 
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + reversalResponse.TerminalId;
+                richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + preAuthCompletionResponse.TerminalId;
 
                 richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "Reversal Response - " + reversalResponse.RespText;
+                richTextBox3.SelectedText = "Pre-Auth Completion Response - " + preAuthCompletionResponse.RespText;
+
+                if (preAuthCompletionResponse.RespCode.Equals("00"))
+                {
+                    //Diable all buttons
+                    button1.Enabled = false;
+                    button2.Enabled = false;
+                    button3.Enabled = false;
+                    button4.Enabled = false;
+                    button5.Enabled = false;
+                }
+                else
+                {
+                    //Restore buttons to original status, since the completion is unsuccessful.
+                    button1.Enabled = button1Status;
+                    button2.Enabled = false;
+                    button3.Enabled = button3Status;
+                    button4.Enabled = button4Status;
+                    button5.Enabled = button5Status;
+                }
             }
 
             this.progressBar1.Value = 100;
