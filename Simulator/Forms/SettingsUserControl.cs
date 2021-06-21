@@ -23,6 +23,7 @@ namespace Simulator.Forms
         {
             Settings.Default.Reload();
             textBox1.Text = Settings.Default["ip"].ToString();
+            textBox2.Text = Settings.Default["defaultAmount"].ToString();
             textBox3.Text = Settings.Default["operatorValue"].ToString();
             textBox4.Text = Settings.Default["industryCode"].ToString();
             textBox5.Text = Settings.Default["siteID"].ToString();
@@ -62,6 +63,7 @@ namespace Simulator.Forms
         private async void button2_Click(object sender, EventArgs e)
         {
             Settings.Default["ip"] = textBox1.Text;
+            Settings.Default["defaultAmount"] = textBox2.Text;
             Settings.Default["operatorValue"] = textBox3.Text;
             Settings.Default["industryCode"] = textBox4.Text;
             Settings.Default["siteID"] = textBox5.Text;
@@ -82,23 +84,6 @@ namespace Simulator.Forms
             label11.Visible = false;
          
             //MessageBox.Show("Settings Updated Successfully!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Settings.Default["ip"] = "https://192.168.1.2";
-            Settings.Default["operatorValue"] = "01";
-            Settings.Default["industryCode"] = "1";
-            Settings.Default["siteID"] = "SHELL|FSDH";
-            Settings.Default["wsNo"] = "MarkusESTLAB.596807909";
-            Settings.Default["proxyInfo"] = "OPIV6.2";
-            Settings.Default["posInfo"] = "Opera";
-            Settings.Default["lodgingCode"] = "3";
-            Settings.Default["guestNo"] = "62524";
-            Settings.Default["currCodes"] = "752,SEK,144,LKR,826,GBP";
-            Settings.Default.Save();
-            loadSettings();
-            MessageBox.Show("Settings Restored To Factory Defaults Successfully!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

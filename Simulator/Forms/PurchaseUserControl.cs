@@ -73,9 +73,10 @@ namespace Simulator.Forms
 
         public void clearFields()
         {
-            amountTextBox.Text = "100";
+            Settings.Default.Reload();
+
+            amountTextBox.Text = Settings.Default["defaultAmount"].ToString();
             amountTextBox.ReadOnly = false;
-            comboBox1.Text = "752";
             comboBox1.Enabled = true;
             button1.Enabled = true;
             button2.Enabled = true;

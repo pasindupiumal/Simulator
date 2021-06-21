@@ -166,5 +166,17 @@ namespace Simulator.Properties {
                 this["currCodes"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public string defaultAmount {
+            get {
+                return ((string)(this["defaultAmount"]));
+            }
+            set {
+                this["defaultAmount"] = value;
+            }
+        }
     }
 }
