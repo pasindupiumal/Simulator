@@ -119,6 +119,7 @@
     <Compile Include="Forms\SettingsUserControl.Designer.cs">
       <DependentUpon>SettingsUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\PreAuthCompleteRequest.cs" />
     <Compile Include="Models\PreAuthRequest.cs" />
     <Compile Include="Models\PurchaseRequest.cs" />
     <Compile Include="Models\ReversalRequest.cs" />

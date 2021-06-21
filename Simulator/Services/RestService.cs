@@ -228,6 +228,63 @@ namespace Simulator.Shared
             }
         }
 
+        public string GetEncodedPreAuthCompleteRequest(string amount, string currCode, bool seqIncrement, string authCode, string originalRRN, string transToken, string expiryDate, string pan)
+        {
+            try
+            {
+                //Reload the settings
+                Settings.Default.Reload();
+                int seqNumber = (int)Settings.Default["sequenceNumber"];
+                string dateTime = DateTime.UtcNow.ToString("s") + DateTime.UtcNow.ToString("zzz");
+
+                if (seqIncrement)
+                {
+                    seqNumber = seqNumber + 1;
+                }
+
+                var preAuthCompleteRequest = new PreAuthCompleteRequest
+                {
+                    SequenceNo = seqNumber.ToString(),
+                    TransType = "07",
+                    TransAmount = amount,
+                    TransCurrency = currCode,
+                    TransDateTime = dateTime,
+                    AuthCode = authCode,
+                    OriginalRRN = originalRRN,
+                    TransToken = transToken,
+                    ExpiryDate = expiryDate,
+                    IssuerId = "02",
+                    PAN = pan,
+                    Operator = Settings.Default["operatorValue"].ToString(),
+                    CardPresent = "1",
+                    TaxAmount = "0",
+                    SiteId = Settings.Default["siteID"].ToString(),
+                    WSNo = Settings.Default["wsNo"].ToString(),
+                    ProxyInfo = Settings.Default["proxyInfo"].ToString(),
+                    POSInfo = Settings.Default["posInfo"].ToString()
+                };
+
+                xmlSerializer = new XmlSerializer(typeof(PreAuthCompleteRequest));
+                stringWriterWithEncoding = new StringWriterWithEncoding(Encoding.UTF8);
+                customNameSpace = new XmlSerializerNamespaces();
+                customNameSpace.Add(string.Empty, string.Empty);
+                xmlWriter = XmlWriter.Create(stringWriterWithEncoding);
+                xmlWriter.WriteStartDocument(true);
+                xmlSerializer.Serialize(xmlWriter, preAuthCompleteRequest, customNameSpace);
+                string xmlObject = stringWriterWithEncoding.ToString();
+
+                Settings.Default["sequenceNumber"] = seqNumber;
+                Settings.Default.Save();
+
+                return xmlObject;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Encoded PreAuth Complete Request Generation Exception : {ex.Message}");
+                return "Encoded PreAuth Complete Request Generation Exception : " + ex.ToString();
+            }
+        }
+
         public async Task<string> PostPurchaseRequest(string amount, string currCode)
         {
             try
@@ -310,6 +367,43 @@ namespace Simulator.Shared
                 string xmlObject = GetEncodedPreAuthRequest(amount, currCode, false);
 
                 if (!(xmlObject.Contains("Encoded PreAuth Request Generation Exception")))
+                {
+                    var stringRequest = new StringContent(xmlObject, Encoding.UTF8, "application/xml");
+
+                    httpClient = new HttpClient();
+
+                    var response = await httpClient.PostAsync(this.baseURL, stringRequest);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var stringResponse = await response.Content.ReadAsStringAsync();
+                        return stringResponse;
+                    }
+                    else
+                    {
+                        return "Operation failed. Unsuccessful status code.";
+                    }
+                }
+                else
+                {
+                    return "Operation failed. Unable to generate encoded request.";
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"RestService Exception : {ex.Message}");
+                return "RestService Exception : " + ex.ToString();
+            }
+        }
+
+        public async Task<string> PostPreAuthCompletionRequest(string amount, string currCode, bool seqIncrement, string authCode, string originalRRN, string transToken, string expiryDate, string pan)
+        {
+            try
+            {
+                //Get the encoded request
+                string xmlObject = GetEncodedPreAuthCompleteRequest(amount, currCode, false, authCode, originalRRN, transToken, expiryDate, pan);
+
+                if (!(xmlObject.Contains("Encoded PreAuth Complete Request Generation Exception")))
                 {
                     var stringRequest = new StringContent(xmlObject, Encoding.UTF8, "application/xml");
 
