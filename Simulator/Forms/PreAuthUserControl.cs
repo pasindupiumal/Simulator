@@ -153,6 +153,35 @@ namespace Simulator.Forms
 
                     richTextBox3.Select(0, 0);
                     richTextBox3.SelectedText = "\r\n\r\n" + preAuthResponse.PrintData + "\r\n";
+
+                    if (preAuthResponse.DCCIndicator.Equals("1"))
+                    {
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  YES";
+
+                        if(preAuthResponse.BillingAmount != null)
+                        {
+                            double billingAmount = Double.Parse(preAuthResponse.BillingAmount) / 100.00;
+                            richTextBox3.Select(0, 0);
+                            richTextBox3.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
+                        }
+
+                        if (preAuthResponse.BillingCurrency != null)
+                        {
+                            richTextBox3.Select(0, 0);
+                            richTextBox3.SelectedText = "\r\n\tBilling Currency\t :  " + preAuthResponse.BillingCurrency;
+                        }
+
+                        if (preAuthResponse.DCCExchangeRate != null)
+                        {
+                            richTextBox3.Select(0, 0);
+                            richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + preAuthResponse.DCCExchangeRate;
+                        }
+                    }
+                    else{
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  NO";
+                    }
                     
                     if(preAuthResponse.RRN.Length != 0)
                     {
