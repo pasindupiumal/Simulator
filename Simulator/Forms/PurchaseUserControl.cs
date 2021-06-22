@@ -75,6 +75,7 @@ namespace Simulator.Forms
         {
             Settings.Default.Reload();
 
+            this.progressBar1.Style = ProgressBarStyle.Continuous;
             amountTextBox.Text = Settings.Default["defaultAmount"].ToString();
             amountTextBox.ReadOnly = false;
             comboBox1.Enabled = true;

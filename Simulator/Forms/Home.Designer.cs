@@ -37,11 +37,11 @@ namespace Simulator.Forms
             this.preAuthUserControlButton = new System.Windows.Forms.Button();
             this.refundUserControlButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.preAuthUserControl1 = new Simulator.Forms.PreAuthUserControl();
+            this.settingsUserControl1 = new Simulator.Forms.SettingsUserControl();
             this.reversalUserControl1 = new Simulator.Forms.ReversalUserControl();
             this.refundUserControl1 = new Simulator.Forms.RefundUserControl();
             this.purchaseUserControl1 = new Simulator.Forms.PurchaseUserControl();
-            this.preAuthUserControl1 = new Simulator.Forms.PreAuthUserControl();
-            this.settingsUserControl1 = new Simulator.Forms.SettingsUserControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -137,6 +137,26 @@ namespace Simulator.Forms
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // preAuthUserControl1
+            // 
+            this.preAuthUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.preAuthUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.preAuthUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.preAuthUserControl1.Name = "preAuthUserControl1";
+            this.preAuthUserControl1.Size = new System.Drawing.Size(880, 665);
+            this.preAuthUserControl1.TabIndex = 2;
+            this.preAuthUserControl1.Load += new System.EventHandler(this.preAuthUserControl1_Load);
+            // 
+            // settingsUserControl1
+            // 
+            this.settingsUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.settingsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.settingsUserControl1.Name = "settingsUserControl1";
+            this.settingsUserControl1.Size = new System.Drawing.Size(880, 665);
+            this.settingsUserControl1.TabIndex = 5;
+            this.settingsUserControl1.Load += new System.EventHandler(this.settingsUserControl1_Load);
+            // 
             // reversalUserControl1
             // 
             this.reversalUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -167,26 +187,6 @@ namespace Simulator.Forms
             this.purchaseUserControl1.TabIndex = 1;
             this.purchaseUserControl1.Load += new System.EventHandler(this.purchaseUserControl1_Load);
             // 
-            // preAuthUserControl1
-            // 
-            this.preAuthUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.preAuthUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.preAuthUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.preAuthUserControl1.Name = "preAuthUserControl1";
-            this.preAuthUserControl1.Size = new System.Drawing.Size(880, 665);
-            this.preAuthUserControl1.TabIndex = 2;
-            this.preAuthUserControl1.Load += new System.EventHandler(this.preAuthUserControl1_Load);
-            // 
-            // settingsUserControl1
-            // 
-            this.settingsUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.settingsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.settingsUserControl1.Name = "settingsUserControl1";
-            this.settingsUserControl1.Size = new System.Drawing.Size(880, 665);
-            this.settingsUserControl1.TabIndex = 5;
-            this.settingsUserControl1.Load += new System.EventHandler(this.settingsUserControl1_Load);
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,7 +198,7 @@ namespace Simulator.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Home";
+            this.Text = "OPI Simulator";
             this.Load += new System.EventHandler(this.Home_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

@@ -7,7 +7,7 @@
     <ProjectGuid>{A2A13E9F-6182-4D7A-A144-BA68CB7BC3D0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Simulator</RootNamespace>
-    <AssemblyName>Simulator</AssemblyName>
+    <AssemblyName>OPI Simulator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>33</ApplicationRevision>
+    <ApplicationRevision>34</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
