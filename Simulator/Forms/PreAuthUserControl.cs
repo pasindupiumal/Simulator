@@ -156,14 +156,11 @@ namespace Simulator.Forms
 
                     if (preAuthResponse.DCCIndicator.Equals("1"))
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  YES";
-
-                        if(preAuthResponse.BillingAmount != null)
+                        
+                        if (preAuthResponse.DCCExchangeRate != null)
                         {
-                            double billingAmount = Double.Parse(preAuthResponse.BillingAmount) / 100.00;
                             richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
+                            richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + preAuthResponse.DCCExchangeRate;
                         }
 
                         if (preAuthResponse.BillingCurrency != null)
@@ -172,11 +169,15 @@ namespace Simulator.Forms
                             richTextBox3.SelectedText = "\r\n\tBilling Currency\t :  " + preAuthResponse.BillingCurrency;
                         }
 
-                        if (preAuthResponse.DCCExchangeRate != null)
+                        if (preAuthResponse.BillingAmount != null)
                         {
+                            double billingAmount = Double.Parse(preAuthResponse.BillingAmount) / 100.00;
                             richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + preAuthResponse.DCCExchangeRate;
+                            richTextBox3.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                         }
+
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  YES";
                     }
                     else{
                         richTextBox3.Select(0, 0);
