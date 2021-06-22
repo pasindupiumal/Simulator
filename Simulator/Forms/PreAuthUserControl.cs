@@ -155,7 +155,11 @@ namespace Simulator.Forms
                     richTextBox3.Select(0, 0);
                     richTextBox3.SelectedText = "\r\n\r\n" + preAuthResponse.PrintData + "\r\n";
 
-                    if (preAuthResponse.DCCIndicator.Equals("1"))
+                    if(preAuthResponse.DCCIndicator == null)
+                    {
+                        //Do nothing
+                    }
+                    else if (preAuthResponse.DCCIndicator.Equals("1"))
                     {
                         
                         if (preAuthResponse.DCCExchangeRate != null)
@@ -236,12 +240,13 @@ namespace Simulator.Forms
             }
             else
             {
-                this.progressBar1.Style = ProgressBarStyle.Blocks;
+                this.progressBar1.Style = ProgressBarStyle.Continuous;
                 amountTextBox.ForeColor = Color.Red;
                 amountTextBox.Text = "Enter a valid amount";
                 await Task.Delay(1000);
                 //MessageBox.Show("Enter a valid amount", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 amountTextBox.Text = string.Empty;
+                amountTextBox.ForeColor = Color.Black;
             }
         }
 
@@ -302,7 +307,11 @@ namespace Simulator.Forms
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "\r\n\r\n" + preAuthReversalResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
-                if (preAuthReversalResponse.DCCIndicator.Equals("1"))
+                if (preAuthReversalResponse.DCCIndicator == null)
+                {
+                    //Do nothing
+                }
+                else if (preAuthReversalResponse.DCCIndicator.Equals("1"))
                 {
 
                     if (preAuthReversalResponse.DCCExchangeRate != null)
@@ -477,7 +486,11 @@ namespace Simulator.Forms
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "\r\n\r\n" + preAuthCompletionResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
-                if (preAuthCompletionResponse.DCCIndicator.Equals("1"))
+                if (preAuthCompletionResponse.DCCIndicator == null)
+                {
+                    //Do nothing
+                }
+                else if (preAuthCompletionResponse.DCCIndicator.Equals("1"))
                 {
 
                     if (preAuthCompletionResponse.DCCExchangeRate != null)
@@ -641,7 +654,11 @@ namespace Simulator.Forms
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "\r\n\r\n" + preAuthCancelationResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
-                if (preAuthCancelationResponse.DCCIndicator.Equals("1"))
+                if (preAuthCancelationResponse.DCCIndicator == null)
+                {
+                    //Do nothing
+                }
+                else if (preAuthCancelationResponse.DCCIndicator.Equals("1"))
                 {
 
                     if (preAuthCancelationResponse.DCCExchangeRate != null)
@@ -805,7 +822,11 @@ namespace Simulator.Forms
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "\r\n\r\n" + incPreAuthResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
-                if (incPreAuthResponse.DCCIndicator.Equals("1"))
+                if (incPreAuthResponse.DCCIndicator == null)
+                {
+                    //Do nothing
+                }
+                else if (incPreAuthResponse.DCCIndicator.Equals("1"))
                 {
 
                     if (incPreAuthResponse.DCCExchangeRate != null)

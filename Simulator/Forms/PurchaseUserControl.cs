@@ -162,7 +162,11 @@ namespace Simulator.Forms
                     richTextBox3.Select(0, 0);
                     richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n";
 
-                    if (transactionResponse.DCCIndicator.Equals("1"))
+                    if (transactionResponse.DCCIndicator == null)
+                    {
+                        //Do nothing
+                    }
+                    else if (transactionResponse.DCCIndicator.Equals("1"))
                     {
 
                         if (transactionResponse.DCCExchangeRate != null)
@@ -243,12 +247,13 @@ namespace Simulator.Forms
             }
             else
             {
-                this.progressBar1.Style = ProgressBarStyle.Blocks;
+                this.progressBar1.Style = ProgressBarStyle.Continuous;
                 amountTextBox.ForeColor = Color.Red;
                 amountTextBox.Text = "Enter a valid amount";
                 await Task.Delay(1000);
                 //MessageBox.Show("Enter a valid amount", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 amountTextBox.Text = string.Empty;
+                amountTextBox.ForeColor = Color.Black;
             }
         }
 
@@ -303,7 +308,11 @@ namespace Simulator.Forms
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
-                if (transactionResponse.DCCIndicator.Equals("1"))
+                if (transactionResponse.DCCIndicator == null)
+                {
+                    //Do nothing
+                }
+                else if (transactionResponse.DCCIndicator.Equals("1"))
                 {
 
                     if (transactionResponse.DCCExchangeRate != null)
