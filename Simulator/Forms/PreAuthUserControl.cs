@@ -160,8 +160,11 @@ namespace Simulator.Forms
                         
                         if (preAuthResponse.DCCExchangeRate != null)
                         {
+                            string firstDigit = preAuthResponse.DCCExchangeRate.Substring(0,1);
+                            string lastDigits = preAuthResponse.DCCExchangeRate.Substring(1, preAuthResponse.DCCExchangeRate.Length - 1);
+                            string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
                             richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + preAuthResponse.DCCExchangeRate;
+                            richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
                         }
 
                         if (preAuthResponse.BillingCurrency != null)
@@ -304,8 +307,11 @@ namespace Simulator.Forms
 
                     if (preAuthReversalResponse.DCCExchangeRate != null)
                     {
+                        string firstDigit = preAuthReversalResponse.DCCExchangeRate.Substring(0, 1);
+                        string lastDigits = preAuthReversalResponse.DCCExchangeRate.Substring(1, preAuthReversalResponse.DCCExchangeRate.Length - 1);
+                        string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
                         richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + preAuthReversalResponse.DCCExchangeRate;
+                        richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
                     }
 
                     if (preAuthReversalResponse.BillingCurrency != null)
@@ -476,8 +482,11 @@ namespace Simulator.Forms
 
                     if (preAuthCompletionResponse.DCCExchangeRate != null)
                     {
+                        string firstDigit = preAuthCompletionResponse.DCCExchangeRate.Substring(0, 1);
+                        string lastDigits = preAuthCompletionResponse.DCCExchangeRate.Substring(1, preAuthCompletionResponse.DCCExchangeRate.Length - 1);
+                        string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
                         richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + preAuthCompletionResponse.DCCExchangeRate;
+                        richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
                     }
 
                     if (preAuthCompletionResponse.BillingCurrency != null)
@@ -637,8 +646,11 @@ namespace Simulator.Forms
 
                     if (preAuthCancelationResponse.DCCExchangeRate != null)
                     {
+                        string firstDigit = preAuthCancelationResponse.DCCExchangeRate.Substring(0, 1);
+                        string lastDigits = preAuthCancelationResponse.DCCExchangeRate.Substring(1, preAuthCancelationResponse.DCCExchangeRate.Length - 1);
+                        string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
                         richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + preAuthCancelationResponse.DCCExchangeRate;
+                        richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
                     }
 
                     if (preAuthCancelationResponse.BillingCurrency != null)
@@ -798,8 +810,11 @@ namespace Simulator.Forms
 
                     if (incPreAuthResponse.DCCExchangeRate != null)
                     {
+                        string firstDigit = incPreAuthResponse.DCCExchangeRate.Substring(0, 1);
+                        string lastDigits = incPreAuthResponse.DCCExchangeRate.Substring(1, incPreAuthResponse.DCCExchangeRate.Length - 1);
+                        string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
                         richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + incPreAuthResponse.DCCExchangeRate;
+                        richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
                     }
 
                     if (incPreAuthResponse.BillingCurrency != null)

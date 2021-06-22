@@ -162,17 +162,75 @@ namespace Simulator.Forms
                     richTextBox3.Select(0, 0);
                     richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n";
 
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\tRRN             :  " + transactionResponse.RRN;
+                    if (transactionResponse.DCCIndicator.Equals("1"))
+                    {
 
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\tPAN              :  " + transactionResponse.PAN;
+                        if (transactionResponse.DCCExchangeRate != null)
+                        {
+                            string firstDigit = transactionResponse.DCCExchangeRate.Substring(0, 1);
+                            string lastDigits = transactionResponse.DCCExchangeRate.Substring(1, transactionResponse.DCCExchangeRate.Length - 1);
+                            string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
+                            richTextBox3.Select(0, 0);
+                            richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
+                        }
 
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\tAuth Code  :  " + transactionResponse.AuthCode;
+                        if (transactionResponse.BillingCurrency != null)
+                        {
+                            richTextBox3.Select(0, 0);
+                            richTextBox3.SelectedText = "\r\n\tBilling Currency\t :  " + transactionResponse.BillingCurrency;
+                        }
 
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + transactionResponse.TerminalId;
+                        if (transactionResponse.BillingAmount != null)
+                        {
+                            double billingAmount = Double.Parse(transactionResponse.BillingAmount) / 100.00;
+                            richTextBox3.Select(0, 0);
+                            richTextBox3.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
+                        }
+
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  YES";
+                    }
+                    else
+                    {
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  NO";
+                    }
+
+                    if (transactionResponse.RRN != null)
+                    {
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tRRN\t\t :  " + transactionResponse.RRN;
+                    }
+
+                    if (transactionResponse.PAN != null)
+                    {
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tPAN\t\t :  " + transactionResponse.PAN;
+                    }
+
+                    if (transactionResponse.AuthCode != null)
+                    {
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tAuth Code\t :  " + transactionResponse.AuthCode;
+                    }
+
+                    if (currCode.Length != 0)
+                    {
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
+                    }
+                    //inputAmount.ToString(), currCode
+                    if (inputAmount.ToString().Length != 0)
+                    {
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + inputAmount.ToString();
+                    }
+
+                    if (transactionResponse.TerminalId != null)
+                    {
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\r\n\tTID\t\t :  " + transactionResponse.TerminalId;
+                    }
 
                     richTextBox3.Select(0, 0);
                     richTextBox3.SelectedText = "Purchase Response - " + transactionResponse.RespText;
@@ -185,7 +243,11 @@ namespace Simulator.Forms
             }
             else
             {
-                MessageBox.Show("Enter a valid amount", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.progressBar1.Style = ProgressBarStyle.Blocks;
+                amountTextBox.ForeColor = Color.Red;
+                amountTextBox.Text = "Enter a valid amount";
+                await Task.Delay(1000);
+                //MessageBox.Show("Enter a valid amount", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 amountTextBox.Text = string.Empty;
             }
         }
@@ -241,17 +303,75 @@ namespace Simulator.Forms
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
-                richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\tRRN             :  " + transactionResponse.RRN;
+                if (transactionResponse.DCCIndicator.Equals("1"))
+                {
 
-                richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\tPAN              :  " + transactionResponse.PAN;
+                    if (transactionResponse.DCCExchangeRate != null)
+                    {
+                        string firstDigit = transactionResponse.DCCExchangeRate.Substring(0, 1);
+                        string lastDigits = transactionResponse.DCCExchangeRate.Substring(1, transactionResponse.DCCExchangeRate.Length - 1);
+                        string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
+                    }
 
-                richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\tAuth Code  :  " + transactionResponse.AuthCode;
+                    if (transactionResponse.BillingCurrency != null)
+                    {
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tBilling Currency\t :  " + transactionResponse.BillingCurrency;
+                    }
 
-                richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + transactionResponse.TerminalId;
+                    if (transactionResponse.BillingAmount != null)
+                    {
+                        double billingAmount = Double.Parse(transactionResponse.BillingAmount) / 100.00;
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
+                    }
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tDCC\t\t :  YES";
+                }
+                else
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tDCC\t\t :  NO";
+                }
+
+                if (transactionResponse.RRN != null)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tRRN\t\t :  " + transactionResponse.RRN;
+                }
+
+                if (transactionResponse.PAN != null)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tPAN\t\t :  " + transactionResponse.PAN;
+                }
+
+                if (transactionResponse.AuthCode != null)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tAuth Code\t :  " + transactionResponse.AuthCode;
+                }
+
+                if (currCode.Length != 0)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
+                }
+                //inputAmount.ToString(), currCode
+                if (inputAmount.ToString().Length != 0)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + inputAmount.ToString();
+                }
+
+                if (transactionResponse.TerminalId != null)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\r\n\tTID\t\t :  " + transactionResponse.TerminalId;
+                }
 
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "Reversal Response - " + transactionResponse.RespText;

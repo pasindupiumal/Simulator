@@ -99,7 +99,6 @@ namespace Simulator.Forms
             this.amountTextBox.Name = "amountTextBox";
             this.amountTextBox.Size = new System.Drawing.Size(220, 19);
             this.amountTextBox.TabIndex = 20;
-            this.amountTextBox.Text = "10";
             // 
             // richTextBox2
             // 
