@@ -22,6 +22,9 @@ namespace Simulator.Models
         public string IssuerId;
         public string AuthCode;
         public string DCCIndicator;
+        public string BillingAmount;
+        public string BillingCurrency;
+        public string DCCExchangeRate;
         public string TerminalId;
     }
 }
