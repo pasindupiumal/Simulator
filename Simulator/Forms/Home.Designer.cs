@@ -35,12 +35,10 @@ namespace Simulator.Forms
             this.purchaseUserControlButton = new System.Windows.Forms.Button();
             this.reversalUserControlButton = new System.Windows.Forms.Button();
             this.preAuthUserControlButton = new System.Windows.Forms.Button();
-            this.refundUserControlButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.preAuthUserControl1 = new Simulator.Forms.PreAuthUserControl();
             this.settingsUserControl1 = new Simulator.Forms.SettingsUserControl();
             this.reversalUserControl1 = new Simulator.Forms.ReversalUserControl();
-            this.refundUserControl1 = new Simulator.Forms.RefundUserControl();
             this.purchaseUserControl1 = new Simulator.Forms.PurchaseUserControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -53,7 +51,6 @@ namespace Simulator.Forms
             this.panel1.Controls.Add(this.purchaseUserControlButton);
             this.panel1.Controls.Add(this.reversalUserControlButton);
             this.panel1.Controls.Add(this.preAuthUserControlButton);
-            this.panel1.Controls.Add(this.refundUserControlButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -89,7 +86,7 @@ namespace Simulator.Forms
             // 
             this.reversalUserControlButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.reversalUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reversalUserControlButton.Location = new System.Drawing.Point(43, 386);
+            this.reversalUserControlButton.Location = new System.Drawing.Point(43, 298);
             this.reversalUserControlButton.Name = "reversalUserControlButton";
             this.reversalUserControlButton.Size = new System.Drawing.Size(185, 44);
             this.reversalUserControlButton.TabIndex = 4;
@@ -109,18 +106,6 @@ namespace Simulator.Forms
             this.preAuthUserControlButton.UseVisualStyleBackColor = false;
             this.preAuthUserControlButton.Click += new System.EventHandler(this.preAuthUserControlButton_Click);
             // 
-            // refundUserControlButton
-            // 
-            this.refundUserControlButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.refundUserControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refundUserControlButton.Location = new System.Drawing.Point(43, 300);
-            this.refundUserControlButton.Name = "refundUserControlButton";
-            this.refundUserControlButton.Size = new System.Drawing.Size(185, 44);
-            this.refundUserControlButton.TabIndex = 3;
-            this.refundUserControlButton.Text = "Refund";
-            this.refundUserControlButton.UseVisualStyleBackColor = false;
-            this.refundUserControlButton.Click += new System.EventHandler(this.refundUserControlButton_Click);
-            // 
             // panel2
             // 
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -128,7 +113,6 @@ namespace Simulator.Forms
             this.panel2.Controls.Add(this.preAuthUserControl1);
             this.panel2.Controls.Add(this.settingsUserControl1);
             this.panel2.Controls.Add(this.reversalUserControl1);
-            this.panel2.Controls.Add(this.refundUserControl1);
             this.panel2.Controls.Add(this.purchaseUserControl1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(274, 0);
@@ -167,15 +151,6 @@ namespace Simulator.Forms
             this.reversalUserControl1.TabIndex = 4;
             this.reversalUserControl1.Load += new System.EventHandler(this.reversalUserControl1_Load);
             // 
-            // refundUserControl1
-            // 
-            this.refundUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.refundUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.refundUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.refundUserControl1.Name = "refundUserControl1";
-            this.refundUserControl1.Size = new System.Drawing.Size(880, 665);
-            this.refundUserControl1.TabIndex = 3;
-            // 
             // purchaseUserControl1
             // 
             this.purchaseUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -198,7 +173,7 @@ namespace Simulator.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "OPI Simulator";
+            this.Text = "OPI Simulator v1.0";
             this.Load += new System.EventHandler(this.Home_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -212,11 +187,9 @@ namespace Simulator.Forms
         private System.Windows.Forms.Button purchaseUserControlButton;
         private System.Windows.Forms.Button reversalUserControlButton;
         private System.Windows.Forms.Button preAuthUserControlButton;
-        private System.Windows.Forms.Button refundUserControlButton;
         private System.Windows.Forms.Button settingsUserControlButton;
         private PurchaseUserControl purchaseUserControl1;
         private PreAuthUserControl preAuthUserControl1;
-        private RefundUserControl refundUserControl1;
         private ReversalUserControl reversalUserControl1;
         private SettingsUserControl settingsUserControl1;
         private System.Windows.Forms.Panel panel2;

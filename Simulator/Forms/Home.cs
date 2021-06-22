@@ -47,7 +47,6 @@ namespace Simulator.Forms
         {
             purchaseUserControl1.Hide();
             preAuthUserControl1.Hide();
-            refundUserControl1.Hide();
             reversalUserControl1.Hide();
             settingsUserControl1.Hide();
         }
@@ -55,7 +54,6 @@ namespace Simulator.Forms
         private void purchaseUserControlButton_Click(object sender, EventArgs e)
         {
             preAuthUserControl1.Hide();
-            refundUserControl1.Hide();
             reversalUserControl1.Hide();
             settingsUserControl1.Hide();
 
@@ -68,7 +66,6 @@ namespace Simulator.Forms
         private void preAuthUserControlButton_Click(object sender, EventArgs e)
         {
             purchaseUserControl1.Hide();
-            refundUserControl1.Hide();
             reversalUserControl1.Hide();
             settingsUserControl1.Hide();
 
@@ -83,22 +80,10 @@ namespace Simulator.Forms
 
         }
 
-        private void refundUserControlButton_Click(object sender, EventArgs e)
-        {
-            purchaseUserControl1.Hide();
-            preAuthUserControl1.Hide();
-            reversalUserControl1.Hide();
-            settingsUserControl1.Hide();
-
-            refundUserControl1.Show();
-            refundUserControl1.BringToFront();
-        }
-
         private void reversalUserControlButton_Click(object sender, EventArgs e)
         {
             purchaseUserControl1.Hide();
             preAuthUserControl1.Hide();
-            refundUserControl1.Hide();
             settingsUserControl1.Hide();
 
             reversalUserControl1.Show();
@@ -110,7 +95,6 @@ namespace Simulator.Forms
         {
             purchaseUserControl1.Hide();
             preAuthUserControl1.Hide();
-            refundUserControl1.Hide();
             reversalUserControl1.Hide();
 
             settingsUserControl1.Show();
@@ -128,6 +112,11 @@ namespace Simulator.Forms
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void refundUserControlButton_Click(object sender, EventArgs e)
         {
 
         }
