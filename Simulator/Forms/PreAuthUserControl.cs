@@ -294,17 +294,72 @@ namespace Simulator.Forms
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "\r\n\r\n" + preAuthReversalResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
-                richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\tRRN             :  " + preAuthReversalResponse.RRN;
+                if (preAuthReversalResponse.DCCIndicator.Equals("1"))
+                {
 
-                richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\tPAN              :  " + preAuthReversalResponse.PAN;
+                    if (preAuthReversalResponse.DCCExchangeRate != null)
+                    {
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + preAuthReversalResponse.DCCExchangeRate;
+                    }
 
-                richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\tAuth Code  :  " + preAuthReversalResponse.AuthCode;
+                    if (preAuthReversalResponse.BillingCurrency != null)
+                    {
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tBilling Currency\t :  " + preAuthReversalResponse.BillingCurrency;
+                    }
 
-                richTextBox3.Select(0, 0);
-                richTextBox3.SelectedText = "\r\n\r\n\tTID               :  " + preAuthReversalResponse.TerminalId;
+                    if (preAuthReversalResponse.BillingAmount != null)
+                    {
+                        double billingAmount = Double.Parse(preAuthReversalResponse.BillingAmount) / 100.00;
+                        richTextBox3.Select(0, 0);
+                        richTextBox3.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
+                    }
+
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tDCC\t\t :  YES";
+                }
+                else
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tDCC\t\t :  NO";
+                }
+
+                if (preAuthReversalResponse.RRN != null)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tRRN\t\t :  " + preAuthReversalResponse.RRN;
+                }
+
+                if (preAuthReversalResponse.PAN != null)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tPAN\t\t :  " + preAuthReversalResponse.PAN;
+                }
+
+                if (preAuthReversalResponse.AuthCode != null)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tAuth Code\t :  " + preAuthReversalResponse.AuthCode;
+                }
+
+                if (currCode.Length != 0)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
+                }
+                //inputAmount.ToString(), currCode
+                if (inputAmount.ToString().Length != 0)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + inputAmount.ToString();
+                }
+
+                if (preAuthReversalResponse.TerminalId != null)
+                {
+                    richTextBox3.Select(0, 0);
+                    richTextBox3.SelectedText = "\r\n\r\n\tTID\t\t :  " + preAuthReversalResponse.TerminalId;
+                }
 
                 richTextBox3.Select(0, 0);
                 richTextBox3.SelectedText = "Reversal Response - " + preAuthReversalResponse.RespText;
