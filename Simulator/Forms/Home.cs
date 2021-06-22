@@ -102,6 +102,7 @@ namespace Simulator.Forms
             settingsUserControl1.Hide();
 
             reversalUserControl1.Show();
+            reversalUserControl1.clearFields();
             reversalUserControl1.BringToFront();
         }
 
