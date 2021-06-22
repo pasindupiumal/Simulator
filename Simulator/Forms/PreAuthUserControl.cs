@@ -184,19 +184,19 @@ namespace Simulator.Forms
                         richTextBox3.SelectedText = "\r\n\tDCC\t\t :  NO";
                     }
                     
-                    if(preAuthResponse.RRN.Length != 0)
+                    if(preAuthResponse.RRN != null)
                     {
                         richTextBox3.Select(0, 0);
                         richTextBox3.SelectedText = "\r\n\tRRN\t\t :  " + preAuthResponse.RRN;
                     }
                     
-                    if(preAuthResponse.PAN.Length != 0)
+                    if(preAuthResponse.PAN != null)
                     {
                         richTextBox3.Select(0, 0);
                         richTextBox3.SelectedText = "\r\n\tPAN\t\t :  " + preAuthResponse.PAN;
                     }
                     
-                    if(preAuthResponse.AuthCode.Length != 0)
+                    if(preAuthResponse.AuthCode != null)
                     {
                         richTextBox3.Select(0, 0);
                         richTextBox3.SelectedText = "\r\n\tAuth Code\t :  " + preAuthResponse.AuthCode;
@@ -214,7 +214,7 @@ namespace Simulator.Forms
                         richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + inputAmount.ToString();
                     }
 
-                    if (preAuthResponse.TerminalId.Length != 0)
+                    if (preAuthResponse.TerminalId != null)
                     {
                         richTextBox3.Select(0, 0);
                         richTextBox3.SelectedText = "\r\n\r\n\tTID\t\t :  " + preAuthResponse.TerminalId;
