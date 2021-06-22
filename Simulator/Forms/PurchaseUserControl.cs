@@ -227,7 +227,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + inputAmount.ToString();
+                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
                     }
 
                     if (transactionResponse.TerminalId != null)
@@ -373,7 +373,7 @@ namespace Simulator.Forms
                 if (inputAmount.ToString().Length != 0)
                 {
                     richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + inputAmount.ToString();
+                    richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
                 }
 
                 if (transactionResponse.TerminalId != null)

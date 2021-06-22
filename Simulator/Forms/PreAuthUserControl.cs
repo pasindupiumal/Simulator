@@ -218,7 +218,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + inputAmount.ToString();
+                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
                     }
 
                     if (preAuthResponse.TerminalId != null)
@@ -382,7 +382,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + inputAmount.ToString();
+                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
                     }
 
                     if (preAuthReversalResponse.TerminalId != null)
@@ -583,7 +583,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + inputAmount.ToString();
+                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
                     }
 
                     if (preAuthCompletionResponse.TerminalId != null)
@@ -773,7 +773,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + inputAmount.ToString();
+                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
                     }
 
                     if (preAuthCancelationResponse.TerminalId != null)
@@ -963,7 +963,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + inputAmount.ToString();
+                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
                     }
 
                     if (incPreAuthResponse.TerminalId != null)
@@ -1016,6 +1016,11 @@ namespace Simulator.Forms
                 amountTextBox.Text = string.Empty;
                 amountTextBox.ForeColor = Color.Black;
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

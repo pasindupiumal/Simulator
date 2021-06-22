@@ -182,9 +182,10 @@ namespace Simulator.Forms
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(452, 368);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 16);
+            this.label4.Size = new System.Drawing.Size(116, 16);
             this.label4.TabIndex = 42;
-            this.label4.Text = "Transaction Response";
+            this.label4.Text = "Response Details";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
