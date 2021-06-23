@@ -310,6 +310,7 @@ namespace Simulator.Forms
             this.label7.TabIndex = 55;
             this.label7.Text = "label7";
             this.label7.Visible = false;
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -323,6 +324,7 @@ namespace Simulator.Forms
             this.label8.TabIndex = 56;
             this.label8.Text = "label8";
             this.label8.Visible = false;
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // PreAuthUserControl
             // 

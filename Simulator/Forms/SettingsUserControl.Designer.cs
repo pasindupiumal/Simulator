@@ -517,8 +517,7 @@ namespace Simulator.Forms
             this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button3.Size = new System.Drawing.Size(22, 25);
             this.button3.TabIndex = 28;
-            this.toolTip1.SetToolTip(this.button3, "Default transaction amount. This can be changed at the transaction processing as " +
-        "well");
+            this.toolTip1.SetToolTip(this.button3, "Default transaction amount. This can be changed at the transaction processing");
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -536,7 +535,7 @@ namespace Simulator.Forms
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button1.Size = new System.Drawing.Size(22, 25);
             this.button1.TabIndex = 27;
-            this.toolTip1.SetToolTip(this.button1, "Terminal URL. This can be changed at the transaction processing as well");
+            this.toolTip1.SetToolTip(this.button1, "Terminal URL. This can be changed at the transaction processing");
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
