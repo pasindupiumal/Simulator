@@ -181,6 +181,8 @@
   <ItemGroup>
     <None Include="Resources\Copy Small.png" />
     <None Include="Resources\Copy Small1.png" />
+    <None Include="Resources\qm_small.png" />
+    <None Include="Resources\qm_small1.png" />
     <Content Include="westpay_name_letter.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
