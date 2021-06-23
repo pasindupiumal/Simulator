@@ -1022,5 +1022,25 @@ namespace Simulator.Forms
         {
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(richTextBox2.Text);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(richTextBox1.Text);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            Clipboard.SetText(richTextBox3.Text);
+        }
     }
 }
