@@ -406,5 +406,29 @@ namespace Simulator.Forms
         {
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (richTextBox2.Text != null && richTextBox2.Text.Length != 0)
+            {
+                Clipboard.SetText(richTextBox2.Text);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text != null && richTextBox1.Text.Length != 0)
+            {
+                Clipboard.SetText(richTextBox1.Text);
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (richTextBox3.Text != null && richTextBox3.Text.Length != 0)
+            {
+                Clipboard.SetText(richTextBox3.Text);
+            }
+        }
     }
 }

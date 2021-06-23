@@ -66,6 +66,7 @@ namespace Simulator.Forms
             this.richTextBox1.Size = new System.Drawing.Size(410, 328);
             this.richTextBox1.TabIndex = 34;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // button2
             // 
@@ -85,6 +86,7 @@ namespace Simulator.Forms
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(220, 21);
             this.comboBox1.TabIndex = 47;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textBox1
             // 
@@ -92,6 +94,7 @@ namespace Simulator.Forms
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(220, 20);
             this.textBox1.TabIndex = 46;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label6
             // 
@@ -102,6 +105,7 @@ namespace Simulator.Forms
             this.label6.Size = new System.Drawing.Size(35, 16);
             this.label6.TabIndex = 45;
             this.label6.Text = "URL";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // progressBar1
             // 
@@ -110,6 +114,7 @@ namespace Simulator.Forms
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(250, 23);
             this.progressBar1.TabIndex = 44;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // richTextBox3
             // 
@@ -124,6 +129,7 @@ namespace Simulator.Forms
             this.richTextBox3.Size = new System.Drawing.Size(838, 216);
             this.richTextBox3.TabIndex = 43;
             this.richTextBox3.Text = "";
+            this.richTextBox3.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
             // 
             // label2
             // 
@@ -134,6 +140,7 @@ namespace Simulator.Forms
             this.label2.Size = new System.Drawing.Size(97, 16);
             this.label2.TabIndex = 40;
             this.label2.Text = "Currency Code";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -144,6 +151,7 @@ namespace Simulator.Forms
             this.label1.Size = new System.Drawing.Size(53, 16);
             this.label1.TabIndex = 39;
             this.label1.Text = "Amount";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // amountTextBox
             // 
@@ -152,6 +160,7 @@ namespace Simulator.Forms
             this.amountTextBox.Name = "amountTextBox";
             this.amountTextBox.Size = new System.Drawing.Size(220, 19);
             this.amountTextBox.TabIndex = 38;
+            this.amountTextBox.TextChanged += new System.EventHandler(this.amountTextBox_TextChanged);
             // 
             // richTextBox2
             // 
@@ -166,6 +175,7 @@ namespace Simulator.Forms
             this.richTextBox2.Size = new System.Drawing.Size(408, 328);
             this.richTextBox2.TabIndex = 37;
             this.richTextBox2.Text = "";
+            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             // 
             // button1
             // 
@@ -199,6 +209,7 @@ namespace Simulator.Forms
             this.label3.Size = new System.Drawing.Size(104, 16);
             this.label3.TabIndex = 41;
             this.label3.Text = "Request Details";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button3
             // 

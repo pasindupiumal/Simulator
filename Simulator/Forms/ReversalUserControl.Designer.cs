@@ -38,6 +38,9 @@ namespace Simulator.Forms
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -125,7 +128,7 @@ namespace Simulator.Forms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(452, 368);
+            this.label4.Location = new System.Drawing.Point(481, 368);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 16);
             this.label4.TabIndex = 42;
@@ -135,16 +138,53 @@ namespace Simulator.Forms
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 368);
+            this.label3.Location = new System.Drawing.Point(53, 368);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 16);
             this.label3.TabIndex = 41;
             this.label3.Text = "Request Details";
             // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.Image = global::Simulator.Properties.Resources.Copy_Small1;
+            this.button8.Location = new System.Drawing.Point(818, 95);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(25, 19);
+            this.button8.TabIndex = 56;
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.Image = global::Simulator.Properties.Resources.Copy_Small1;
+            this.button7.Location = new System.Drawing.Point(454, 368);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(25, 19);
+            this.button7.TabIndex = 55;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.Image = global::Simulator.Properties.Resources.Copy_Small1;
+            this.button6.Location = new System.Drawing.Point(26, 368);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(25, 19);
+            this.button6.TabIndex = 54;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // ReversalUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.progressBar1);
@@ -171,5 +211,8 @@ namespace Simulator.Forms
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
     }
 }

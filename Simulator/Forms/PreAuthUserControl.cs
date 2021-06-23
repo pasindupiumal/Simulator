@@ -1025,12 +1025,18 @@ namespace Simulator.Forms
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(richTextBox2.Text);
+            if(richTextBox2.Text !=null && richTextBox2.Text.Length != 0)
+            {
+                Clipboard.SetText(richTextBox2.Text);
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(richTextBox1.Text);
+            if (richTextBox1.Text != null && richTextBox1.Text.Length != 0)
+            {
+                Clipboard.SetText(richTextBox1.Text);
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -1040,7 +1046,65 @@ namespace Simulator.Forms
 
         private void button8_Click_1(object sender, EventArgs e)
         {
-            Clipboard.SetText(richTextBox3.Text);
+            if (richTextBox3.Text != null && richTextBox3.Text.Length != 0)
+            {
+                Clipboard.SetText(richTextBox3.Text);
+            }
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void amountTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
