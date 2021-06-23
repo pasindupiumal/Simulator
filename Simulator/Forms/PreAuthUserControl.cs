@@ -1023,19 +1023,29 @@ namespace Simulator.Forms
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private async void button6_Click(object sender, EventArgs e)
         {
             if(richTextBox2.Text !=null && richTextBox2.Text.Length != 0)
             {
                 Clipboard.SetText(richTextBox2.Text);
+                label5.ForeColor = Color.Green;
+                label5.Text = "Copied";
+                label5.Visible = true;
+                await Task.Delay(1000);
+                label5.Visible = false;
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private async void button7_Click(object sender, EventArgs e)
         {
             if (richTextBox1.Text != null && richTextBox1.Text.Length != 0)
             {
                 Clipboard.SetText(richTextBox1.Text);
+                label7.ForeColor = Color.Green;
+                label7.Text = "Copied";
+                label7.Visible = true;
+                await Task.Delay(1000);
+                label7.Visible = false;
             }
         }
 
@@ -1044,11 +1054,16 @@ namespace Simulator.Forms
 
         }
 
-        private void button8_Click_1(object sender, EventArgs e)
+        private async void button8_Click_1(object sender, EventArgs e)
         {
             if (richTextBox3.Text != null && richTextBox3.Text.Length != 0)
             {
                 Clipboard.SetText(richTextBox3.Text);
+                label8.ForeColor = Color.Green;
+                label8.Text = "Copied";
+                label8.Visible = true;
+                await Task.Delay(1000);
+                label8.Visible = false;
             }
         }
 
@@ -1103,6 +1118,11 @@ namespace Simulator.Forms
         }
 
         private void richTextBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
