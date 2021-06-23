@@ -402,33 +402,108 @@ namespace Simulator.Forms
 
         }
 
+        private async void button6_Click(object sender, EventArgs e)
+        {
+            if (richTextBox2.Text != null && richTextBox2.Text.Length != 0)
+            {
+                Clipboard.SetText(richTextBox2.Text);
+                label5.ForeColor = Color.Green;
+                label5.Text = "Copied";
+                label5.Visible = true;
+                await Task.Delay(1000);
+                label5.Visible = false;
+            }
+        }
+
+        private async void button7_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text != null && richTextBox1.Text.Length != 0)
+            {
+                Clipboard.SetText(richTextBox1.Text);
+                label7.ForeColor = Color.Green;
+                label7.Text = "Copied";
+                label7.Visible = true;
+                await Task.Delay(1000);
+                label7.Visible = false;
+            }
+        }
+
+        private async void button8_Click(object sender, EventArgs e)
+        {
+            if (richTextBox3.Text != null && richTextBox3.Text.Length != 0)
+            {
+                Clipboard.SetText(richTextBox3.Text);
+                label8.ForeColor = Color.Green;
+                label8.Text = "Copied";
+                label8.Visible = true;
+                await Task.Delay(1000);
+                label8.Visible = false;
+            }
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void amountTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox2_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void label5_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void progressBar1_Click(object sender, EventArgs e)
         {
-            if (richTextBox2.Text != null && richTextBox2.Text.Length != 0)
-            {
-                Clipboard.SetText(richTextBox2.Text);
-            }
+
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void label6_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.Text != null && richTextBox1.Text.Length != 0)
-            {
-                Clipboard.SetText(richTextBox1.Text);
-            }
+
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (richTextBox3.Text != null && richTextBox3.Text.Length != 0)
-            {
-                Clipboard.SetText(richTextBox3.Text);
-            }
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
