@@ -257,7 +257,7 @@ namespace Simulator.Forms
             this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button8.BackColor = System.Drawing.Color.Transparent;
             this.button8.Image = global::Simulator.Properties.Resources.Copy_Small1;
-            this.button8.Location = new System.Drawing.Point(834, 143);
+            this.button8.Location = new System.Drawing.Point(818, 143);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(25, 19);
             this.button8.TabIndex = 53;
