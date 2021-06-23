@@ -427,7 +427,7 @@ namespace Simulator.Forms
             this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button3.Size = new System.Drawing.Size(22, 25);
             this.button3.TabIndex = 28;
-            this.toolTip1.SetToolTip(this.button3, "Default transaction amount. Change be changed at processing as well");
+            this.toolTip1.SetToolTip(this.button3, "Default transaction amount. Can be changed at processing as well");
             this.button3.UseVisualStyleBackColor = false;
             // 
             // button4
@@ -575,7 +575,7 @@ namespace Simulator.Forms
             this.button12.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button12.Size = new System.Drawing.Size(22, 25);
             this.button12.TabIndex = 37;
-            this.toolTip1.SetToolTip(this.button12, "Currency codes (752-SEK, 144-LKR)");
+            this.toolTip1.SetToolTip(this.button12, "Currency codes (752-SEK, 144-LKR). First one becomes default currency code");
             this.button12.UseVisualStyleBackColor = false;
             // 
             // SettingsUserControl
