@@ -48,6 +48,7 @@ namespace Simulator.Forms
             button3.Enabled = false;
             button4.Enabled = false;
             button5.Enabled = false;
+            button5.Visible = false;
             textBox1.ReadOnly = false;
             richTextBox1.Text = string.Empty;
             richTextBox2.Text = string.Empty;

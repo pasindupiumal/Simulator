@@ -52,6 +52,7 @@ namespace Simulator.Forms
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(279, 20);
             this.textBox1.TabIndex = 46;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label6
             // 
@@ -62,6 +63,7 @@ namespace Simulator.Forms
             this.label6.Size = new System.Drawing.Size(35, 16);
             this.label6.TabIndex = 45;
             this.label6.Text = "URL";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // progressBar1
             // 
@@ -70,6 +72,7 @@ namespace Simulator.Forms
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(250, 23);
             this.progressBar1.TabIndex = 44;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // richTextBox3
             // 
@@ -84,6 +87,7 @@ namespace Simulator.Forms
             this.richTextBox3.Size = new System.Drawing.Size(838, 267);
             this.richTextBox3.TabIndex = 43;
             this.richTextBox3.Text = "";
+            this.richTextBox3.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
             // 
             // richTextBox1
             // 
@@ -100,6 +104,7 @@ namespace Simulator.Forms
             this.richTextBox1.Size = new System.Drawing.Size(410, 328);
             this.richTextBox1.TabIndex = 34;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // richTextBox2
             // 
@@ -114,6 +119,7 @@ namespace Simulator.Forms
             this.richTextBox2.Size = new System.Drawing.Size(408, 328);
             this.richTextBox2.TabIndex = 37;
             this.richTextBox2.Text = "";
+            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             // 
             // button1
             // 
@@ -131,21 +137,23 @@ namespace Simulator.Forms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(481, 369);
+            this.label4.Location = new System.Drawing.Point(481, 370);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 16);
+            this.label4.Size = new System.Drawing.Size(116, 16);
             this.label4.TabIndex = 42;
-            this.label4.Text = "Transaction Response";
+            this.label4.Text = "Response Details";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(53, 369);
+            this.label3.Location = new System.Drawing.Point(54, 370);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 16);
             this.label3.TabIndex = 41;
             this.label3.Text = "Request Details";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button8
             // 
@@ -163,7 +171,7 @@ namespace Simulator.Forms
             // 
             this.button7.BackColor = System.Drawing.Color.Transparent;
             this.button7.Image = global::Simulator.Properties.Resources.Copy_Small1;
-            this.button7.Location = new System.Drawing.Point(454, 368);
+            this.button7.Location = new System.Drawing.Point(454, 369);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(25, 19);
             this.button7.TabIndex = 55;
@@ -174,7 +182,7 @@ namespace Simulator.Forms
             // 
             this.button6.BackColor = System.Drawing.Color.Transparent;
             this.button6.Image = global::Simulator.Properties.Resources.Copy_Small1;
-            this.button6.Location = new System.Drawing.Point(26, 368);
+            this.button6.Location = new System.Drawing.Point(26, 369);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(25, 19);
             this.button6.TabIndex = 54;
@@ -193,6 +201,7 @@ namespace Simulator.Forms
             this.label8.TabIndex = 59;
             this.label8.Text = "label8";
             this.label8.Visible = false;
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label7
             // 
@@ -204,6 +213,7 @@ namespace Simulator.Forms
             this.label7.TabIndex = 58;
             this.label7.Text = "label7";
             this.label7.Visible = false;
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label5
             // 

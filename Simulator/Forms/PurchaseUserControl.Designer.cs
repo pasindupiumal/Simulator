@@ -141,18 +141,18 @@ namespace Simulator.Forms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(480, 368);
+            this.label4.Location = new System.Drawing.Point(480, 370);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 16);
+            this.label4.Size = new System.Drawing.Size(116, 16);
             this.label4.TabIndex = 27;
-            this.label4.Text = "Transaction Response";
+            this.label4.Text = "Response Details";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 368);
+            this.label3.Location = new System.Drawing.Point(54, 370);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 16);
             this.label3.TabIndex = 26;
@@ -227,7 +227,7 @@ namespace Simulator.Forms
             // 
             this.button7.BackColor = System.Drawing.Color.Transparent;
             this.button7.Image = global::Simulator.Properties.Resources.Copy_Small1;
-            this.button7.Location = new System.Drawing.Point(454, 368);
+            this.button7.Location = new System.Drawing.Point(454, 369);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(25, 19);
             this.button7.TabIndex = 55;
@@ -238,7 +238,7 @@ namespace Simulator.Forms
             // 
             this.button6.BackColor = System.Drawing.Color.Transparent;
             this.button6.Image = global::Simulator.Properties.Resources.Copy_Small1;
-            this.button6.Location = new System.Drawing.Point(26, 368);
+            this.button6.Location = new System.Drawing.Point(26, 369);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(25, 19);
             this.button6.TabIndex = 54;
@@ -263,7 +263,7 @@ namespace Simulator.Forms
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(622, 368);
+            this.label7.Location = new System.Drawing.Point(622, 370);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 15);
             this.label7.TabIndex = 58;
@@ -275,7 +275,7 @@ namespace Simulator.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(155, 368);
+            this.label5.Location = new System.Drawing.Point(155, 370);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 15);
             this.label5.TabIndex = 57;
