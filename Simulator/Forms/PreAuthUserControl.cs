@@ -87,6 +87,11 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Pre-Auth button on click method.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void preAuthButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
@@ -99,7 +104,7 @@ namespace Simulator.Forms
             string amount = amountTextBox.Text;
             string currCodeString = currCodesComboBox.Text;
 
-            //Determine whether the provided amount is a numbers
+            //Determine whether the provided amount is a number
             bool isDouble = Double.TryParse(amount, out double amountDouble);
             int decimalCount = 0;
 
@@ -258,6 +263,11 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Pre-Auth Completion button onclick method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void preAuthCompButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
@@ -282,10 +292,10 @@ namespace Simulator.Forms
             if (isDouble && decimalCount <= 2)
             {
                 //Record initial state of buttons
-                bool button1Status = preAuthReversalButton.Enabled;
-                bool button3Status = incPreAuthButton.Enabled;
-                bool button4Status = preAuthCompButton.Enabled;
-                bool button5Status = preAuthCancelButton.Enabled;
+                bool reversalButtonStatus = preAuthReversalButton.Enabled;
+                bool incPreAuthButtonStatus = incPreAuthButton.Enabled;
+                bool preAuthCompButtonStatus = preAuthCompButton.Enabled;
+                bool preAuthCancelButtonStatus = preAuthCancelButton.Enabled;
 
                 //Disable buttons accordingly
                 preAuthReversalButton.Enabled = false;
@@ -306,7 +316,6 @@ namespace Simulator.Forms
                 restService = new RestService(urlTextBox.Text.ToString());
 
                 //Get the transaction request tailored for the available settings
-                //string authCode, string originalRRN, string transToken, string expiryDate, string pan
                 string requestString = restService.GetEncodedPreAuthCompleteRequest(inputAmount.ToString(), currCode, true, preAuthResponse.AuthCode, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
 
                 //Display request details
@@ -394,7 +403,7 @@ namespace Simulator.Forms
                         tranDetailsRichTextBox.Select(0, 0);
                         tranDetailsRichTextBox.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
                     }
-                    //inputAmount.ToString(), currCode
+
                     if (inputAmount.ToString().Length != 0)
                     {
                         tranDetailsRichTextBox.Select(0, 0);
@@ -423,11 +432,11 @@ namespace Simulator.Forms
                     else
                     {
                         //Restore buttons to original status, since the completion is unsuccessful.
-                        preAuthReversalButton.Enabled = button1Status;
+                        preAuthReversalButton.Enabled = reversalButtonStatus;
                         preAuthButton.Enabled = false;
-                        incPreAuthButton.Enabled = button3Status;
-                        preAuthCompButton.Enabled = button4Status;
-                        preAuthCancelButton.Enabled = button5Status;
+                        incPreAuthButton.Enabled = incPreAuthButtonStatus;
+                        preAuthCompButton.Enabled = preAuthCompButtonStatus;
+                        preAuthCancelButton.Enabled = preAuthCancelButtonStatus;
                         amountTextBox.ReadOnly = false;
                     }
                 }
@@ -449,6 +458,11 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Pre-Auth Cancelation button on-click method.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void preAuthCancelButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
@@ -473,10 +487,10 @@ namespace Simulator.Forms
             if (isDouble && decimalCount <= 2)
             {
                 //Record initial state of buttons
-                bool button1Status = preAuthReversalButton.Enabled;
-                bool button3Status = incPreAuthButton.Enabled;
-                bool button4Status = preAuthCompButton.Enabled;
-                bool button5Status = preAuthCancelButton.Enabled;
+                bool reversalButtonStatus = preAuthReversalButton.Enabled;
+                bool incPreAuthButtonStatus = incPreAuthButton.Enabled;
+                bool preAuthCompButtonStatus = preAuthCompButton.Enabled;
+                bool preAuthCancelButtonStatus = preAuthCancelButton.Enabled;
 
                 //Disable buttons accordingly
                 preAuthReversalButton.Enabled = false;
@@ -613,11 +627,11 @@ namespace Simulator.Forms
                     else
                     {
                         //Restore buttons to original status, since the completion is unsuccessful.
-                        preAuthReversalButton.Enabled = button1Status;
+                        preAuthReversalButton.Enabled = reversalButtonStatus;
                         preAuthButton.Enabled = false;
-                        incPreAuthButton.Enabled = button3Status;
-                        preAuthCompButton.Enabled = button4Status;
-                        preAuthCancelButton.Enabled = button5Status;
+                        incPreAuthButton.Enabled = incPreAuthButtonStatus;
+                        preAuthCompButton.Enabled = preAuthCompButtonStatus;
+                        preAuthCancelButton.Enabled = preAuthCancelButtonStatus;
                         amountTextBox.ReadOnly = false;
                     }
                 }
@@ -639,6 +653,11 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Pre-Auth Reversal button on click method.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void preAuthReversalButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
@@ -833,6 +852,11 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Incremental pre-auth button onclick method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void incPreAuthButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
@@ -1026,6 +1050,12 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Onclick method for tranDetCopyButton.
+        /// Copies the content of the transaction details rich text box to the clipboard.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void tranDetCopyButton_Click(object sender, EventArgs e)
         {
             if (tranDetailsRichTextBox.Text != null && tranDetailsRichTextBox.Text.Length != 0)
@@ -1039,6 +1069,12 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Onclick method for reqDetCopyButton.
+        /// Copies the content of the request details rich text box to the clipboard.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void reqDetCopyButton_Click(object sender, EventArgs e)
         {
             if (reqDetailsRichTextBox.Text != null && reqDetailsRichTextBox.Text.Length != 0)
@@ -1052,6 +1088,12 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Onclick method for respDetCopyButton.
+        /// Copies the content of the response details rich text box to the clipboard.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void respDetCopyButton_Click(object sender, EventArgs e)
         {
             if (resDetailsRichTextBox.Text != null && resDetailsRichTextBox.Text.Length != 0)
