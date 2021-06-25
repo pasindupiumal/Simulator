@@ -35,13 +35,13 @@ namespace Simulator.Forms
         {
             Settings.Default.Reload();
 
-            this.progressBar1.Style = ProgressBarStyle.Continuous;
+            this.progressBar.Style = ProgressBarStyle.Continuous;
             reverseLastButton.Enabled = true;
             urlTextBox.ReadOnly = false;
             respDetailsRichTextBox.Text = string.Empty;
             reqDetailsRichTextBox.Text = string.Empty;
             tranDetailsRichTextBox.Text = string.Empty;
-            progressBar1.Value = 0;
+            progressBar.Value = 0;
             urlTextBox.Text = utils.getBaseURL();
         }
 
@@ -53,10 +53,10 @@ namespace Simulator.Forms
         private async void reverseLastButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.progressBar1.Style = ProgressBarStyle.Marquee;
-            this.progressBar1.MarqueeAnimationSpeed = 25;
+            this.progressBar.Maximum = 100;
+            this.progressBar.Value = 0;
+            this.progressBar.Style = ProgressBarStyle.Marquee;
+            this.progressBar.MarqueeAnimationSpeed = 25;
 
             reverseLastButton.Enabled = false;
 
@@ -158,9 +158,9 @@ namespace Simulator.Forms
             }
 
             //Stop the progress bar
-            this.progressBar1.Style = ProgressBarStyle.Continuous;
-            this.progressBar1.MarqueeAnimationSpeed = 0;
-            this.progressBar1.Value = 100;
+            this.progressBar.Style = ProgressBarStyle.Continuous;
+            this.progressBar.MarqueeAnimationSpeed = 0;
+            this.progressBar.Value = 100;
         }
 
         /// <summary>

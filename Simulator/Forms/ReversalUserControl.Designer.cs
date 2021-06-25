@@ -31,13 +31,13 @@ namespace Simulator.Forms
         {
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.urlLabel = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.tranDetailsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.respDetailsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.reqDetailsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.reverseLastButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.respDetailsLabel = new System.Windows.Forms.Label();
+            this.reqDetailsLabel = new System.Windows.Forms.Label();
             this.transDetCopyButton = new System.Windows.Forms.Button();
             this.restDetCopyButton = new System.Windows.Forms.Button();
             this.reqDetCopyButton = new System.Windows.Forms.Button();
@@ -63,13 +63,13 @@ namespace Simulator.Forms
             this.urlLabel.TabIndex = 45;
             this.urlLabel.Text = "URL";
             // 
-            // progressBar1
+            // progressBar
             // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(615, 742);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(250, 23);
-            this.progressBar1.TabIndex = 44;
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(615, 742);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(250, 23);
+            this.progressBar.TabIndex = 44;
             // 
             // tranDetailsRichTextBox
             // 
@@ -127,25 +127,25 @@ namespace Simulator.Forms
             this.reverseLastButton.UseVisualStyleBackColor = true;
             this.reverseLastButton.Click += new System.EventHandler(this.reverseLastButton_Click);
             // 
-            // label4
+            // respDetailsLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(481, 370);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 16);
-            this.label4.TabIndex = 42;
-            this.label4.Text = "Response Details";
+            this.respDetailsLabel.AutoSize = true;
+            this.respDetailsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.respDetailsLabel.Location = new System.Drawing.Point(481, 370);
+            this.respDetailsLabel.Name = "respDetailsLabel";
+            this.respDetailsLabel.Size = new System.Drawing.Size(116, 16);
+            this.respDetailsLabel.TabIndex = 42;
+            this.respDetailsLabel.Text = "Response Details";
             // 
-            // label3
+            // reqDetailsLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 370);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 16);
-            this.label3.TabIndex = 41;
-            this.label3.Text = "Request Details";
+            this.reqDetailsLabel.AutoSize = true;
+            this.reqDetailsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reqDetailsLabel.Location = new System.Drawing.Point(54, 370);
+            this.reqDetailsLabel.Name = "reqDetailsLabel";
+            this.reqDetailsLabel.Size = new System.Drawing.Size(104, 16);
+            this.reqDetailsLabel.TabIndex = 41;
+            this.reqDetailsLabel.Text = "Request Details";
             // 
             // transDetCopyButton
             // 
@@ -228,13 +228,13 @@ namespace Simulator.Forms
             this.Controls.Add(this.reqDetCopyButton);
             this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.urlLabel);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tranDetailsRichTextBox);
             this.Controls.Add(this.respDetailsRichTextBox);
             this.Controls.Add(this.reqDetailsRichTextBox);
             this.Controls.Add(this.reverseLastButton);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.respDetailsLabel);
+            this.Controls.Add(this.reqDetailsLabel);
             this.Name = "ReversalUserControl";
             this.Size = new System.Drawing.Size(897, 777);
             this.ResumeLayout(false);
@@ -245,13 +245,13 @@ namespace Simulator.Forms
         #endregion
         private System.Windows.Forms.TextBox urlTextBox;
         private System.Windows.Forms.Label urlLabel;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.RichTextBox tranDetailsRichTextBox;
         private System.Windows.Forms.RichTextBox respDetailsRichTextBox;
         private System.Windows.Forms.RichTextBox reqDetailsRichTextBox;
         private System.Windows.Forms.Button reverseLastButton;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label respDetailsLabel;
+        private System.Windows.Forms.Label reqDetailsLabel;
         private System.Windows.Forms.Button transDetCopyButton;
         private System.Windows.Forms.Button restDetCopyButton;
         private System.Windows.Forms.Button reqDetCopyButton;
