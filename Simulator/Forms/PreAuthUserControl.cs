@@ -32,34 +32,41 @@ namespace Simulator.Forms
             InitializeComponent();
             utils = new Simulator.Shared.Utils();
             this.baseURL = utils.getBaseURL(); // Obtain the base URL
-            textBox1.Text = this.baseURL;
+            urlTextBox.Text = this.baseURL;
         }
 
-        public void clearFields()
+        /// <summary>
+        /// Method for resetting the pre-auth user control.
+        /// </summary>
+        public void ClearFields()
         {
             Settings.Default.Reload();
 
-            this.progressBar1.Style = ProgressBarStyle.Continuous;
+            this.progressBar.Style = ProgressBarStyle.Continuous;
+            progressBar.Value = 0;
             amountTextBox.Text = Settings.Default["defaultAmount"].ToString();
             amountTextBox.ReadOnly = false;
-            comboBox1.Enabled = true;
-            button1.Enabled = false;
-            button2.Enabled = true;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button5.Enabled = false;
-            button5.Visible = false;
-            textBox1.ReadOnly = false;
-            richTextBox1.Text = string.Empty;
-            richTextBox2.Text = string.Empty;
-            richTextBox3.Text = string.Empty;
-            progressBar1.Value = 0;
-            textBox1.Text = utils.getBaseURL();
+            currCodesComboBox.Enabled = true;
+            preAuthReversalButton.Enabled = false;
+            preAuthButton.Enabled = true;
+            incPreAuthButton.Enabled = false;
+            preAuthCompButton.Enabled = false;
+            preAuthCancelButton.Enabled = false;
+            preAuthCancelButton.Visible = false;
+            urlTextBox.ReadOnly = false;
+            resDetailsRichTextBox.Text = string.Empty;
+            reqDetailsRichTextBox.Text = string.Empty;
+            tranDetailsRichTextBox.Text = string.Empty;
+            urlTextBox.Text = utils.getBaseURL();
         }
 
-        public void populateCurrecyCodes()
+        /// <summary>
+        /// Method for populating the CurrCodes combo box with currency codes obtained from the settings.
+        /// </summary>
+        public void PopulateCurrecyCodes()
         {
             Settings.Default.Reload();
+
             string currCodesString = Settings.Default["currCodes"].ToString();
 
             if (currCodesString.Length == 0)
@@ -69,29 +76,29 @@ namespace Simulator.Forms
             else
             {
                 string[] currCodes = currCodesString.Split(',');
-                comboBox1.Items.Clear();
+                currCodesComboBox.Items.Clear();
 
                 for (int i = 0; i < currCodes.Length; i++)
                 {
-                    comboBox1.Items.Add(currCodes[i]);
+                    currCodesComboBox.Items.Add(currCodes[i]);
                 }
 
-                comboBox1.SelectedItem = comboBox1.Items[0];
+                currCodesComboBox.SelectedItem = currCodesComboBox.Items[0];
             }
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+        private async void preAuthButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
-            this.progressBar1.Maximum = 10;
-            this.progressBar1.Value = 10;
-            this.progressBar1.Style = ProgressBarStyle.Marquee;
-            this.progressBar1.MarqueeAnimationSpeed = 25;
+            this.progressBar.Maximum = 10;
+            this.progressBar.Value = 10;
+            this.progressBar.Style = ProgressBarStyle.Marquee;
+            this.progressBar.MarqueeAnimationSpeed = 25;
 
             //Read amount and currency code
             string amount = amountTextBox.Text;
-            string currCodeString = comboBox1.Text;
-            
+            string currCodeString = currCodesComboBox.Text;
+
             //Determine whether the provided amount is a numbers
             bool isDouble = Double.TryParse(amount, out double amountDouble);
             int decimalCount = 0;
@@ -105,9 +112,9 @@ namespace Simulator.Forms
             {
                 //Disable the input fields
                 amountTextBox.ReadOnly = true;
-                comboBox1.Enabled = false;
-                textBox1.ReadOnly = true;
-                button2.Enabled = false;
+                currCodesComboBox.Enabled = false;
+                urlTextBox.ReadOnly = true;
+                preAuthButton.Enabled = false;
 
                 string[] currCodeSeperated = currCodeString.Split('-');
                 string currCode = currCodeSeperated[0].Trim();
@@ -116,26 +123,26 @@ namespace Simulator.Forms
 
                 //Initialize RestService
                 this.baseURL = utils.getBaseURL();
-                restService = new RestService(textBox1.Text.ToString());
+                restService = new RestService(urlTextBox.Text.ToString());
 
                 //Get the transaction request tailored for the available settings
                 string requestString = restService.GetEncodedPreAuthRequest(inputAmount.ToString(), currCode, true);
 
                 //Display request details
-                richTextBox2.Select(0, 0);
-                richTextBox2.SelectedText = "\r\n\r\n" + requestString + "\r\n";
+                reqDetailsRichTextBox.Select(0, 0);
+                reqDetailsRichTextBox.SelectedText = "\r\n\r\n" + requestString + "\r\n";
 
-                richTextBox2.Select(0, 0);
-                richTextBox2.SelectedText = "Pre-Auth Request";
+                reqDetailsRichTextBox.Select(0, 0);
+                reqDetailsRichTextBox.SelectedText = "Pre-Auth Request";
 
                 //Perform transaction
                 var response = await restService.PostPreAuthRequest(inputAmount.ToString(), currCode);
 
-                richTextBox1.Select(0, 0);
-                richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n";
+                resDetailsRichTextBox.Select(0, 0);
+                resDetailsRichTextBox.SelectedText = "\r\n\r\n" + response + "\r\n";
 
-                richTextBox1.Select(0, 0);
-                richTextBox1.SelectedText = "Pre-Auth Response";
+                resDetailsRichTextBox.Select(0, 0);
+                resDetailsRichTextBox.SelectedText = "Pre-Auth Response";
 
                 //Parse transaction response
                 preAuthResponse = restService.DecodeResponse(response);
@@ -145,102 +152,103 @@ namespace Simulator.Forms
                     //Enable reversal button is the purchase is successful.
                     if (preAuthResponse.RespCode.Equals("00"))
                     {
-                        button1.Enabled = true;
-                        button3.Enabled = true;
-                        button4.Enabled = true;
-                        button5.Enabled = true;
+                        preAuthReversalButton.Enabled = true;
+                        incPreAuthButton.Enabled = true;
+                        preAuthCompButton.Enabled = true;
+                        preAuthCancelButton.Enabled = true;
                         amountTextBox.ReadOnly = false;
                     }
 
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\r\n" + preAuthResponse.PrintData + "\r\n";
+                    tranDetailsRichTextBox.Select(0, 0);
+                    tranDetailsRichTextBox.SelectedText = "\r\n\r\n" + preAuthResponse.PrintData + "\r\n";
 
-                    if(preAuthResponse.DCCIndicator == null)
+                    if (preAuthResponse.DCCIndicator == null)
                     {
                         //Do nothing
                     }
                     else if (preAuthResponse.DCCIndicator.Equals("1"))
                     {
-                        
+
                         if (preAuthResponse.DCCExchangeRate != null)
                         {
-                            string firstDigit = preAuthResponse.DCCExchangeRate.Substring(0,1);
+                            string firstDigit = preAuthResponse.DCCExchangeRate.Substring(0, 1);
                             string lastDigits = preAuthResponse.DCCExchangeRate.Substring(1, preAuthResponse.DCCExchangeRate.Length - 1);
                             string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
                         }
 
                         if (preAuthResponse.BillingCurrency != null)
                         {
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tBilling Currency\t :  " + preAuthResponse.BillingCurrency;
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Currency\t :  " + preAuthResponse.BillingCurrency;
                         }
 
                         if (preAuthResponse.BillingAmount != null)
                         {
                             double billingAmount = Double.Parse(preAuthResponse.BillingAmount) / 100.00;
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                         }
 
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  YES";
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  YES";
                     }
-                    else{
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  NO";
-                    }
-                    
-                    if(preAuthResponse.RRN != null)
+                    else
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tRRN\t\t :  " + preAuthResponse.RRN;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
                     }
-                    
-                    if(preAuthResponse.PAN != null)
+
+                    if (preAuthResponse.RRN != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tPAN\t\t :  " + preAuthResponse.PAN;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tRRN\t\t :  " + preAuthResponse.RRN;
                     }
-                    
-                    if(preAuthResponse.AuthCode != null)
+
+                    if (preAuthResponse.PAN != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAuth Code\t :  " + preAuthResponse.AuthCode;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tPAN\t\t :  " + preAuthResponse.PAN;
+                    }
+
+                    if (preAuthResponse.AuthCode != null)
+                    {
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAuth Code\t :  " + preAuthResponse.AuthCode;
                     }
 
                     if (currCode.Length != 0)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
                     }
                     //inputAmount.ToString(), currCode
                     if (inputAmount.ToString().Length != 0)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
                     }
 
                     if (preAuthResponse.TerminalId != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\r\n\tTID\t\t :  " + preAuthResponse.TerminalId;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\r\n\tTID\t\t :  " + preAuthResponse.TerminalId;
                     }
-                    
 
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "Pre-Auth Response - " + preAuthResponse.RespText;
+
+                    tranDetailsRichTextBox.Select(0, 0);
+                    tranDetailsRichTextBox.SelectedText = "Pre-Auth Response - " + preAuthResponse.RespText;
                 }
 
                 //Stop the progress bar
-                this.progressBar1.Value = 10;
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
-                this.progressBar1.MarqueeAnimationSpeed = 0;
+                this.progressBar.Value = 10;
+                this.progressBar.Style = ProgressBarStyle.Continuous;
+                this.progressBar.MarqueeAnimationSpeed = 0;
             }
             else
             {
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
+                this.progressBar.Style = ProgressBarStyle.Continuous;
                 amountTextBox.ForeColor = Color.Red;
                 amountTextBox.Text = "Enter a valid amount";
                 await Task.Delay(1000);
@@ -250,211 +258,17 @@ namespace Simulator.Forms
             }
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void preAuthCompButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.progressBar1.Style = ProgressBarStyle.Marquee;
-            this.progressBar1.MarqueeAnimationSpeed = 25;
+            this.progressBar.Maximum = 100;
+            this.progressBar.Value = 0;
+            this.progressBar.Style = ProgressBarStyle.Marquee;
+            this.progressBar.MarqueeAnimationSpeed = 25;
 
             //Read amount and currency code
             string amount = amountTextBox.Text;
-            string currCodeString = comboBox1.Text;
-
-            //Determine whether the provided amount is a numbers
-            bool isDouble = Double.TryParse(amount, out double amountDouble);
-            int decimalCount = 0;
-
-            if (isDouble)
-            {
-                decimalCount = utils.getDecimalCount(Double.Parse(amount), amount, "en-US");
-            }
-
-            if (isDouble && decimalCount <= 2)
-            {
-                //Disable buttons
-                button1.Enabled = false;
-                button2.Enabled = false;
-                button3.Enabled = false;
-                button4.Enabled = false;
-                button5.Enabled = false;
-                amountTextBox.ReadOnly = true;
-
-                string[] currCodeSeperated = currCodeString.Split('-');
-                string currCode = currCodeSeperated[0].Trim();
-
-                double inputAmount = Double.Parse(amount);
-                inputAmount = inputAmount * 100;
-
-                //Initialize RestService
-                this.baseURL = utils.getBaseURL();
-                restService = new RestService(textBox1.Text.ToString());
-
-                //Get the transaction request tailored for the available settings
-                string requestString = restService.GetEncodedReversalRequest(inputAmount.ToString(), currCode, true);
-
-                //Display request details
-                richTextBox2.Select(0, 0);
-                richTextBox2.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
-
-                richTextBox2.Select(0, 0);
-                richTextBox2.SelectedText = "Reversal Request";
-
-                //Perform transaction
-                var response = await restService.PostReversalRequest(inputAmount.ToString(), currCode);
-
-                richTextBox1.Select(0, 0);
-                richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
-
-                richTextBox1.Select(0, 0);
-                richTextBox1.SelectedText = "Reversal Response";
-
-                //Parse transaction response
-                preAuthReversalResponse = restService.DecodeResponse(response);
-
-                if (preAuthReversalResponse != null)
-                {
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\r\n" + preAuthReversalResponse.PrintData + "\r\n\r\n\r\n\r\n";
-
-                    if (preAuthReversalResponse.DCCIndicator == null)
-                    {
-                        //Do nothing
-                    }
-                    else if (preAuthReversalResponse.DCCIndicator.Equals("1"))
-                    {
-
-                        if (preAuthReversalResponse.DCCExchangeRate != null)
-                        {
-                            string firstDigit = preAuthReversalResponse.DCCExchangeRate.Substring(0, 1);
-                            string lastDigits = preAuthReversalResponse.DCCExchangeRate.Substring(1, preAuthReversalResponse.DCCExchangeRate.Length - 1);
-                            string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
-                        }
-
-                        if (preAuthReversalResponse.BillingCurrency != null)
-                        {
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tBilling Currency\t :  " + preAuthReversalResponse.BillingCurrency;
-                        }
-
-                        if (preAuthReversalResponse.BillingAmount != null)
-                        {
-                            double billingAmount = Double.Parse(preAuthReversalResponse.BillingAmount) / 100.00;
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
-                        }
-
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  YES";
-                    }
-                    else
-                    {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  NO";
-                    }
-
-                    if (preAuthReversalResponse.RRN != null)
-                    {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tRRN\t\t :  " + preAuthReversalResponse.RRN;
-                    }
-
-                    if (preAuthReversalResponse.PAN != null)
-                    {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tPAN\t\t :  " + preAuthReversalResponse.PAN;
-                    }
-
-                    if (preAuthReversalResponse.AuthCode != null)
-                    {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAuth Code\t :  " + preAuthReversalResponse.AuthCode;
-                    }
-
-                    if (currCode.Length != 0)
-                    {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
-                    }
-                    //inputAmount.ToString(), currCode
-                    if (inputAmount.ToString().Length != 0)
-                    {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
-                    }
-
-                    if (preAuthReversalResponse.TerminalId != null)
-                    {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\r\n\tTID\t\t :  " + preAuthReversalResponse.TerminalId;
-                    }
-
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "Reversal Response - " + preAuthReversalResponse.RespText;
-
-                    if (preAuthReversalResponse.RespCode.Equals("00"))
-                    {
-                        //Enable buttons under condition
-                        if (incPreAuthAtLeastOnce)
-                        {
-                            button1.Enabled = false;
-                            button2.Enabled = false;
-                            button3.Enabled = true;
-                            button4.Enabled = true;
-                            button5.Enabled = true;
-                            amountTextBox.ReadOnly = false;
-                        }
-                        else
-                        {
-                            button1.Enabled = false;
-                            button2.Enabled = false;
-                            button3.Enabled = false;
-                            button4.Enabled = false;
-                            button5.Enabled = false;
-                            amountTextBox.ReadOnly = false;
-                        }
-                    }
-                    else
-                    {
-                        button1.Enabled = true;
-                        button2.Enabled = false;
-                        button3.Enabled = true;
-                        button4.Enabled = true;
-                        button5.Enabled = true;
-                    }
-                }
-
-                //Stop the progress bar
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
-                this.progressBar1.MarqueeAnimationSpeed = 0;
-                this.progressBar1.Value = 100;
-            }
-            else
-            {
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
-                amountTextBox.ForeColor = Color.Red;
-                amountTextBox.Text = "Enter a valid amount";
-                await Task.Delay(1000);
-                //MessageBox.Show("Enter a valid amount", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                amountTextBox.Text = string.Empty;
-                amountTextBox.ForeColor = Color.Black;
-            }
-        }
-
-        private async void button4_Click(object sender, EventArgs e)
-        {
-            //Setup progress bar settings
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.progressBar1.Style = ProgressBarStyle.Marquee;
-            this.progressBar1.MarqueeAnimationSpeed = 25;
-
-            //Read amount and currency code
-            string amount = amountTextBox.Text;
-            string currCodeString = comboBox1.Text;
+            string currCodeString = currCodesComboBox.Text;
 
             //Determine whether the provided amount is a numbers
             bool isDouble = Double.TryParse(amount, out double amountDouble);
@@ -468,17 +282,17 @@ namespace Simulator.Forms
             if (isDouble && decimalCount <= 2)
             {
                 //Record initial state of buttons
-                bool button1Status = button1.Enabled;
-                bool button3Status = button3.Enabled;
-                bool button4Status = button4.Enabled;
-                bool button5Status = button5.Enabled;
+                bool button1Status = preAuthReversalButton.Enabled;
+                bool button3Status = incPreAuthButton.Enabled;
+                bool button4Status = preAuthCompButton.Enabled;
+                bool button5Status = preAuthCancelButton.Enabled;
 
                 //Disable buttons accordingly
-                button1.Enabled = false;
-                button2.Enabled = false;
-                button3.Enabled = false;
-                button4.Enabled = false;
-                button5.Enabled = false;
+                preAuthReversalButton.Enabled = false;
+                preAuthButton.Enabled = false;
+                incPreAuthButton.Enabled = false;
+                preAuthCompButton.Enabled = false;
+                preAuthCancelButton.Enabled = false;
                 amountTextBox.ReadOnly = true;
 
                 string[] currCodeSeperated = currCodeString.Split('-');
@@ -489,35 +303,35 @@ namespace Simulator.Forms
 
                 //Initialize RestService
                 this.baseURL = utils.getBaseURL();
-                restService = new RestService(textBox1.Text.ToString());
+                restService = new RestService(urlTextBox.Text.ToString());
 
                 //Get the transaction request tailored for the available settings
                 //string authCode, string originalRRN, string transToken, string expiryDate, string pan
                 string requestString = restService.GetEncodedPreAuthCompleteRequest(inputAmount.ToString(), currCode, true, preAuthResponse.AuthCode, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
 
                 //Display request details
-                richTextBox2.Select(0, 0);
-                richTextBox2.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
+                reqDetailsRichTextBox.Select(0, 0);
+                reqDetailsRichTextBox.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
 
-                richTextBox2.Select(0, 0);
-                richTextBox2.SelectedText = "Pre-Auth Completion Request";
+                reqDetailsRichTextBox.Select(0, 0);
+                reqDetailsRichTextBox.SelectedText = "Pre-Auth Completion Request";
 
                 //Perform transaction
                 var response = await restService.PostPreAuthCompletionRequest(inputAmount.ToString(), currCode, true, preAuthResponse.AuthCode, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
 
-                richTextBox1.Select(0, 0);
-                richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
+                resDetailsRichTextBox.Select(0, 0);
+                resDetailsRichTextBox.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
 
-                richTextBox1.Select(0, 0);
-                richTextBox1.SelectedText = "Pre-Auth Completion Response";
+                resDetailsRichTextBox.Select(0, 0);
+                resDetailsRichTextBox.SelectedText = "Pre-Auth Completion Response";
 
                 //Parse transaction response
                 preAuthCompletionResponse = restService.DecodeResponse(response);
 
                 if (preAuthCompletionResponse != null)
                 {
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\r\n" + preAuthCompletionResponse.PrintData + "\r\n\r\n\r\n\r\n";
+                    tranDetailsRichTextBox.Select(0, 0);
+                    tranDetailsRichTextBox.SelectedText = "\r\n\r\n" + preAuthCompletionResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
                     if (preAuthCompletionResponse.DCCIndicator == null)
                     {
@@ -531,101 +345,101 @@ namespace Simulator.Forms
                             string firstDigit = preAuthCompletionResponse.DCCExchangeRate.Substring(0, 1);
                             string lastDigits = preAuthCompletionResponse.DCCExchangeRate.Substring(1, preAuthCompletionResponse.DCCExchangeRate.Length - 1);
                             string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
                         }
 
                         if (preAuthCompletionResponse.BillingCurrency != null)
                         {
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tBilling Currency\t :  " + preAuthCompletionResponse.BillingCurrency;
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Currency\t :  " + preAuthCompletionResponse.BillingCurrency;
                         }
 
                         if (preAuthCompletionResponse.BillingAmount != null)
                         {
                             double billingAmount = Double.Parse(preAuthCompletionResponse.BillingAmount) / 100.00;
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                         }
 
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  YES";
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  YES";
                     }
                     else
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  NO";
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
                     }
 
                     if (preAuthCompletionResponse.RRN != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tRRN\t\t :  " + preAuthCompletionResponse.RRN;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tRRN\t\t :  " + preAuthCompletionResponse.RRN;
                     }
 
                     if (preAuthCompletionResponse.PAN != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tPAN\t\t :  " + preAuthCompletionResponse.PAN;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tPAN\t\t :  " + preAuthCompletionResponse.PAN;
                     }
 
                     if (preAuthCompletionResponse.AuthCode != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAuth Code\t :  " + preAuthCompletionResponse.AuthCode;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAuth Code\t :  " + preAuthCompletionResponse.AuthCode;
                     }
 
                     if (currCode.Length != 0)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
                     }
                     //inputAmount.ToString(), currCode
                     if (inputAmount.ToString().Length != 0)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
                     }
 
                     if (preAuthCompletionResponse.TerminalId != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\r\n\tTID\t\t :  " + preAuthCompletionResponse.TerminalId;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\r\n\tTID\t\t :  " + preAuthCompletionResponse.TerminalId;
                     }
 
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "Pre-Auth Completion Response - " + preAuthCompletionResponse.RespText;
+                    tranDetailsRichTextBox.Select(0, 0);
+                    tranDetailsRichTextBox.SelectedText = "Pre-Auth Completion Response - " + preAuthCompletionResponse.RespText;
 
                     if (preAuthCompletionResponse.RespCode.Equals("00"))
                     {
                         //Diable all buttons
-                        button1.Enabled = false;
-                        button2.Enabled = false;
-                        button3.Enabled = false;
-                        button4.Enabled = false;
-                        button5.Enabled = false;
+                        preAuthReversalButton.Enabled = false;
+                        preAuthButton.Enabled = false;
+                        incPreAuthButton.Enabled = false;
+                        preAuthCompButton.Enabled = false;
+                        preAuthCancelButton.Enabled = false;
                         amountTextBox.ReadOnly = false;
                     }
                     else
                     {
                         //Restore buttons to original status, since the completion is unsuccessful.
-                        button1.Enabled = button1Status;
-                        button2.Enabled = false;
-                        button3.Enabled = button3Status;
-                        button4.Enabled = button4Status;
-                        button5.Enabled = button5Status;
+                        preAuthReversalButton.Enabled = button1Status;
+                        preAuthButton.Enabled = false;
+                        incPreAuthButton.Enabled = button3Status;
+                        preAuthCompButton.Enabled = button4Status;
+                        preAuthCancelButton.Enabled = button5Status;
                         amountTextBox.ReadOnly = false;
                     }
                 }
 
                 //Stop the progress bar
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
-                this.progressBar1.MarqueeAnimationSpeed = 0;
-                this.progressBar1.Value = 100;
+                this.progressBar.Style = ProgressBarStyle.Continuous;
+                this.progressBar.MarqueeAnimationSpeed = 0;
+                this.progressBar.Value = 100;
             }
             else
             {
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
+                this.progressBar.Style = ProgressBarStyle.Continuous;
                 amountTextBox.ForeColor = Color.Red;
                 amountTextBox.Text = "Enter a valid amount";
                 await Task.Delay(1000);
@@ -635,17 +449,17 @@ namespace Simulator.Forms
             }
         }
 
-        private async void button5_Click(object sender, EventArgs e)
+        private async void preAuthCancelButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.progressBar1.Style = ProgressBarStyle.Marquee;
-            this.progressBar1.MarqueeAnimationSpeed = 25;
+            this.progressBar.Maximum = 100;
+            this.progressBar.Value = 0;
+            this.progressBar.Style = ProgressBarStyle.Marquee;
+            this.progressBar.MarqueeAnimationSpeed = 25;
 
             //Read amount and currency code
             string amount = amountTextBox.Text;
-            string currCodeString = comboBox1.Text;
+            string currCodeString = currCodesComboBox.Text;
 
             //Determine whether the provided amount is a numbers
             bool isDouble = Double.TryParse(amount, out double amountDouble);
@@ -659,17 +473,17 @@ namespace Simulator.Forms
             if (isDouble && decimalCount <= 2)
             {
                 //Record initial state of buttons
-                bool button1Status = button1.Enabled;
-                bool button3Status = button3.Enabled;
-                bool button4Status = button4.Enabled;
-                bool button5Status = button5.Enabled;
+                bool button1Status = preAuthReversalButton.Enabled;
+                bool button3Status = incPreAuthButton.Enabled;
+                bool button4Status = preAuthCompButton.Enabled;
+                bool button5Status = preAuthCancelButton.Enabled;
 
                 //Disable buttons accordingly
-                button1.Enabled = false;
-                button2.Enabled = false;
-                button3.Enabled = false;
-                button4.Enabled = false;
-                button5.Enabled = false;
+                preAuthReversalButton.Enabled = false;
+                preAuthButton.Enabled = false;
+                incPreAuthButton.Enabled = false;
+                preAuthCompButton.Enabled = false;
+                preAuthCancelButton.Enabled = false;
                 amountTextBox.ReadOnly = true;
 
                 string[] currCodeSeperated = currCodeString.Split('-');
@@ -680,34 +494,34 @@ namespace Simulator.Forms
 
                 //Initialize RestService
                 this.baseURL = utils.getBaseURL();
-                restService = new RestService(textBox1.Text.ToString());
+                restService = new RestService(urlTextBox.Text.ToString());
 
                 //Get the transaction request tailored for the available settings
                 string requestString = restService.GetEncodedPreAuthCancelRequest(inputAmount.ToString(), currCode, true, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
 
                 //Display request details
-                richTextBox2.Select(0, 0);
-                richTextBox2.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
+                reqDetailsRichTextBox.Select(0, 0);
+                reqDetailsRichTextBox.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
 
-                richTextBox2.Select(0, 0);
-                richTextBox2.SelectedText = "Pre-Auth Cancelation Request";
+                reqDetailsRichTextBox.Select(0, 0);
+                reqDetailsRichTextBox.SelectedText = "Pre-Auth Cancelation Request";
 
                 //Perform transaction
                 var response = await restService.PostPreAuthCancelRequest(inputAmount.ToString(), currCode, true, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
 
-                richTextBox1.Select(0, 0);
-                richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
+                resDetailsRichTextBox.Select(0, 0);
+                resDetailsRichTextBox.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
 
-                richTextBox1.Select(0, 0);
-                richTextBox1.SelectedText = "Pre-Auth Cancelation Response";
+                resDetailsRichTextBox.Select(0, 0);
+                resDetailsRichTextBox.SelectedText = "Pre-Auth Cancelation Response";
 
                 //Parse transaction response
                 preAuthCancelationResponse = restService.DecodeResponse(response);
 
                 if (preAuthCancelationResponse != null)
                 {
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\r\n" + preAuthCancelationResponse.PrintData + "\r\n\r\n\r\n\r\n";
+                    tranDetailsRichTextBox.Select(0, 0);
+                    tranDetailsRichTextBox.SelectedText = "\r\n\r\n" + preAuthCancelationResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
                     if (preAuthCancelationResponse.DCCIndicator == null)
                     {
@@ -721,101 +535,101 @@ namespace Simulator.Forms
                             string firstDigit = preAuthCancelationResponse.DCCExchangeRate.Substring(0, 1);
                             string lastDigits = preAuthCancelationResponse.DCCExchangeRate.Substring(1, preAuthCancelationResponse.DCCExchangeRate.Length - 1);
                             string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
                         }
 
                         if (preAuthCancelationResponse.BillingCurrency != null)
                         {
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tBilling Currency\t :  " + preAuthCancelationResponse.BillingCurrency;
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Currency\t :  " + preAuthCancelationResponse.BillingCurrency;
                         }
 
                         if (preAuthCancelationResponse.BillingAmount != null)
                         {
                             double billingAmount = Double.Parse(preAuthCancelationResponse.BillingAmount) / 100.00;
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                         }
 
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  YES";
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  YES";
                     }
                     else
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  NO";
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
                     }
 
                     if (preAuthCancelationResponse.RRN != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tRRN\t\t :  " + preAuthCancelationResponse.RRN;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tRRN\t\t :  " + preAuthCancelationResponse.RRN;
                     }
 
                     if (preAuthCancelationResponse.PAN != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tPAN\t\t :  " + preAuthCancelationResponse.PAN;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tPAN\t\t :  " + preAuthCancelationResponse.PAN;
                     }
 
                     if (preAuthCancelationResponse.AuthCode != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAuth Code\t :  " + preAuthCancelationResponse.AuthCode;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAuth Code\t :  " + preAuthCancelationResponse.AuthCode;
                     }
 
                     if (currCode.Length != 0)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
                     }
                     //inputAmount.ToString(), currCode
                     if (inputAmount.ToString().Length != 0)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
                     }
 
                     if (preAuthCancelationResponse.TerminalId != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\r\n\tTID\t\t :  " + preAuthCancelationResponse.TerminalId;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\r\n\tTID\t\t :  " + preAuthCancelationResponse.TerminalId;
                     }
 
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "Pre-Auth Cancelation Response - " + preAuthCancelationResponse.RespText;
+                    tranDetailsRichTextBox.Select(0, 0);
+                    tranDetailsRichTextBox.SelectedText = "Pre-Auth Cancelation Response - " + preAuthCancelationResponse.RespText;
 
                     if (preAuthCancelationResponse.RespCode.Equals("00"))
                     {
                         //Diable all buttons
-                        button1.Enabled = false;
-                        button2.Enabled = false;
-                        button3.Enabled = false;
-                        button4.Enabled = false;
-                        button5.Enabled = false;
+                        preAuthReversalButton.Enabled = false;
+                        preAuthButton.Enabled = false;
+                        incPreAuthButton.Enabled = false;
+                        preAuthCompButton.Enabled = false;
+                        preAuthCancelButton.Enabled = false;
                         amountTextBox.ReadOnly = false;
                     }
                     else
                     {
                         //Restore buttons to original status, since the completion is unsuccessful.
-                        button1.Enabled = button1Status;
-                        button2.Enabled = false;
-                        button3.Enabled = button3Status;
-                        button4.Enabled = button4Status;
-                        button5.Enabled = button5Status;
+                        preAuthReversalButton.Enabled = button1Status;
+                        preAuthButton.Enabled = false;
+                        incPreAuthButton.Enabled = button3Status;
+                        preAuthCompButton.Enabled = button4Status;
+                        preAuthCancelButton.Enabled = button5Status;
                         amountTextBox.ReadOnly = false;
                     }
                 }
 
                 //Stop the progress bar
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
-                this.progressBar1.MarqueeAnimationSpeed = 0;
-                this.progressBar1.Value = 100;
+                this.progressBar.Style = ProgressBarStyle.Continuous;
+                this.progressBar.MarqueeAnimationSpeed = 0;
+                this.progressBar.Value = 100;
             }
             else
             {
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
+                this.progressBar.Style = ProgressBarStyle.Continuous;
                 amountTextBox.ForeColor = Color.Red;
                 amountTextBox.Text = "Enter a valid amount";
                 await Task.Delay(1000);
@@ -825,17 +639,211 @@ namespace Simulator.Forms
             }
         }
 
-        private async void button3_Click(object sender, EventArgs e)
+        private async void preAuthReversalButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.progressBar1.Style = ProgressBarStyle.Marquee;
-            this.progressBar1.MarqueeAnimationSpeed = 25;
+            this.progressBar.Maximum = 100;
+            this.progressBar.Value = 0;
+            this.progressBar.Style = ProgressBarStyle.Marquee;
+            this.progressBar.MarqueeAnimationSpeed = 25;
 
             //Read amount and currency code
             string amount = amountTextBox.Text;
-            string currCodeString = comboBox1.Text;
+            string currCodeString = currCodesComboBox.Text;
+
+            //Determine whether the provided amount is a numbers
+            bool isDouble = Double.TryParse(amount, out double amountDouble);
+            int decimalCount = 0;
+
+            if (isDouble)
+            {
+                decimalCount = utils.getDecimalCount(Double.Parse(amount), amount, "en-US");
+            }
+
+            if (isDouble && decimalCount <= 2)
+            {
+                //Disable buttons
+                preAuthReversalButton.Enabled = false;
+                preAuthButton.Enabled = false;
+                incPreAuthButton.Enabled = false;
+                preAuthCompButton.Enabled = false;
+                preAuthCancelButton.Enabled = false;
+                amountTextBox.ReadOnly = true;
+
+                string[] currCodeSeperated = currCodeString.Split('-');
+                string currCode = currCodeSeperated[0].Trim();
+
+                double inputAmount = Double.Parse(amount);
+                inputAmount = inputAmount * 100;
+
+                //Initialize RestService
+                this.baseURL = utils.getBaseURL();
+                restService = new RestService(urlTextBox.Text.ToString());
+
+                //Get the transaction request tailored for the available settings
+                string requestString = restService.GetEncodedReversalRequest(inputAmount.ToString(), currCode, true);
+
+                //Display request details
+                reqDetailsRichTextBox.Select(0, 0);
+                reqDetailsRichTextBox.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
+
+                reqDetailsRichTextBox.Select(0, 0);
+                reqDetailsRichTextBox.SelectedText = "Reversal Request";
+
+                //Perform transaction
+                var response = await restService.PostReversalRequest(inputAmount.ToString(), currCode);
+
+                resDetailsRichTextBox.Select(0, 0);
+                resDetailsRichTextBox.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
+
+                resDetailsRichTextBox.Select(0, 0);
+                resDetailsRichTextBox.SelectedText = "Reversal Response";
+
+                //Parse transaction response
+                preAuthReversalResponse = restService.DecodeResponse(response);
+
+                if (preAuthReversalResponse != null)
+                {
+                    tranDetailsRichTextBox.Select(0, 0);
+                    tranDetailsRichTextBox.SelectedText = "\r\n\r\n" + preAuthReversalResponse.PrintData + "\r\n\r\n\r\n\r\n";
+
+                    if (preAuthReversalResponse.DCCIndicator == null)
+                    {
+                        //Do nothing
+                    }
+                    else if (preAuthReversalResponse.DCCIndicator.Equals("1"))
+                    {
+
+                        if (preAuthReversalResponse.DCCExchangeRate != null)
+                        {
+                            string firstDigit = preAuthReversalResponse.DCCExchangeRate.Substring(0, 1);
+                            string lastDigits = preAuthReversalResponse.DCCExchangeRate.Substring(1, preAuthReversalResponse.DCCExchangeRate.Length - 1);
+                            string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
+                        }
+
+                        if (preAuthReversalResponse.BillingCurrency != null)
+                        {
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Currency\t :  " + preAuthReversalResponse.BillingCurrency;
+                        }
+
+                        if (preAuthReversalResponse.BillingAmount != null)
+                        {
+                            double billingAmount = Double.Parse(preAuthReversalResponse.BillingAmount) / 100.00;
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
+                        }
+
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  YES";
+                    }
+                    else
+                    {
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
+                    }
+
+                    if (preAuthReversalResponse.RRN != null)
+                    {
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tRRN\t\t :  " + preAuthReversalResponse.RRN;
+                    }
+
+                    if (preAuthReversalResponse.PAN != null)
+                    {
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tPAN\t\t :  " + preAuthReversalResponse.PAN;
+                    }
+
+                    if (preAuthReversalResponse.AuthCode != null)
+                    {
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAuth Code\t :  " + preAuthReversalResponse.AuthCode;
+                    }
+
+                    if (currCode.Length != 0)
+                    {
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
+                    }
+                    //inputAmount.ToString(), currCode
+                    if (inputAmount.ToString().Length != 0)
+                    {
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                    }
+
+                    if (preAuthReversalResponse.TerminalId != null)
+                    {
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\r\n\tTID\t\t :  " + preAuthReversalResponse.TerminalId;
+                    }
+
+                    tranDetailsRichTextBox.Select(0, 0);
+                    tranDetailsRichTextBox.SelectedText = "Reversal Response - " + preAuthReversalResponse.RespText;
+
+                    if (preAuthReversalResponse.RespCode.Equals("00"))
+                    {
+                        //Enable buttons under condition
+                        if (incPreAuthAtLeastOnce)
+                        {
+                            preAuthReversalButton.Enabled = false;
+                            preAuthButton.Enabled = false;
+                            incPreAuthButton.Enabled = true;
+                            preAuthCompButton.Enabled = true;
+                            preAuthCancelButton.Enabled = true;
+                            amountTextBox.ReadOnly = false;
+                        }
+                        else
+                        {
+                            preAuthReversalButton.Enabled = false;
+                            preAuthButton.Enabled = false;
+                            incPreAuthButton.Enabled = false;
+                            preAuthCompButton.Enabled = false;
+                            preAuthCancelButton.Enabled = false;
+                            amountTextBox.ReadOnly = false;
+                        }
+                    }
+                    else
+                    {
+                        preAuthReversalButton.Enabled = true;
+                        preAuthButton.Enabled = false;
+                        incPreAuthButton.Enabled = true;
+                        preAuthCompButton.Enabled = true;
+                        preAuthCancelButton.Enabled = true;
+                    }
+                }
+
+                //Stop the progress bar
+                this.progressBar.Style = ProgressBarStyle.Continuous;
+                this.progressBar.MarqueeAnimationSpeed = 0;
+                this.progressBar.Value = 100;
+            }
+            else
+            {
+                this.progressBar.Style = ProgressBarStyle.Continuous;
+                amountTextBox.ForeColor = Color.Red;
+                amountTextBox.Text = "Enter a valid amount";
+                await Task.Delay(1000);
+                //MessageBox.Show("Enter a valid amount", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                amountTextBox.Text = string.Empty;
+                amountTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private async void incPreAuthButton_Click(object sender, EventArgs e)
+        {
+            //Setup progress bar settings
+            this.progressBar.Maximum = 100;
+            this.progressBar.Value = 0;
+            this.progressBar.Style = ProgressBarStyle.Marquee;
+            this.progressBar.MarqueeAnimationSpeed = 25;
+
+            //Read amount and currency code
+            string amount = amountTextBox.Text;
+            string currCodeString = currCodesComboBox.Text;
 
             //Determine whether the provided amount is a numbers
             bool isDouble = Double.TryParse(amount, out double amountDouble);
@@ -849,20 +857,20 @@ namespace Simulator.Forms
             if (isDouble && decimalCount <= 2)
             {
                 //Record initial state of buttons
-                bool button1Status = button1.Enabled;
-                bool button3Status = button3.Enabled;
-                bool button4Status = button4.Enabled;
-                bool button5Status = button5.Enabled;
+                bool reversalButtonStatus = preAuthReversalButton.Enabled;
+                bool incPreAuthButtonStatus = incPreAuthButton.Enabled;
+                bool preAuthCompButtonStatus = preAuthCompButton.Enabled;
+                bool preAuthCancelButtonStatus = preAuthCancelButton.Enabled;
 
                 string[] currCodeSeperated = currCodeString.Split('-');
                 string currCode = currCodeSeperated[0].Trim();
 
                 //Disable buttons accordingly
-                button1.Enabled = false;
-                button2.Enabled = false;
-                button3.Enabled = false;
-                button4.Enabled = false;
-                button5.Enabled = false;
+                preAuthReversalButton.Enabled = false;
+                preAuthButton.Enabled = false;
+                incPreAuthButton.Enabled = false;
+                preAuthCompButton.Enabled = false;
+                preAuthCancelButton.Enabled = false;
                 amountTextBox.ReadOnly = true;
 
                 double inputAmount = Double.Parse(amount);
@@ -870,34 +878,34 @@ namespace Simulator.Forms
 
                 //Initialize RestService
                 this.baseURL = utils.getBaseURL();
-                restService = new RestService(textBox1.Text.ToString());
+                restService = new RestService(urlTextBox.Text.ToString());
 
                 //Get the transaction request tailored for the available settings
                 string requestString = restService.GetEncodedIncPreAuthRequest(inputAmount.ToString(), currCode, true, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
 
                 //Display request details
-                richTextBox2.Select(0, 0);
-                richTextBox2.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
+                reqDetailsRichTextBox.Select(0, 0);
+                reqDetailsRichTextBox.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
 
-                richTextBox2.Select(0, 0);
-                richTextBox2.SelectedText = "Incremental Pre-Auth Request";
+                reqDetailsRichTextBox.Select(0, 0);
+                reqDetailsRichTextBox.SelectedText = "Incremental Pre-Auth Request";
 
                 //Perform transaction
                 var response = await restService.PostIncPreAuthRequest(inputAmount.ToString(), currCode, true, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
 
-                richTextBox1.Select(0, 0);
-                richTextBox1.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
+                resDetailsRichTextBox.Select(0, 0);
+                resDetailsRichTextBox.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
 
-                richTextBox1.Select(0, 0);
-                richTextBox1.SelectedText = "Incremental Pre-Auth Response";
+                resDetailsRichTextBox.Select(0, 0);
+                resDetailsRichTextBox.SelectedText = "Incremental Pre-Auth Response";
 
                 //Parse transaction response
                 incPreAuthResponse = restService.DecodeResponse(response);
 
                 if (incPreAuthResponse != null)
                 {
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "\r\n\r\n" + incPreAuthResponse.PrintData + "\r\n\r\n\r\n\r\n";
+                    tranDetailsRichTextBox.Select(0, 0);
+                    tranDetailsRichTextBox.SelectedText = "\r\n\r\n" + incPreAuthResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
                     if (incPreAuthResponse.DCCIndicator == null)
                     {
@@ -911,70 +919,70 @@ namespace Simulator.Forms
                             string firstDigit = incPreAuthResponse.DCCExchangeRate.Substring(0, 1);
                             string lastDigits = incPreAuthResponse.DCCExchangeRate.Substring(1, incPreAuthResponse.DCCExchangeRate.Length - 1);
                             string exchangeRateString = (Double.Parse(lastDigits) / Math.Pow(10, Double.Parse(firstDigit))).ToString();
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tExchange Rate\t :  " + exchangeRateString;
                         }
 
                         if (incPreAuthResponse.BillingCurrency != null)
                         {
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tBilling Currency\t :  " + incPreAuthResponse.BillingCurrency;
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Currency\t :  " + incPreAuthResponse.BillingCurrency;
                         }
 
                         if (incPreAuthResponse.BillingAmount != null)
                         {
                             double billingAmount = Double.Parse(incPreAuthResponse.BillingAmount) / 100.00;
-                            richTextBox3.Select(0, 0);
-                            richTextBox3.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
+                            tranDetailsRichTextBox.Select(0, 0);
+                            tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                         }
 
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  YES";
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  YES";
                     }
                     else
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tDCC\t\t :  NO";
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
                     }
 
                     if (incPreAuthResponse.RRN != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tRRN\t\t :  " + incPreAuthResponse.RRN;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tRRN\t\t :  " + incPreAuthResponse.RRN;
                     }
 
                     if (incPreAuthResponse.PAN != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tPAN\t\t :  " + incPreAuthResponse.PAN;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tPAN\t\t :  " + incPreAuthResponse.PAN;
                     }
 
                     if (incPreAuthResponse.AuthCode != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAuth Code\t :  " + incPreAuthResponse.AuthCode;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAuth Code\t :  " + incPreAuthResponse.AuthCode;
                     }
 
                     if (currCode.Length != 0)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
                     }
                     //inputAmount.ToString(), currCode
                     if (inputAmount.ToString().Length != 0)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
                     }
 
                     if (incPreAuthResponse.TerminalId != null)
                     {
-                        richTextBox3.Select(0, 0);
-                        richTextBox3.SelectedText = "\r\n\r\n\tTID\t\t :  " + incPreAuthResponse.TerminalId;
+                        tranDetailsRichTextBox.Select(0, 0);
+                        tranDetailsRichTextBox.SelectedText = "\r\n\r\n\tTID\t\t :  " + incPreAuthResponse.TerminalId;
                     }
 
-                    richTextBox3.Select(0, 0);
-                    richTextBox3.SelectedText = "Incremental Pre-Auth Response - " + incPreAuthResponse.RespText;
+                    tranDetailsRichTextBox.Select(0, 0);
+                    tranDetailsRichTextBox.SelectedText = "Incremental Pre-Auth Response - " + incPreAuthResponse.RespText;
 
                     if (incPreAuthResponse.RespCode.Equals("00"))
                     {
@@ -982,84 +990,47 @@ namespace Simulator.Forms
                         incrementalPreAuthCount++;
                         incPreAuthAtLeastOnce = true;
 
-                        //Diable all buttons
-                        button1.Enabled = true;
-                        button2.Enabled = false;
-                        button3.Enabled = true;
-                        button4.Enabled = true;
-                        button5.Enabled = true;
-                        amountTextBox.ReadOnly = false; ;
+                        //Enable buttons accordingly.
+                        preAuthReversalButton.Enabled = true;
+                        preAuthButton.Enabled = false;
+                        incPreAuthButton.Enabled = true;
+                        preAuthCompButton.Enabled = true;
+                        preAuthCancelButton.Enabled = true;
+                        amountTextBox.ReadOnly = false; 
                     }
                     else
                     {
                         //Restore buttons to original status, since the completion is unsuccessful.
-                        button1.Enabled = button1Status;
-                        button2.Enabled = false;
-                        button3.Enabled = button3Status;
-                        button4.Enabled = button4Status;
-                        button5.Enabled = button5Status;
+                        preAuthReversalButton.Enabled = reversalButtonStatus;
+                        preAuthButton.Enabled = false;
+                        incPreAuthButton.Enabled = incPreAuthButtonStatus;
+                        preAuthCompButton.Enabled = preAuthCompButtonStatus;
+                        preAuthCancelButton.Enabled = preAuthCancelButtonStatus;
                         amountTextBox.ReadOnly = false;
                     }
                 }
 
                 //Stop the progress bar
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
-                this.progressBar1.MarqueeAnimationSpeed = 0;
-                this.progressBar1.Value = 100;
+                this.progressBar.Style = ProgressBarStyle.Continuous;
+                this.progressBar.MarqueeAnimationSpeed = 0;
+                this.progressBar.Value = 100;
             }
             else
             {
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
+                this.progressBar.Style = ProgressBarStyle.Continuous;
                 amountTextBox.ForeColor = Color.Red;
                 amountTextBox.Text = "Enter a valid amount";
                 await Task.Delay(1000);
-                //MessageBox.Show("Enter a valid amount", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 amountTextBox.Text = string.Empty;
                 amountTextBox.ForeColor = Color.Black;
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private async void tranDetCopyButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private async void button6_Click(object sender, EventArgs e)
-        {
-            if(richTextBox2.Text !=null && richTextBox2.Text.Length != 0)
+            if (tranDetailsRichTextBox.Text != null && tranDetailsRichTextBox.Text.Length != 0)
             {
-                Clipboard.SetText(richTextBox2.Text);
-                label5.ForeColor = Color.Green;
-                label5.Text = "Copied";
-                label5.Visible = true;
-                await Task.Delay(1000);
-                label5.Visible = false;
-            }
-        }
-
-        private async void button7_Click(object sender, EventArgs e)
-        {
-            if (richTextBox1.Text != null && richTextBox1.Text.Length != 0)
-            {
-                Clipboard.SetText(richTextBox1.Text);
-                label7.ForeColor = Color.Green;
-                label7.Text = "Copied";
-                label7.Visible = true;
-                await Task.Delay(1000);
-                label7.Visible = false;
-            }
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private async void button8_Click_1(object sender, EventArgs e)
-        {
-            if (richTextBox3.Text != null && richTextBox3.Text.Length != 0)
-            {
-                Clipboard.SetText(richTextBox3.Text);
+                Clipboard.SetText(tranDetailsRichTextBox.Text);
                 label8.ForeColor = Color.Green;
                 label8.Text = "Copied";
                 label8.Visible = true;
@@ -1068,74 +1039,30 @@ namespace Simulator.Forms
             }
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private async void reqDetCopyButton_Click(object sender, EventArgs e)
         {
-
+            if (reqDetailsRichTextBox.Text != null && reqDetailsRichTextBox.Text.Length != 0)
+            {
+                Clipboard.SetText(reqDetailsRichTextBox.Text);
+                reqDelCopyLabel.ForeColor = Color.Green;
+                reqDelCopyLabel.Text = "Copied";
+                reqDelCopyLabel.Visible = true;
+                await Task.Delay(1000);
+                reqDelCopyLabel.Visible = false;
+            }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private async void respDetCopyButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void amountTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
+            if (resDetailsRichTextBox.Text != null && resDetailsRichTextBox.Text.Length != 0)
+            {
+                Clipboard.SetText(resDetailsRichTextBox.Text);
+                resDetCopyLabel.ForeColor = Color.Green;
+                resDetCopyLabel.Text = "Copied";
+                resDetCopyLabel.Visible = true;
+                await Task.Delay(1000);
+                resDetCopyLabel.Visible = false;
+            }
         }
     }
 }
