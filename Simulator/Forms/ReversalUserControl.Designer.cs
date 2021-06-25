@@ -29,41 +29,39 @@ namespace Simulator.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.urlTextBox = new System.Windows.Forms.TextBox();
+            this.urlLabel = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.tranDetailsRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.respDetailsRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.reqDetailsRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.reverseLastButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.transDetCopyButton = new System.Windows.Forms.Button();
+            this.restDetCopyButton = new System.Windows.Forms.Button();
+            this.reqDetCopyButton = new System.Windows.Forms.Button();
+            this.tranDetCopyLabel = new System.Windows.Forms.Label();
+            this.respDetCopyLabel = new System.Windows.Forms.Label();
+            this.reqDetCopyLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // urlTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(77, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(279, 20);
-            this.textBox1.TabIndex = 46;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.urlTextBox.Location = new System.Drawing.Point(77, 35);
+            this.urlTextBox.Name = "urlTextBox";
+            this.urlTextBox.Size = new System.Drawing.Size(279, 20);
+            this.urlTextBox.TabIndex = 46;
             // 
-            // label6
+            // urlLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(24, 37);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 16);
-            this.label6.TabIndex = 45;
-            this.label6.Text = "URL";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.urlLabel.AutoSize = true;
+            this.urlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.urlLabel.Location = new System.Drawing.Point(24, 37);
+            this.urlLabel.Name = "urlLabel";
+            this.urlLabel.Size = new System.Drawing.Size(35, 16);
+            this.urlLabel.TabIndex = 45;
+            this.urlLabel.Text = "URL";
             // 
             // progressBar1
             // 
@@ -72,66 +70,62 @@ namespace Simulator.Forms
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(250, 23);
             this.progressBar1.TabIndex = 44;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
-            // richTextBox3
+            // tranDetailsRichTextBox
             // 
-            this.richTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tranDetailsRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox3.Location = new System.Drawing.Point(27, 86);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.ReadOnly = true;
-            this.richTextBox3.Size = new System.Drawing.Size(838, 267);
-            this.richTextBox3.TabIndex = 43;
-            this.richTextBox3.Text = "";
-            this.richTextBox3.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
+            this.tranDetailsRichTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.tranDetailsRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tranDetailsRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tranDetailsRichTextBox.Location = new System.Drawing.Point(27, 86);
+            this.tranDetailsRichTextBox.Name = "tranDetailsRichTextBox";
+            this.tranDetailsRichTextBox.ReadOnly = true;
+            this.tranDetailsRichTextBox.Size = new System.Drawing.Size(838, 267);
+            this.tranDetailsRichTextBox.TabIndex = 43;
+            this.tranDetailsRichTextBox.Text = "";
             // 
-            // richTextBox1
+            // respDetailsRichTextBox
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.respDetailsRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(455, 388);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(410, 328);
-            this.richTextBox1.TabIndex = 34;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.respDetailsRichTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.respDetailsRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.respDetailsRichTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.respDetailsRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.respDetailsRichTextBox.Location = new System.Drawing.Point(455, 388);
+            this.respDetailsRichTextBox.Name = "respDetailsRichTextBox";
+            this.respDetailsRichTextBox.ReadOnly = true;
+            this.respDetailsRichTextBox.Size = new System.Drawing.Size(410, 328);
+            this.respDetailsRichTextBox.TabIndex = 34;
+            this.respDetailsRichTextBox.Text = "";
             // 
-            // richTextBox2
+            // reqDetailsRichTextBox
             // 
-            this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.reqDetailsRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox2.Location = new System.Drawing.Point(27, 388);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(408, 328);
-            this.richTextBox2.TabIndex = 37;
-            this.richTextBox2.Text = "";
-            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
+            this.reqDetailsRichTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.reqDetailsRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.reqDetailsRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reqDetailsRichTextBox.Location = new System.Drawing.Point(27, 388);
+            this.reqDetailsRichTextBox.Name = "reqDetailsRichTextBox";
+            this.reqDetailsRichTextBox.ReadOnly = true;
+            this.reqDetailsRichTextBox.Size = new System.Drawing.Size(408, 328);
+            this.reqDetailsRichTextBox.TabIndex = 37;
+            this.reqDetailsRichTextBox.Text = "";
             // 
-            // button1
+            // reverseLastButton
             // 
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(403, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 33);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Reverse Last";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.reverseLastButton.Enabled = false;
+            this.reverseLastButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reverseLastButton.Location = new System.Drawing.Point(403, 28);
+            this.reverseLastButton.Name = "reverseLastButton";
+            this.reverseLastButton.Size = new System.Drawing.Size(170, 33);
+            this.reverseLastButton.TabIndex = 36;
+            this.reverseLastButton.Text = "Reverse Last";
+            this.reverseLastButton.UseVisualStyleBackColor = true;
+            this.reverseLastButton.Click += new System.EventHandler(this.reverseLastButton_Click);
             // 
             // label4
             // 
@@ -142,7 +136,6 @@ namespace Simulator.Forms
             this.label4.Size = new System.Drawing.Size(116, 16);
             this.label4.TabIndex = 42;
             this.label4.Text = "Response Details";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -153,97 +146,93 @@ namespace Simulator.Forms
             this.label3.Size = new System.Drawing.Size(104, 16);
             this.label3.TabIndex = 41;
             this.label3.Text = "Request Details";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // button8
+            // transDetCopyButton
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.Image = global::Simulator.Properties.Resources.Copy_Small1;
-            this.button8.Location = new System.Drawing.Point(818, 95);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(25, 19);
-            this.button8.TabIndex = 56;
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.transDetCopyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.transDetCopyButton.BackColor = System.Drawing.Color.Transparent;
+            this.transDetCopyButton.Image = global::Simulator.Properties.Resources.Copy_Small1;
+            this.transDetCopyButton.Location = new System.Drawing.Point(818, 95);
+            this.transDetCopyButton.Name = "transDetCopyButton";
+            this.transDetCopyButton.Size = new System.Drawing.Size(25, 19);
+            this.transDetCopyButton.TabIndex = 56;
+            this.transDetCopyButton.UseVisualStyleBackColor = false;
+            this.transDetCopyButton.Click += new System.EventHandler(this.transDetCopyButton_Click);
             // 
-            // button7
+            // restDetCopyButton
             // 
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.Image = global::Simulator.Properties.Resources.Copy_Small1;
-            this.button7.Location = new System.Drawing.Point(454, 369);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(25, 19);
-            this.button7.TabIndex = 55;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.restDetCopyButton.BackColor = System.Drawing.Color.Transparent;
+            this.restDetCopyButton.Image = global::Simulator.Properties.Resources.Copy_Small1;
+            this.restDetCopyButton.Location = new System.Drawing.Point(454, 369);
+            this.restDetCopyButton.Name = "restDetCopyButton";
+            this.restDetCopyButton.Size = new System.Drawing.Size(25, 19);
+            this.restDetCopyButton.TabIndex = 55;
+            this.restDetCopyButton.UseVisualStyleBackColor = false;
+            this.restDetCopyButton.Click += new System.EventHandler(this.respDetCopyButton_Click);
             // 
-            // button6
+            // reqDetCopyButton
             // 
-            this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.Image = global::Simulator.Properties.Resources.Copy_Small1;
-            this.button6.Location = new System.Drawing.Point(26, 369);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(25, 19);
-            this.button6.TabIndex = 54;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.reqDetCopyButton.BackColor = System.Drawing.Color.Transparent;
+            this.reqDetCopyButton.Image = global::Simulator.Properties.Resources.Copy_Small1;
+            this.reqDetCopyButton.Location = new System.Drawing.Point(26, 369);
+            this.reqDetCopyButton.Name = "reqDetCopyButton";
+            this.reqDetCopyButton.Size = new System.Drawing.Size(25, 19);
+            this.reqDetCopyButton.TabIndex = 54;
+            this.reqDetCopyButton.UseVisualStyleBackColor = false;
+            this.reqDetCopyButton.Click += new System.EventHandler(this.reqDetCopyButton_Click);
             // 
-            // label8
+            // tranDetCopyLabel
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.SystemColors.Control;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(761, 96);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 15);
-            this.label8.TabIndex = 59;
-            this.label8.Text = "label8";
-            this.label8.Visible = false;
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            this.tranDetCopyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tranDetCopyLabel.AutoSize = true;
+            this.tranDetCopyLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.tranDetCopyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tranDetCopyLabel.Location = new System.Drawing.Point(761, 96);
+            this.tranDetCopyLabel.Name = "tranDetCopyLabel";
+            this.tranDetCopyLabel.Size = new System.Drawing.Size(92, 15);
+            this.tranDetCopyLabel.TabIndex = 59;
+            this.tranDetCopyLabel.Text = "transDetCopy";
+            this.tranDetCopyLabel.Visible = false;
             // 
-            // label7
+            // respDetCopyLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(593, 369);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 15);
-            this.label7.TabIndex = 58;
-            this.label7.Text = "label7";
-            this.label7.Visible = false;
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.respDetCopyLabel.AutoSize = true;
+            this.respDetCopyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.respDetCopyLabel.Location = new System.Drawing.Point(593, 369);
+            this.respDetCopyLabel.Name = "respDetCopyLabel";
+            this.respDetCopyLabel.Size = new System.Drawing.Size(93, 15);
+            this.respDetCopyLabel.TabIndex = 58;
+            this.respDetCopyLabel.Text = "RespDetCopy";
+            this.respDetCopyLabel.Visible = false;
             // 
-            // label5
+            // reqDetCopyLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(155, 369);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 15);
-            this.label5.TabIndex = 57;
-            this.label5.Text = "label5";
-            this.label5.Visible = false;
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.reqDetCopyLabel.AutoSize = true;
+            this.reqDetCopyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reqDetCopyLabel.Location = new System.Drawing.Point(155, 369);
+            this.reqDetCopyLabel.Name = "reqDetCopyLabel";
+            this.reqDetCopyLabel.Size = new System.Drawing.Size(86, 15);
+            this.reqDetCopyLabel.TabIndex = 57;
+            this.reqDetCopyLabel.Text = "ReqDetCopy";
+            this.reqDetCopyLabel.Visible = false;
             // 
             // ReversalUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.tranDetCopyLabel);
+            this.Controls.Add(this.respDetCopyLabel);
+            this.Controls.Add(this.reqDetCopyLabel);
+            this.Controls.Add(this.transDetCopyButton);
+            this.Controls.Add(this.restDetCopyButton);
+            this.Controls.Add(this.reqDetCopyButton);
+            this.Controls.Add(this.urlTextBox);
+            this.Controls.Add(this.urlLabel);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.richTextBox3);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.tranDetailsRichTextBox);
+            this.Controls.Add(this.respDetailsRichTextBox);
+            this.Controls.Add(this.reqDetailsRichTextBox);
+            this.Controls.Add(this.reverseLastButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Name = "ReversalUserControl";
@@ -254,20 +243,20 @@ namespace Simulator.Forms
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox urlTextBox;
+        private System.Windows.Forms.Label urlLabel;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RichTextBox tranDetailsRichTextBox;
+        private System.Windows.Forms.RichTextBox respDetailsRichTextBox;
+        private System.Windows.Forms.RichTextBox reqDetailsRichTextBox;
+        private System.Windows.Forms.Button reverseLastButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button transDetCopyButton;
+        private System.Windows.Forms.Button restDetCopyButton;
+        private System.Windows.Forms.Button reqDetCopyButton;
+        private System.Windows.Forms.Label tranDetCopyLabel;
+        private System.Windows.Forms.Label respDetCopyLabel;
+        private System.Windows.Forms.Label reqDetCopyLabel;
     }
 }
