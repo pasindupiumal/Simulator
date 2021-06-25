@@ -39,7 +39,7 @@ namespace Simulator.Forms
             this.respDetLabel = new System.Windows.Forms.Label();
             this.reqDetLabel = new System.Windows.Forms.Label();
             this.tranDetailsRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.urlLabel = new System.Windows.Forms.Label();
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.currCodesComboBox = new System.Windows.Forms.ComboBox();
@@ -166,13 +166,13 @@ namespace Simulator.Forms
             this.tranDetailsRichTextBox.TabIndex = 28;
             this.tranDetailsRichTextBox.Text = "";
             // 
-            // progressBar1
+            // progressBar
             // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(615, 742);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(250, 23);
-            this.progressBar1.TabIndex = 29;
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(615, 742);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(250, 23);
+            this.progressBar.TabIndex = 29;
             // 
             // urlLabel
             // 
@@ -241,9 +241,9 @@ namespace Simulator.Forms
             this.tranDetCopyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tranDetCopyLabel.Location = new System.Drawing.Point(764, 143);
             this.tranDetCopyLabel.Name = "tranDetCopyLabel";
-            this.tranDetCopyLabel.Size = new System.Drawing.Size(47, 15);
+            this.tranDetCopyLabel.Size = new System.Drawing.Size(96, 15);
             this.tranDetCopyLabel.TabIndex = 59;
-            this.tranDetCopyLabel.Text = "label8";
+            this.tranDetCopyLabel.Text = "TransDetCopy";
             this.tranDetCopyLabel.Visible = false;
             // 
             // respDetCopyLabel
@@ -252,9 +252,9 @@ namespace Simulator.Forms
             this.respDetCopyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.respDetCopyLabel.Location = new System.Drawing.Point(622, 370);
             this.respDetCopyLabel.Name = "respDetCopyLabel";
-            this.respDetCopyLabel.Size = new System.Drawing.Size(47, 15);
+            this.respDetCopyLabel.Size = new System.Drawing.Size(93, 15);
             this.respDetCopyLabel.TabIndex = 58;
-            this.respDetCopyLabel.Text = "label7";
+            this.respDetCopyLabel.Text = "RespDetCopy";
             this.respDetCopyLabel.Visible = false;
             // 
             // reqDetCopyLabel
@@ -263,9 +263,9 @@ namespace Simulator.Forms
             this.reqDetCopyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reqDetCopyLabel.Location = new System.Drawing.Point(155, 370);
             this.reqDetCopyLabel.Name = "reqDetCopyLabel";
-            this.reqDetCopyLabel.Size = new System.Drawing.Size(47, 15);
+            this.reqDetCopyLabel.Size = new System.Drawing.Size(86, 15);
             this.reqDetCopyLabel.TabIndex = 57;
-            this.reqDetCopyLabel.Text = "label5";
+            this.reqDetCopyLabel.Text = "ReqDetCopy";
             this.reqDetCopyLabel.Visible = false;
             // 
             // PurchaseUserControl
@@ -281,7 +281,7 @@ namespace Simulator.Forms
             this.Controls.Add(this.currCodesComboBox);
             this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.urlLabel);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tranDetailsRichTextBox);
             this.Controls.Add(this.respDetailsRichTextBox);
             this.Controls.Add(this.purchaseButton);
@@ -311,7 +311,7 @@ namespace Simulator.Forms
         private System.Windows.Forms.Label respDetLabel;
         private System.Windows.Forms.Label reqDetLabel;
         private System.Windows.Forms.RichTextBox tranDetailsRichTextBox;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label urlLabel;
         private System.Windows.Forms.TextBox urlTextBox;
         private System.Windows.Forms.ComboBox currCodesComboBox;

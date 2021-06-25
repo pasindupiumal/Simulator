@@ -304,7 +304,7 @@ namespace Simulator.Forms
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.Control;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(723, 144);
+            this.label8.Location = new System.Drawing.Point(766, 144);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 15);
             this.label8.TabIndex = 56;

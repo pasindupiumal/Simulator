@@ -25,9 +25,11 @@ namespace Simulator.Forms
             utils = new Simulator.Shared.Utils();
             this.baseURL = utils.getBaseURL(); // Obtain the base URL
             urlTextBox.Text = this.baseURL;
-
         }
- 
+
+        /// <summary>
+        /// Method for populating the CurrCodes combo box with currency codes obtained from the settings.
+        /// </summary>
         public void PopulateCurrecyCodes()
         {
             Settings.Default.Reload();
@@ -51,11 +53,14 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Method for resetting the purchase user control.
+        /// </summary>
         public void ClearFields()
         {
             Settings.Default.Reload();
 
-            this.progressBar1.Style = ProgressBarStyle.Continuous;
+            this.progressBar.Style = ProgressBarStyle.Continuous;
             amountTextBox.Text = Settings.Default["defaultAmount"].ToString();
             amountTextBox.ReadOnly = false;
             currCodesComboBox.Enabled = true;
@@ -66,19 +71,22 @@ namespace Simulator.Forms
             reqDetailsRichTextBox.Text = string.Empty;
             tranDetailsRichTextBox.Text = string.Empty;
             reversalButton.Enabled = false;
-            progressBar1.Value = 0;
+            progressBar.Value = 0;
             urlTextBox.Text = utils.getBaseURL();
         }
-
     
-
+        /// <summary>
+        /// Onclick method for purchase button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void purchaseButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.progressBar1.Style = ProgressBarStyle.Marquee;
-            this.progressBar1.MarqueeAnimationSpeed = 25;
+            this.progressBar.Maximum = 100;
+            this.progressBar.Value = 0;
+            this.progressBar.Style = ProgressBarStyle.Marquee;
+            this.progressBar.MarqueeAnimationSpeed = 25;
 
             //Read amount and currency code
             string amount = amountTextBox.Text;
@@ -205,7 +213,7 @@ namespace Simulator.Forms
                         tranDetailsRichTextBox.Select(0, 0);
                         tranDetailsRichTextBox.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
                     }
-                    //inputAmount.ToString(), currCode
+
                     if (inputAmount.ToString().Length != 0)
                     {
                         tranDetailsRichTextBox.Select(0, 0);
@@ -223,13 +231,13 @@ namespace Simulator.Forms
                 }
 
                 //Stop the progress bar
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
-                this.progressBar1.MarqueeAnimationSpeed = 0;
-                this.progressBar1.Value = 100;
+                this.progressBar.Style = ProgressBarStyle.Continuous;
+                this.progressBar.MarqueeAnimationSpeed = 0;
+                this.progressBar.Value = 100;
             }
             else
             {
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
+                this.progressBar.Style = ProgressBarStyle.Continuous;
                 amountTextBox.ForeColor = Color.Red;
                 amountTextBox.Text = "Enter a valid amount";
                 await Task.Delay(1000);
@@ -239,13 +247,18 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Onclick method for Reversal button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void reversalButton_Click(object sender, EventArgs e)
         {
             //Setup progress bar settings
-            this.progressBar1.Maximum = 100;
-            this.progressBar1.Value = 0;
-            this.progressBar1.Style = ProgressBarStyle.Marquee;
-            this.progressBar1.MarqueeAnimationSpeed = 25;
+            this.progressBar.Maximum = 100;
+            this.progressBar.Value = 0;
+            this.progressBar.Style = ProgressBarStyle.Marquee;
+            this.progressBar.MarqueeAnimationSpeed = 25;
 
             reversalButton.Enabled = false;
 
@@ -351,7 +364,7 @@ namespace Simulator.Forms
                     tranDetailsRichTextBox.Select(0, 0);
                     tranDetailsRichTextBox.SelectedText = "\r\n\tCurrency Code   :  " + currCode;
                 }
-                //inputAmount.ToString(), currCode
+
                 if (inputAmount.ToString().Length != 0)
                 {
                     tranDetailsRichTextBox.Select(0, 0);
@@ -369,11 +382,17 @@ namespace Simulator.Forms
             }
 
             //Stop the progress bar
-            this.progressBar1.Style = ProgressBarStyle.Continuous;
-            this.progressBar1.MarqueeAnimationSpeed = 0;
-            this.progressBar1.Value = 100;
+            this.progressBar.Style = ProgressBarStyle.Continuous;
+            this.progressBar.MarqueeAnimationSpeed = 0;
+            this.progressBar.Value = 100;
         }
 
+        /// <summary>
+        /// Onclick method for reqDetCopyButton.
+        /// Copies the content of the request details rich text box to the clipboard.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void reqDetCopyButton_Click(object sender, EventArgs e)
         {
             if (respDetailsRichTextBox.Text != null && respDetailsRichTextBox.Text.Length != 0)
@@ -387,6 +406,12 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Onclick method for respDetCopyButton.
+        /// Copies the content of the response details rich text box to the clipboard.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void respDetCopyButton_Click(object sender, EventArgs e)
         {
             if (respDetailsRichTextBox.Text != null && respDetailsRichTextBox.Text.Length != 0)
@@ -400,6 +425,12 @@ namespace Simulator.Forms
             }
         }
 
+        /// <summary>
+        /// Onclick method for tranDetCopyButton.
+        /// Copies the content of the transaction details rich text box to the clipboard.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void tranDetCopyButton_Click(object sender, EventArgs e)
         {
             if (tranDetailsRichTextBox.Text != null && tranDetailsRichTextBox.Text.Length != 0)
