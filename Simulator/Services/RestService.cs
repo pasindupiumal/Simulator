@@ -488,7 +488,8 @@ namespace Simulator.Shared
         }
 
         /// <summary>
-        /// 
+        /// Method for sending a http POST request to initialize a purchase.
+        /// Takes Amount and Currency Code user inputs.
         /// </summary>
         /// <param name="amount"></param>
         /// <param name="currCode"></param>
@@ -515,21 +516,30 @@ namespace Simulator.Shared
                     }
                     else
                     {
-                        return "Operation failed. Unsuccessful status code.";
+                        Debug.WriteLine($"RestService Exception : Operation Failed. Unsuccessful Status Code.");
+                        return "Operation Failed. Unsuccessful Status Code.";
                     }
                 }
                 else
                 {
-                    return "Operation failed. Unable to generate encoded request.";
+                    Debug.WriteLine($"RestService Exception : Operation Failed. Unable To Generate Encoded Request.");
+                    return "Operation Failed. Unable To Generate Encoded Request.";
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : Unable to Establish Connection";
+                return "RestService Exception : Unable To Establish Connection";
             }
         }
 
+        /// <summary>
+        /// Method for sending a http POST request to initialize a reversal.
+        /// Takes Amount and Currency Code user inputs.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <returns></returns>
         public async Task<string> PostReversalRequest(string amount, string currCode)
         {
             try
@@ -552,12 +562,14 @@ namespace Simulator.Shared
                     }
                     else
                     {
-                        return "Operation failed. Unsuccessful status code.";
+                        Debug.WriteLine($"RestService Exception : Operation Failed. Unsuccessful Status Code.");
+                        return "Operation Failed. Unsuccessful Status Code.";
                     }
                 }
                 else
                 {
-                    return "Operation failed. Unable to generate encoded request." + xmlObject;
+                    Debug.WriteLine($"RestService Exception : Operation Failed. Unable To Generate Encoded Request.");
+                    return "Operation Failed. Unable To Generate Encoded Request.";
                 }
             }
             catch (Exception ex)
@@ -567,6 +579,13 @@ namespace Simulator.Shared
             }
         }
 
+        /// <summary>
+        /// Method for sending a http POST request to initialize a pre-auth.
+        /// Takes Amount and Currency Code user inputs.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <returns></returns>
         public async Task<string> PostPreAuthRequest(string amount, string currCode)
         {
             try
