@@ -34,11 +34,15 @@ namespace Simulator.Shared
             ServicePointManager.Expect100Continue = false;
         }
 
-
+        /// <summary>
+        /// Method for sending a http post request with application/json content. Used for initial testing
+        /// </summary>
+        /// <returns>Task<string></returns>
         public async Task<string> Post()
         {
             try
             {
+                //XML request as a string
                 var request = "<?xml version=\"1.0\" encoding=\"UTF - 8\" standalone=\"yes\"?><TransactionRequest><SequenceNo>000279</SequenceNo><TransType>01</TransType><TransAmount>44400</TransAmount><TransCurrency>752</TransCurrency><TransDateTime>2020-05-29T08:12:37+01:00</TransDateTime><GuestNo>62524</GuestNo><IndustryCode>1</IndustryCode><Operator>01</Operator><CardPresent>2</CardPresent><TaxAmount>0</TaxAmount><RoomRate>0</RoomRate><CheckInDate>20180815</CheckInDate><CheckOutDate>20202020</CheckOutDate><LodgingCode>3</LodgingCode><SiteId>SHELL|FSDH</SiteId><WSNo>MarkusESTLAB.596807909</WSNo><ProxyInfo>OPIV6.2</ProxyInfo><POSInfo>Opera</POSInfo></TransactionRequest>";
                 var stringRequest = new StringContent(request, Encoding.UTF8, "application/xml");
 
@@ -53,25 +57,37 @@ namespace Simulator.Shared
                 }
                 else
                 {
-                    return "Operation failed. Unsuccessful status code.";
+                    Debug.WriteLine($"RestService Exception : Operation Failed. Unsuccessful Status Code.");
+                    return "Operation Failed. Unsuccessful Status Code.";
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : Unable to Establish Connection";
+                return "RestService Exception : Unable To Establish Connection";
             }
         }
 
+        /// <summary>
+        /// Method for obtaining the serialized xml content for a purchase request.
+        /// Takes Amount, Currency Code as inputs. Sequence number is auto generated
+        /// and incremented per request.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <param name="seqIncrement"></param>
+        /// <returns></returns>
         public string GetEncodedPurchaseRequest(string amount, string currCode, bool seqIncrement)
         {
             try
             {
                 //Reload the settings
                 Settings.Default.Reload();
+
                 int seqNumber = (int)Settings.Default["sequenceNumber"];
                 string dateTime = DateTime.UtcNow.ToString("s") + DateTime.UtcNow.ToString("zzz");
 
+                //Increment the sequence number only if specified.
                 if (seqIncrement)
                 {
                     seqNumber = seqNumber + 1;
@@ -108,6 +124,7 @@ namespace Simulator.Shared
                 xmlSerializer.Serialize(xmlWriter, purchaseRequest, customNameSpace);
                 string xmlObject = stringWriterWithEncoding.ToString();
 
+                //Save the current sequence number for persistence after restart.
                 Settings.Default["sequenceNumber"] = seqNumber;
                 Settings.Default.Save();
 
@@ -120,15 +137,26 @@ namespace Simulator.Shared
             }
         }
 
+        /// <summary>
+        /// Method for obtaining the serialized xml content for a reversal request.
+        /// Takes Amount, Currency Code as inputs. Sequence number is auto generated
+        /// and incremented per request.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <param name="seqIncrement"></param>
+        /// <returns></returns>
         public string GetEncodedReversalRequest(string amount, string currCode, bool seqIncrement)
         {
             try
             {
                 //Reload the settings
                 Settings.Default.Reload();
+
                 int seqNumber = (int)Settings.Default["sequenceNumber"];
                 string dateTime = DateTime.UtcNow.ToString("s") + DateTime.UtcNow.ToString("zzz");
 
+                //Increment the sequence number only if specified.
                 if (seqIncrement)
                 {
                     seqNumber = seqNumber + 1;
@@ -159,6 +187,7 @@ namespace Simulator.Shared
                 xmlSerializer.Serialize(xmlWriter, reversalRequest, customNameSpace);
                 string xmlObject = stringWriterWithEncoding.ToString();
 
+                //Save the current sequence number for persistence after restart.
                 Settings.Default["sequenceNumber"] = seqNumber;
                 Settings.Default.Save();
 
@@ -171,15 +200,26 @@ namespace Simulator.Shared
             }
         }
 
+        /// <summary>
+        /// Method for obtaining the serialized xml content for a pre-auth request.
+        /// Takes Amount, Currency Code as inputs. Sequence number is auto generated
+        /// and incremented per request.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <param name="seqIncrement"></param>
+        /// <returns></returns>
         public string GetEncodedPreAuthRequest(string amount, string currCode, bool seqIncrement)
         {
             try
             {
                 //Reload the settings
                 Settings.Default.Reload();
+
                 int seqNumber = (int)Settings.Default["sequenceNumber"];
                 string dateTime = DateTime.UtcNow.ToString("s") + DateTime.UtcNow.ToString("zzz");
 
+                //Increment the sequence number only if specified.
                 if (seqIncrement)
                 {
                     seqNumber = seqNumber + 1;
@@ -216,6 +256,7 @@ namespace Simulator.Shared
                 xmlSerializer.Serialize(xmlWriter, preAuthRequest, customNameSpace);
                 string xmlObject = stringWriterWithEncoding.ToString();
 
+                //Save the current sequence number for persistence after restart.
                 Settings.Default["sequenceNumber"] = seqNumber;
                 Settings.Default.Save();
 
@@ -228,15 +269,31 @@ namespace Simulator.Shared
             }
         }
 
+        /// <summary>
+        /// Method for obtaining the serialized xml content for a pre-auth completion request.
+        /// Takes Amount, Currency Code, Auth Code, Original RRN, TransToken, Expiry Date and PAN as inputs. Sequence number is auto generated
+        /// and incremented per request.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <param name="seqIncrement"></param>
+        /// <param name="authCode"></param>
+        /// <param name="originalRRN"></param>
+        /// <param name="transToken"></param>
+        /// <param name="expiryDate"></param>
+        /// <param name="pan"></param>
+        /// <returns></returns>
         public string GetEncodedPreAuthCompleteRequest(string amount, string currCode, bool seqIncrement, string authCode, string originalRRN, string transToken, string expiryDate, string pan)
         {
             try
             {
                 //Reload the settings
                 Settings.Default.Reload();
+
                 int seqNumber = (int)Settings.Default["sequenceNumber"];
                 string dateTime = DateTime.UtcNow.ToString("s") + DateTime.UtcNow.ToString("zzz");
 
+                //Increment the sequence number only if specified.
                 if (seqIncrement)
                 {
                     seqNumber = seqNumber + 1;
@@ -273,6 +330,7 @@ namespace Simulator.Shared
                 xmlSerializer.Serialize(xmlWriter, preAuthCompleteRequest, customNameSpace);
                 string xmlObject = stringWriterWithEncoding.ToString();
 
+                //Save the current sequence number for persistence after restart.
                 Settings.Default["sequenceNumber"] = seqNumber;
                 Settings.Default.Save();
 
@@ -285,15 +343,30 @@ namespace Simulator.Shared
             }
         }
 
+        /// <summary>
+        /// Method for obtaining the serialized xml content for a pre-auth cancelation request.
+        /// Takes Amount, Currency Code, Original RRN, TransToken, Expiry Date and PAN as inputs. Sequence number is auto generated
+        /// and incremented per request.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <param name="seqIncrement"></param>
+        /// <param name="originalRRN"></param>
+        /// <param name="transToken"></param>
+        /// <param name="expiryDate"></param>
+        /// <param name="pan"></param>
+        /// <returns></returns>
         public string GetEncodedPreAuthCancelRequest(string amount, string currCode, bool seqIncrement, string originalRRN, string transToken, string expiryDate, string pan)
         {
             try
             {
                 //Reload the settings
                 Settings.Default.Reload();
+
                 int seqNumber = (int)Settings.Default["sequenceNumber"];
                 string dateTime = DateTime.UtcNow.ToString("s") + DateTime.UtcNow.ToString("zzz");
 
+                //Increment the sequence number only if specified.
                 if (seqIncrement)
                 {
                     seqNumber = seqNumber + 1;
@@ -329,6 +402,7 @@ namespace Simulator.Shared
                 xmlSerializer.Serialize(xmlWriter, preAuthCancelRequest, customNameSpace);
                 string xmlObject = stringWriterWithEncoding.ToString();
 
+                //Save the current sequence number for persistence after restart.
                 Settings.Default["sequenceNumber"] = seqNumber;
                 Settings.Default.Save();
 
@@ -341,15 +415,30 @@ namespace Simulator.Shared
             }
         }
 
+        /// <summary>
+        /// Method for obtaining the serialized xml content for a incremental pre-auth request.
+        /// Takes Amount, Currency Code, Original RRN, TransToken, Expiry Date and PAN as inputs. Sequence number is auto generated
+        /// and incremented per request.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <param name="seqIncrement"></param>
+        /// <param name="originalRRN"></param>
+        /// <param name="transToken"></param>
+        /// <param name="expiryDate"></param>
+        /// <param name="pan"></param>
+        /// <returns></returns>
         public string GetEncodedIncPreAuthRequest(string amount, string currCode, bool seqIncrement, string originalRRN, string transToken, string expiryDate, string pan)
         {
             try
             {
                 //Reload the settings
                 Settings.Default.Reload();
+
                 int seqNumber = (int)Settings.Default["sequenceNumber"];
                 string dateTime = DateTime.UtcNow.ToString("s") + DateTime.UtcNow.ToString("zzz");
 
+                //Increment the sequence number only if specified.
                 if (seqIncrement)
                 {
                     seqNumber = seqNumber + 1;
@@ -385,6 +474,7 @@ namespace Simulator.Shared
                 xmlSerializer.Serialize(xmlWriter, incPreAuthRequest, customNameSpace);
                 string xmlObject = stringWriterWithEncoding.ToString();
 
+                //Save the current sequence number for persistence after restart.
                 Settings.Default["sequenceNumber"] = seqNumber;
                 Settings.Default.Save();
 
@@ -397,6 +487,12 @@ namespace Simulator.Shared
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <returns></returns>
         public async Task<string> PostPurchaseRequest(string amount, string currCode)
         {
             try

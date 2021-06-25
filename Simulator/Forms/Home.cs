@@ -19,6 +19,10 @@ namespace Simulator.Forms
             validateSequenceNumber();
         }
 
+        /// <summary>
+        /// Method for validating the Sequence Number. Sequence number increments with each request.
+        /// Resets at 1 million. 
+        /// </summary>
         private void validateSequenceNumber()
         {
             Settings.Default.Reload();
@@ -43,6 +47,11 @@ namespace Simulator.Forms
 
         }
 
+        /// <summary>
+        /// On load hide all the sub user control forms.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Home_Load(object sender, EventArgs e)
         {
             purchaseUserControl1.Hide();
@@ -51,6 +60,11 @@ namespace Simulator.Forms
             settingsUserControl1.Hide();
         }
 
+        /// <summary>
+        /// Show the Purchase user control.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void purchaseUserControlButton_Click(object sender, EventArgs e)
         {
             preAuthUserControl1.Hide();
@@ -63,6 +77,11 @@ namespace Simulator.Forms
             purchaseUserControl1.BringToFront();
         }
 
+        /// <summary>
+        /// Show Pre Auth user control.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void preAuthUserControlButton_Click(object sender, EventArgs e)
         {
             purchaseUserControl1.Hide();
@@ -80,6 +99,11 @@ namespace Simulator.Forms
 
         }
 
+        /// <summary>
+        /// Show Reversal user control.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void reversalUserControlButton_Click(object sender, EventArgs e)
         {
             purchaseUserControl1.Hide();
@@ -91,6 +115,11 @@ namespace Simulator.Forms
             reversalUserControl1.BringToFront();
         }
 
+        /// <summary>
+        /// Show Settings user control.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void settingsUserControlButton_Click(object sender, EventArgs e)
         {
             purchaseUserControl1.Hide();
