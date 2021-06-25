@@ -575,7 +575,7 @@ namespace Simulator.Shared
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : Unable to Establish Connection";
+                return "RestService Exception : Unable To Establish Connection";
             }
         }
 
@@ -608,21 +608,36 @@ namespace Simulator.Shared
                     }
                     else
                     {
-                        return "Operation failed. Unsuccessful status code.";
+                        Debug.WriteLine($"RestService Exception : Operation Failed. Unsuccessful Status Code.");
+                        return "Operation Failed. Unsuccessful Status Code.";
                     }
                 }
                 else
                 {
-                    return "Operation failed. Unable to generate encoded request.";
+                    Debug.WriteLine($"RestService Exception : Operation Failed. Unable To Generate Encoded Request.");
+                    return "Operation Failed. Unable To Generate Encoded Request.";
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : Unable to Establish Connection";
+                return "RestService Exception : Unable To Establish Connection";
             }
         }
 
+        /// <summary>
+        /// Method for sending a http POST request to initialize a pre-auth completion.
+        /// Takes Amount and Currency Code, Auth Code, Original RRN, TransToken, Expiry Date, PAN as inputs.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <param name="seqIncrement"></param>
+        /// <param name="authCode"></param>
+        /// <param name="originalRRN"></param>
+        /// <param name="transToken"></param>
+        /// <param name="expiryDate"></param>
+        /// <param name="pan"></param>
+        /// <returns></returns>
         public async Task<string> PostPreAuthCompletionRequest(string amount, string currCode, bool seqIncrement, string authCode, string originalRRN, string transToken, string expiryDate, string pan)
         {
             try
@@ -645,21 +660,35 @@ namespace Simulator.Shared
                     }
                     else
                     {
-                        return "Operation failed. Unsuccessful status code.";
+                        Debug.WriteLine($"RestService Exception : Operation Failed. Unsuccessful Status Code.");
+                        return "Operation Failed. Unsuccessful Status Code.";
                     }
                 }
                 else
                 {
-                    return "Operation failed. Unable to generate encoded request.";
+                    Debug.WriteLine($"RestService Exception : Operation Failed. Unable To Generate Encoded Request.");
+                    return "Operation Failed. Unable To Generate Encoded Request.";
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : Unable to Establish Connection";
+                return "RestService Exception : Unable To Establish Connection";
             }
         }
 
+        /// <summary>
+        /// Method for sending a http POST request to initialize a pre-auth cancelation.
+        /// Takes Amount and Currency Code, Auth Code, Original RRN, TransToken, Expiry Date, PAN as inputs.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <param name="seqIncrement"></param>
+        /// <param name="originalRRN"></param>
+        /// <param name="transToken"></param>
+        /// <param name="expiryDate"></param>
+        /// <param name="pan"></param>
+        /// <returns></returns>
         public async Task<string> PostPreAuthCancelRequest(string amount, string currCode, bool seqIncrement, string originalRRN, string transToken, string expiryDate, string pan)
         {
             try
@@ -682,21 +711,35 @@ namespace Simulator.Shared
                     }
                     else
                     {
-                        return "Operation failed. Unsuccessful status code.";
+                        Debug.WriteLine($"RestService Exception : Operation Failed. Unsuccessful Status Code.");
+                        return "Operation Failed. Unsuccessful Status Code.";
                     }
                 }
                 else
                 {
-                    return "Operation failed. Unable to generate encoded request.";
+                    Debug.WriteLine($"RestService Exception : Operation Failed. Unable To Generate Encoded Request.");
+                    return "Operation Failed. Unable To Generate Encoded Request.";
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : Unable to Establish Connection";
+                return "RestService Exception : Unable To Establish Connection";
             }
         }
 
+        /// <summary>
+        /// Method for sending a http POST request to initialize a incremental pre-auth.
+        /// Takes Amount and Currency Code, Auth Code, Original RRN, TransToken, Expiry Date, PAN as inputs.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currCode"></param>
+        /// <param name="seqIncrement"></param>
+        /// <param name="originalRRN"></param>
+        /// <param name="transToken"></param>
+        /// <param name="expiryDate"></param>
+        /// <param name="pan"></param>
+        /// <returns></returns>
         public async Task<string> PostIncPreAuthRequest(string amount, string currCode, bool seqIncrement, string originalRRN, string transToken, string expiryDate, string pan)
         {
             try
@@ -719,21 +762,28 @@ namespace Simulator.Shared
                     }
                     else
                     {
-                        return "Operation failed. Unsuccessful status code.";
+                        Debug.WriteLine($"RestService Exception : Operation Failed. Unsuccessful Status Code.");
+                        return "Operation Failed. Unsuccessful Status Code.";
                     }
                 }
                 else
                 {
-                    return "Operation failed. Unable to generate encoded request.";
+                    Debug.WriteLine($"RestService Exception : Operation Failed. Unable To Generate Encoded Request.");
+                    return "Operation Failed. Unable To Generate Encoded Request.";
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"RestService Exception : {ex.Message}");
-                return "RestService Exception : Unable to Establish Connection";
+                return "RestService Exception : Unable To Establish Connection";
             }
         }
 
+        /// <summary>
+        /// Method to de-serialize an XML response. 
+        /// </summary>
+        /// <param name="xmlObject"></param>
+        /// <returns></returns>
         public TransactionResponse DecodeResponse(string xmlObject)
         {
             try
