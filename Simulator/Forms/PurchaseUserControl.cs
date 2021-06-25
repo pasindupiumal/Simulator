@@ -43,11 +43,6 @@ namespace Simulator.Forms
 
         }
 
-        private void PurchaseUserControl_Load(object sender, EventArgs e)
-        {
-
-        }
-
         public void populateCurrecyCodes()
         {
             Settings.Default.Reload();

@@ -309,7 +309,6 @@ namespace Simulator.Forms
             this.Controls.Add(this.label3);
             this.Name = "PurchaseUserControl";
             this.Size = new System.Drawing.Size(897, 777);
-            this.Load += new System.EventHandler(this.PurchaseUserControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

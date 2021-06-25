@@ -16,14 +16,14 @@ namespace Simulator.Forms
         public Home()
         {
             InitializeComponent();
-            validateSequenceNumber();
+            ValidateSequenceNumber();
         }
 
         /// <summary>
         /// Method for validating the Sequence Number. Sequence number increments with each request.
         /// Resets at 1 million. 
         /// </summary>
-        private void validateSequenceNumber()
+        private void ValidateSequenceNumber()
         {
             Settings.Default.Reload();
 
@@ -35,16 +35,6 @@ namespace Simulator.Forms
                 Settings.Default["sequenceNumber"] = seqNumber;
                 Settings.Default.Save();
             }
-        }
-
-        private void purchaseUserControl1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void settingsUserControl1_Load(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -94,11 +84,6 @@ namespace Simulator.Forms
             preAuthUserControl1.BringToFront();
         }
 
-        private void reversalUserControl1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// Show Reversal user control.
         /// </summary>
@@ -128,26 +113,6 @@ namespace Simulator.Forms
 
             settingsUserControl1.Show();
             settingsUserControl1.BringToFront();
-        }
-
-        private void preAuthUserControl1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void refundUserControlButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
