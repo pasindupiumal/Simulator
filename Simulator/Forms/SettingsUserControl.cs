@@ -16,234 +16,57 @@ namespace Simulator.Forms
         public SettingsUserControl()
         {
             InitializeComponent();
-            loadSettings();
+            LoadSettings();
         }
 
-        private void loadSettings()
+        /// <summary>
+        /// Method for loading settings
+        /// </summary>
+        private void LoadSettings()
         {
             Settings.Default.Reload();
-            textBox1.Text = Settings.Default["ip"].ToString();
-            textBox2.Text = Settings.Default["defaultAmount"].ToString();
-            textBox3.Text = Settings.Default["operatorValue"].ToString();
-            textBox4.Text = Settings.Default["industryCode"].ToString();
-            textBox5.Text = Settings.Default["siteID"].ToString();
-            textBox8.Text = Settings.Default["wsNo"].ToString();
-            textBox6.Text = Settings.Default["proxyInfo"].ToString();
-            textBox7.Text = Settings.Default["posInfo"].ToString();
-            textBox9.Text = Settings.Default["lodgingCode"].ToString();
-            textBox10.Text = Settings.Default["guestNo"].ToString();
-            textBox11.Text = Settings.Default["currCodes"].ToString();
+            urlTextBox.Text = Settings.Default["ip"].ToString();
+            defaultAmountTextBox.Text = Settings.Default["defaultAmount"].ToString();
+            operatorTextBox.Text = Settings.Default["operatorValue"].ToString();
+            industryCodeTextBox.Text = Settings.Default["industryCode"].ToString();
+            siteIDTextBox.Text = Settings.Default["siteID"].ToString();
+            wsNoTextBox.Text = Settings.Default["wsNo"].ToString();
+            proxyInfoTextBox.Text = Settings.Default["proxyInfo"].ToString();
+            posInfoTextBox.Text = Settings.Default["posInfo"].ToString();
+            lodgingCodeTextBox.Text = Settings.Default["lodgingCode"].ToString();
+            guestNoTextBox.Text = Settings.Default["guestNo"].ToString();
+            currCodesTextBox.Text = Settings.Default["currCodes"].ToString();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Method for saving settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void saveButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private async void button2_Click(object sender, EventArgs e)
-        {
-            Settings.Default["ip"] = textBox1.Text;
-            Settings.Default["defaultAmount"] = textBox2.Text;
-            Settings.Default["operatorValue"] = textBox3.Text;
-            Settings.Default["industryCode"] = textBox4.Text;
-            Settings.Default["siteID"] = textBox5.Text;
-            Settings.Default["wsNo"] = textBox8.Text;
-            Settings.Default["proxyInfo"] = textBox6.Text;
-            Settings.Default["posInfo"] = textBox7.Text;
-            Settings.Default["lodgingCode"] = textBox9.Text;
-            Settings.Default["guestNo"] = textBox10.Text;
-            Settings.Default["currCodes"] = textBox11.Text;
+            Settings.Default["ip"] = urlTextBox.Text;
+            Settings.Default["defaultAmount"] = defaultAmountTextBox.Text;
+            Settings.Default["operatorValue"] = operatorTextBox.Text;
+            Settings.Default["industryCode"] = industryCodeTextBox.Text;
+            Settings.Default["siteID"] = siteIDTextBox.Text;
+            Settings.Default["wsNo"] = wsNoTextBox.Text;
+            Settings.Default["proxyInfo"] = proxyInfoTextBox.Text;
+            Settings.Default["posInfo"] = posInfoTextBox.Text;
+            Settings.Default["lodgingCode"] = lodgingCodeTextBox.Text;
+            Settings.Default["guestNo"] = guestNoTextBox.Text;
+            Settings.Default["currCodes"] = currCodesTextBox.Text;
             Settings.Default.Save();
-            loadSettings();
+            LoadSettings();
 
             //Dispaly success message
-            label11.ForeColor = Color.Green;
-            label11.Text = "Settings Updated Successfully!";
-            label11.Visible = true;
+            savedSuccessLabel.ForeColor = Color.Green;
+            savedSuccessLabel.Text = "Settings Updated Successfully!";
+            savedSuccessLabel.Visible = true;
             await Task.Delay(2000);
-            label11.Visible = false;
-         
+            savedSuccessLabel.Visible = false;
+
             //MessageBox.Show("Settings Updated Successfully!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox11_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
         }
     }
 }

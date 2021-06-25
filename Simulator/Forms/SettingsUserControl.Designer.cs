@@ -30,595 +30,556 @@ namespace Simulator.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.urlLabel = new System.Windows.Forms.Label();
+            this.guestNoLabel = new System.Windows.Forms.Label();
+            this.lodgingCodeLabel = new System.Windows.Forms.Label();
+            this.posInfoLabel = new System.Windows.Forms.Label();
+            this.proxyInfoLabel = new System.Windows.Forms.Label();
+            this.wsNoLabel = new System.Windows.Forms.Label();
+            this.siteIDLabel = new System.Windows.Forms.Label();
+            this.industryCodeLabel = new System.Windows.Forms.Label();
+            this.operatorLabel = new System.Windows.Forms.Label();
+            this.urlTextBox = new System.Windows.Forms.TextBox();
+            this.operatorTextBox = new System.Windows.Forms.TextBox();
+            this.industryCodeTextBox = new System.Windows.Forms.TextBox();
+            this.siteIDTextBox = new System.Windows.Forms.TextBox();
+            this.proxyInfoTextBox = new System.Windows.Forms.TextBox();
+            this.posInfoTextBox = new System.Windows.Forms.TextBox();
+            this.wsNoTextBox = new System.Windows.Forms.TextBox();
+            this.lodgingCodeTextBox = new System.Windows.Forms.TextBox();
+            this.guestNoTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.currCodesHelpButton = new System.Windows.Forms.Button();
+            this.guestNoHelpButton = new System.Windows.Forms.Button();
+            this.lodgingCodeHelpButton = new System.Windows.Forms.Button();
+            this.posInfoHelpButton = new System.Windows.Forms.Button();
+            this.proxyInfoHelpButton = new System.Windows.Forms.Button();
+            this.wsNoHelpButton = new System.Windows.Forms.Button();
+            this.siteIDHelpButton = new System.Windows.Forms.Button();
+            this.industryCodeHelpButton = new System.Windows.Forms.Button();
+            this.operatorHelpButton = new System.Windows.Forms.Button();
+            this.defAmountHelpButton = new System.Windows.Forms.Button();
+            this.urlHelpButton = new System.Windows.Forms.Button();
+            this.defaultAmountLabel = new System.Windows.Forms.Label();
+            this.defaultAmountTextBox = new System.Windows.Forms.TextBox();
+            this.currCodesTextBox = new System.Windows.Forms.TextBox();
+            this.currCodesLabel = new System.Windows.Forms.Label();
+            this.savedSuccessLabel = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // urlLabel
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.urlLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(118, 63);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "IP Address";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.urlLabel.AutoSize = true;
+            this.urlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.urlLabel.Location = new System.Drawing.Point(118, 63);
+            this.urlLabel.Name = "urlLabel";
+            this.urlLabel.Size = new System.Drawing.Size(74, 16);
+            this.urlLabel.TabIndex = 0;
+            this.urlLabel.Text = "IP Address";
             // 
-            // label2
+            // guestNoLabel
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.guestNoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(118, 439);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Guest Number";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.guestNoLabel.AutoSize = true;
+            this.guestNoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestNoLabel.Location = new System.Drawing.Point(118, 439);
+            this.guestNoLabel.Name = "guestNoLabel";
+            this.guestNoLabel.Size = new System.Drawing.Size(94, 16);
+            this.guestNoLabel.TabIndex = 1;
+            this.guestNoLabel.Text = "Guest Number";
             // 
-            // label3
+            // lodgingCodeLabel
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lodgingCodeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(118, 396);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Lodging Code";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.lodgingCodeLabel.AutoSize = true;
+            this.lodgingCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lodgingCodeLabel.Location = new System.Drawing.Point(118, 396);
+            this.lodgingCodeLabel.Name = "lodgingCodeLabel";
+            this.lodgingCodeLabel.Size = new System.Drawing.Size(93, 16);
+            this.lodgingCodeLabel.TabIndex = 2;
+            this.lodgingCodeLabel.Text = "Lodging Code";
             // 
-            // label4
+            // posInfoLabel
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.posInfoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(118, 356);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 16);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "POS Info";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.posInfoLabel.AutoSize = true;
+            this.posInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.posInfoLabel.Location = new System.Drawing.Point(118, 356);
+            this.posInfoLabel.Name = "posInfoLabel";
+            this.posInfoLabel.Size = new System.Drawing.Size(60, 16);
+            this.posInfoLabel.TabIndex = 3;
+            this.posInfoLabel.Text = "POS Info";
             // 
-            // label5
+            // proxyInfoLabel
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.proxyInfoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(118, 313);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 16);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Proxy Info";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.proxyInfoLabel.AutoSize = true;
+            this.proxyInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.proxyInfoLabel.Location = new System.Drawing.Point(118, 313);
+            this.proxyInfoLabel.Name = "proxyInfoLabel";
+            this.proxyInfoLabel.Size = new System.Drawing.Size(66, 16);
+            this.proxyInfoLabel.TabIndex = 4;
+            this.proxyInfoLabel.Text = "Proxy Info";
             // 
-            // label6
+            // wsNoLabel
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.wsNoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(118, 269);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 16);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "WS Number";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.wsNoLabel.AutoSize = true;
+            this.wsNoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wsNoLabel.Location = new System.Drawing.Point(118, 269);
+            this.wsNoLabel.Name = "wsNoLabel";
+            this.wsNoLabel.Size = new System.Drawing.Size(81, 16);
+            this.wsNoLabel.TabIndex = 5;
+            this.wsNoLabel.Text = "WS Number";
             // 
-            // label7
+            // siteIDLabel
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.siteIDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(118, 226);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 16);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Site ID";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.siteIDLabel.AutoSize = true;
+            this.siteIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siteIDLabel.Location = new System.Drawing.Point(118, 226);
+            this.siteIDLabel.Name = "siteIDLabel";
+            this.siteIDLabel.Size = new System.Drawing.Size(47, 16);
+            this.siteIDLabel.TabIndex = 6;
+            this.siteIDLabel.Text = "Site ID";
             // 
-            // label8
+            // industryCodeLabel
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.industryCodeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(118, 184);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 16);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Industry Code";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            this.industryCodeLabel.AutoSize = true;
+            this.industryCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.industryCodeLabel.Location = new System.Drawing.Point(118, 184);
+            this.industryCodeLabel.Name = "industryCodeLabel";
+            this.industryCodeLabel.Size = new System.Drawing.Size(90, 16);
+            this.industryCodeLabel.TabIndex = 7;
+            this.industryCodeLabel.Text = "Industry Code";
             // 
-            // label9
+            // operatorLabel
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.operatorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(118, 144);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 16);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Operator";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
+            this.operatorLabel.AutoSize = true;
+            this.operatorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.operatorLabel.Location = new System.Drawing.Point(118, 144);
+            this.operatorLabel.Name = "operatorLabel";
+            this.operatorLabel.Size = new System.Drawing.Size(61, 16);
+            this.operatorLabel.TabIndex = 8;
+            this.operatorLabel.Text = "Operator";
             // 
-            // textBox1
+            // urlTextBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.urlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(233, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(449, 22);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.urlTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.urlTextBox.Location = new System.Drawing.Point(233, 57);
+            this.urlTextBox.Name = "urlTextBox";
+            this.urlTextBox.Size = new System.Drawing.Size(449, 22);
+            this.urlTextBox.TabIndex = 10;
             // 
-            // textBox3
+            // operatorTextBox
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.operatorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(233, 138);
-            this.textBox3.MaxLength = 26;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(449, 22);
-            this.textBox3.TabIndex = 12;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.operatorTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.operatorTextBox.Location = new System.Drawing.Point(233, 138);
+            this.operatorTextBox.MaxLength = 26;
+            this.operatorTextBox.Name = "operatorTextBox";
+            this.operatorTextBox.Size = new System.Drawing.Size(449, 22);
+            this.operatorTextBox.TabIndex = 12;
             // 
-            // textBox4
+            // industryCodeTextBox
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.industryCodeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(234, 178);
-            this.textBox4.MaxLength = 1;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(448, 22);
-            this.textBox4.TabIndex = 13;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.industryCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.industryCodeTextBox.Location = new System.Drawing.Point(234, 178);
+            this.industryCodeTextBox.MaxLength = 1;
+            this.industryCodeTextBox.Name = "industryCodeTextBox";
+            this.industryCodeTextBox.Size = new System.Drawing.Size(448, 22);
+            this.industryCodeTextBox.TabIndex = 13;
             // 
-            // textBox5
+            // siteIDTextBox
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.siteIDTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(233, 220);
-            this.textBox5.MaxLength = 61;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(448, 22);
-            this.textBox5.TabIndex = 14;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            this.siteIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siteIDTextBox.Location = new System.Drawing.Point(233, 220);
+            this.siteIDTextBox.MaxLength = 61;
+            this.siteIDTextBox.Name = "siteIDTextBox";
+            this.siteIDTextBox.Size = new System.Drawing.Size(448, 22);
+            this.siteIDTextBox.TabIndex = 14;
             // 
-            // textBox6
+            // proxyInfoTextBox
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.proxyInfoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(232, 307);
-            this.textBox6.MaxLength = 40;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(449, 22);
-            this.textBox6.TabIndex = 15;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.proxyInfoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.proxyInfoTextBox.Location = new System.Drawing.Point(232, 307);
+            this.proxyInfoTextBox.MaxLength = 40;
+            this.proxyInfoTextBox.Name = "proxyInfoTextBox";
+            this.proxyInfoTextBox.Size = new System.Drawing.Size(449, 22);
+            this.proxyInfoTextBox.TabIndex = 15;
             // 
-            // textBox7
+            // posInfoTextBox
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.posInfoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(233, 350);
-            this.textBox7.MaxLength = 40;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(449, 22);
-            this.textBox7.TabIndex = 16;
-            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            this.posInfoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.posInfoTextBox.Location = new System.Drawing.Point(233, 350);
+            this.posInfoTextBox.MaxLength = 40;
+            this.posInfoTextBox.Name = "posInfoTextBox";
+            this.posInfoTextBox.Size = new System.Drawing.Size(449, 22);
+            this.posInfoTextBox.TabIndex = 16;
             // 
-            // textBox8
+            // wsNoTextBox
             // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.wsNoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(232, 263);
-            this.textBox8.MaxLength = 50;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(449, 22);
-            this.textBox8.TabIndex = 17;
-            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
+            this.wsNoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wsNoTextBox.Location = new System.Drawing.Point(232, 263);
+            this.wsNoTextBox.MaxLength = 50;
+            this.wsNoTextBox.Name = "wsNoTextBox";
+            this.wsNoTextBox.Size = new System.Drawing.Size(449, 22);
+            this.wsNoTextBox.TabIndex = 17;
             // 
-            // textBox9
+            // lodgingCodeTextBox
             // 
-            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lodgingCodeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(233, 390);
-            this.textBox9.MaxLength = 1;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(449, 22);
-            this.textBox9.TabIndex = 18;
-            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            this.lodgingCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lodgingCodeTextBox.Location = new System.Drawing.Point(233, 390);
+            this.lodgingCodeTextBox.MaxLength = 1;
+            this.lodgingCodeTextBox.Name = "lodgingCodeTextBox";
+            this.lodgingCodeTextBox.Size = new System.Drawing.Size(449, 22);
+            this.lodgingCodeTextBox.TabIndex = 18;
             // 
-            // textBox10
+            // guestNoTextBox
             // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.guestNoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(233, 433);
-            this.textBox10.MaxLength = 20;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(449, 22);
-            this.textBox10.TabIndex = 19;
-            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
+            this.guestNoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestNoTextBox.Location = new System.Drawing.Point(233, 433);
+            this.guestNoTextBox.MaxLength = 20;
+            this.guestNoTextBox.Name = "guestNoTextBox";
+            this.guestNoTextBox.Size = new System.Drawing.Size(449, 22);
+            this.guestNoTextBox.TabIndex = 19;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button12);
-            this.panel1.Controls.Add(this.button11);
-            this.panel1.Controls.Add(this.button10);
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox11);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox10);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox9);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox8);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox7);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.currCodesHelpButton);
+            this.panel1.Controls.Add(this.guestNoHelpButton);
+            this.panel1.Controls.Add(this.lodgingCodeHelpButton);
+            this.panel1.Controls.Add(this.posInfoHelpButton);
+            this.panel1.Controls.Add(this.proxyInfoHelpButton);
+            this.panel1.Controls.Add(this.wsNoHelpButton);
+            this.panel1.Controls.Add(this.siteIDHelpButton);
+            this.panel1.Controls.Add(this.industryCodeHelpButton);
+            this.panel1.Controls.Add(this.operatorHelpButton);
+            this.panel1.Controls.Add(this.defAmountHelpButton);
+            this.panel1.Controls.Add(this.urlHelpButton);
+            this.panel1.Controls.Add(this.defaultAmountLabel);
+            this.panel1.Controls.Add(this.defaultAmountTextBox);
+            this.panel1.Controls.Add(this.currCodesTextBox);
+            this.panel1.Controls.Add(this.currCodesLabel);
+            this.panel1.Controls.Add(this.savedSuccessLabel);
+            this.panel1.Controls.Add(this.saveButton);
+            this.panel1.Controls.Add(this.urlLabel);
+            this.panel1.Controls.Add(this.guestNoTextBox);
+            this.panel1.Controls.Add(this.guestNoLabel);
+            this.panel1.Controls.Add(this.lodgingCodeTextBox);
+            this.panel1.Controls.Add(this.lodgingCodeLabel);
+            this.panel1.Controls.Add(this.wsNoTextBox);
+            this.panel1.Controls.Add(this.posInfoLabel);
+            this.panel1.Controls.Add(this.posInfoTextBox);
+            this.panel1.Controls.Add(this.proxyInfoLabel);
+            this.panel1.Controls.Add(this.proxyInfoTextBox);
+            this.panel1.Controls.Add(this.wsNoLabel);
+            this.panel1.Controls.Add(this.siteIDTextBox);
+            this.panel1.Controls.Add(this.siteIDLabel);
+            this.panel1.Controls.Add(this.industryCodeTextBox);
+            this.panel1.Controls.Add(this.industryCodeLabel);
+            this.panel1.Controls.Add(this.operatorTextBox);
+            this.panel1.Controls.Add(this.operatorLabel);
+            this.panel1.Controls.Add(this.urlTextBox);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(887, 688);
             this.panel1.TabIndex = 20;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // button12
+            // currCodesHelpButton
             // 
-            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button12.BackColor = System.Drawing.Color.Transparent;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Image = global::Simulator.Properties.Resources.qm_small1;
-            this.button12.Location = new System.Drawing.Point(688, 472);
-            this.button12.Name = "button12";
-            this.button12.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button12.Size = new System.Drawing.Size(22, 25);
-            this.button12.TabIndex = 37;
-            this.toolTip1.SetToolTip(this.button12, "Currency codes (752-SEK, 144-LKR). First one becomes the default currency code");
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.currCodesHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.currCodesHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.currCodesHelpButton.FlatAppearance.BorderSize = 0;
+            this.currCodesHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.currCodesHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.currCodesHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.currCodesHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.currCodesHelpButton.Location = new System.Drawing.Point(688, 472);
+            this.currCodesHelpButton.Name = "currCodesHelpButton";
+            this.currCodesHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.currCodesHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.currCodesHelpButton.TabIndex = 37;
+            this.toolTip.SetToolTip(this.currCodesHelpButton, "Currency codes (752-SEK, 144-LKR). First one becomes the default currency code");
+            this.currCodesHelpButton.UseVisualStyleBackColor = false;
             // 
-            // button11
+            // guestNoHelpButton
             // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.BackColor = System.Drawing.Color.Transparent;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Image = global::Simulator.Properties.Resources.qm_small1;
-            this.button11.Location = new System.Drawing.Point(688, 432);
-            this.button11.Name = "button11";
-            this.button11.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button11.Size = new System.Drawing.Size(22, 25);
-            this.button11.TabIndex = 36;
-            this.toolTip1.SetToolTip(this.button11, "Reservation number for lodging (String - max 20 bytes)");
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.guestNoHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guestNoHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.guestNoHelpButton.FlatAppearance.BorderSize = 0;
+            this.guestNoHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.guestNoHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.guestNoHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.guestNoHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.guestNoHelpButton.Location = new System.Drawing.Point(688, 432);
+            this.guestNoHelpButton.Name = "guestNoHelpButton";
+            this.guestNoHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.guestNoHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.guestNoHelpButton.TabIndex = 36;
+            this.toolTip.SetToolTip(this.guestNoHelpButton, "Reservation number for lodging (String - max 20 bytes)");
+            this.guestNoHelpButton.UseVisualStyleBackColor = false;
             // 
-            // button10
+            // lodgingCodeHelpButton
             // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.BackColor = System.Drawing.Color.Transparent;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Image = global::Simulator.Properties.Resources.qm_small1;
-            this.button10.Location = new System.Drawing.Point(688, 389);
-            this.button10.Name = "button10";
-            this.button10.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button10.Size = new System.Drawing.Size(22, 25);
-            this.button10.TabIndex = 35;
-            this.toolTip1.SetToolTip(this.button10, "(1: Normal lodging transaction  2: AR Payment   3: Deposit)  Present if PMS sends" +
+            this.lodgingCodeHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lodgingCodeHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.lodgingCodeHelpButton.FlatAppearance.BorderSize = 0;
+            this.lodgingCodeHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.lodgingCodeHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.lodgingCodeHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lodgingCodeHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.lodgingCodeHelpButton.Location = new System.Drawing.Point(688, 389);
+            this.lodgingCodeHelpButton.Name = "lodgingCodeHelpButton";
+            this.lodgingCodeHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lodgingCodeHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.lodgingCodeHelpButton.TabIndex = 35;
+            this.toolTip.SetToolTip(this.lodgingCodeHelpButton, "(1: Normal lodging transaction  2: AR Payment   3: Deposit)  Present if PMS sends" +
         " this value (String - max 1 byte)");
-            this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.lodgingCodeHelpButton.UseVisualStyleBackColor = false;
             // 
-            // button9
+            // posInfoHelpButton
             // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.BackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Image = global::Simulator.Properties.Resources.qm_small1;
-            this.button9.Location = new System.Drawing.Point(688, 348);
-            this.button9.Name = "button9";
-            this.button9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button9.Size = new System.Drawing.Size(22, 25);
-            this.button9.TabIndex = 34;
-            this.toolTip1.SetToolTip(this.button9, "Oracle Food and Beverage POS systems information (Product, Name) (String - max 40" +
+            this.posInfoHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.posInfoHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.posInfoHelpButton.FlatAppearance.BorderSize = 0;
+            this.posInfoHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.posInfoHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.posInfoHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.posInfoHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.posInfoHelpButton.Location = new System.Drawing.Point(688, 348);
+            this.posInfoHelpButton.Name = "posInfoHelpButton";
+            this.posInfoHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.posInfoHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.posInfoHelpButton.TabIndex = 34;
+            this.toolTip.SetToolTip(this.posInfoHelpButton, "Oracle Food and Beverage POS systems information (Product, Name) (String - max 40" +
         " bytes)");
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.posInfoHelpButton.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // proxyInfoHelpButton
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Image = global::Simulator.Properties.Resources.qm_small1;
-            this.button8.Location = new System.Drawing.Point(687, 306);
-            this.button8.Name = "button8";
-            this.button8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button8.Size = new System.Drawing.Size(22, 25);
-            this.button8.TabIndex = 33;
-            this.toolTip1.SetToolTip(this.button8, "Oracle Payment Interface information (version) (String - max 40 bytes)");
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.proxyInfoHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.proxyInfoHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.proxyInfoHelpButton.FlatAppearance.BorderSize = 0;
+            this.proxyInfoHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.proxyInfoHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.proxyInfoHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.proxyInfoHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.proxyInfoHelpButton.Location = new System.Drawing.Point(687, 306);
+            this.proxyInfoHelpButton.Name = "proxyInfoHelpButton";
+            this.proxyInfoHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.proxyInfoHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.proxyInfoHelpButton.TabIndex = 33;
+            this.toolTip.SetToolTip(this.proxyInfoHelpButton, "Oracle Payment Interface information (version) (String - max 40 bytes)");
+            this.proxyInfoHelpButton.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // wsNoHelpButton
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Image = global::Simulator.Properties.Resources.qm_small1;
-            this.button7.Location = new System.Drawing.Point(688, 261);
-            this.button7.Name = "button7";
-            this.button7.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button7.Size = new System.Drawing.Size(22, 25);
-            this.button7.TabIndex = 32;
-            this.toolTip1.SetToolTip(this.button7, "Oracle Hospitality POS systems workstation number (String - max 50 bytes)");
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.wsNoHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.wsNoHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.wsNoHelpButton.FlatAppearance.BorderSize = 0;
+            this.wsNoHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.wsNoHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.wsNoHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.wsNoHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.wsNoHelpButton.Location = new System.Drawing.Point(688, 261);
+            this.wsNoHelpButton.Name = "wsNoHelpButton";
+            this.wsNoHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.wsNoHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.wsNoHelpButton.TabIndex = 32;
+            this.toolTip.SetToolTip(this.wsNoHelpButton, "Oracle Hospitality POS systems workstation number (String - max 50 bytes)");
+            this.wsNoHelpButton.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // siteIDHelpButton
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Image = global::Simulator.Properties.Resources.qm_small1;
-            this.button6.Location = new System.Drawing.Point(687, 219);
-            this.button6.Name = "button6";
-            this.button6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button6.Size = new System.Drawing.Size(22, 25);
-            this.button6.TabIndex = 31;
-            this.toolTip1.SetToolTip(this.button6, "Internal MID in OPI (String - max 61 bytes)");
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.siteIDHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.siteIDHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.siteIDHelpButton.FlatAppearance.BorderSize = 0;
+            this.siteIDHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.siteIDHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.siteIDHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.siteIDHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.siteIDHelpButton.Location = new System.Drawing.Point(687, 219);
+            this.siteIDHelpButton.Name = "siteIDHelpButton";
+            this.siteIDHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.siteIDHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.siteIDHelpButton.TabIndex = 31;
+            this.toolTip.SetToolTip(this.siteIDHelpButton, "Internal MID in OPI (String - max 61 bytes)");
+            this.siteIDHelpButton.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // industryCodeHelpButton
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = global::Simulator.Properties.Resources.qm_small1;
-            this.button5.Location = new System.Drawing.Point(687, 177);
-            this.button5.Name = "button5";
-            this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button5.Size = new System.Drawing.Size(22, 25);
-            this.button5.TabIndex = 30;
-            this.toolTip1.SetToolTip(this.button5, "2 : Food & Baverage 3 : Retail (Numeric, 1 digit)");
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.industryCodeHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.industryCodeHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.industryCodeHelpButton.FlatAppearance.BorderSize = 0;
+            this.industryCodeHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.industryCodeHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.industryCodeHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.industryCodeHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.industryCodeHelpButton.Location = new System.Drawing.Point(687, 177);
+            this.industryCodeHelpButton.Name = "industryCodeHelpButton";
+            this.industryCodeHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.industryCodeHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.industryCodeHelpButton.TabIndex = 30;
+            this.toolTip.SetToolTip(this.industryCodeHelpButton, "2 : Food & Baverage 3 : Retail (Numeric, 1 digit)");
+            this.industryCodeHelpButton.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // operatorHelpButton
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::Simulator.Properties.Resources.qm_small1;
-            this.button4.Location = new System.Drawing.Point(687, 136);
-            this.button4.Name = "button4";
-            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button4.Size = new System.Drawing.Size(22, 25);
-            this.button4.TabIndex = 29;
-            this.toolTip1.SetToolTip(this.button4, "Cashier ID. Server number and name where sent (String - max 26 bytes)");
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.operatorHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.operatorHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.operatorHelpButton.FlatAppearance.BorderSize = 0;
+            this.operatorHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.operatorHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.operatorHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.operatorHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.operatorHelpButton.Location = new System.Drawing.Point(687, 136);
+            this.operatorHelpButton.Name = "operatorHelpButton";
+            this.operatorHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.operatorHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.operatorHelpButton.TabIndex = 29;
+            this.toolTip.SetToolTip(this.operatorHelpButton, "Cashier ID. Server number and name where sent (String - max 26 bytes)");
+            this.operatorHelpButton.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // defAmountHelpButton
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::Simulator.Properties.Resources.qm_small1;
-            this.button3.Location = new System.Drawing.Point(688, 96);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(22, 25);
-            this.button3.TabIndex = 28;
-            this.toolTip1.SetToolTip(this.button3, "Default transaction amount. This can be changed at the transaction processing");
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.defAmountHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.defAmountHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.defAmountHelpButton.FlatAppearance.BorderSize = 0;
+            this.defAmountHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.defAmountHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.defAmountHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.defAmountHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.defAmountHelpButton.Location = new System.Drawing.Point(688, 96);
+            this.defAmountHelpButton.Name = "defAmountHelpButton";
+            this.defAmountHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.defAmountHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.defAmountHelpButton.TabIndex = 28;
+            this.toolTip.SetToolTip(this.defAmountHelpButton, "Default transaction amount. This can be changed at the transaction processing");
+            this.defAmountHelpButton.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // urlHelpButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::Simulator.Properties.Resources.qm_small1;
-            this.button1.Location = new System.Drawing.Point(688, 56);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(22, 25);
-            this.button1.TabIndex = 27;
-            this.toolTip1.SetToolTip(this.button1, "Terminal URL. This can be changed at the transaction processing");
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.urlHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.urlHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.urlHelpButton.FlatAppearance.BorderSize = 0;
+            this.urlHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.urlHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.urlHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.urlHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.urlHelpButton.Location = new System.Drawing.Point(688, 56);
+            this.urlHelpButton.Name = "urlHelpButton";
+            this.urlHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.urlHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.urlHelpButton.TabIndex = 27;
+            this.toolTip.SetToolTip(this.urlHelpButton, "Terminal URL. This can be changed at the transaction processing");
+            this.urlHelpButton.UseVisualStyleBackColor = false;
             // 
-            // label10
+            // defaultAmountLabel
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.defaultAmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(118, 104);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(98, 16);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Default Amount";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
+            this.defaultAmountLabel.AutoSize = true;
+            this.defaultAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.defaultAmountLabel.Location = new System.Drawing.Point(118, 104);
+            this.defaultAmountLabel.Name = "defaultAmountLabel";
+            this.defaultAmountLabel.Size = new System.Drawing.Size(98, 16);
+            this.defaultAmountLabel.TabIndex = 25;
+            this.defaultAmountLabel.Text = "Default Amount";
             // 
-            // textBox2
+            // defaultAmountTextBox
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.defaultAmountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(233, 98);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(449, 22);
-            this.textBox2.TabIndex = 26;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged_1);
+            this.defaultAmountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.defaultAmountTextBox.Location = new System.Drawing.Point(233, 98);
+            this.defaultAmountTextBox.Name = "defaultAmountTextBox";
+            this.defaultAmountTextBox.Size = new System.Drawing.Size(449, 22);
+            this.defaultAmountTextBox.TabIndex = 26;
             // 
-            // textBox11
+            // currCodesTextBox
             // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.currCodesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(232, 474);
-            this.textBox11.MaxLength = 40;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(449, 22);
-            this.textBox11.TabIndex = 24;
-            this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
+            this.currCodesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currCodesTextBox.Location = new System.Drawing.Point(232, 474);
+            this.currCodesTextBox.MaxLength = 40;
+            this.currCodesTextBox.Name = "currCodesTextBox";
+            this.currCodesTextBox.Size = new System.Drawing.Size(449, 22);
+            this.currCodesTextBox.TabIndex = 24;
             // 
-            // label12
+            // currCodesLabel
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.currCodesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(118, 477);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(104, 16);
-            this.label12.TabIndex = 23;
-            this.label12.Text = "Currency Codes";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
+            this.currCodesLabel.AutoSize = true;
+            this.currCodesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currCodesLabel.Location = new System.Drawing.Point(118, 477);
+            this.currCodesLabel.Name = "currCodesLabel";
+            this.currCodesLabel.Size = new System.Drawing.Size(104, 16);
+            this.currCodesLabel.TabIndex = 23;
+            this.currCodesLabel.Text = "Currency Codes";
             // 
-            // label11
+            // savedSuccessLabel
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.savedSuccessLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(330, 534);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(55, 15);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "label11";
-            this.label11.Visible = false;
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            this.savedSuccessLabel.AutoSize = true;
+            this.savedSuccessLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.savedSuccessLabel.Location = new System.Drawing.Point(330, 534);
+            this.savedSuccessLabel.Name = "savedSuccessLabel";
+            this.savedSuccessLabel.Size = new System.Drawing.Size(129, 15);
+            this.savedSuccessLabel.TabIndex = 22;
+            this.savedSuccessLabel.Text = "Saved Successfully";
+            this.savedSuccessLabel.Visible = false;
             // 
-            // button2
+            // saveButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.AutoSize = true;
-            this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button2.Location = new System.Drawing.Point(381, 576);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 26);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Save Changes";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            this.saveButton.AutoSize = true;
+            this.saveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.saveButton.Location = new System.Drawing.Point(381, 576);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(107, 26);
+            this.saveButton.TabIndex = 21;
+            this.saveButton.Text = "Save Changes";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // SettingsUserControl
             // 
@@ -636,42 +597,42 @@ namespace Simulator.Forms
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label urlLabel;
+        private System.Windows.Forms.Label guestNoLabel;
+        private System.Windows.Forms.Label lodgingCodeLabel;
+        private System.Windows.Forms.Label posInfoLabel;
+        private System.Windows.Forms.Label proxyInfoLabel;
+        private System.Windows.Forms.Label wsNoLabel;
+        private System.Windows.Forms.Label siteIDLabel;
+        private System.Windows.Forms.Label industryCodeLabel;
+        private System.Windows.Forms.Label operatorLabel;
+        private System.Windows.Forms.TextBox urlTextBox;
+        private System.Windows.Forms.TextBox operatorTextBox;
+        private System.Windows.Forms.TextBox industryCodeTextBox;
+        private System.Windows.Forms.TextBox siteIDTextBox;
+        private System.Windows.Forms.TextBox proxyInfoTextBox;
+        private System.Windows.Forms.TextBox posInfoTextBox;
+        private System.Windows.Forms.TextBox wsNoTextBox;
+        private System.Windows.Forms.TextBox lodgingCodeTextBox;
+        private System.Windows.Forms.TextBox guestNoTextBox;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Label savedSuccessLabel;
+        private System.Windows.Forms.TextBox currCodesTextBox;
+        private System.Windows.Forms.Label currCodesLabel;
+        private System.Windows.Forms.Label defaultAmountLabel;
+        private System.Windows.Forms.TextBox defaultAmountTextBox;
+        private System.Windows.Forms.Button urlHelpButton;
+        private System.Windows.Forms.Button currCodesHelpButton;
+        private System.Windows.Forms.Button guestNoHelpButton;
+        private System.Windows.Forms.Button lodgingCodeHelpButton;
+        private System.Windows.Forms.Button posInfoHelpButton;
+        private System.Windows.Forms.Button proxyInfoHelpButton;
+        private System.Windows.Forms.Button wsNoHelpButton;
+        private System.Windows.Forms.Button siteIDHelpButton;
+        private System.Windows.Forms.Button industryCodeHelpButton;
+        private System.Windows.Forms.Button operatorHelpButton;
+        private System.Windows.Forms.Button defAmountHelpButton;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
