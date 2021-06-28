@@ -67,6 +67,7 @@ namespace Simulator.Forms
             this.savedSuccessLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.excelButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -278,6 +279,7 @@ namespace Simulator.Forms
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.excelButton);
             this.panel1.Controls.Add(this.currCodesHelpButton);
             this.panel1.Controls.Add(this.guestNoHelpButton);
             this.panel1.Controls.Add(this.lodgingCodeHelpButton);
@@ -581,6 +583,16 @@ namespace Simulator.Forms
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // excelButton
+            // 
+            this.excelButton.Location = new System.Drawing.Point(515, 559);
+            this.excelButton.Name = "excelButton";
+            this.excelButton.Size = new System.Drawing.Size(156, 23);
+            this.excelButton.TabIndex = 38;
+            this.excelButton.Text = "Create Excel File";
+            this.excelButton.UseVisualStyleBackColor = true;
+            this.excelButton.Click += new System.EventHandler(this.excelButton_Click);
+            // 
             // SettingsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -634,5 +646,6 @@ namespace Simulator.Forms
         private System.Windows.Forms.Button operatorHelpButton;
         private System.Windows.Forms.Button defAmountHelpButton;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Button excelButton;
     }
 }

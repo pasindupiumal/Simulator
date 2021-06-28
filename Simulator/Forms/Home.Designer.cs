@@ -40,6 +40,7 @@ namespace Simulator.Forms
             this.reversalUserControl1 = new Simulator.Forms.ReversalUserControl();
             this.purchaseUserControl1 = new Simulator.Forms.PurchaseUserControl();
             this.preAuthUserControl1 = new Simulator.Forms.PreAuthUserControl();
+            this.initialUserControl1 = new Simulator.Forms.InitialUserControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +110,7 @@ namespace Simulator.Forms
             // 
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel2.Controls.Add(this.initialUserControl1);
             this.panel2.Controls.Add(this.settingsUserControl1);
             this.panel2.Controls.Add(this.reversalUserControl1);
             this.panel2.Controls.Add(this.purchaseUserControl1);
@@ -156,6 +158,16 @@ namespace Simulator.Forms
             this.preAuthUserControl1.Size = new System.Drawing.Size(880, 665);
             this.preAuthUserControl1.TabIndex = 2;
             // 
+            // initialUserControl1
+            // 
+            this.initialUserControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.initialUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.initialUserControl1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.initialUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.initialUserControl1.Name = "initialUserControl1";
+            this.initialUserControl1.Size = new System.Drawing.Size(880, 665);
+            this.initialUserControl1.TabIndex = 1;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,6 +197,7 @@ namespace Simulator.Forms
         private System.Windows.Forms.Button settingsUserControlButton;
         private PurchaseUserControl purchaseUserControl1;
         private PreAuthUserControl preAuthUserControl1;
+        private InitialUserControl initialUserControl1;
         private ReversalUserControl reversalUserControl1;
         private SettingsUserControl settingsUserControl1;
         private System.Windows.Forms.Panel panel2;

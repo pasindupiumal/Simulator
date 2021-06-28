@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Simulator.Properties;
 
+using System.Runtime.InteropServices;
+using Excel = Microsoft.Office.Interop.Excel;
+
 namespace Simulator.Forms
 {
     public partial class SettingsUserControl : UserControl
@@ -67,6 +70,40 @@ namespace Simulator.Forms
             savedSuccessLabel.Visible = false;
 
             //MessageBox.Show("Settings Updated Successfully!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void excelButton_Click(object sender, EventArgs e)
+        {
+            Excel.Application excelApp = new Excel.Application();
+
+            if(excelApp == null)
+            {
+                MessageBox.Show("Excel Library Is Not Installed");
+            }
+            else
+            {
+                MessageBox.Show("Excel Library is installed");
+
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+
+                xlWorkBook = excelApp.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                xlWorkSheet.Cells[1, 1] = "ID";
+                xlWorkSheet.Cells[1, 2] = "Name";
+
+                xlWorkBook.SaveAs(@"C:\Users\Pasindu\Desktop\mySheet.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.Close(true, misValue, misValue);
+                excelApp.Quit();
+
+                Marshal.ReleaseComObject(xlWorkSheet);
+                Marshal.ReleaseComObject(xlWorkBook);
+                Marshal.ReleaseComObject(excelApp);
+
+                MessageBox.Show("Created The Excel File");
+            }
         }
     }
 }
