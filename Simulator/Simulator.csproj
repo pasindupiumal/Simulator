@@ -193,6 +193,8 @@
     <None Include="Resources\qm_small.png" />
     <None Include="Resources\qm_small1.png" />
     <None Include="Resources\folder_browse_small.png" />
+    <None Include="Resources\icons8-browse-folder-50.png" />
+    <None Include="Resources\folder_browse_2_small.png" />
     <Content Include="westpay_name_letter.ico" />
   </ItemGroup>
   <ItemGroup>

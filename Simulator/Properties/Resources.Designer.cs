@@ -83,9 +83,29 @@ namespace Simulator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap folder_browse_2_small {
+            get {
+                object obj = ResourceManager.GetObject("folder_browse_2_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap folder_browse_small {
             get {
                 object obj = ResourceManager.GetObject("folder_browse_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_browse_folder_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-browse-folder-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

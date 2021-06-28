@@ -38,6 +38,24 @@ namespace Simulator.Forms
         }
 
         /// <summary>
+        /// If the excel file path is set in the settings, create an excel file 
+        /// with the current timestamp. 
+        /// </summary>
+        private void SetExcelFileSettings()
+        {
+            Settings.Default.Reload();
+
+            if(Settings.Default["filePath"].ToString().Length == 0)
+            {
+                MessageBox.Show("File path not set");
+            }
+            else
+            {
+                MessageBox.Show("File path set");
+            }
+        }
+
+        /// <summary>
         /// On load hide all the sub user control forms.
         /// </summary>
         /// <param name="sender"></param>
@@ -48,6 +66,7 @@ namespace Simulator.Forms
             preAuthUserControl1.Hide();
             reversalUserControl1.Hide();
             settingsUserControl1.Hide();
+            SetExcelFileSettings();
         }
 
         /// <summary>

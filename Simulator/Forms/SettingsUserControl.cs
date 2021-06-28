@@ -105,5 +105,21 @@ namespace Simulator.Forms
                 MessageBox.Show("Created The Excel File");
             }
         }
+
+        private void filePathButton_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            //folderBrowserDialog.RootFolder = Environment.SpecialFolder.MyDocuments;
+            folderBrowserDialog.Description = "Select the folder for Excel reports";
+
+            //Reload the settings
+            Settings.Default.Reload();
+
+            if(folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Settings.Default["filePath"] = folderBrowserDialog.SelectedPath;
+                Settings.Default.Save();
+            }
+        }
     }
 }

@@ -58,7 +58,7 @@ namespace Simulator.Forms
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.excelButton = new System.Windows.Forms.Button();
             this.excelFilePathLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.excelFilePathTextBox = new System.Windows.Forms.TextBox();
             this.filePathButton = new System.Windows.Forms.Button();
             this.excelFilePathHelpButton = new System.Windows.Forms.Button();
             this.currCodesHelpButton = new System.Windows.Forms.Button();
@@ -285,7 +285,7 @@ namespace Simulator.Forms
             // 
             this.panel1.Controls.Add(this.filePathButton);
             this.panel1.Controls.Add(this.excelFilePathHelpButton);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.excelFilePathTextBox);
             this.panel1.Controls.Add(this.excelFilePathLabel);
             this.panel1.Controls.Add(this.excelButton);
             this.panel1.Controls.Add(this.currCodesHelpButton);
@@ -424,17 +424,17 @@ namespace Simulator.Forms
             this.excelFilePathLabel.TabIndex = 39;
             this.excelFilePathLabel.Text = "Excel File Path";
             // 
-            // textBox1
+            // excelFilePathTextBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.excelFilePathTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(232, 515);
-            this.textBox1.MaxLength = 40;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(449, 22);
-            this.textBox1.TabIndex = 40;
+            this.excelFilePathTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.excelFilePathTextBox.Location = new System.Drawing.Point(232, 515);
+            this.excelFilePathTextBox.MaxLength = 40;
+            this.excelFilePathTextBox.Name = "excelFilePathTextBox";
+            this.excelFilePathTextBox.ReadOnly = true;
+            this.excelFilePathTextBox.Size = new System.Drawing.Size(449, 22);
+            this.excelFilePathTextBox.TabIndex = 40;
             // 
             // filePathButton
             // 
@@ -450,6 +450,7 @@ namespace Simulator.Forms
             this.filePathButton.Size = new System.Drawing.Size(20, 16);
             this.filePathButton.TabIndex = 42;
             this.filePathButton.UseVisualStyleBackColor = false;
+            this.filePathButton.Click += new System.EventHandler(this.filePathButton_Click);
             // 
             // excelFilePathHelpButton
             // 
@@ -712,7 +713,7 @@ namespace Simulator.Forms
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Button excelButton;
         private System.Windows.Forms.Button excelFilePathHelpButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox excelFilePathTextBox;
         private System.Windows.Forms.Label excelFilePathLabel;
         private System.Windows.Forms.Button filePathButton;
     }
