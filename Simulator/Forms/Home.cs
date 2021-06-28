@@ -75,7 +75,7 @@ namespace Simulator.Forms
 
                         utils = new Utils();
 
-                        String timeStamp = utils.GetTimestamp(new DateTime());
+                        String timeStamp = utils.GetTimestamp(DateTime.Now);
 
                         xlWorkBook.SaveAs(@"" + Settings.Default["filePath"].ToString() + "/" + timeStamp + ".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                         xlWorkBook.Close(true, misValue, misValue);
