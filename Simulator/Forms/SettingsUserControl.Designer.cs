@@ -49,6 +49,18 @@ namespace Simulator.Forms
             this.lodgingCodeTextBox = new System.Windows.Forms.TextBox();
             this.guestNoTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.defaultAmountLabel = new System.Windows.Forms.Label();
+            this.defaultAmountTextBox = new System.Windows.Forms.TextBox();
+            this.currCodesTextBox = new System.Windows.Forms.TextBox();
+            this.currCodesLabel = new System.Windows.Forms.Label();
+            this.savedSuccessLabel = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.excelButton = new System.Windows.Forms.Button();
+            this.excelFilePathLabel = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.filePathButton = new System.Windows.Forms.Button();
+            this.excelFilePathHelpButton = new System.Windows.Forms.Button();
             this.currCodesHelpButton = new System.Windows.Forms.Button();
             this.guestNoHelpButton = new System.Windows.Forms.Button();
             this.lodgingCodeHelpButton = new System.Windows.Forms.Button();
@@ -60,14 +72,6 @@ namespace Simulator.Forms
             this.operatorHelpButton = new System.Windows.Forms.Button();
             this.defAmountHelpButton = new System.Windows.Forms.Button();
             this.urlHelpButton = new System.Windows.Forms.Button();
-            this.defaultAmountLabel = new System.Windows.Forms.Label();
-            this.defaultAmountTextBox = new System.Windows.Forms.TextBox();
-            this.currCodesTextBox = new System.Windows.Forms.TextBox();
-            this.currCodesLabel = new System.Windows.Forms.Label();
-            this.savedSuccessLabel = new System.Windows.Forms.Label();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.excelButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -279,6 +283,10 @@ namespace Simulator.Forms
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.filePathButton);
+            this.panel1.Controls.Add(this.excelFilePathHelpButton);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.excelFilePathLabel);
             this.panel1.Controls.Add(this.excelButton);
             this.panel1.Controls.Add(this.currCodesHelpButton);
             this.panel1.Controls.Add(this.guestNoHelpButton);
@@ -321,6 +329,144 @@ namespace Simulator.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(887, 688);
             this.panel1.TabIndex = 20;
+            // 
+            // defaultAmountLabel
+            // 
+            this.defaultAmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.defaultAmountLabel.AutoSize = true;
+            this.defaultAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.defaultAmountLabel.Location = new System.Drawing.Point(118, 104);
+            this.defaultAmountLabel.Name = "defaultAmountLabel";
+            this.defaultAmountLabel.Size = new System.Drawing.Size(98, 16);
+            this.defaultAmountLabel.TabIndex = 25;
+            this.defaultAmountLabel.Text = "Default Amount";
+            // 
+            // defaultAmountTextBox
+            // 
+            this.defaultAmountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.defaultAmountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.defaultAmountTextBox.Location = new System.Drawing.Point(233, 98);
+            this.defaultAmountTextBox.Name = "defaultAmountTextBox";
+            this.defaultAmountTextBox.Size = new System.Drawing.Size(449, 22);
+            this.defaultAmountTextBox.TabIndex = 26;
+            // 
+            // currCodesTextBox
+            // 
+            this.currCodesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.currCodesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currCodesTextBox.Location = new System.Drawing.Point(232, 474);
+            this.currCodesTextBox.MaxLength = 40;
+            this.currCodesTextBox.Name = "currCodesTextBox";
+            this.currCodesTextBox.Size = new System.Drawing.Size(449, 22);
+            this.currCodesTextBox.TabIndex = 24;
+            // 
+            // currCodesLabel
+            // 
+            this.currCodesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.currCodesLabel.AutoSize = true;
+            this.currCodesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currCodesLabel.Location = new System.Drawing.Point(118, 477);
+            this.currCodesLabel.Name = "currCodesLabel";
+            this.currCodesLabel.Size = new System.Drawing.Size(104, 16);
+            this.currCodesLabel.TabIndex = 23;
+            this.currCodesLabel.Text = "Currency Codes";
+            // 
+            // savedSuccessLabel
+            // 
+            this.savedSuccessLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.savedSuccessLabel.AutoSize = true;
+            this.savedSuccessLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.savedSuccessLabel.Location = new System.Drawing.Point(330, 606);
+            this.savedSuccessLabel.Name = "savedSuccessLabel";
+            this.savedSuccessLabel.Size = new System.Drawing.Size(129, 15);
+            this.savedSuccessLabel.TabIndex = 22;
+            this.savedSuccessLabel.Text = "Saved Successfully";
+            this.savedSuccessLabel.Visible = false;
+            // 
+            // saveButton
+            // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveButton.AutoSize = true;
+            this.saveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.saveButton.Location = new System.Drawing.Point(381, 648);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(107, 26);
+            this.saveButton.TabIndex = 21;
+            this.saveButton.Text = "Save Changes";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // excelButton
+            // 
+            this.excelButton.Location = new System.Drawing.Point(513, 598);
+            this.excelButton.Name = "excelButton";
+            this.excelButton.Size = new System.Drawing.Size(156, 23);
+            this.excelButton.TabIndex = 38;
+            this.excelButton.Text = "Create Excel File";
+            this.excelButton.UseVisualStyleBackColor = true;
+            this.excelButton.Click += new System.EventHandler(this.excelButton_Click);
+            // 
+            // excelFilePathLabel
+            // 
+            this.excelFilePathLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.excelFilePathLabel.AutoSize = true;
+            this.excelFilePathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.excelFilePathLabel.Location = new System.Drawing.Point(118, 521);
+            this.excelFilePathLabel.Name = "excelFilePathLabel";
+            this.excelFilePathLabel.Size = new System.Drawing.Size(96, 16);
+            this.excelFilePathLabel.TabIndex = 39;
+            this.excelFilePathLabel.Text = "Excel File Path";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(232, 515);
+            this.textBox1.MaxLength = 40;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(449, 22);
+            this.textBox1.TabIndex = 40;
+            // 
+            // filePathButton
+            // 
+            this.filePathButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePathButton.BackColor = System.Drawing.SystemColors.Control;
+            this.filePathButton.FlatAppearance.BorderSize = 0;
+            this.filePathButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.filePathButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.filePathButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.filePathButton.Image = global::Simulator.Properties.Resources.folder_browse_small;
+            this.filePathButton.Location = new System.Drawing.Point(654, 518);
+            this.filePathButton.Name = "filePathButton";
+            this.filePathButton.Size = new System.Drawing.Size(20, 16);
+            this.filePathButton.TabIndex = 42;
+            this.filePathButton.UseVisualStyleBackColor = false;
+            // 
+            // excelFilePathHelpButton
+            // 
+            this.excelFilePathHelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.excelFilePathHelpButton.BackColor = System.Drawing.Color.Transparent;
+            this.excelFilePathHelpButton.FlatAppearance.BorderSize = 0;
+            this.excelFilePathHelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.excelFilePathHelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.excelFilePathHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.excelFilePathHelpButton.Image = global::Simulator.Properties.Resources.qm_small1;
+            this.excelFilePathHelpButton.Location = new System.Drawing.Point(687, 512);
+            this.excelFilePathHelpButton.Name = "excelFilePathHelpButton";
+            this.excelFilePathHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.excelFilePathHelpButton.Size = new System.Drawing.Size(22, 25);
+            this.excelFilePathHelpButton.TabIndex = 41;
+            this.toolTip.SetToolTip(this.excelFilePathHelpButton, "Currency codes (752-SEK, 144-LKR). First one becomes the default currency code");
+            this.excelFilePathHelpButton.UseVisualStyleBackColor = false;
             // 
             // currCodesHelpButton
             // 
@@ -511,88 +657,6 @@ namespace Simulator.Forms
             this.toolTip.SetToolTip(this.urlHelpButton, "Terminal URL. This can be changed at the transaction processing");
             this.urlHelpButton.UseVisualStyleBackColor = false;
             // 
-            // defaultAmountLabel
-            // 
-            this.defaultAmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.defaultAmountLabel.AutoSize = true;
-            this.defaultAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.defaultAmountLabel.Location = new System.Drawing.Point(118, 104);
-            this.defaultAmountLabel.Name = "defaultAmountLabel";
-            this.defaultAmountLabel.Size = new System.Drawing.Size(98, 16);
-            this.defaultAmountLabel.TabIndex = 25;
-            this.defaultAmountLabel.Text = "Default Amount";
-            // 
-            // defaultAmountTextBox
-            // 
-            this.defaultAmountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.defaultAmountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.defaultAmountTextBox.Location = new System.Drawing.Point(233, 98);
-            this.defaultAmountTextBox.Name = "defaultAmountTextBox";
-            this.defaultAmountTextBox.Size = new System.Drawing.Size(449, 22);
-            this.defaultAmountTextBox.TabIndex = 26;
-            // 
-            // currCodesTextBox
-            // 
-            this.currCodesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.currCodesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currCodesTextBox.Location = new System.Drawing.Point(232, 474);
-            this.currCodesTextBox.MaxLength = 40;
-            this.currCodesTextBox.Name = "currCodesTextBox";
-            this.currCodesTextBox.Size = new System.Drawing.Size(449, 22);
-            this.currCodesTextBox.TabIndex = 24;
-            // 
-            // currCodesLabel
-            // 
-            this.currCodesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.currCodesLabel.AutoSize = true;
-            this.currCodesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currCodesLabel.Location = new System.Drawing.Point(118, 477);
-            this.currCodesLabel.Name = "currCodesLabel";
-            this.currCodesLabel.Size = new System.Drawing.Size(104, 16);
-            this.currCodesLabel.TabIndex = 23;
-            this.currCodesLabel.Text = "Currency Codes";
-            // 
-            // savedSuccessLabel
-            // 
-            this.savedSuccessLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.savedSuccessLabel.AutoSize = true;
-            this.savedSuccessLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.savedSuccessLabel.Location = new System.Drawing.Point(330, 534);
-            this.savedSuccessLabel.Name = "savedSuccessLabel";
-            this.savedSuccessLabel.Size = new System.Drawing.Size(129, 15);
-            this.savedSuccessLabel.TabIndex = 22;
-            this.savedSuccessLabel.Text = "Saved Successfully";
-            this.savedSuccessLabel.Visible = false;
-            // 
-            // saveButton
-            // 
-            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveButton.AutoSize = true;
-            this.saveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.saveButton.Location = new System.Drawing.Point(381, 576);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(107, 26);
-            this.saveButton.TabIndex = 21;
-            this.saveButton.Text = "Save Changes";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // excelButton
-            // 
-            this.excelButton.Location = new System.Drawing.Point(515, 559);
-            this.excelButton.Name = "excelButton";
-            this.excelButton.Size = new System.Drawing.Size(156, 23);
-            this.excelButton.TabIndex = 38;
-            this.excelButton.Text = "Create Excel File";
-            this.excelButton.UseVisualStyleBackColor = true;
-            this.excelButton.Click += new System.EventHandler(this.excelButton_Click);
-            // 
             // SettingsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -647,5 +711,9 @@ namespace Simulator.Forms
         private System.Windows.Forms.Button defAmountHelpButton;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Button excelButton;
+        private System.Windows.Forms.Button excelFilePathHelpButton;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label excelFilePathLabel;
+        private System.Windows.Forms.Button filePathButton;
     }
 }
