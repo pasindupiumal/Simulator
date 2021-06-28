@@ -190,5 +190,17 @@ namespace Simulator.Properties {
                 this["filePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool logingEnable {
+            get {
+                return ((bool)(this["logingEnable"]));
+            }
+            set {
+                this["logingEnable"] = value;
+            }
+        }
     }
 }

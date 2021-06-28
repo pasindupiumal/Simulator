@@ -30,6 +30,11 @@ namespace Simulator.Shared
             return baseURL;
         }
 
+        public String GetTimestamp(DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmssffff");
+        }
+
         public int getDecimalCount(double dVal, string sVal, string culture)
         {
             CultureInfo info = CultureInfo.GetCultureInfo(culture);

@@ -8,11 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Simulator.Properties;
+using System.Runtime.InteropServices;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Diagnostics;
+using Simulator.Shared;
 
 namespace Simulator.Forms
 {
     public partial class Home : Form
     {
+        private Utils utils = null;
+
         public Home()
         {
             InitializeComponent();
@@ -45,13 +51,49 @@ namespace Simulator.Forms
         {
             Settings.Default.Reload();
 
-            if(Settings.Default["filePath"].ToString().Length == 0)
+            if(!(Settings.Default["filePath"].ToString().Length == 0))
             {
-                MessageBox.Show("File path not set");
-            }
-            else
-            {
-                MessageBox.Show("File path set");
+                Excel.Application excelApp = new Excel.Application();
+
+                if (excelApp == null)
+                {
+                    MessageBox.Show("Excel Library Is Not Installed. Cannot Create Excel Log File.");
+                }
+                else
+                {
+                    try
+                    {
+                        Excel.Workbook xlWorkBook;
+                        Excel.Worksheet xlWorkSheet;
+                        object misValue = System.Reflection.Missing.Value;
+
+                        xlWorkBook = excelApp.Workbooks.Add(misValue);
+                        xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                        xlWorkSheet.Cells[1, 1] = "ID";
+                        xlWorkSheet.Cells[1, 2] = "Name";
+
+                        utils = new Utils();
+
+                        String timeStamp = utils.GetTimestamp(new DateTime());
+
+                        xlWorkBook.SaveAs(@"" + Settings.Default["filePath"].ToString() + "/" + timeStamp + ".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                        xlWorkBook.Close(true, misValue, misValue);
+                        excelApp.Quit();
+
+                        Marshal.ReleaseComObject(xlWorkSheet);
+                        Marshal.ReleaseComObject(xlWorkBook);
+                        Marshal.ReleaseComObject(excelApp);
+
+                        Settings.Default.Reload();
+                        Settings.Default["logingEnable"] = true;
+                        Settings.Default.Save();
+                    }
+                    catch(Exception ex)
+                    {
+                        Debug.WriteLine($"Exception Creating The Excel File For Logging : {ex.Message}");
+                    }
+                }
             }
         }
 
