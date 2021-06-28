@@ -56,7 +56,6 @@ namespace Simulator.Forms
             this.savedSuccessLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.excelButton = new System.Windows.Forms.Button();
             this.excelFilePathLabel = new System.Windows.Forms.Label();
             this.excelFilePathTextBox = new System.Windows.Forms.TextBox();
             this.filePathButton = new System.Windows.Forms.Button();
@@ -287,7 +286,6 @@ namespace Simulator.Forms
             this.panel1.Controls.Add(this.excelFilePathHelpButton);
             this.panel1.Controls.Add(this.excelFilePathTextBox);
             this.panel1.Controls.Add(this.excelFilePathLabel);
-            this.panel1.Controls.Add(this.excelButton);
             this.panel1.Controls.Add(this.currCodesHelpButton);
             this.panel1.Controls.Add(this.guestNoHelpButton);
             this.panel1.Controls.Add(this.lodgingCodeHelpButton);
@@ -402,16 +400,6 @@ namespace Simulator.Forms
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // excelButton
-            // 
-            this.excelButton.Location = new System.Drawing.Point(513, 598);
-            this.excelButton.Name = "excelButton";
-            this.excelButton.Size = new System.Drawing.Size(156, 23);
-            this.excelButton.TabIndex = 38;
-            this.excelButton.Text = "Create Excel File";
-            this.excelButton.UseVisualStyleBackColor = true;
-            this.excelButton.Click += new System.EventHandler(this.excelButton_Click);
-            // 
             // excelFilePathLabel
             // 
             this.excelFilePathLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -432,7 +420,6 @@ namespace Simulator.Forms
             this.excelFilePathTextBox.Location = new System.Drawing.Point(232, 515);
             this.excelFilePathTextBox.MaxLength = 40;
             this.excelFilePathTextBox.Name = "excelFilePathTextBox";
-            this.excelFilePathTextBox.ReadOnly = true;
             this.excelFilePathTextBox.Size = new System.Drawing.Size(449, 22);
             this.excelFilePathTextBox.TabIndex = 40;
             // 
@@ -711,7 +698,6 @@ namespace Simulator.Forms
         private System.Windows.Forms.Button operatorHelpButton;
         private System.Windows.Forms.Button defAmountHelpButton;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.Button excelButton;
         private System.Windows.Forms.Button excelFilePathHelpButton;
         private System.Windows.Forms.TextBox excelFilePathTextBox;
         private System.Windows.Forms.Label excelFilePathLabel;

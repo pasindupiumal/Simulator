@@ -202,5 +202,17 @@ namespace Simulator.Properties {
                 this["logingEnable"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string currentFileName {
+            get {
+                return ((string)(this["currentFileName"]));
+            }
+            set {
+                this["currentFileName"] = value;
+            }
+        }
     }
 }

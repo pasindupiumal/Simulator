@@ -53,47 +53,8 @@ namespace Simulator.Forms
 
             if(!(Settings.Default["filePath"].ToString().Length == 0))
             {
-                Excel.Application excelApp = new Excel.Application();
-
-                if (excelApp == null)
-                {
-                    MessageBox.Show("Excel Library Is Not Installed. Cannot Create Excel Log File.");
-                }
-                else
-                {
-                    try
-                    {
-                        Excel.Workbook xlWorkBook;
-                        Excel.Worksheet xlWorkSheet;
-                        object misValue = System.Reflection.Missing.Value;
-
-                        xlWorkBook = excelApp.Workbooks.Add(misValue);
-                        xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-                        xlWorkSheet.Cells[1, 1] = "ID";
-                        xlWorkSheet.Cells[1, 2] = "Name";
-
-                        utils = new Utils();
-
-                        String timeStamp = utils.GetTimestamp(DateTime.Now);
-
-                        xlWorkBook.SaveAs(@"" + Settings.Default["filePath"].ToString() + "/" + timeStamp + ".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                        xlWorkBook.Close(true, misValue, misValue);
-                        excelApp.Quit();
-
-                        Marshal.ReleaseComObject(xlWorkSheet);
-                        Marshal.ReleaseComObject(xlWorkBook);
-                        Marshal.ReleaseComObject(excelApp);
-
-                        Settings.Default.Reload();
-                        Settings.Default["logingEnable"] = true;
-                        Settings.Default.Save();
-                    }
-                    catch(Exception ex)
-                    {
-                        Debug.WriteLine($"Exception Creating The Excel File For Logging : {ex.Message}");
-                    }
-                }
+                utils = new Utils();
+                utils.CreateExcelFile();
             }
         }
 

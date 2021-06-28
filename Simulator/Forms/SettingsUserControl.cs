@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Simulator.Properties;
+using Simulator.Shared;
 
 namespace Simulator.Forms
 {
     public partial class SettingsUserControl : UserControl
     {
+        private Utils utils;
+
         public SettingsUserControl()
         {
             InitializeComponent();
@@ -36,6 +39,7 @@ namespace Simulator.Forms
             lodgingCodeTextBox.Text = Settings.Default["lodgingCode"].ToString();
             guestNoTextBox.Text = Settings.Default["guestNo"].ToString();
             currCodesTextBox.Text = Settings.Default["currCodes"].ToString();
+            excelFilePathTextBox.Text = Settings.Default["filePath"].ToString();
         }
 
         /// <summary>
@@ -45,6 +49,8 @@ namespace Simulator.Forms
         /// <param name="e"></param>
         private async void saveButton_Click(object sender, EventArgs e)
         {
+            utils = new Utils();
+
             Settings.Default["ip"] = urlTextBox.Text;
             Settings.Default["defaultAmount"] = defaultAmountTextBox.Text;
             Settings.Default["operatorValue"] = operatorTextBox.Text;
@@ -56,8 +62,24 @@ namespace Simulator.Forms
             Settings.Default["lodgingCode"] = lodgingCodeTextBox.Text;
             Settings.Default["guestNo"] = guestNoTextBox.Text;
             Settings.Default["currCodes"] = currCodesTextBox.Text;
+            Settings.Default["filePath"] = excelFilePathTextBox.Text;
             Settings.Default.Save();
             LoadSettings();
+
+            Settings.Default.Reload();
+
+            if (!(Settings.Default["filePath"].ToString().Length == 0))
+            {
+                utils.CreateExcelFile();
+            }
+            else
+            {
+                Settings.Default["logingEnable"] = false;
+                Settings.Default["currentFileName"] = String.Empty;
+
+                Settings.Default.Save();
+            }
+
 
             //Dispaly success message
             savedSuccessLabel.ForeColor = Color.Green;
@@ -85,9 +107,6 @@ namespace Simulator.Forms
 
             if(folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Settings.Default["filePath"] = folderBrowserDialog.SelectedPath;
-                Settings.Default.Save();
-
                 excelFilePathTextBox.Text = folderBrowserDialog.SelectedPath;
             }
         }
