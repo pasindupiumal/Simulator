@@ -44,6 +44,7 @@ namespace Simulator.Forms
             this.tranDetCopyLabel = new System.Windows.Forms.Label();
             this.respDetCopyLabel = new System.Windows.Forms.Label();
             this.reqDetCopyLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // urlTextBox
@@ -216,10 +217,21 @@ namespace Simulator.Forms
             this.reqDetCopyLabel.Text = "ReqDetCopy";
             this.reqDetCopyLabel.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(610, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 60;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ReversalUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tranDetCopyLabel);
             this.Controls.Add(this.respDetCopyLabel);
             this.Controls.Add(this.reqDetCopyLabel);
@@ -258,5 +270,6 @@ namespace Simulator.Forms
         private System.Windows.Forms.Label tranDetCopyLabel;
         private System.Windows.Forms.Label respDetCopyLabel;
         private System.Windows.Forms.Label reqDetCopyLabel;
+        private System.Windows.Forms.Button button1;
     }
 }

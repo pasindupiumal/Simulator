@@ -118,11 +118,11 @@ namespace Simulator.Shared
             }
         }
 
-        private void WriteToExcelFile()
+        public void WriteToExcelFile()
         {
             Settings.Default.Reload();
 
-            if (!(Settings.Default["filePath"].ToString().Length == 0))
+            if (!(Settings.Default["filePath"].ToString().Length == 0) && !(Settings.Default["currentFileName"].ToString().Length == 0))
             {
                 Excel.Application excelApp = new Excel.Application();
 
@@ -134,37 +134,41 @@ namespace Simulator.Shared
                 {
                     try
                     {
-                        //Excel.Workbook xlWorkBook;
-                        //Excel.Worksheet xlWorkSheet;
-                        //object misValue = System.Reflection.Missing.Value;
+                        Excel.Workbook xlWorkBook;
+                        Excel.Worksheet xlWorkSheet;
+                        object misValue = System.Reflection.Missing.Value;
 
-                        //xlWorkBook = excelApp.Workbooks.Open(Settings.Default["filePath"].ToString(), 0, false, 5, "", "", false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
-                        //xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                        string filePath = Settings.Default["filePath"].ToString() + "/" + Settings.Default["currentFileName"].ToString();
+                        xlWorkBook = excelApp.Workbooks.Open(filePath, 0, false, 5, "", "", false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
+                        xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-                        //xlWorkSheet.Cells[1, 1] = "ID";
-                        //xlWorkSheet.Cells[1, 2] = "Name";
+                        Excel.Range last = xlWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+                        Excel.Range range = xlWorkSheet.get_Range("A1", last);
 
-                        //utils = new Utils();
+                        int lastUsedRow = last.Row;
+                        int lastUsedColumn = last.Column;
 
-                        //String timeStamp = utils.GetTimestamp(DateTime.Now);
+                        xlWorkSheet.Cells[lastUsedRow + 1, 1] = "1";
+                        xlWorkSheet.Cells[lastUsedRow + 1, 2] = "Pasindu";
 
-                        //xlWorkBook.SaveAs(@"" + Settings.Default["filePath"].ToString() + "/" + timeStamp + ".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                        //xlWorkBook.Close(true, misValue, misValue);
-                        //excelApp.Quit();
+                        xlWorkBook.Save();
+                        xlWorkBook.Close(true, misValue, misValue);
+                        excelApp.Quit();
 
-                        //Marshal.ReleaseComObject(xlWorkSheet);
-                        //Marshal.ReleaseComObject(xlWorkBook);
-                        //Marshal.ReleaseComObject(excelApp);
-
-                        //Settings.Default.Reload();
-                        //Settings.Default["logingEnable"] = true;
-                        //Settings.Default.Save();
+                        Marshal.ReleaseComObject(xlWorkSheet);
+                        Marshal.ReleaseComObject(xlWorkBook);
+                        Marshal.ReleaseComObject(excelApp);
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine($"Exception Creating The Excel File For Logging : {ex.Message}");
+                        Debug.WriteLine($"Exception Writing Logs To The Excel File : {ex.Message}");
                     }
                 }
+            }
+            else
+            {
+                Debug.WriteLine($"Exception Creating The Excel File For Logging. Folder Path Not Found!");
+                MessageBox.Show("Folder Path Not Found!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
