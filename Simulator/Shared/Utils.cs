@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 using System.Diagnostics;
+using Microsoft.Office.Interop.Excel;
 
 namespace Simulator.Shared
 {
@@ -152,6 +153,9 @@ namespace Simulator.Shared
 
                         int lastUsedRow = last.Row;
                         int lastUsedColumn = last.Column;
+
+                        Range cells = xlWorkSheet.Cells;
+                        cells.NumberFormat = "@";
 
                         xlWorkSheet.Cells[lastUsedRow + 1, 1] = tt;
                         xlWorkSheet.Cells[lastUsedRow + 1, 2] = dcc;
