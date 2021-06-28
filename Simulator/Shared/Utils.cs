@@ -92,8 +92,13 @@ namespace Simulator.Shared
                     xlWorkBook = excelApp.Workbooks.Add(misValue);
                     xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-                    xlWorkSheet.Cells[1, 1] = "ID";
-                    xlWorkSheet.Cells[1, 2] = "Name";
+                    xlWorkSheet.Cells[1, 1] = "Transaction Type";
+                    xlWorkSheet.Cells[1, 2] = "DCC";
+                    xlWorkSheet.Cells[1, 3] = "TID";
+                    xlWorkSheet.Cells[1, 4] = "Card Number";
+                    xlWorkSheet.Cells[1, 5] = "RRN";
+                    xlWorkSheet.Cells[1, 6] = "Amount";
+                    xlWorkSheet.Cells[1, 7] = "Response";
 
                     String timeStamp = GetTimestamp(DateTime.Now);
 
@@ -118,7 +123,7 @@ namespace Simulator.Shared
             }
         }
 
-        public void WriteToExcelFile()
+        public async Task WriteToExcelFile(string tt, string dcc, string tid, string cardNumber, string rrn, string amount, string response)
         {
             Settings.Default.Reload();
 
@@ -148,8 +153,14 @@ namespace Simulator.Shared
                         int lastUsedRow = last.Row;
                         int lastUsedColumn = last.Column;
 
-                        xlWorkSheet.Cells[lastUsedRow + 1, 1] = "1";
-                        xlWorkSheet.Cells[lastUsedRow + 1, 2] = "Pasindu";
+                        xlWorkSheet.Cells[lastUsedRow + 1, 1] = tt;
+                        xlWorkSheet.Cells[lastUsedRow + 1, 2] = dcc;
+                        xlWorkSheet.Cells[lastUsedRow + 1, 3] = tid;
+                        xlWorkSheet.Cells[lastUsedRow + 1, 4] = cardNumber;
+                        xlWorkSheet.Cells[lastUsedRow + 1, 5] = rrn;
+                        xlWorkSheet.Cells[lastUsedRow + 1, 6] = amount;
+                        xlWorkSheet.Cells[lastUsedRow + 1, 7] = response;
+                        
 
                         xlWorkBook.Save();
                         xlWorkBook.Close(true, misValue, misValue);

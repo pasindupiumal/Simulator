@@ -143,10 +143,19 @@ namespace Simulator.Forms
 
                 if (transactionResponse != null)
                 {
+                    string dccStatus = null;
+                    string transactionStatus = null;
+
                     //Enable reversal button is the purchase is successful.
                     if (transactionResponse.RespCode.Equals("00"))
                     {
                         reversalButton.Enabled = true;
+                        transactionStatus = "SUCCESS";
+                    }
+                    else
+                    {
+                        reversalButton.Enabled = false;
+                        transactionStatus = "FAILED";
                     }
 
                     tranDetailsRichTextBox.Select(0, 0);
@@ -158,6 +167,7 @@ namespace Simulator.Forms
                     }
                     else if (transactionResponse.DCCIndicator.Equals("1"))
                     {
+                        dccStatus = "YES";
 
                         if (transactionResponse.DCCExchangeRate != null)
                         {
@@ -186,6 +196,8 @@ namespace Simulator.Forms
                     }
                     else
                     {
+                        dccStatus = "NO";
+
                         tranDetailsRichTextBox.Select(0, 0);
                         tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
                     }
@@ -228,6 +240,8 @@ namespace Simulator.Forms
 
                     tranDetailsRichTextBox.Select(0, 0);
                     tranDetailsRichTextBox.SelectedText = "Purchase Response - " + transactionResponse.RespText;
+
+                    await utils.WriteToExcelFile("Purchase", dccStatus, transactionResponse.TerminalId, transactionResponse.PAN, transactionResponse.RRN, amount, transactionStatus);
                 }
 
                 //Stop the progress bar
@@ -300,6 +314,18 @@ namespace Simulator.Forms
 
             if (transactionResponse != null)
             {
+                string dccStatus = null;
+                string transactionStatus = null;
+
+                if (transactionResponse.RespCode.Equals("00"))
+                {
+                    transactionStatus = "SUCCESS";
+                }
+                else
+                {
+                    transactionStatus = "FAILED";
+                }
+
                 tranDetailsRichTextBox.Select(0, 0);
                 tranDetailsRichTextBox.SelectedText = "\r\n\r\n" + transactionResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
@@ -309,6 +335,7 @@ namespace Simulator.Forms
                 }
                 else if (transactionResponse.DCCIndicator.Equals("1"))
                 {
+                    dccStatus = "YES";
 
                     if (transactionResponse.DCCExchangeRate != null)
                     {
@@ -337,6 +364,7 @@ namespace Simulator.Forms
                 }
                 else
                 {
+                    dccStatus = "NO";
                     tranDetailsRichTextBox.Select(0, 0);
                     tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
                 }
@@ -379,6 +407,8 @@ namespace Simulator.Forms
 
                 tranDetailsRichTextBox.Select(0, 0);
                 tranDetailsRichTextBox.SelectedText = "Reversal Response - " + transactionResponse.RespText;
+
+                await utils.WriteToExcelFile("Reversal", dccStatus, transactionResponse.TerminalId, transactionResponse.PAN, transactionResponse.RRN, amount, transactionStatus);
             }
 
             //Stop the progress bar
