@@ -95,7 +95,6 @@ namespace Simulator.Forms
             string[] currCodeSeperated = currCodeString.Split('-');
             string currCode = currCodeSeperated[0].Trim();
 
-
             //Determine whether the provided amount is a numbers
             bool isDouble = Double.TryParse(amount, out double amountDouble);
             int decimalCount = 0;

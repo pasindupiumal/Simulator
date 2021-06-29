@@ -154,6 +154,9 @@ namespace Simulator.Forms
 
                 if (preAuthResponse != null)
                 {
+                    string dccStatus = null;
+                    string transactionStatus = null;
+
                     //Enable reversal button is the purchase is successful.
                     if (preAuthResponse.RespCode.Equals("00"))
                     {
@@ -162,6 +165,11 @@ namespace Simulator.Forms
                         preAuthCompButton.Enabled = true;
                         preAuthCancelButton.Enabled = true;
                         amountTextBox.ReadOnly = false;
+                        transactionStatus = "SUCCESS";
+                    }
+                    else
+                    {
+                        transactionStatus = "FAILED";
                     }
 
                     tranDetailsRichTextBox.Select(0, 0);
@@ -173,6 +181,7 @@ namespace Simulator.Forms
                     }
                     else if (preAuthResponse.DCCIndicator.Equals("1"))
                     {
+                        dccStatus = "YES";
 
                         if (preAuthResponse.DCCExchangeRate != null)
                         {
@@ -201,6 +210,7 @@ namespace Simulator.Forms
                     }
                     else
                     {
+                        dccStatus = "NO";
                         tranDetailsRichTextBox.Select(0, 0);
                         tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
                     }
@@ -241,9 +251,10 @@ namespace Simulator.Forms
                         tranDetailsRichTextBox.SelectedText = "\r\n\r\n\tTID\t\t :  " + preAuthResponse.TerminalId;
                     }
 
-
                     tranDetailsRichTextBox.Select(0, 0);
                     tranDetailsRichTextBox.SelectedText = "Pre-Auth Response - " + preAuthResponse.RespText;
+
+                    await utils.WriteToExcelFile("Pre-Auth", dccStatus, preAuthResponse.TerminalId, preAuthResponse.PAN, preAuthResponse.RRN, amount, transactionStatus);
                 }
 
                 //Stop the progress bar
@@ -339,6 +350,9 @@ namespace Simulator.Forms
 
                 if (preAuthCompletionResponse != null)
                 {
+                    string dccStatus = null;
+                    string transactionStatus = null;
+
                     tranDetailsRichTextBox.Select(0, 0);
                     tranDetailsRichTextBox.SelectedText = "\r\n\r\n" + preAuthCompletionResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
@@ -348,6 +362,7 @@ namespace Simulator.Forms
                     }
                     else if (preAuthCompletionResponse.DCCIndicator.Equals("1"))
                     {
+                        dccStatus = "YES";
 
                         if (preAuthCompletionResponse.DCCExchangeRate != null)
                         {
@@ -376,6 +391,7 @@ namespace Simulator.Forms
                     }
                     else
                     {
+                        dccStatus = "NO";
                         tranDetailsRichTextBox.Select(0, 0);
                         tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
                     }
@@ -428,6 +444,8 @@ namespace Simulator.Forms
                         preAuthCompButton.Enabled = false;
                         preAuthCancelButton.Enabled = false;
                         amountTextBox.ReadOnly = false;
+
+                        transactionStatus = "SUCCESS";
                     }
                     else
                     {
@@ -438,7 +456,11 @@ namespace Simulator.Forms
                         preAuthCompButton.Enabled = preAuthCompButtonStatus;
                         preAuthCancelButton.Enabled = preAuthCancelButtonStatus;
                         amountTextBox.ReadOnly = false;
+
+                        transactionStatus = "FAILED";
                     }
+
+                    await utils.WriteToExcelFile("Pre-Auth Completion", dccStatus, preAuthCompletionResponse.TerminalId, preAuthCompletionResponse.PAN, preAuthCompletionResponse.RRN, amount, transactionStatus);
                 }
 
                 //Stop the progress bar
@@ -534,6 +556,9 @@ namespace Simulator.Forms
 
                 if (preAuthCancelationResponse != null)
                 {
+                    string dccStatus = null;
+                    string transactionStatus = null;
+
                     tranDetailsRichTextBox.Select(0, 0);
                     tranDetailsRichTextBox.SelectedText = "\r\n\r\n" + preAuthCancelationResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
@@ -543,6 +568,7 @@ namespace Simulator.Forms
                     }
                     else if (preAuthCancelationResponse.DCCIndicator.Equals("1"))
                     {
+                        dccStatus = "YES";
 
                         if (preAuthCancelationResponse.DCCExchangeRate != null)
                         {
@@ -571,6 +597,7 @@ namespace Simulator.Forms
                     }
                     else
                     {
+                        dccStatus = "NO";
                         tranDetailsRichTextBox.Select(0, 0);
                         tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
                     }
@@ -623,6 +650,8 @@ namespace Simulator.Forms
                         preAuthCompButton.Enabled = false;
                         preAuthCancelButton.Enabled = false;
                         amountTextBox.ReadOnly = false;
+
+                        transactionStatus = "SUCCESS";
                     }
                     else
                     {
@@ -633,7 +662,11 @@ namespace Simulator.Forms
                         preAuthCompButton.Enabled = preAuthCompButtonStatus;
                         preAuthCancelButton.Enabled = preAuthCancelButtonStatus;
                         amountTextBox.ReadOnly = false;
+
+                        transactionStatus = "FAILED";
                     }
+
+                    await utils.WriteToExcelFile("Pre-Auth Cancelation", dccStatus, preAuthCancelationResponse.TerminalId, preAuthCancelationResponse.PAN, preAuthCancelationResponse.RRN, amount, transactionStatus);
                 }
 
                 //Stop the progress bar
@@ -723,6 +756,9 @@ namespace Simulator.Forms
 
                 if (preAuthReversalResponse != null)
                 {
+                    string dccStatus = null;
+                    string transactionStatus = null;
+
                     tranDetailsRichTextBox.Select(0, 0);
                     tranDetailsRichTextBox.SelectedText = "\r\n\r\n" + preAuthReversalResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
@@ -732,6 +768,7 @@ namespace Simulator.Forms
                     }
                     else if (preAuthReversalResponse.DCCIndicator.Equals("1"))
                     {
+                        dccStatus = "YES";
 
                         if (preAuthReversalResponse.DCCExchangeRate != null)
                         {
@@ -760,6 +797,7 @@ namespace Simulator.Forms
                     }
                     else
                     {
+                        dccStatus = "NO";
                         tranDetailsRichTextBox.Select(0, 0);
                         tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
                     }
@@ -824,6 +862,8 @@ namespace Simulator.Forms
                             preAuthCancelButton.Enabled = false;
                             amountTextBox.ReadOnly = false;
                         }
+
+                        transactionStatus = "SUCCESS";
                     }
                     else
                     {
@@ -832,7 +872,11 @@ namespace Simulator.Forms
                         incPreAuthButton.Enabled = true;
                         preAuthCompButton.Enabled = true;
                         preAuthCancelButton.Enabled = true;
+
+                        transactionStatus = "FAILED";
                     }
+
+                    await utils.WriteToExcelFile("Pre-Auth Reversal", dccStatus, preAuthReversalResponse.TerminalId, preAuthReversalResponse.PAN, preAuthReversalResponse.RRN, amount, transactionStatus);
                 }
 
                 //Stop the progress bar
@@ -928,6 +972,9 @@ namespace Simulator.Forms
 
                 if (incPreAuthResponse != null)
                 {
+                    string dccStatus = null;
+                    string transactionStatus = null;
+
                     tranDetailsRichTextBox.Select(0, 0);
                     tranDetailsRichTextBox.SelectedText = "\r\n\r\n" + incPreAuthResponse.PrintData + "\r\n\r\n\r\n\r\n";
 
@@ -937,6 +984,7 @@ namespace Simulator.Forms
                     }
                     else if (incPreAuthResponse.DCCIndicator.Equals("1"))
                     {
+                        dccStatus = "YES";
 
                         if (incPreAuthResponse.DCCExchangeRate != null)
                         {
@@ -965,6 +1013,7 @@ namespace Simulator.Forms
                     }
                     else
                     {
+                        dccStatus = "NO";
                         tranDetailsRichTextBox.Select(0, 0);
                         tranDetailsRichTextBox.SelectedText = "\r\n\tDCC\t\t :  NO";
                     }
@@ -1020,7 +1069,9 @@ namespace Simulator.Forms
                         incPreAuthButton.Enabled = true;
                         preAuthCompButton.Enabled = true;
                         preAuthCancelButton.Enabled = true;
-                        amountTextBox.ReadOnly = false; 
+                        amountTextBox.ReadOnly = false;
+
+                        transactionStatus = "SUCCESS";
                     }
                     else
                     {
@@ -1031,7 +1082,11 @@ namespace Simulator.Forms
                         preAuthCompButton.Enabled = preAuthCompButtonStatus;
                         preAuthCancelButton.Enabled = preAuthCancelButtonStatus;
                         amountTextBox.ReadOnly = false;
+
+                        transactionStatus = "FAILED";
                     }
+
+                    await utils.WriteToExcelFile("Incremental Pre-Auth", dccStatus, incPreAuthResponse.TerminalId, incPreAuthResponse.PAN, incPreAuthResponse.RRN, amount, transactionStatus);
                 }
 
                 //Stop the progress bar

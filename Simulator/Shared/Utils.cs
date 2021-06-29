@@ -74,6 +74,9 @@ namespace Simulator.Shared
             }
         }
 
+        /// <summary>
+        /// Method for creating a new excel file for logging.
+        /// </summary>
         public void CreateExcelFile()
         {
             Excel.Application excelApp = new Excel.Application();
@@ -93,6 +96,9 @@ namespace Simulator.Shared
                     xlWorkBook = excelApp.Workbooks.Add(misValue);
                     xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
+                    Range cells = xlWorkSheet.Cells;
+                    cells.NumberFormat = "@";
+
                     xlWorkSheet.Cells[1, 1] = "Transaction Type";
                     xlWorkSheet.Cells[1, 2] = "DCC";
                     xlWorkSheet.Cells[1, 3] = "TID";
@@ -101,7 +107,7 @@ namespace Simulator.Shared
                     xlWorkSheet.Cells[1, 6] = "Amount";
                     xlWorkSheet.Cells[1, 7] = "Response";
 
-                    String timeStamp = GetTimestamp(DateTime.Now);
+                    string timeStamp = GetTimestamp(DateTime.Now);
 
                     xlWorkBook.SaveAs(@"" + Settings.Default["filePath"].ToString() + "/" + timeStamp + ".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     xlWorkBook.Close(true, misValue, misValue);
@@ -124,67 +130,76 @@ namespace Simulator.Shared
             }
         }
 
-        public async Task WriteToExcelFile(string tt, string dcc, string tid, string cardNumber, string rrn, string amount, string response)
+        /// <summary>
+        /// Method to write to excel file
+        /// </summary>
+        /// <param name="transType"></param>
+        /// <param name="dcc"></param>
+        /// <param name="tid"></param>
+        /// <param name="cardNumber"></param>
+        /// <param name="rrn"></param>
+        /// <param name="amount"></param>
+        /// <param name="response"></param>
+        public async Task WriteToExcelFile(string transType, string dcc, string tid, string cardNumber, string rrn, string amount, string response)
         {
-            Settings.Default.Reload();
-
-            if (!(Settings.Default["filePath"].ToString().Length == 0) && !(Settings.Default["currentFileName"].ToString().Length == 0))
+            await Task.Run(() =>
             {
-                Excel.Application excelApp = new Excel.Application();
+                Settings.Default.Reload();
 
-                if (excelApp == null)
+                if (!(Settings.Default["filePath"].ToString().Length == 0) && !(Settings.Default["currentFileName"].ToString().Length == 0))
                 {
-                    MessageBox.Show("Excel Library Is Not Installed. Cannot Create Excel Log File.");
+                    Excel.Application excelApp = new Excel.Application();
+
+                    if (excelApp == null)
+                    {
+                        MessageBox.Show("Excel Library Is Not Installed. Cannot Create Excel Log File.");
+                    }
+                    else
+                    {
+                        try
+                        {
+                            Excel.Workbook xlWorkBook;
+                            Excel.Worksheet xlWorkSheet;
+                            object misValue = System.Reflection.Missing.Value;
+
+                            string filePath = Settings.Default["filePath"].ToString() + "/" + Settings.Default["currentFileName"].ToString();
+                            xlWorkBook = excelApp.Workbooks.Open(filePath, 0, false, 5, "", "", false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
+                            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                            Excel.Range last = xlWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+                            Excel.Range range = xlWorkSheet.get_Range("A1", last);
+
+                            int lastUsedRow = last.Row;
+                            int lastUsedColumn = last.Column;
+
+                            xlWorkSheet.Cells[lastUsedRow + 1, 1] = transType;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 2] = dcc;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 3] = tid;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 4] = cardNumber;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 5] = rrn;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 6] = amount;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 7] = response;
+
+                            xlWorkBook.Save();
+                            xlWorkBook.Close(true, misValue, misValue);
+                            excelApp.Quit();
+
+                            Marshal.ReleaseComObject(xlWorkSheet);
+                            Marshal.ReleaseComObject(xlWorkBook);
+                            Marshal.ReleaseComObject(excelApp);
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"Exception Writing Logs To The Excel File : {ex.Message}");
+                        }
+                    }
                 }
                 else
                 {
-                    try
-                    {
-                        Excel.Workbook xlWorkBook;
-                        Excel.Worksheet xlWorkSheet;
-                        object misValue = System.Reflection.Missing.Value;
-
-                        string filePath = Settings.Default["filePath"].ToString() + "/" + Settings.Default["currentFileName"].ToString();
-                        xlWorkBook = excelApp.Workbooks.Open(filePath, 0, false, 5, "", "", false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
-                        xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-                        Excel.Range last = xlWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
-                        Excel.Range range = xlWorkSheet.get_Range("A1", last);
-
-                        int lastUsedRow = last.Row;
-                        int lastUsedColumn = last.Column;
-
-                        Range cells = xlWorkSheet.Cells;
-                        cells.NumberFormat = "@";
-
-                        xlWorkSheet.Cells[lastUsedRow + 1, 1] = tt;
-                        xlWorkSheet.Cells[lastUsedRow + 1, 2] = dcc;
-                        xlWorkSheet.Cells[lastUsedRow + 1, 3] = tid;
-                        xlWorkSheet.Cells[lastUsedRow + 1, 4] = cardNumber;
-                        xlWorkSheet.Cells[lastUsedRow + 1, 5] = rrn;
-                        xlWorkSheet.Cells[lastUsedRow + 1, 6] = amount;
-                        xlWorkSheet.Cells[lastUsedRow + 1, 7] = response;
-                        
-
-                        xlWorkBook.Save();
-                        xlWorkBook.Close(true, misValue, misValue);
-                        excelApp.Quit();
-
-                        Marshal.ReleaseComObject(xlWorkSheet);
-                        Marshal.ReleaseComObject(xlWorkBook);
-                        Marshal.ReleaseComObject(excelApp);
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine($"Exception Writing Logs To The Excel File : {ex.Message}");
-                    }
+                    Debug.WriteLine($"Exception Creating The Excel File For Logging. Folder Path Not Found!");
+                    MessageBox.Show("Folder Path Not Found!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
-            {
-                Debug.WriteLine($"Exception Creating The Excel File For Logging. Folder Path Not Found!");
-                MessageBox.Show("Folder Path Not Found!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            });
         }
     }
 }
