@@ -180,6 +180,9 @@ namespace Simulator.Shared
                             xlWorkSheet.Cells[lastUsedRow + 1, 6] = amount;
                             xlWorkSheet.Cells[lastUsedRow + 1, 7] = response;
 
+                            //Auto fit the width of columns
+                            xlWorkSheet.Columns.AutoFit();
+
                             xlWorkBook.Save();
                             xlWorkBook.Close(true, misValue, misValue);
                             excelApp.Quit();
