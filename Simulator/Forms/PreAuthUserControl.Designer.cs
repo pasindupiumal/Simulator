@@ -186,7 +186,7 @@ namespace Simulator.Forms
             // 
             this.resDetailsLabel.AutoSize = true;
             this.resDetailsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resDetailsLabel.Location = new System.Drawing.Point(481, 370);
+            this.resDetailsLabel.Location = new System.Drawing.Point(453, 369);
             this.resDetailsLabel.Name = "resDetailsLabel";
             this.resDetailsLabel.Size = new System.Drawing.Size(116, 16);
             this.resDetailsLabel.TabIndex = 42;
@@ -196,7 +196,7 @@ namespace Simulator.Forms
             // 
             this.reqDetailsLabel.AutoSize = true;
             this.reqDetailsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reqDetailsLabel.Location = new System.Drawing.Point(54, 370);
+            this.reqDetailsLabel.Location = new System.Drawing.Point(25, 369);
             this.reqDetailsLabel.Name = "reqDetailsLabel";
             this.reqDetailsLabel.Size = new System.Drawing.Size(104, 16);
             this.reqDetailsLabel.TabIndex = 41;
@@ -250,12 +250,13 @@ namespace Simulator.Forms
             // 
             // copyResDetButton
             // 
+            this.copyResDetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.copyResDetButton.BackColor = System.Drawing.Color.Transparent;
             this.copyResDetButton.FlatAppearance.BorderSize = 0;
             this.copyResDetButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.copyResDetButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.copyResDetButton.Image = global::Simulator.Properties.Resources.Copy_Small1;
-            this.copyResDetButton.Location = new System.Drawing.Point(454, 369);
+            this.copyResDetButton.Location = new System.Drawing.Point(818, 394);
             this.copyResDetButton.Name = "copyResDetButton";
             this.copyResDetButton.Size = new System.Drawing.Size(25, 19);
             this.copyResDetButton.TabIndex = 52;
@@ -269,7 +270,7 @@ namespace Simulator.Forms
             this.copyReqDetButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.copyReqDetButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.copyReqDetButton.Image = global::Simulator.Properties.Resources.Copy_Small1;
-            this.copyReqDetButton.Location = new System.Drawing.Point(26, 369);
+            this.copyReqDetButton.Location = new System.Drawing.Point(390, 394);
             this.copyReqDetButton.Name = "copyReqDetButton";
             this.copyReqDetButton.Size = new System.Drawing.Size(25, 19);
             this.copyReqDetButton.TabIndex = 51;
@@ -280,7 +281,7 @@ namespace Simulator.Forms
             // 
             this.reqDelCopyLabel.AutoSize = true;
             this.reqDelCopyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reqDelCopyLabel.Location = new System.Drawing.Point(155, 370);
+            this.reqDelCopyLabel.Location = new System.Drawing.Point(126, 369);
             this.reqDelCopyLabel.Name = "reqDelCopyLabel";
             this.reqDelCopyLabel.Size = new System.Drawing.Size(86, 15);
             this.reqDelCopyLabel.TabIndex = 54;
@@ -291,7 +292,7 @@ namespace Simulator.Forms
             // 
             this.resDetCopyLabel.AutoSize = true;
             this.resDetCopyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resDetCopyLabel.Location = new System.Drawing.Point(593, 370);
+            this.resDetCopyLabel.Location = new System.Drawing.Point(565, 369);
             this.resDetCopyLabel.Name = "resDetCopyLabel";
             this.resDetCopyLabel.Size = new System.Drawing.Size(85, 15);
             this.resDetCopyLabel.TabIndex = 55;
