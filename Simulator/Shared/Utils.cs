@@ -204,7 +204,77 @@ namespace Simulator.Shared
                 }
                 else
                 {
-                    Debug.WriteLine($"Exception Creating The Excel File For Logging. Folder Path Not Found!");
+                    Debug.WriteLine($"Exception Opening The Excel File For Logging. Folder Path Not Found!");
+                    MessageBox.Show("Folder Path Not Found!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            });
+        }
+
+        /// <summary>
+        /// Method for writing a new line into an existing excel file.
+        /// </summary>
+        /// <returns></returns>
+        public async Task ExcelWriteNewLine()
+        {
+            await Task.Run(() =>
+            {
+                Settings.Default.Reload();
+
+                if (!(Settings.Default["filePath"].ToString().Length == 0) && !(Settings.Default["currentFileName"].ToString().Length == 0))
+                {
+                    Excel.Application excelApp = new Excel.Application();
+
+                    if (excelApp == null)
+                    {
+                        MessageBox.Show("Excel Library Is Not Installed. Cannot Create Excel Log File.");
+                    }
+                    else
+                    {
+                        try
+                        {
+                            Excel.Workbook xlWorkBook;
+                            Excel.Worksheet xlWorkSheet;
+                            object misValue = System.Reflection.Missing.Value;
+
+                            string filePath = Settings.Default["filePath"].ToString() + "/" + Settings.Default["currentFileName"].ToString();
+                            xlWorkBook = excelApp.Workbooks.Open(filePath, 0, false, 5, "", "", false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
+                            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                            Excel.Range last = xlWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+                            Excel.Range range = xlWorkSheet.get_Range("A1", last);
+
+                            int lastUsedRow = last.Row;
+                            int lastUsedColumn = last.Column;
+
+                            xlWorkSheet.Cells[lastUsedRow + 1, 1] = String.Empty;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 2] = String.Empty;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 3] = String.Empty;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 4] = String.Empty;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 5] = String.Empty;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 6] = String.Empty;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 7] = String.Empty;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 8] = String.Empty;
+
+                            //Auto fit the width of columns
+                            xlWorkSheet.Columns.AutoFit();
+
+                            xlWorkBook.Save();
+                            xlWorkBook.Close(true, misValue, misValue);
+                            excelApp.Quit();
+
+                            Marshal.ReleaseComObject(xlWorkSheet);
+                            Marshal.ReleaseComObject(xlWorkBook);
+                            Marshal.ReleaseComObject(excelApp);
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"Exception Writing Empty Lines To The Excel File : {ex.Message}");
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine($"Exception Opening The Excel File For Logging. Folder Path Not Found!");
                     MessageBox.Show("Folder Path Not Found!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             });
