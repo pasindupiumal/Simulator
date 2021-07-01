@@ -36,7 +36,7 @@ namespace Simulator.Shared
 
         public String GetTimestamp(DateTime value)
         {
-            return value.ToString("yyyyMMddHHmmssffff");
+            return value.ToString("yyyy-MM-dd HH-mm-ss-ffff");
         }
 
         public int getDecimalCount(double dVal, string sVal, string culture)
