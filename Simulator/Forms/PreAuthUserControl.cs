@@ -38,7 +38,7 @@ namespace Simulator.Forms
         /// <summary>
         /// Method for resetting the pre-auth user control.
         /// </summary>
-        public void ClearFields()
+        public async void ClearFields()
         {
             Settings.Default.Reload();
 
@@ -58,6 +58,7 @@ namespace Simulator.Forms
             reqDetailsRichTextBox.Text = string.Empty;
             tranDetailsRichTextBox.Text = string.Empty;
             urlTextBox.Text = utils.getBaseURL();
+            await utils.ExcelWriteNewLine();
         }
 
         /// <summary>

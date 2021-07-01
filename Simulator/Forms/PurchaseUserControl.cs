@@ -56,7 +56,7 @@ namespace Simulator.Forms
         /// <summary>
         /// Method for resetting the purchase user control.
         /// </summary>
-        public void ClearFields()
+        public async void ClearFields()
         {
             Settings.Default.Reload();
 
@@ -73,6 +73,7 @@ namespace Simulator.Forms
             reversalButton.Enabled = false;
             progressBar.Value = 0;
             urlTextBox.Text = utils.getBaseURL();
+            await utils.ExcelWriteNewLine();
         }
     
         /// <summary>

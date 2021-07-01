@@ -31,7 +31,7 @@ namespace Simulator.Forms
         /// <summary>
         /// Method for resetting the reversal user control.
         /// </summary>
-        public void clearFields()
+        public async void clearFields()
         {
             Settings.Default.Reload();
 
@@ -43,6 +43,7 @@ namespace Simulator.Forms
             tranDetailsRichTextBox.Text = string.Empty;
             progressBar.Value = 0;
             urlTextBox.Text = utils.getBaseURL();
+            await utils.ExcelWriteNewLine();
         }
 
         /// <summary>
