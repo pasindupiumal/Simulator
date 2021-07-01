@@ -77,58 +77,61 @@ namespace Simulator.Shared
         /// <summary>
         /// Method for creating a new excel file for logging.
         /// </summary>
-        public void CreateExcelFile()
+        public async Task CreateExcelFile()
         {
-            Excel.Application excelApp = new Excel.Application();
+            await Task.Run(() => {
 
-            if (excelApp == null)
-            {
-                MessageBox.Show("Excel Library Is Not Installed. Cannot Create Excel Log File.");
-            }
-            else
-            {
-                try
+                Excel.Application excelApp = new Excel.Application();
+
+                if (excelApp == null)
                 {
-                    Excel.Workbook xlWorkBook;
-                    Excel.Worksheet xlWorkSheet;
-                    object misValue = System.Reflection.Missing.Value;
-
-                    xlWorkBook = excelApp.Workbooks.Add(misValue);
-                    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-                    Range cells = xlWorkSheet.Cells;
-                    cells.NumberFormat = "@";
-
-                    xlWorkSheet.Cells[1, 1] = "Transaction Type";
-                    xlWorkSheet.Cells[1, 2] = "DCC";
-                    xlWorkSheet.Cells[1, 3] = "TID";
-                    xlWorkSheet.Cells[1, 4] = "Card Number";
-                    xlWorkSheet.Cells[1, 5] = "RRN";
-                    xlWorkSheet.Cells[1, 6] = "Amount";
-                    xlWorkSheet.Cells[1, 7] = "Response Status";
-                    xlWorkSheet.Cells[1, 8] = "Response Message";
-
-                    string timeStamp = GetTimestamp(DateTime.Now);
-
-                    xlWorkBook.SaveAs(@"" + Settings.Default["filePath"].ToString() + "/" + timeStamp + ".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                    xlWorkBook.Close(true, misValue, misValue);
-                    excelApp.Quit();
-
-                    Marshal.ReleaseComObject(xlWorkSheet);
-                    Marshal.ReleaseComObject(xlWorkBook);
-                    Marshal.ReleaseComObject(excelApp);
-
-                    Settings.Default.Reload();
-                    Settings.Default["logingEnable"] = true;
-                    string fileName = timeStamp + ".xls";
-                    Settings.Default["currentFileName"] = fileName;
-                    Settings.Default.Save();
+                    MessageBox.Show("Excel Library Is Not Installed. Cannot Create Excel Log File.");
                 }
-                catch (Exception ex)
+                else
                 {
-                    Debug.WriteLine($"Exception Creating The Excel File For Logging : {ex.Message}");
+                    try
+                    {
+                        Excel.Workbook xlWorkBook;
+                        Excel.Worksheet xlWorkSheet;
+                        object misValue = System.Reflection.Missing.Value;
+
+                        xlWorkBook = excelApp.Workbooks.Add(misValue);
+                        xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                        Range cells = xlWorkSheet.Cells;
+                        cells.NumberFormat = "@";
+
+                        xlWorkSheet.Cells[1, 1] = "Transaction Type";
+                        xlWorkSheet.Cells[1, 2] = "DCC";
+                        xlWorkSheet.Cells[1, 3] = "TID";
+                        xlWorkSheet.Cells[1, 4] = "Card Number";
+                        xlWorkSheet.Cells[1, 5] = "RRN";
+                        xlWorkSheet.Cells[1, 6] = "Amount";
+                        xlWorkSheet.Cells[1, 7] = "Response Status";
+                        xlWorkSheet.Cells[1, 8] = "Response Message";
+
+                        string timeStamp = GetTimestamp(DateTime.Now);
+
+                        xlWorkBook.SaveAs(@"" + Settings.Default["filePath"].ToString() + "/" + timeStamp + ".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                        xlWorkBook.Close(true, misValue, misValue);
+                        excelApp.Quit();
+
+                        Marshal.ReleaseComObject(xlWorkSheet);
+                        Marshal.ReleaseComObject(xlWorkBook);
+                        Marshal.ReleaseComObject(excelApp);
+
+                        Settings.Default.Reload();
+                        Settings.Default["logingEnable"] = true;
+                        string fileName = timeStamp + ".xls";
+                        Settings.Default["currentFileName"] = fileName;
+                        Settings.Default.Save();
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Exception Creating The Excel File For Logging : {ex.Message}");
+                    }
                 }
-            }
+            });
         }
 
         /// <summary>

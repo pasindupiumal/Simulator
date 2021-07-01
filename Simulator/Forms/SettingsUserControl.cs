@@ -49,6 +49,11 @@ namespace Simulator.Forms
         /// <param name="e"></param>
         private async void saveButton_Click(object sender, EventArgs e)
         {
+            //Dispaly processing message
+            savedSuccessLabel.ForeColor = Color.Green;
+            savedSuccessLabel.Text = "............   Saving   ............";
+            savedSuccessLabel.Visible = true;
+
             utils = new Utils();
 
             Settings.Default["ip"] = urlTextBox.Text;
@@ -70,7 +75,7 @@ namespace Simulator.Forms
 
             if (!(Settings.Default["filePath"].ToString().Length == 0))
             {
-                utils.CreateExcelFile();
+                await utils.CreateExcelFile();
             }
             else
             {
@@ -82,11 +87,12 @@ namespace Simulator.Forms
 
 
             //Dispaly success message
+            savedSuccessLabel.Visible = false;
             savedSuccessLabel.ForeColor = Color.Green;
             savedSuccessLabel.Text = "Settings Updated Successfully!";
             savedSuccessLabel.Visible = true;
             await Task.Delay(2000);
-            savedSuccessLabel.Visible = false;
+            
 
             //MessageBox.Show("Settings Updated Successfully!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

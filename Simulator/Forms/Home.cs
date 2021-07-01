@@ -47,14 +47,14 @@ namespace Simulator.Forms
         /// If the excel file path is set in the settings, create an excel file 
         /// with the current timestamp. 
         /// </summary>
-        private void SetExcelFileSettings()
+        private async Task SetExcelFileSettings()
         {
             Settings.Default.Reload();
 
             if(!(Settings.Default["filePath"].ToString().Length == 0))
             {
                 utils = new Utils();
-                utils.CreateExcelFile();
+                await utils.CreateExcelFile();
             }
         }
 
@@ -63,13 +63,13 @@ namespace Simulator.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Home_Load(object sender, EventArgs e)
+        private async void Home_Load(object sender, EventArgs e)
         {
             purchaseUserControl1.Hide();
             preAuthUserControl1.Hide();
             reversalUserControl1.Hide();
             settingsUserControl1.Hide();
-            SetExcelFileSettings();
+            await SetExcelFileSettings();
         }
 
         /// <summary>
