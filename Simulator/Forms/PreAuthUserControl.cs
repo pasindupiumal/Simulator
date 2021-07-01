@@ -254,7 +254,7 @@ namespace Simulator.Forms
                     tranDetailsRichTextBox.Select(0, 0);
                     tranDetailsRichTextBox.SelectedText = "Pre-Auth Response - " + preAuthResponse.RespText;
 
-                    await utils.WriteToExcelFile("Pre-Auth", dccStatus, preAuthResponse.TerminalId, preAuthResponse.PAN, preAuthResponse.RRN, amount, transactionStatus);
+                    await utils.WriteToExcelFile("Pre-Auth", dccStatus, preAuthResponse.TerminalId, preAuthResponse.PAN, preAuthResponse.RRN, amount, transactionStatus, preAuthResponse.RespText);
                 }
 
                 //Stop the progress bar
@@ -460,7 +460,7 @@ namespace Simulator.Forms
                         transactionStatus = "FAILED";
                     }
 
-                    await utils.WriteToExcelFile("Pre-Auth Completion", dccStatus, preAuthCompletionResponse.TerminalId, preAuthCompletionResponse.PAN, preAuthCompletionResponse.RRN, amount, transactionStatus);
+                    await utils.WriteToExcelFile("Pre-Auth Completion", dccStatus, preAuthCompletionResponse.TerminalId, preAuthCompletionResponse.PAN, preAuthCompletionResponse.RRN, amount, transactionStatus, preAuthCompletionResponse.RespText);
                 }
 
                 //Stop the progress bar
@@ -666,7 +666,7 @@ namespace Simulator.Forms
                         transactionStatus = "FAILED";
                     }
 
-                    await utils.WriteToExcelFile("Pre-Auth Cancelation", dccStatus, preAuthCancelationResponse.TerminalId, preAuthCancelationResponse.PAN, preAuthCancelationResponse.RRN, amount, transactionStatus);
+                    await utils.WriteToExcelFile("Pre-Auth Cancelation", dccStatus, preAuthCancelationResponse.TerminalId, preAuthCancelationResponse.PAN, preAuthCancelationResponse.RRN, amount, transactionStatus, preAuthCancelationResponse.RespText);
                 }
 
                 //Stop the progress bar
@@ -876,7 +876,7 @@ namespace Simulator.Forms
                         transactionStatus = "FAILED";
                     }
 
-                    await utils.WriteToExcelFile("Pre-Auth Reversal", dccStatus, preAuthReversalResponse.TerminalId, preAuthReversalResponse.PAN, preAuthReversalResponse.RRN, amount, transactionStatus);
+                    await utils.WriteToExcelFile("Pre-Auth Reversal", dccStatus, preAuthReversalResponse.TerminalId, preAuthReversalResponse.PAN, preAuthReversalResponse.RRN, amount, transactionStatus, preAuthReversalResponse.RespText);
                 }
 
                 //Stop the progress bar
@@ -1086,7 +1086,7 @@ namespace Simulator.Forms
                         transactionStatus = "FAILED";
                     }
 
-                    await utils.WriteToExcelFile("Incremental Pre-Auth", dccStatus, incPreAuthResponse.TerminalId, incPreAuthResponse.PAN, incPreAuthResponse.RRN, amount, transactionStatus);
+                    await utils.WriteToExcelFile("Incremental Pre-Auth", dccStatus, incPreAuthResponse.TerminalId, incPreAuthResponse.PAN, incPreAuthResponse.RRN, amount, transactionStatus, incPreAuthResponse.RespText);
                 }
 
                 //Stop the progress bar

@@ -171,7 +171,7 @@ namespace Simulator.Forms
                 tranDetailsRichTextBox.Select(0, 0);
                 tranDetailsRichTextBox.SelectedText = "Reversal Response - " + transactionResponse.RespText;
 
-                await utils.WriteToExcelFile("Reverse Last", dccStatus, transactionResponse.TerminalId, transactionResponse.PAN, transactionResponse.RRN, "0", transactionStatus);
+                await utils.WriteToExcelFile("Reverse Last", dccStatus, transactionResponse.TerminalId, transactionResponse.PAN, transactionResponse.RRN, "0", transactionStatus, transactionResponse.RespText);
             }
 
             //Stop the progress bar

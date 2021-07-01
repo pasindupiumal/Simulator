@@ -240,7 +240,7 @@ namespace Simulator.Forms
                     tranDetailsRichTextBox.Select(0, 0);
                     tranDetailsRichTextBox.SelectedText = "Purchase Response - " + transactionResponse.RespText;
 
-                    await utils.WriteToExcelFile("Purchase", dccStatus, transactionResponse.TerminalId, transactionResponse.PAN, transactionResponse.RRN, amount, transactionStatus);
+                    await utils.WriteToExcelFile("Purchase", dccStatus, transactionResponse.TerminalId, transactionResponse.PAN, transactionResponse.RRN, amount, transactionStatus, transactionResponse.RespText);
                 }
 
                 //Stop the progress bar
@@ -407,7 +407,7 @@ namespace Simulator.Forms
                 tranDetailsRichTextBox.Select(0, 0);
                 tranDetailsRichTextBox.SelectedText = "Reversal Response - " + transactionResponse.RespText;
 
-                await utils.WriteToExcelFile("Reversal", dccStatus, transactionResponse.TerminalId, transactionResponse.PAN, transactionResponse.RRN, amount, transactionStatus);
+                await utils.WriteToExcelFile("Reversal", dccStatus, transactionResponse.TerminalId, transactionResponse.PAN, transactionResponse.RRN, amount, transactionStatus, transactionResponse.RespText);
             }
 
             //Stop the progress bar

@@ -105,7 +105,8 @@ namespace Simulator.Shared
                     xlWorkSheet.Cells[1, 4] = "Card Number";
                     xlWorkSheet.Cells[1, 5] = "RRN";
                     xlWorkSheet.Cells[1, 6] = "Amount";
-                    xlWorkSheet.Cells[1, 7] = "Response";
+                    xlWorkSheet.Cells[1, 7] = "Response Status";
+                    xlWorkSheet.Cells[1, 8] = "Response Message";
 
                     string timeStamp = GetTimestamp(DateTime.Now);
 
@@ -140,7 +141,7 @@ namespace Simulator.Shared
         /// <param name="rrn"></param>
         /// <param name="amount"></param>
         /// <param name="response"></param>
-        public async Task WriteToExcelFile(string transType, string dcc, string tid, string cardNumber, string rrn, string amount, string response)
+        public async Task WriteToExcelFile(string transType, string dcc, string tid, string cardNumber, string rrn, string amount, string response, string respMessage)
         {
             await Task.Run(() =>
             {
@@ -179,6 +180,7 @@ namespace Simulator.Shared
                             xlWorkSheet.Cells[lastUsedRow + 1, 5] = rrn;
                             xlWorkSheet.Cells[lastUsedRow + 1, 6] = amount;
                             xlWorkSheet.Cells[lastUsedRow + 1, 7] = response;
+                            xlWorkSheet.Cells[lastUsedRow + 1, 8] = respMessage;
 
                             //Auto fit the width of columns
                             xlWorkSheet.Columns.AutoFit();
