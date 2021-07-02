@@ -58,7 +58,11 @@ namespace Simulator.Forms
             reqDetailsRichTextBox.Text = string.Empty;
             tranDetailsRichTextBox.Text = string.Empty;
             urlTextBox.Text = utils.getBaseURL();
-            await utils.ExcelWriteNewLine();
+
+            if (!(Settings.Default["filePath"].ToString().Length == 0) && !(Settings.Default["currentFileName"].ToString().Length == 0))
+            {
+                await utils.ExcelWriteNewLine();
+            }
         }
 
         /// <summary>

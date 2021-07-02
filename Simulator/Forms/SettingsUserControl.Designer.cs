@@ -369,7 +369,6 @@ namespace Simulator.Forms
             this.excelFilePathTextBox.Location = new System.Drawing.Point(232, 515);
             this.excelFilePathTextBox.MaxLength = 40;
             this.excelFilePathTextBox.Name = "excelFilePathTextBox";
-            this.excelFilePathTextBox.ReadOnly = true;
             this.excelFilePathTextBox.Size = new System.Drawing.Size(449, 22);
             this.excelFilePathTextBox.TabIndex = 40;
             // 

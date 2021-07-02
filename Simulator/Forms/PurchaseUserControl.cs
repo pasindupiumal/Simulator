@@ -73,7 +73,11 @@ namespace Simulator.Forms
             reversalButton.Enabled = false;
             progressBar.Value = 0;
             urlTextBox.Text = utils.getBaseURL();
-            await utils.ExcelWriteNewLine();
+
+            if (!(Settings.Default["filePath"].ToString().Length == 0) && !(Settings.Default["currentFileName"].ToString().Length == 0))
+            {
+                await utils.ExcelWriteNewLine();
+            }
         }
     
         /// <summary>
@@ -112,6 +116,8 @@ namespace Simulator.Forms
                 currCodesComboBox.Enabled = false;
                 urlTextBox.ReadOnly = true;
                 purchaseButton.Enabled = false;
+
+                //Perform amount conversion
 
                 double inputAmount = amountDouble * 100;
 

@@ -44,7 +44,7 @@ namespace Simulator.Shared
         /// <returns></returns>
         public static Currency GetCurrency(string currencyCode)
         {
-            if (currencyList.ContainsKey(currencyCode))
+            if (currencyList.ContainsKey("752"))
             {
                 return currencyList[currencyCode];
             }

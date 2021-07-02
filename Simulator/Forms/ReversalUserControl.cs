@@ -43,7 +43,11 @@ namespace Simulator.Forms
             tranDetailsRichTextBox.Text = string.Empty;
             progressBar.Value = 0;
             urlTextBox.Text = utils.getBaseURL();
-            await utils.ExcelWriteNewLine();
+
+            if (!(Settings.Default["filePath"].ToString().Length == 0) && !(Settings.Default["currentFileName"].ToString().Length == 0))
+            {
+                await utils.ExcelWriteNewLine();
+            }
         }
 
         /// <summary>

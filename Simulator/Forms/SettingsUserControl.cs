@@ -92,7 +92,7 @@ namespace Simulator.Forms
             savedSuccessLabel.Text = "Settings Updated Successfully!";
             savedSuccessLabel.Visible = true;
             await Task.Delay(2000);
-            
+            savedSuccessLabel.Visible = false;
 
             //MessageBox.Show("Settings Updated Successfully!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
