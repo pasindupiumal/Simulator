@@ -204,8 +204,7 @@ namespace Simulator.Shared
                 }
                 else
                 {
-                    Debug.WriteLine($"Exception Opening The Excel File For Logging. Folder Path Not Found!");
-                    MessageBox.Show("Folder Path Not Found!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Debug.WriteLine($"Folder Path Not Found. Excel File Logging Is Disabled");
                 }
             });
         }
@@ -274,8 +273,7 @@ namespace Simulator.Shared
                 }
                 else
                 {
-                    Debug.WriteLine($"Exception Opening The Excel File For Logging. Folder Path Not Found!");
-                    MessageBox.Show("Folder Path Not Found!", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Debug.WriteLine($"Folder Path Not Found. Excel File Logging Is Disabled");
                 }
             });
         }
