@@ -138,7 +138,7 @@ namespace Simulator.Forms
                     inputAmount = inputAmount * Math.Pow(10, currency.Decimals());
                 }
 
-                MessageBox.Show(inputAmount.ToString());
+                //MessageBox.Show(inputAmount.ToString());
 
                 //Initialize RestService
                 this.baseURL = utils.getBaseURL();
@@ -309,7 +309,24 @@ namespace Simulator.Forms
             string currCode = currCodeSeperated[0].Trim();
 
             double inputAmount = Double.Parse(amount);
-            inputAmount = inputAmount * 100;
+
+            Currency currency = Currencies.GetCurrency(currCode);
+
+            if (currency == null)
+            {
+                //If the currency code is not found. Abort.
+                MessageBox.Show("Currency Code Not Found In Application", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                //Stop the progress bar
+                this.progressBar.Style = ProgressBarStyle.Continuous;
+                this.progressBar.MarqueeAnimationSpeed = 0;
+                this.progressBar.Value = 100;
+                return;
+            }
+            else
+            {
+                inputAmount = inputAmount * Math.Pow(10, currency.Decimals());
+            }
 
             //Initialize RestService
             this.baseURL = utils.getBaseURL();
