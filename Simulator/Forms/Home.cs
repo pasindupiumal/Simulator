@@ -70,6 +70,7 @@ namespace Simulator.Forms
             reversalUserControl1.Hide();
             settingsUserControl1.Hide();
             await SetExcelFileSettings();
+            
         }
 
         /// <summary>

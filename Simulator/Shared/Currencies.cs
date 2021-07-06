@@ -20,21 +20,28 @@ namespace Simulator.Shared
             AddCurrencies();
         }
 
-        public static void AddCurrencies()
+        private static void AddCurrencies()
         {
-            Currency SEK = new Currency("752", "SEK", 2);
-            Currency LKR = new Currency("144", "LKR", 2);
-            Currency EUR = new Currency("978", "EUR", 2);
-            Currency JPY = new Currency("392", "JPY", 0);
-            Currency USD = new Currency("840", "USD", 2);
-            Currency GBP = new Currency("826", "GBP", 2);
+            Currency SEK = null;
+            Currency LKR = null;
+            Currency EUR = null;
+            Currency JPY = null;
+            Currency USD = null;
+            Currency GBP = null;
 
-            currencyList.Add(SEK.CurrencyCode, SEK);
-            currencyList.Add(LKR.CurrencyCode, LKR);
-            currencyList.Add(EUR.CurrencyCode, EUR);
-            currencyList.Add(JPY.CurrencyCode, JPY);
-            currencyList.Add(USD.CurrencyCode, USD);
-            currencyList.Add(GBP.CurrencyCode, GBP);
+            SEK = new Currency("752", "SEK", 2);
+            LKR = new Currency("144", "LKR", 2);
+            EUR = new Currency("978", "EUR", 2);
+            JPY = new Currency("392", "JPY", 0);
+            USD = new Currency("840", "USD", 2);
+            GBP = new Currency("826", "GBP", 2);
+
+            currencyList.Add("752", SEK);
+            currencyList.Add("144", LKR);
+            currencyList.Add("978", EUR);
+            currencyList.Add("392", JPY);
+            currencyList.Add("840", USD);
+            currencyList.Add("826", GBP);
         }
 
         /// <summary>
@@ -44,13 +51,13 @@ namespace Simulator.Shared
         /// <returns></returns>
         public static Currency GetCurrency(string currencyCode)
         {
-            if (currencyList.ContainsKey("752"))
+            if (!currencyList.ContainsKey(currencyCode))
             {
-                return currencyList[currencyCode];
+                return null;
             }
             else
             {
-                return null;
+                return currencyList[currencyCode];
             }
         }
     }

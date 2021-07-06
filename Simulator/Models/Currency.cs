@@ -19,8 +19,26 @@ namespace Simulator.Models
             this.decimals = decimals;
         }
 
-        public string CurrencyCode { get; set; }
-        public string CurrencyDesc { get; set; }
-        public int Decimals { get; set; }
+        public Currency() { }
+
+        public string CurrencyCode()
+        {
+            return this.currencyCode;
+        }
+
+        public string CurrencyDesc()
+        {
+            return this.currencyDesc;
+        }
+
+        public int Decimals()
+        {
+            return this.decimals;
+        }
+
+        public string ConvertToString()
+        {
+            return this.currencyDesc + "-" + this.decimals + "-" + this.currencyCode;
+        }
     }
 }
