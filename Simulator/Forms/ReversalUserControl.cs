@@ -70,7 +70,7 @@ namespace Simulator.Forms
             restService = new RestService(urlTextBox.Text.ToString());
 
             //Get the transaction request tailored for the available settings
-            string requestString = restService.GetEncodedReversalRequest("0", "752", true);
+            string requestString = restService.GetEncodedReversalRequest("0", "752", false);
 
             //Display request details
             reqDetailsRichTextBox.Select(0, 0);

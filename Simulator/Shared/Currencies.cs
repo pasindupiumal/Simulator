@@ -28,6 +28,7 @@ namespace Simulator.Shared
             Currency JPY = null;
             Currency USD = null;
             Currency GBP = null;
+            Currency ZAR = null;
 
             SEK = new Currency("752", "SEK", 2);
             LKR = new Currency("144", "LKR", 2);
@@ -35,6 +36,7 @@ namespace Simulator.Shared
             JPY = new Currency("392", "JPY", 0);
             USD = new Currency("840", "USD", 2);
             GBP = new Currency("826", "GBP", 2);
+            ZAR = new Currency("710", "ZAR", 2);
 
             currencyList.Add("752", SEK);
             currencyList.Add("144", LKR);
@@ -42,6 +44,7 @@ namespace Simulator.Shared
             currencyList.Add("392", JPY);
             currencyList.Add("840", USD);
             currencyList.Add("826", GBP);
+            currencyList.Add("710", ZAR);
         }
 
         /// <summary>

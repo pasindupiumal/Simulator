@@ -358,7 +358,7 @@ namespace Simulator.Forms
             this.excelFilePathHelpButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.excelFilePathHelpButton.Size = new System.Drawing.Size(22, 25);
             this.excelFilePathHelpButton.TabIndex = 41;
-            this.toolTip.SetToolTip(this.excelFilePathHelpButton, "Currency codes (752-SEK, 144-LKR). First one becomes the default currency code");
+            this.toolTip.SetToolTip(this.excelFilePathHelpButton, "Select a folder path to enable logging into an excel file");
             this.excelFilePathHelpButton.UseVisualStyleBackColor = false;
             // 
             // excelFilePathTextBox

@@ -807,7 +807,7 @@ namespace Simulator.Forms
                 restService = new RestService(urlTextBox.Text.ToString());
 
                 //Get the transaction request tailored for the available settings
-                string requestString = restService.GetEncodedReversalRequest(inputAmount.ToString(), currCode, true);
+                string requestString = restService.GetEncodedReversalRequest(inputAmount.ToString(), currCode, false);
 
                 //Display request details
                 reqDetailsRichTextBox.Select(0, 0);
