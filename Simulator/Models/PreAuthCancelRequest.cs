@@ -15,9 +15,9 @@ namespace Simulator.Models
         public string TransAmount;
         public string TransCurrency;
         public string TransDateTime;
-        public string GuestNo;
+        //public string GuestNo;
         public string Operator;
-        public string CardPresent;
+        //public string CardPresent;
         public string OriginalRRN;
         public string PAN;
         public string IssuerId;
@@ -27,5 +27,7 @@ namespace Simulator.Models
         public string WSNo;
         public string ProxyInfo;
         public string POSInfo;
+        public string AuthCode;
+        public string IndustryCode;
     }
 }

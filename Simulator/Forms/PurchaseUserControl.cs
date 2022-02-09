@@ -211,7 +211,7 @@ namespace Simulator.Forms
 
                         if (transactionResponse.BillingAmount != null)
                         {
-                            double billingAmount = Double.Parse(transactionResponse.BillingAmount) / 100.00;
+                            double billingAmount = Double.Parse(transactionResponse.BillingAmount) / Math.Pow(10, currency.Decimals());
                             tranDetailsRichTextBox.Select(0, 0);
                             tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                         }
@@ -254,7 +254,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         tranDetailsRichTextBox.Select(0, 0);
-                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / Math.Pow(10, currency.Decimals())).ToString();
                     }
 
                     if (transactionResponse.TerminalId != null)
@@ -396,7 +396,7 @@ namespace Simulator.Forms
 
                     if (transactionResponse.BillingAmount != null)
                     {
-                        double billingAmount = Double.Parse(transactionResponse.BillingAmount) / 100.00;
+                        double billingAmount = Double.Parse(transactionResponse.BillingAmount) / Math.Pow(10, currency.Decimals());
                         tranDetailsRichTextBox.Select(0, 0);
                         tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                     }
@@ -438,7 +438,7 @@ namespace Simulator.Forms
                 if (inputAmount.ToString().Length != 0)
                 {
                     tranDetailsRichTextBox.Select(0, 0);
-                    tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                    tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / Math.Pow(10, currency.Decimals())).ToString();
                 }
 
                 if (transactionResponse.TerminalId != null)

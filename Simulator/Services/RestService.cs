@@ -375,13 +375,13 @@ namespace Simulator.Shared
                 var preAuthCancelRequest = new PreAuthCancelRequest
                 {
                     SequenceNo = seqNumber.ToString(),
-                    TransType = "08",
+                    TransType = "16",
                     TransAmount = amount,
                     TransCurrency = currCode,
                     TransDateTime = dateTime,
-                    GuestNo = Settings.Default["guestNo"].ToString(),
+                    //GuestNo = Settings.Default["guestNo"].ToString(),
                     Operator = Settings.Default["operatorValue"].ToString(),
-                    CardPresent = "2",
+                    //CardPresent = "2",
                     OriginalRRN = originalRRN,
                     PAN = pan,
                     IssuerId = "02",
@@ -390,7 +390,9 @@ namespace Simulator.Shared
                     SiteId = Settings.Default["siteID"].ToString(),
                     WSNo = Settings.Default["wsNo"].ToString(),
                     ProxyInfo = Settings.Default["proxyInfo"].ToString(),
-                    POSInfo = Settings.Default["posInfo"].ToString()
+                    POSInfo = Settings.Default["posInfo"].ToString(),
+                    AuthCode = "161430",
+                    IndustryCode = "1"
                 };
 
                 xmlSerializer = new XmlSerializer(typeof(PreAuthCancelRequest));

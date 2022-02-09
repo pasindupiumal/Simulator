@@ -52,7 +52,7 @@ namespace Simulator.Forms
             incPreAuthButton.Enabled = false;
             preAuthCompButton.Enabled = false;
             preAuthCancelButton.Enabled = false;
-            preAuthCancelButton.Visible = false;
+            preAuthCancelButton.Visible = true;
             urlTextBox.ReadOnly = false;
             resDetailsRichTextBox.Text = string.Empty;
             reqDetailsRichTextBox.Text = string.Empty;
@@ -223,7 +223,7 @@ namespace Simulator.Forms
 
                         if (preAuthResponse.BillingAmount != null)
                         {
-                            double billingAmount = Double.Parse(preAuthResponse.BillingAmount) / 100.00;
+                            double billingAmount = Double.Parse(preAuthResponse.BillingAmount) / Math.Pow(10, currency.Decimals());
                             tranDetailsRichTextBox.Select(0, 0);
                             tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                         }
@@ -265,7 +265,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         tranDetailsRichTextBox.Select(0, 0);
-                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / Math.Pow(10, currency.Decimals())).ToString();
                     }
 
                     if (preAuthResponse.TerminalId != null)
@@ -421,7 +421,7 @@ namespace Simulator.Forms
 
                         if (preAuthCompletionResponse.BillingAmount != null)
                         {
-                            double billingAmount = Double.Parse(preAuthCompletionResponse.BillingAmount) / 100.00;
+                            double billingAmount = Double.Parse(preAuthCompletionResponse.BillingAmount) / Math.Pow(10, currency.Decimals());
                             tranDetailsRichTextBox.Select(0, 0);
                             tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                         }
@@ -463,7 +463,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         tranDetailsRichTextBox.Select(0, 0);
-                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / Math.Pow(10, currency.Decimals())).ToString();
                     }
 
                     if (preAuthCompletionResponse.TerminalId != null)
@@ -590,7 +590,7 @@ namespace Simulator.Forms
                 restService = new RestService(urlTextBox.Text.ToString());
 
                 //Get the transaction request tailored for the available settings
-                string requestString = restService.GetEncodedPreAuthCancelRequest(inputAmount.ToString(), currCode, true, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
+                string requestString = restService.GetEncodedPreAuthCancelRequest(inputAmount.ToString(), currCode, false, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
 
                 //Display request details
                 reqDetailsRichTextBox.Select(0, 0);
@@ -600,7 +600,7 @@ namespace Simulator.Forms
                 reqDetailsRichTextBox.SelectedText = "Pre-Auth Cancelation Request";
 
                 //Perform transaction
-                var response = await restService.PostPreAuthCancelRequest(inputAmount.ToString(), currCode, true, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
+                var response = await restService.PostPreAuthCancelRequest(inputAmount.ToString(), currCode, false, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
 
                 resDetailsRichTextBox.Select(0, 0);
                 resDetailsRichTextBox.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
@@ -644,7 +644,7 @@ namespace Simulator.Forms
 
                         if (preAuthCancelationResponse.BillingAmount != null)
                         {
-                            double billingAmount = Double.Parse(preAuthCancelationResponse.BillingAmount) / 100.00;
+                            double billingAmount = Double.Parse(preAuthCancelationResponse.BillingAmount) / Math.Pow(10, currency.Decimals());
                             tranDetailsRichTextBox.Select(0, 0);
                             tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                         }
@@ -686,7 +686,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         tranDetailsRichTextBox.Select(0, 0);
-                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / Math.Pow(10, currency.Decimals())).ToString();
                     }
 
                     if (preAuthCancelationResponse.TerminalId != null)
@@ -861,7 +861,7 @@ namespace Simulator.Forms
 
                         if (preAuthReversalResponse.BillingAmount != null)
                         {
-                            double billingAmount = Double.Parse(preAuthReversalResponse.BillingAmount) / 100.00;
+                            double billingAmount = Double.Parse(preAuthReversalResponse.BillingAmount) / Math.Pow(10, currency.Decimals());
                             tranDetailsRichTextBox.Select(0, 0);
                             tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                         }
@@ -903,7 +903,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         tranDetailsRichTextBox.Select(0, 0);
-                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / Math.Pow(10, currency.Decimals())).ToString();
                     }
 
                     if (preAuthReversalResponse.TerminalId != null)
@@ -1094,7 +1094,7 @@ namespace Simulator.Forms
 
                         if (incPreAuthResponse.BillingAmount != null)
                         {
-                            double billingAmount = Double.Parse(incPreAuthResponse.BillingAmount) / 100.00;
+                            double billingAmount = Double.Parse(incPreAuthResponse.BillingAmount) / Math.Pow(10, currency.Decimals());
                             tranDetailsRichTextBox.Select(0, 0);
                             tranDetailsRichTextBox.SelectedText = "\r\n\tBilling Amount\t :  " + billingAmount.ToString();
                         }
@@ -1136,7 +1136,7 @@ namespace Simulator.Forms
                     if (inputAmount.ToString().Length != 0)
                     {
                         tranDetailsRichTextBox.Select(0, 0);
-                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / 100.00).ToString();
+                        tranDetailsRichTextBox.SelectedText = "\r\n\tAmount\t\t :  " + (inputAmount / Math.Pow(10, currency.Decimals())).ToString();
                     }
 
                     if (incPreAuthResponse.TerminalId != null)
