@@ -198,6 +198,7 @@ namespace Simulator.Forms
             this.currCodesComboBox.Name = "currCodesComboBox";
             this.currCodesComboBox.Size = new System.Drawing.Size(220, 21);
             this.currCodesComboBox.TabIndex = 33;
+            this.currCodesComboBox.SelectedIndexChanged += new System.EventHandler(this.currCodesComboBox_SelectedIndexChanged);
             // 
             // tranDetCopyButton
             // 

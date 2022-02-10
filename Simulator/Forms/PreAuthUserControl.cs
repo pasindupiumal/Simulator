@@ -88,7 +88,7 @@ namespace Simulator.Forms
                     currCodesComboBox.Items.Add(currCodes[i]);
                 }
 
-                currCodesComboBox.SelectedItem = currCodesComboBox.Items[0];
+                currCodesComboBox.SelectedItem = currCodesComboBox.Items[int.Parse(Settings.Default["currCodePreference"].ToString())];
             }
         }
 
@@ -1251,6 +1251,18 @@ namespace Simulator.Forms
                 await Task.Delay(1000);
                 resDetCopyLabel.Visible = false;
             }
+        }
+
+        /// <summary>
+        /// Persist the selected currency in order to make it selected in the drop down for convinience. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void currCodesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Settings.Default.Reload();
+            Settings.Default["currCodePreference"] = currCodesComboBox.SelectedIndex;
+            Settings.Default.Save();
         }
     }
 }
