@@ -85,7 +85,7 @@ namespace Simulator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MarkusESTLAB.596807909")]
+        [global::System.Configuration.DefaultSettingValueAttribute("FintekDevLab.OPI2022")]
         public string wsNo {
             get {
                 return ((string)(this["wsNo"]));

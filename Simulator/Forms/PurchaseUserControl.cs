@@ -136,6 +136,7 @@ namespace Simulator.Forms
                 else
                 {
                     inputAmount = inputAmount * Math.Pow(10, currency.Decimals());
+                    GlobalConstants.LAST_AMOUNT = inputAmount;
                 }
 
                 //MessageBox.Show(inputAmount.ToString());

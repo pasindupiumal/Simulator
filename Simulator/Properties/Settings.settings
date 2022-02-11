@@ -18,7 +18,7 @@
       <Value Profile="(Default)">SHELL|FSDH</Value>
     </Setting>
     <Setting Name="wsNo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">MarkusESTLAB.596807909</Value>
+      <Value Profile="(Default)">FintekDevLab.OPI2022</Value>
     </Setting>
     <Setting Name="proxyInfo" Type="System.String" Scope="User">
       <Value Profile="(Default)">OPIV6.2</Value>

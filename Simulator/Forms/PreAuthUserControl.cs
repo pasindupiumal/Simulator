@@ -147,6 +147,7 @@ namespace Simulator.Forms
                 else
                 {
                     inputAmount = inputAmount * Math.Pow(10, currency.Decimals());
+                    GlobalConstants.LAST_AMOUNT = inputAmount;
                 }
 
                 //Initialize RestService
@@ -597,7 +598,7 @@ namespace Simulator.Forms
                 reqDetailsRichTextBox.SelectedText = "\r\n\r\n" + requestString + "\r\n\r\n\r\n\r\n";
 
                 reqDetailsRichTextBox.Select(0, 0);
-                reqDetailsRichTextBox.SelectedText = "Pre-Auth Cancelation Request";
+                reqDetailsRichTextBox.SelectedText = "Pre-Auth Cancellation Request";
 
                 //Perform transaction
                 var response = await restService.PostPreAuthCancelRequest(inputAmount.ToString(), currCode, false, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
@@ -606,7 +607,7 @@ namespace Simulator.Forms
                 resDetailsRichTextBox.SelectedText = "\r\n\r\n" + response + "\r\n\r\n\r\n\r\n";
 
                 resDetailsRichTextBox.Select(0, 0);
-                resDetailsRichTextBox.SelectedText = "Pre-Auth Cancelation Response";
+                resDetailsRichTextBox.SelectedText = "Pre-Auth Cancellation Response";
 
                 //Parse transaction response
                 preAuthCancelationResponse = restService.DecodeResponse(response);
@@ -696,7 +697,7 @@ namespace Simulator.Forms
                     }
 
                     tranDetailsRichTextBox.Select(0, 0);
-                    tranDetailsRichTextBox.SelectedText = "Pre-Auth Cancelation Response - " + preAuthCancelationResponse.RespText;
+                    tranDetailsRichTextBox.SelectedText = "Pre-Auth Cancellation Response - " + preAuthCancelationResponse.RespText;
 
                     if (preAuthCancelationResponse.RespCode.Equals("00"))
                     {
@@ -723,7 +724,7 @@ namespace Simulator.Forms
                         transactionStatus = "FAILED";
                     }
 
-                    await utils.WriteToExcelFile("Pre-Auth Cancelation", dccStatus, preAuthCancelationResponse.TerminalId, preAuthCancelationResponse.PAN, preAuthCancelationResponse.RRN, amount, transactionStatus, preAuthCancelationResponse.RespText);
+                    await utils.WriteToExcelFile("Pre-Auth Cancellation", dccStatus, preAuthCancelationResponse.TerminalId, preAuthCancelationResponse.PAN, preAuthCancelationResponse.RRN, amount, transactionStatus, preAuthCancelationResponse.RespText);
                 }
 
                 //Stop the progress bar
@@ -1033,6 +1034,7 @@ namespace Simulator.Forms
                 else
                 {
                     inputAmount = inputAmount * Math.Pow(10, currency.Decimals());
+                    GlobalConstants.LAST_AMOUNT = inputAmount;
                 }
 
                 //Initialize RestService

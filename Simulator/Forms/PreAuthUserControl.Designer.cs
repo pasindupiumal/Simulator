@@ -229,7 +229,7 @@ namespace Simulator.Forms
             this.preAuthCancelButton.Name = "preAuthCancelButton";
             this.preAuthCancelButton.Size = new System.Drawing.Size(170, 33);
             this.preAuthCancelButton.TabIndex = 50;
-            this.preAuthCancelButton.Text = "Cancelation";
+            this.preAuthCancelButton.Text = "Cancellation";
             this.preAuthCancelButton.UseVisualStyleBackColor = true;
             this.preAuthCancelButton.Visible = false;
             this.preAuthCancelButton.Click += new System.EventHandler(this.preAuthCancelButton_Click);
