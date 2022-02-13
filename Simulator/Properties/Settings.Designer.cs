@@ -25,7 +25,7 @@ namespace Simulator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://192.168.1.2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://192.168.1.2:8080")]
         public string ip {
             get {
                 return ((string)(this["ip"]));
