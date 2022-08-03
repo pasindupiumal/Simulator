@@ -97,6 +97,7 @@ namespace Simulator.Forms
         /// <param name="e"></param>
         private void preAuthUserControlButton_Click(object sender, EventArgs e)
         {
+            GlobalConstants.LAST_PRE_AUTH_AMOUNT = -99;
             purchaseUserControl1.Hide();
             reversalUserControl1.Hide();
             settingsUserControl1.Hide();

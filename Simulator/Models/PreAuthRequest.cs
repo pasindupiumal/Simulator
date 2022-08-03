@@ -24,6 +24,10 @@ namespace Simulator.Models
         public string CheckInDate;
         public string CheckOutDate;
         public string LodgingCode;
+        public string OriginalRRN;
+        public string PAN;
+        public string ExpiryDate;
+        public string TransToken;
         public string SiteId;
         public string WSNo;
         public string ProxyInfo;

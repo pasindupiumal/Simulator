@@ -209,7 +209,7 @@ namespace Simulator.Shared
         /// <param name="currCode"></param>
         /// <param name="seqIncrement"></param>
         /// <returns></returns>
-        public string GetEncodedPreAuthRequest(string amount, string currCode, bool seqIncrement)
+        public string GetEncodedPreAuthRequest(string amount, string currCode, bool seqIncrement, bool tokenPreAuth, string originalRRN, string transToken, string expiryDate, string pan)
         {
             try
             {
@@ -225,27 +225,60 @@ namespace Simulator.Shared
                     seqNumber = seqNumber + 1;
                 }
 
-                var preAuthRequest = new PreAuthRequest
+                PreAuthRequest preAuthRequest = null;
+
+                if (tokenPreAuth)
                 {
-                    SequenceNo = seqNumber.ToString(),
-                    TransType = "05",
-                    TransAmount = amount,
-                    TransCurrency = currCode,
-                    TransDateTime = dateTime,
-                    GuestNo = Settings.Default["guestNo"].ToString(),
-                    IndustryCode = Settings.Default["industryCode"].ToString(),
-                    Operator = Settings.Default["operatorValue"].ToString(),
-                    CardPresent = "2",
-                    TaxAmount = "0",
-                    RoomRate = "0",
-                    CheckInDate = "20180815",
-                    CheckOutDate = "20202020",
-                    LodgingCode = Settings.Default["lodgingCode"].ToString(),
-                    SiteId = Settings.Default["siteID"].ToString(),
-                    WSNo = Settings.Default["wsNo"].ToString(),
-                    ProxyInfo = Settings.Default["proxyInfo"].ToString(),
-                    POSInfo = Settings.Default["posInfo"].ToString()
-                };
+                    preAuthRequest = new PreAuthRequest
+                    {
+                        SequenceNo = seqNumber.ToString(),
+                        TransType = "05",
+                        TransAmount = amount,
+                        TransCurrency = currCode,
+                        TransDateTime = dateTime,
+                        GuestNo = Settings.Default["guestNo"].ToString(),
+                        IndustryCode = Settings.Default["industryCode"].ToString(),
+                        Operator = Settings.Default["operatorValue"].ToString(),
+                        CardPresent = "2",
+                        TaxAmount = "0",
+                        RoomRate = "0",
+                        CheckInDate = "20180815",
+                        CheckOutDate = "20202020",
+                        LodgingCode = Settings.Default["lodgingCode"].ToString(),
+                        OriginalRRN = originalRRN,
+                        PAN = pan,
+                        ExpiryDate = expiryDate,
+                        TransToken = transToken,
+                        SiteId = Settings.Default["siteID"].ToString(),
+                        WSNo = Settings.Default["wsNo"].ToString(),
+                        ProxyInfo = Settings.Default["proxyInfo"].ToString(),
+                        POSInfo = Settings.Default["posInfo"].ToString()
+                    };
+                }
+                else
+                {
+                    preAuthRequest = new PreAuthRequest
+                    {
+                        SequenceNo = seqNumber.ToString(),
+                        TransType = "05",
+                        TransAmount = amount,
+                        TransCurrency = currCode,
+                        TransDateTime = dateTime,
+                        GuestNo = Settings.Default["guestNo"].ToString(),
+                        IndustryCode = Settings.Default["industryCode"].ToString(),
+                        Operator = Settings.Default["operatorValue"].ToString(),
+                        CardPresent = "2",
+                        TaxAmount = "0",
+                        RoomRate = "0",
+                        CheckInDate = "20180815",
+                        CheckOutDate = "20202020",
+                        LodgingCode = Settings.Default["lodgingCode"].ToString(),
+                        SiteId = Settings.Default["siteID"].ToString(),
+                        WSNo = Settings.Default["wsNo"].ToString(),
+                        ProxyInfo = Settings.Default["proxyInfo"].ToString(),
+                        POSInfo = Settings.Default["posInfo"].ToString()
+                    };
+                }
 
                 xmlSerializer = new XmlSerializer(typeof(PreAuthRequest));
                 stringWriterWithEncoding = new StringWriterWithEncoding(Encoding.UTF8);
@@ -588,12 +621,12 @@ namespace Simulator.Shared
         /// <param name="amount"></param>
         /// <param name="currCode"></param>
         /// <returns></returns>
-        public async Task<string> PostPreAuthRequest(string amount, string currCode)
+        public async Task<string> PostPreAuthRequest(string xmlObjectIn)
         {
             try
             {
                 //Get the encoded request
-                string xmlObject = GetEncodedPreAuthRequest(amount, currCode, false);
+                string xmlObject = xmlObjectIn;
 
                 if (!(xmlObject.Contains("Encoded PreAuth Request Generation Exception")))
                 {

@@ -10,5 +10,6 @@ namespace Simulator.Shared
     {
         public static double LAST_AMOUNT = 0;
         public static string LAST_CURR_CODE = null;
+        public static double LAST_PRE_AUTH_AMOUNT = -99;
     }
 }

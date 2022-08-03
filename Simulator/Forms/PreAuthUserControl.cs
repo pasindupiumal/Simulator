@@ -141,7 +141,6 @@ namespace Simulator.Forms
                     //Stop the progress bar
                     this.progressBar.Style = ProgressBarStyle.Continuous;
                     this.progressBar.MarqueeAnimationSpeed = 0;
-                    this.progressBar.Value = 100;
                     return;
                 }
                 else
@@ -150,12 +149,33 @@ namespace Simulator.Forms
                     GlobalConstants.LAST_AMOUNT = inputAmount;
                 }
 
+                string requestString = null;
+
                 //Initialize RestService
                 this.baseURL = utils.getBaseURL();
                 restService = new RestService(urlTextBox.Text.ToString());
 
-                //Get the transaction request tailored for the available settings
-                string requestString = restService.GetEncodedPreAuthRequest(inputAmount.ToString(), currCode, true);
+
+                if (GlobalConstants.LAST_PRE_AUTH_AMOUNT == 0)
+                {
+                    if(inputAmount == 0)
+                    {
+                        // If this is the following pre-auth after an inital one with amount zero. Make sure the amount is non-zero
+                        MessageBox.Show("Consecutive pre-auth transactions of 0 as amount is not allowed", "OPI Simulator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //Stop the progress bar
+                        this.progressBar.Style = ProgressBarStyle.Continuous;
+                        this.progressBar.MarqueeAnimationSpeed = 0;
+                        return;
+                    }
+
+                    //Get the transaction request tailored for the available settings
+                    requestString = restService.GetEncodedPreAuthRequest(inputAmount.ToString(), currCode, true, true, preAuthResponse.RRN, preAuthResponse.TransToken, preAuthResponse.ExpiryDate, preAuthResponse.PAN);
+                }
+                else
+                {
+                    requestString = restService.GetEncodedPreAuthRequest(inputAmount.ToString(), currCode, true, false, null, null, null, null);
+                }
+
 
                 //Display request details
                 reqDetailsRichTextBox.Select(0, 0);
@@ -165,7 +185,8 @@ namespace Simulator.Forms
                 reqDetailsRichTextBox.SelectedText = "Pre-Auth Request";
 
                 //Perform transaction
-                var response = await restService.PostPreAuthRequest(inputAmount.ToString(), currCode);
+                var response = await restService.PostPreAuthRequest(requestString);
+                GlobalConstants.LAST_PRE_AUTH_AMOUNT = inputAmount;
 
                 resDetailsRichTextBox.Select(0, 0);
                 resDetailsRichTextBox.SelectedText = "\r\n\r\n" + response + "\r\n";
@@ -189,6 +210,12 @@ namespace Simulator.Forms
                         preAuthCompButton.Enabled = true;
                         preAuthCancelButton.Enabled = true;
                         amountTextBox.ReadOnly = false;
+
+                        if(GlobalConstants.LAST_PRE_AUTH_AMOUNT == 0)
+                        {
+                            preAuthButton.Enabled = true;
+                        }
+
                         transactionStatus = "SUCCESS";
                     }
                     else
